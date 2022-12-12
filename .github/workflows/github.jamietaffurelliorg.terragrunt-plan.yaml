@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - './github/JamieTaffurelliOrg/**'
+      - 'github/JamieTaffurelliOrg/**'
 
 concurrency: ci-${{ github.ref }}
 
