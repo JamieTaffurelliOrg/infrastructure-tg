@@ -35,7 +35,6 @@ EOF
 }
 
 locals {
-
 }
 
 inputs = {
