@@ -44,7 +44,7 @@ inputs = {
       application_id_reference = "github-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:github-tf"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:github.jamietaffurelliorg.deploy"
     }
   }
   service_principals = {
