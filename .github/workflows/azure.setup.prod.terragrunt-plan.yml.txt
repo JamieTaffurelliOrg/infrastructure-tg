@@ -1,0 +1,43 @@
+on: pull_request
+
+concurrency: ci-${{ github.ref }}
+
+env:
+  PAGERDUTY_TOKEN: ${{ secrets.PAGERDUTY_TOKEN }}
+  TERRAFORM_VERSION: '1.2.4'
+  TERRAGRUNT_VERSION: '0.38.4'
+  TERRAGRUNT_WORKING_DIR: './azure/dev/tf-state'
+  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+jobs:
+  terragrunt-plan:
+    environment: plan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup Terragrunt
+      uses: autero1/action-terragrunt@v1.1.0
+      with:
+        terragrunt_version: ${{ env.TERRAGRUNT_VERSION }}
+
+    - name: Terragrunt Format
+      run: |
+       terragrunt fmt --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+
+    - name: Terragrunt Init
+      run: |
+       terragrunt init --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+
+    - name: Terragrunt Validate
+      run: |
+       terragrunt validate --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+
+    - name: Terragrunt Plan
+      run: |
+       terragrunt plan --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}

@@ -1,0 +1,16 @@
+test-results.xml
+code-coverage.xml
+**/*.tfstate
+**/*.tfstate.*
+**/*.tfplan
+**/*.tfplan.*
+**/*.terraform*
+crash.log
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+**/*.terragrunt-cache
