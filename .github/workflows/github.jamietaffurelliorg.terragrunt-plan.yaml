@@ -18,7 +18,7 @@ env:
   ARM_USE_OIDC: true
 jobs:
   terragrunt-plan:
-    environment: plan
+    environment: github.jamietaffurelliorg.deploy
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
