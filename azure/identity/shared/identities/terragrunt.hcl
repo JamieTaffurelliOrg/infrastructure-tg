@@ -65,10 +65,25 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
+    "setup-landing-zones-tf-reader-org" = {
+      service_principal_reference = "setup-landing-zones-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+    }
+    "setup-landing-zones-tf-reader-sub" = {
+      service_principal_reference = "setup-landing-zones-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/providers/Microsoft.Subscription"
+    }
     "setup-landing-zones-tf-uaa-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+    }
+    "setup-landing-zones-tf-blobcontributor-setupprod" = {
+      service_principal_reference = "setup-landing-zones-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/105036b2-81a9-4d2d-955b-74e9aead3b29/resourceGroups/rg-stp-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtstpprodtffrc1001/blobServices/default/containers/setup-prod"
     }
     "github-tf-blobcontributor-githubcontainer" = {
       service_principal_reference = "github-tf"
