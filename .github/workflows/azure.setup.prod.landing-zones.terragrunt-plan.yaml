@@ -23,7 +23,7 @@ env:
 
 jobs:
   terragrunt-plan:
-    environment: plan
+    environment: azure.setup.prod.landing-zones.deploy
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
