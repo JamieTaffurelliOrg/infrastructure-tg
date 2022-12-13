@@ -1,4 +1,4 @@
-/*remote_state {
+remote_state {
 
   backend = "azurerm"
 
@@ -14,7 +14,7 @@
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
-}*/
+}
 
 generate "provider" {
 
