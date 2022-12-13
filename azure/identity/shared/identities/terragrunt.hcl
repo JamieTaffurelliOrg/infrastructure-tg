@@ -106,6 +106,11 @@ inputs = {
       role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
+    "identity-tf-reader-sub" = {
+      service_principal_reference = "identity-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/providers/Microsoft.Subscription"
+    }
     "identity-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "identity-tf"
       role_definition_name        = "Storage Blob Data Contributor"
