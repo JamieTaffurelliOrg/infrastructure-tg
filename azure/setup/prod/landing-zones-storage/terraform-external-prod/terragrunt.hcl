@@ -59,9 +59,9 @@ inputs = {
   storage_account_network_rules = {
     default_action = "Allow"
   }
-  log_analytics_workspace = {
+  /*log_analytics_workspace = {
     name                = "logs"
     resource_group_name = "logs"
-  }
+  }*/
   tags = merge(local.tags, { environment = "prod", stack = "terraform-external" })
 }

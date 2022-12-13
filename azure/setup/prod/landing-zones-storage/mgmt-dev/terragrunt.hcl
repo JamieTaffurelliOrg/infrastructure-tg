@@ -55,7 +55,7 @@ inputs = {
   storage_account_name = "stjtmgmtdevtffrc1001"
   location             = "francecentral"
   resource_group_name  = "rg-mgmt-dev-tf-frc1-001"
-  containers           = ["github"]
+  containers           = ["mgmt-dev"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
