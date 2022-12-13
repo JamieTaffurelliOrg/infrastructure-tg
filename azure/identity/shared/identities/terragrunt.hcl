@@ -11,7 +11,6 @@ locals {
 }
 
 inputs = {
-
   applications = {
     "setup-landing-zones-tf" = {
       display_name = "setup-landing-zones-tf"
