@@ -59,6 +59,7 @@ inputs = {
   storage_account_network_rules = {
     default_action = "Allow"
   }
+
   /*log_analytics_workspace = {
     name                = "logs"
     resource_group_name = "logs"
