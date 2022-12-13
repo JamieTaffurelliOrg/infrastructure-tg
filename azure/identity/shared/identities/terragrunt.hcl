@@ -37,7 +37,7 @@ inputs = {
       application_id_reference = "setup-landing-zones-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:setup-landing-zones"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:azure.setup.prod.landing-zones.deploy"
     }
     "github-tf-deploy" = {
       display_name             = "deploy"
