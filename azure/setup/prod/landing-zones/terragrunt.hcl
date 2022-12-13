@@ -1,5 +1,5 @@
 terraform {
-  source = "../../../../../az-landingzone-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-tf///?ref=0.0.2"
 }
 
 include {
