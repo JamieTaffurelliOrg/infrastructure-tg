@@ -1,4 +1,4 @@
-/*remote_state {
+remote_state {
 
   backend = "azurerm"
 
@@ -8,13 +8,13 @@
   }
 
   config = {
-    resource_group_name  = "terraform"
-    storage_account_name = "terraformstatedevsa"
-    container_name       = "initial"
+    resource_group_name  = "rg-stp-prod-tf-frc1-001"
+    storage_account_name = "stjtstpprodtffrc1001"
+    container_name       = "setup-prod"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
-}*/
+}
 
 generate "provider" {
 
