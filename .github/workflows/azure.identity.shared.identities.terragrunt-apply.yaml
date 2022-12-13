@@ -60,7 +60,7 @@ jobs:
        terragrunt plan --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
 
   terragrunt-apply:
-    environment: azure.setup.prod.landing-zones.deploy
+    environment: identity.shared.identities.deploy
     runs-on: ubuntu-latest
     needs: terragrunt-plan
     steps:
