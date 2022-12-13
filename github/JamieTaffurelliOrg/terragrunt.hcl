@@ -54,6 +54,24 @@ inputs = {
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
+    },
+    {
+      name           = "az-landingzone-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-landingzone-storage-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-identity-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
     }
   ]
 }
