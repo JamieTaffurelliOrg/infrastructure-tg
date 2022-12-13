@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.0.2"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.0.3"
 }
 
 include {
@@ -108,7 +108,7 @@ inputs = {
     }
     "identity-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "identity-tf"
-      role_definition_name        = "User Access Administrator"
+      role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
     }
   }
