@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.0"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.1"
 }
 
 remote_state {
@@ -69,6 +69,12 @@ inputs = {
     },
     {
       name           = "az-identity-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-logging-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
