@@ -72,6 +72,12 @@ inputs = {
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
+    },
+    {
+      name           = "az-logging-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
     }
   ]
 }
