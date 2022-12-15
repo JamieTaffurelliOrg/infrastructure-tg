@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.0"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.1"
 }
 
 include {
@@ -87,6 +87,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
+    "setup-landing-zones-tf-lockcont-org" = {
+      service_principal_reference = "setup-landing-zones-tf"
+      role_definition_name        = "Lock Contributor (Custom)"
+      scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+    }
     "setup-landing-zones-tf-reader-sub" = {
       service_principal_reference = "setup-landing-zones-tf"
       role_definition_name        = "Reader"
@@ -118,4 +123,13 @@ inputs = {
       scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
     }
   }
+  rbac_role_definitions = [
+    {
+      name              = "Lock Contributor (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Create, edit or delete resource locks"
+      actions           = ["Microsoft.Authorization/locks/*"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    }
+  ]
 }
