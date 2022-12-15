@@ -127,7 +127,7 @@ inputs = {
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
-  rbac_role_assignments_service_principals = {
+  custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       custom_role_reference       = "Lock Contributor (Custom)"
