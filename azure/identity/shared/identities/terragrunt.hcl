@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.2"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.3"
 }
 
 include {
@@ -131,7 +131,6 @@ inputs = {
     "setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       custom_role_reference       = "Lock Contributor (Custom)"
-      role_definition_name        = "Lock Contributor (Custom)"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
   }
