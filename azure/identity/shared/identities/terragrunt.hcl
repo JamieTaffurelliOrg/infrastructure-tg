@@ -125,10 +125,11 @@ inputs = {
   }
   rbac_role_definitions = [
     {
-      name        = "Lock Contributor (Custom)"
-      scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
-      description = "Create, edit or delete resource locks"
-      actions     = ["Microsoft.Authorization/locks/*"]
+      name              = "Lock Contributor (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Create, edit or delete resource locks"
+      actions           = ["Microsoft.Authorization/locks/*"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
 }
