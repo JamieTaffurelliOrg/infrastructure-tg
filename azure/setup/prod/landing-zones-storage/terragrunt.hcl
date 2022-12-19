@@ -19,21 +19,3 @@ remote_state {
     use_azuread_auth     = true
   }
 }
-
-generate "provider" {
-
-  path = "providers.tf"
-
-  if_exists = "overwrite_terragrunt"
-
-  contents = <<EOF
-provider "azurerm" {
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = true
-    }
-  }
-}
-EOF
-
-}
