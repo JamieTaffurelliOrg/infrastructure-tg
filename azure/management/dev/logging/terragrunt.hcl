@@ -2,10 +2,6 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.1"
 }
 
-include {
-  path = find_in_parent_folders()
-}
-
 remote_state {
 
   backend = "azurerm"
