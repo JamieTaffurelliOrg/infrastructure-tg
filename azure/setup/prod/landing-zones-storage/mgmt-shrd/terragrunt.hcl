@@ -25,7 +25,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "58b4ad6f-a160-4b9e-841b-e177f66137c9"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -59,9 +59,9 @@ inputs = {
   storage_account_network_rules = {
     default_action = "Allow"
   }
-  /*log_analytics_workspace = {
-    name                = "logs"
-    resource_group_name = "logs"
-  }*/
+  log_analytics_workspace = {
+    name                = "log-mgmt-prod-log-wus1-001"
+    resource_group_name = "rg-mgmt-prod-log-wus1-001"
+  }
   tags = merge(local.tags, { environment = "shared", stack = "management" })
 }
