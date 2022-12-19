@@ -1,3 +1,7 @@
+terraform {
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.8"
+}
+
 include {
   path = find_in_parent_folders()
 }
