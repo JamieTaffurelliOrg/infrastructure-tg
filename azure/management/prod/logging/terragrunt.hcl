@@ -12,9 +12,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-mgmt-dev-tf-frc1-001"
-    storage_account_name = "stjtmgmtdevtffrc1001"
-    container_name       = "mgmt-dev"
+    resource_group_name  = "rg-mgmt-prod-tf-frc1-001"
+    storage_account_name = "stjtmgmtprodtffrc1001"
+    container_name       = "mgmt-prod"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
@@ -28,7 +28,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -49,21 +49,21 @@ locals {
     cost-owner          = "jltaffurelli@outlook.com"
     owner               = "jltaffurelli@outlook.com"
     sla                 = "high"
-    environment         = "dev"
+    environment         = "prod"
     stack               = "management"
   }
 }
 
 inputs = {
 
-  resource_group_name          = "rg-mgmt-dev-log-wus1-001"
+  resource_group_name          = "rg-mgmt-prod-log-wus1-001"
   location                     = "westus"
-  log_analytics_workspace_name = "log-mgmt-dev-log-wus1-001"
-  automation_account_name      = "aa-mgmt-dev-log-wus-001"
-  storage_account_name         = "stjtmgmtdevlogwus1001"
+  log_analytics_workspace_name = "log-mgmt-prod-log-wus1-001"
+  automation_account_name      = "aa-mgmt-prod-log-wus-001"
+  storage_account_name         = "stjtmgmtprodlogwus1001"
   network_watchers = {
     west_us = {
-      name     = "nw-mgmt-dev-log-wus-001"
+      name     = "nw-mgmt-prod-log-wus-001"
       location = "westus"
     }
   }
