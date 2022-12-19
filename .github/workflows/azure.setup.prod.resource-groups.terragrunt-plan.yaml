@@ -16,7 +16,7 @@ on:
         - WARNING
         - DEBUG
 
-concurrency: ci-${{ github.ref }}
+concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 permissions:
   id-token: write
