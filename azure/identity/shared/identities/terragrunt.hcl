@@ -133,6 +133,11 @@ inputs = {
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
     }
+    "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
+      service_principal_reference = "mgmt-dev-logging-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevtffrc1001/blobServices/default/containers/mgmt-dev"
+    }
     "mgmt-dev-logging-tf-contributor-loggingrg" = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Contributor"
