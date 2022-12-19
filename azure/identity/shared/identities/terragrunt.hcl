@@ -162,7 +162,7 @@ inputs = {
     "mgmt-prod-logging-tf-blobcontributor-mgmtprodcontainer" = {
       service_principal_reference = "mgmt-prod-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevtffrc1001/blobServices/default/containers/mgmt-prod"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodtffrc1001/blobServices/default/containers/mgmt-prod"
     }
     "mgmt-prod-logging-tf-contributor-loggingrg" = {
       service_principal_reference = "mgmt-prod-logging-tf"
