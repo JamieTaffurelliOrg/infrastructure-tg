@@ -25,6 +25,10 @@ inputs = {
       display_name = "identity-tf"
       tags         = ["identity-tf"]
     }
+    "mgmt-dev-logging-tf" = {
+      display_name = "mgmt-dev-logging-tf"
+      tags         = ["mgmt-dev-logging-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -48,6 +52,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:identity.shared.identities.deploy"
     }
+    "mgmt-dev-logging-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "mgmt-dev-logging-tf-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.dev.logging.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -64,6 +75,11 @@ inputs = {
       application_id_reference = "identity-tf"
       description              = "Management of Azure AD identities via Terraform"
       tags                     = ["identity-tf"]
+    }
+    "mgmt-dev-logging-tf" = {
+      application_id_reference = "mgmt-dev-logging-tf"
+      description              = "Management of dev logging infrastructure via Terraform"
+      tags                     = ["mgmt-dev-logging-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -112,10 +128,15 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/providers/Microsoft.Subscription"
     }
-    "identity-tf-blobcontributor-mgmtdevcontainer" = {
+    "identity-tf-blobcontributor-idenshrdcontainer" = {
       service_principal_reference = "identity-tf"
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
+    }
+    "mgmt-dev-logging-tf-contributor-loggingrg" = {
+      service_principal_reference = "mgmt-dev-logging-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001"
     }
   }
   rbac_role_definitions = [
