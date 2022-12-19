@@ -54,7 +54,7 @@ inputs = {
     }
     "mgmt-dev-logging-tf-deploy" = {
       display_name             = "deploy"
-      application_id_reference = "mgmt-dev-logging-tf-tf"
+      application_id_reference = "mgmt-dev-logging-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.dev.logging.deploy"
