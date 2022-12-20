@@ -109,14 +109,9 @@ inputs = {
     }
   }
   rbac_role_assignments_service_principals = {
-    "setup-landing-zones-tf-contributor-org" = {
+    "setup-landing-zones-tf-owner-org" = {
       service_principal_reference = "setup-landing-zones-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
-    }
-    "setup-landing-zones-tf-reader-org" = {
-      service_principal_reference = "setup-landing-zones-tf"
-      role_definition_name        = "Reader"
+      role_definition_name        = "Owner"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
     "setup-landing-zones-tf-reader-sub" = {
