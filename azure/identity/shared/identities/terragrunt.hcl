@@ -29,6 +29,10 @@ inputs = {
       display_name = "mgmt-dev-logging-tf"
       tags         = ["mgmt-dev-logging-tf"]
     }
+    "mgmt-prod-logging-tf" = {
+      display_name = "mgmt-prod-logging-tf"
+      tags         = ["mgmt-prod-logging-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -59,6 +63,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.dev.logging.deploy"
     }
+    "mgmt-prod-logging-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "mgmt-prod-logging-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.prod.logging.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -80,6 +91,11 @@ inputs = {
       application_id_reference = "mgmt-dev-logging-tf"
       description              = "Management of dev logging infrastructure via Terraform"
       tags                     = ["mgmt-dev-logging-tf"]
+    }
+    "mgmt-prod-logging-tf" = {
+      application_id_reference = "mgmt-prod-logging-tf"
+      description              = "Management of prod logging infrastructure via Terraform"
+      tags                     = ["mgmt-prod-logging-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -142,6 +158,16 @@ inputs = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001"
+    }
+    "mgmt-prod-logging-tf-blobcontributor-mgmtprodcontainer" = {
+      service_principal_reference = "mgmt-prod-logging-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevtffrc1001/blobServices/default/containers/mgmt-prod"
+    }
+    "mgmt-prod-logging-tf-contributor-loggingrg" = {
+      service_principal_reference = "mgmt-prod-logging-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus1-001"
     }
   }
   rbac_role_definitions = [
