@@ -166,9 +166,9 @@ inputs = {
       role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
-    "identity-tf-reader-sub" = {
+    "identity-tf-uaa-sub" = {
       service_principal_reference = "identity-tf"
-      role_definition_name        = "Reader"
+      role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Subscription"
     }
     "identity-tf-blobcontributor-idenshrdcontainer" = {
@@ -211,6 +211,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/providers/Microsoft.Subscription"
     }
+    "conn-dev-hub-tf-monconributor-mgmtdevlogs" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus1-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -221,10 +226,10 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus1-001"
     }
-    "conn-prod-hub-tf-reader-sub" = {
+    "conn-prod-hub-tf-monconributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-hub-tf"
-      role_definition_name        = "Reader"
-      scope                       = "/providers/Microsoft.Subscription"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus1-001"
     }
   }
   rbac_role_definitions = [
