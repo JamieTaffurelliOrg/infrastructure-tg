@@ -106,7 +106,7 @@ inputs = {
   network_watcher_name                = "nw-mgmt-dev-log-wus-001"
   network_watcher_resource_group_name = "rg-mgmt-dev-log-wus1-001"
   virtual_network_name                = "vnet-conn-dev-hub-wus1-001"
-  virtual_network_address_space       = "10.0.0.0/16"
+  virtual_network_address_space       = ["10.0.0.0/16"]
   subnets = [
     {
       name                             = "snet-githubactions"
