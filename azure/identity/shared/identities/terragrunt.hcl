@@ -216,6 +216,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus1-001"
     }
+    "conn-dev-hub-tf-contributor-mgmtdevlogstorage" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogwus1001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
