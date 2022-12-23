@@ -46,7 +46,7 @@ inputs = {
     {
       name     = "rg-conn-dev-hub-wus1-001"
       location = "westus"
-      tags     = merge(local.tags, { workload-name = "connectivity" })
+      tags     = merge(local.tags, { workload-name = "hub" })
     }
   ]
 }
