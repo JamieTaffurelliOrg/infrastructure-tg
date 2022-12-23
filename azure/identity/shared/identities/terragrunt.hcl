@@ -33,6 +33,14 @@ inputs = {
       display_name = "mgmt-prod-logging-tf"
       tags         = ["mgmt-prod-logging-tf"]
     }
+    "conn-dev-hub-tf" = {
+      display_name = "conn-dev-hub-tf"
+      tags         = ["conn-dev-hub-tf"]
+    }
+    "conn-prod-hub-tf" = {
+      display_name = "conn-prod-hub-tf"
+      tags         = ["conn-prod-hub-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -70,6 +78,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.prod.logging.deploy"
     }
+    "conn-dev-hub-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-hub-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.hub.deploy"
+    }
+    "conn-prod-hub-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-hub-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.hub.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -96,6 +118,16 @@ inputs = {
       application_id_reference = "mgmt-prod-logging-tf"
       description              = "Management of prod logging infrastructure via Terraform"
       tags                     = ["mgmt-prod-logging-tf"]
+    }
+    "conn-dev-hub-tf" = {
+      application_id_reference = "conn-dev-hub-tf"
+      description              = "Management of dev hub network infrastructure via Terraform"
+      tags                     = ["mgmt-dev-logging-tf"]
+    }
+    "conn-prod-hub-tf" = {
+      application_id_reference = "conn-prod-hub-tf"
+      description              = "Management of prod hub network infrastructure via Terraform"
+      tags                     = ["conn-prod-hub-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -163,6 +195,26 @@ inputs = {
       service_principal_reference = "mgmt-prod-logging-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus1-001"
+    }
+    "conn-dev-hub-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-hub-tf-contributor-hubrg" = {
+      service_principal_reference = "conn-dev-hub-logging-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus1-001"
+    }
+    "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
+      service_principal_reference = "conn-prod-hub-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+    }
+    "conn-prod-hub-tf-contributor-hubrg" = {
+      service_principal_reference = "conn-prod-hub-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus1-001"
     }
   }
   rbac_role_definitions = [
