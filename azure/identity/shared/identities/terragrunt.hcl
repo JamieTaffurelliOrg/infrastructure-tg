@@ -206,6 +206,11 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus1-001"
     }
+    "conn-dev-hub-tf-reader-sub" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/providers/Microsoft.Subscription"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -215,6 +220,11 @@ inputs = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus1-001"
+    }
+    "conn-prod-hub-tf-reader-sub" = {
+      service_principal_reference = "conn-prod-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/providers/Microsoft.Subscription"
     }
   }
   rbac_role_definitions = [
