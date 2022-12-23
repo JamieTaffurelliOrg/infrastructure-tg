@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.1"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.2"
 }
 
 remote_state {
