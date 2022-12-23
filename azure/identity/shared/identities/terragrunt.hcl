@@ -202,7 +202,7 @@ inputs = {
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-hub-tf-contributor-hubrg" = {
-      service_principal_reference = "conn-dev-hub-logging-tf"
+      service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus1-001"
     }
