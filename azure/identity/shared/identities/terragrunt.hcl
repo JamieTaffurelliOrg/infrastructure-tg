@@ -166,9 +166,9 @@ inputs = {
       role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
-    "identity-tf-reader-sub" = {
+    "identity-tf-uaa-sub" = {
       service_principal_reference = "identity-tf"
-      role_definition_name        = "Reader"
+      role_definition_name        = "User Access Administrator"
       scope                       = "/providers/Microsoft.Subscription"
     }
     "identity-tf-blobcontributor-idenshrdcontainer" = {
