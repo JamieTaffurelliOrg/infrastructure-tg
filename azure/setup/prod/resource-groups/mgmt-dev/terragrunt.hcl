@@ -44,8 +44,8 @@ inputs = {
 
   resource_groups = [
     {
-      name     = "rg-mgmt-dev-log-wus1-001"
-      location = "westus"
+      name     = "rg-mgmt-dev-log-wus2-001"
+      location = "westus2"
       tags     = merge(local.tags, { workload-name = "logging" })
     }
   ]
