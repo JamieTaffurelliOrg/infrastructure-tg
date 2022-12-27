@@ -126,7 +126,7 @@ inputs = {
     {
       name          = "ippre-conn-dev-hub-wus1-002"
       ip_version    = "IPv6"
-      prefix_length = 30
+      prefix_length = 126
     }
   ]
   log_analytics_workspace_name                = "log-mgmt-dev-log-wus1-001"
