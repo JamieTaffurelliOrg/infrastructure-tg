@@ -58,7 +58,7 @@ inputs = {
   network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name     = "nw-app-dev-log-wus-001"
+      name     = "nw-app-dev-netwat-wus2-001"
       location = "westus"
     }
   }
@@ -67,8 +67,8 @@ inputs = {
     default_action = "Allow"
   }
   log_analytics_workspace = {
-    name                = "log-mgmt-dev-log-wus2-001"
-    resource_group_name = "rg-mgmt-dev-log-wus2-001"
+    name                = "log-mgmt-dev-netwat-wus2-001"
+    resource_group_name = "rg-mgmt-dev-netwat-wus2-001"
   }
   tags = merge(local.tags, { environment = "dev", stack = "app" })
 }
