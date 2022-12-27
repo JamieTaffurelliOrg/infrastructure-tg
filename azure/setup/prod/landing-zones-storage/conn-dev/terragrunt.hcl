@@ -67,8 +67,8 @@ inputs = {
     default_action = "Allow"
   }
   log_analytics_workspace = {
-    name                = "log-mgmt-dev-netwat-wus2-001"
-    resource_group_name = "rg-mgmt-dev-netwat-wus2-001"
+    name                = "log-mgmt-dev-log-wus2-001"
+    resource_group_name = "rg-mgmt-dev-log-wus2-001"
   }
   tags = merge(local.tags, { environment = "dev", stack = "connectivity" })
 }

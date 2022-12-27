@@ -67,8 +67,8 @@ inputs = {
     default_action = "Allow"
   }
   log_analytics_workspace = {
-    name                = "log-mgmt-prod-netwat-wus2-001"
-    resource_group_name = "rg-mgmt-prod-netwat-wus2-001"
+    name                = "log-mgmt-prod-log-wus2-001"
+    resource_group_name = "rg-mgmt-prod-log-wus2-001"
   }
   tags = merge(local.tags, { environment = "shared", stack = "management" })
 }
