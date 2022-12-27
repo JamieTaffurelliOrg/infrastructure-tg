@@ -221,10 +221,10 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogwus2001"
     }
-    "conn-dev-hub-tf-netcontributor-mgmtdevnetwatcher" = {
+    "conn-dev-hub-tf-netcontributor-conndevnetwatcher" = {
       service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Network/networkWatchers/nw-mgmt-dev-log-wus2-001"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-wus2-001"
     }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"

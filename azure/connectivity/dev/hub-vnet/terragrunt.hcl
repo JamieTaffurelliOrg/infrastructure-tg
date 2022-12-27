@@ -1,6 +1,5 @@
 terraform {
-  //source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.9"
-  source = "../../../../../az-hubvirtualnetwork-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.9"
 }
 
 remote_state {
@@ -104,8 +103,8 @@ inputs = {
       ]
     }
   ]
-  network_watcher_name                = "nw-mgmt-dev-log-wus2-001"
-  network_watcher_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  network_watcher_name                = "nw-conn-dev-netwat-wus2-001"
+  network_watcher_resource_group_name = "rg-conn-dev-netwat-frc1-001"
   virtual_network_name                = "vnet-conn-dev-hub-wus2-001"
   virtual_network_address_space       = ["10.0.0.0/16"]
   subnets = [
