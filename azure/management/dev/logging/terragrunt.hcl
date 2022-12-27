@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.6"
 }
 
 remote_state {
@@ -61,11 +61,5 @@ inputs = {
   log_analytics_workspace_name = "log-mgmt-dev-log-wus2-001"
   automation_account_name      = "aa-mgmt-dev-log-wus-001"
   storage_account_name         = "stjtmgmtdevlogwus2001"
-  network_watchers = {
-    west_us = {
-      name     = "nw-mgmt-dev-log-wus-001"
-      location = "westus"
-    }
-  }
-  tags = merge(local.tags, { workload-name = "logging" })
+  tags                         = merge(local.tags, { workload-name = "logging" })
 }

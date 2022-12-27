@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.8"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.11"
 }
 
 include {
@@ -52,10 +52,17 @@ locals {
 
 inputs = {
 
-  storage_account_name = "stjtconnshrdtffrc1001"
-  location             = "francecentral"
-  resource_group_name  = "rg-conn-shrd-tf-frc1-001"
-  containers           = ["conn-shrd"]
+  storage_account_name                = "stjtconnshrdtffrc1001"
+  location                            = "francecentral"
+  resource_group_name                 = "rg-conn-shrd-tf-frc1-001"
+  network_watcher_resource_group_name = "rg-conn-shrd-netwat-frc1-001"
+  network_watchers = {
+    west_us = {
+      name     = "nw-conn-shrd-log-wus-001"
+      location = "westus2"
+    }
+  }
+  containers = ["conn-shrd"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
