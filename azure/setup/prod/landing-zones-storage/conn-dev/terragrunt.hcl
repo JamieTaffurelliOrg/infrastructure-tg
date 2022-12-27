@@ -55,10 +55,10 @@ inputs = {
   storage_account_name                = "stjtconndevtffrc1001"
   location                            = "francecentral"
   resource_group_name                 = "rg-conn-dev-tf-frc1-001"
-  network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
+  network_watcher_resource_group_name = "rg-conn-dev-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name     = "nw-mgmt-dev-log-wus-001"
+      name     = "nw-conn-dev-log-wus-001"
       location = "westus"
     }
   }

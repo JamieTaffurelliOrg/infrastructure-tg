@@ -55,12 +55,11 @@ inputs = {
   storage_account_name                = "stjtappshrdtffrc1001"
   location                            = "francecentral"
   resource_group_name                 = "rg-app-shrd-tf-frc1-001"
-  network_watcher_resource_group_name = "rg-app-prod-netwat-frc1-001"
+  network_watcher_resource_group_name = "rg-app-shrd-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name                = "nw-mgmt-prod-log-wus-001"
-      resource_group_name = "rg-app-prod-netwat-frc1-001"
-      location            = "westus2"
+      name     = "nw-app-shrd-log-wus-001"
+      location = "westus2"
     }
   }
   containers = ["app-shrd"]
