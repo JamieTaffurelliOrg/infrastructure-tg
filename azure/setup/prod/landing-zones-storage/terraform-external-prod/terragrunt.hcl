@@ -52,10 +52,18 @@ locals {
 
 inputs = {
 
-  storage_account_name = "stjttfextpprodtffrc1001"
-  location             = "francecentral"
-  resource_group_name  = "rg-tfext-prod-tf-frc1-001"
-  containers           = ["github"]
+  storage_account_name                = "stjttfextpprodtffrc1001"
+  location                            = "francecentral"
+  resource_group_name                 = "rg-tfext-prod-tf-frc1-001"
+  network_watcher_resource_group_name = "rg-app-prod-netwat-frc1-001"
+  network_watchers = {
+    west_us = {
+      name                = "nw-mgmt-prod-log-wus-001"
+      resource_group_name = "rg-app-prod-netwat-frc1-001"
+      location            = "westus2"
+    }
+  }
+  containers = ["github"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
