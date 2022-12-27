@@ -221,6 +221,11 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogwus1001"
     }
+    "conn-dev-hub-tf-netcontributor-mgmtdevnetwatcher" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Network Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus1-001/providers/Microsoft.Network/networkWatchers/nw-mgmt-dev-log-wus-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -231,7 +236,7 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus1-001"
     }
-    "conn-prod-hub-tf-monconributor-mgmtprodlogs" = {
+    "conn-prod-hub-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus1-001"
