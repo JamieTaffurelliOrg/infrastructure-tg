@@ -52,10 +52,18 @@ locals {
 
 inputs = {
 
-  storage_account_name = "stjtappdevtffrc1001"
-  location             = "francecentral"
-  resource_group_name  = "rg-app-dev-tf-frc1-001"
-  containers           = ["app-dev"]
+  storage_account_name                = "stjtappdevtffrc1001"
+  location                            = "francecentral"
+  resource_group_name                 = "rg-app-dev-tf-frc1-001"
+  network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
+  network_watchers = {
+    west_us = {
+      name                = "nw-mgmt-dev-log-wus-001"
+      resource_group_name = "rg-app-dev-netwat-frc1-001"
+      location            = "westus"
+    }
+  }
+  containers = ["app-dev"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
