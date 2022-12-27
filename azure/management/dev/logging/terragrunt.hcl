@@ -56,11 +56,11 @@ locals {
 
 inputs = {
 
-  resource_group_name          = "rg-mgmt-dev-log-wus1-001"
-  location                     = "westus"
-  log_analytics_workspace_name = "log-mgmt-dev-log-wus1-001"
+  resource_group_name          = "rg-mgmt-dev-log-wus2-001"
+  location                     = "westus2"
+  log_analytics_workspace_name = "log-mgmt-dev-log-wus2-001"
   automation_account_name      = "aa-mgmt-dev-log-wus-001"
-  storage_account_name         = "stjtmgmtdevlogwus1001"
+  storage_account_name         = "stjtmgmtdevlogwus2001"
   network_watchers = {
     west_us = {
       name     = "nw-mgmt-dev-log-wus-001"

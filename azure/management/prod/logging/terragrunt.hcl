@@ -56,15 +56,15 @@ locals {
 
 inputs = {
 
-  resource_group_name          = "rg-mgmt-prod-log-wus1-001"
-  location                     = "westus"
-  log_analytics_workspace_name = "log-mgmt-prod-log-wus1-001"
+  resource_group_name          = "rg-mgmt-prod-log-wus2-001"
+  location                     = "westus2"
+  log_analytics_workspace_name = "log-mgmt-prod-log-wus2-001"
   automation_account_name      = "aa-mgmt-prod-log-wus-001"
-  storage_account_name         = "stjtmgmtprodlogwus1001"
+  storage_account_name         = "stjtmgmtprodlogwus2001"
   network_watchers = {
     west_us = {
       name     = "nw-mgmt-prod-log-wus-001"
-      location = "westus"
+      location = "westus2"
     }
   }
   tags = merge(local.tags, { workload-name = "logging" })
