@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.10"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.11"
 }
 
 include {
@@ -58,9 +58,8 @@ inputs = {
   network_watcher_resource_group_name = "rg-app-prod-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name                = "nw-mgmt-prod-log-wus-001"
-      resource_group_name = "rg-app-prod-netwat-frc1-001"
-      location            = "westus2"
+      name     = "nw-mgmt-prod-log-wus-001"
+      location = "westus2"
     }
   }
   containers = ["github"]

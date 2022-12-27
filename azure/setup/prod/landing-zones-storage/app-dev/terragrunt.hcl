@@ -58,9 +58,8 @@ inputs = {
   network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name                = "nw-mgmt-dev-log-wus-001"
-      resource_group_name = "rg-app-dev-netwat-frc1-001"
-      location            = "westus"
+      name     = "nw-mgmt-dev-log-wus-001"
+      location = "westus"
     }
   }
   containers = ["app-dev"]
