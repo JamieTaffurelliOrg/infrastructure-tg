@@ -59,7 +59,7 @@ inputs = {
   resource_group_name          = "rg-mgmt-dev-log-wus2-001"
   location                     = "westus2"
   log_analytics_workspace_name = "log-mgmt-dev-log-wus2-001"
-  automation_account_name      = "aa-mgmt-dev-log-wus-001"
+  automation_account_name      = "aa-mgmt-dev-log-wus2-001"
   storage_account_name         = "stjtmgmtdevlogwus2001"
   tags                         = merge(local.tags, { workload-name = "logging" })
 }

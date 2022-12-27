@@ -58,7 +58,7 @@ inputs = {
   network_watcher_resource_group_name = "rg-stp-prod-netwat-frc1-001"
   network_watchers = {
     west_us = {
-      name     = "nw-stp-prod-log-wus-001"
+      name     = "nw-stp-prod-netwat-wus2-001"
       location = "westus2"
     }
   }

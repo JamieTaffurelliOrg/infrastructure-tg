@@ -224,7 +224,7 @@ inputs = {
     "conn-dev-hub-tf-netcontributor-mgmtdevnetwatcher" = {
       service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Network/networkWatchers/nw-mgmt-dev-log-wus-001"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Network/networkWatchers/nw-mgmt-dev-log-wus2-001"
     }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
