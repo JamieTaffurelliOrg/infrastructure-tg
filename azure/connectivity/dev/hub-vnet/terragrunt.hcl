@@ -1,5 +1,6 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.9"
+  //source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.9"
+  source = "../../../../../az-hubvirtualnetwork-tf"
 }
 
 remote_state {
@@ -68,7 +69,7 @@ locals {
 inputs = {
 
   resource_group_name = "rg-conn-dev-hub-wus1-001"
-  location            = "westus"
+  location            = "westus2"
   network_security_groups = [
     {
       name                = "nsg-conn-dev-hub-wus1-001"
