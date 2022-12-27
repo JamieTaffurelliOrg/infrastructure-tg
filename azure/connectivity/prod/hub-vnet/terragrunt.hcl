@@ -12,9 +12,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-conn-dev-tf-frc1-001"
-    storage_account_name = "stjtconndevtffrc1001"
-    container_name       = "conn-dev"
+    resource_group_name  = "rg-conn-prod-tf-frc1-001"
+    storage_account_name = "stjtconnprodtffrc1001"
+    container_name       = "conn-prod"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
@@ -28,7 +28,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "58b4ad6f-a160-4b9e-841b-e177f66137c9"
+  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
 
   features {
     resource_group {
@@ -39,7 +39,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -60,19 +60,19 @@ locals {
     cost-owner          = "jltaffurelli@outlook.com"
     owner               = "jltaffurelli@outlook.com"
     sla                 = "high"
-    environment         = "dev"
+    environment         = "prod"
     stack               = "connectivity"
   }
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-hub-wus2-001"
+  resource_group_name = "rg-conn-prod-hub-wus2-001"
   location            = "westus2"
   network_security_groups = [
     {
-      name                = "nsg-conn-dev-hub-wus2-001"
-      resource_group_name = "rg-conn-dev-hub-wus2-001"
+      name                = "nsg-conn-prod-hub-wus2-001"
+      resource_group_name = "rg-conn-prod-hub-wus2-001"
       rules = [
         {
           name                       = "nsgsr-in-deny-any"
@@ -91,8 +91,8 @@ inputs = {
   ]
   route_tables = [
     {
-      name                = "rt-conn-dev-hub-wus2-001"
-      resource_group_name = "rg-conn-dev-hub-wus2-001"
+      name                = "rt-conn-prod-hub-wus2-001"
+      resource_group_name = "rg-conn-prod-hub-wus2-001"
       routes = [
         {
           name                   = "udr-azurefirewall"
@@ -103,31 +103,31 @@ inputs = {
       ]
     }
   ]
-  virtual_network_name          = "vnet-conn-dev-hub-wus2-001"
+  virtual_network_name          = "vnet-conn-prod-hub-wus2-001"
   virtual_network_address_space = ["10.0.0.0/16"]
   subnets = [
     {
       name                             = "snet-githubactions"
       address_prefixes                 = ["10.0.2.0/24"]
-      network_security_group_reference = "nsg-conn-dev-hub-wus2-001"
-      route_table_reference            = "rt-conn-dev-hub-wus2-001"
+      network_security_group_reference = "nsg-conn-prod-hub-wus2-001"
+      route_table_reference            = "rt-conn-prod-hub-wus2-001"
     }
   ]
   firewall_subnet_address_prefixes = ["10.0.0.0/24"]
   bastion_subnet_address_prefixes  = ["10.0.1.0/24"]
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-hub-wus2-001"
+      name          = "ippre-conn-prod-hub-wus2-001"
       ip_version    = "IPv4"
       prefix_length = 30
     },
     {
-      name          = "ippre-conn-dev-hub-wus2-002"
+      name          = "ippre-conn-prod-hub-wus2-002"
       ip_version    = "IPv6"
       prefix_length = 126
     }
   ]
-  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
   tags                                        = merge(local.tags, { workload-name = "hub" })
 }
