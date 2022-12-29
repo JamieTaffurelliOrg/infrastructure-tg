@@ -57,7 +57,7 @@ inputs = {
   resource_group_name                 = "rg-app-dev-tf-frc1-001"
   network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
   network_watchers = {
-    west_us = {
+    west_us_2 = {
       name     = "nw-app-dev-netwat-wus2-001"
       location = "westus2"
     }
