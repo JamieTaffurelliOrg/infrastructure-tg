@@ -244,7 +244,7 @@ inputs = {
     "conn-prod-hub-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogwus2001"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogwus2001"
     }
     "conn-prod-hub-tf-netcontributor-connprodnetwatcher" = {
       service_principal_reference = "conn-prod-hub-tf"
