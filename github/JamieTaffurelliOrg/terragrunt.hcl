@@ -86,7 +86,7 @@ inputs = {
       enforce_admins = false
     },
     {
-      name           = "az-hubvirtualnetwork-tf"
+      name           = "az-spokevirtualnetwork-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
