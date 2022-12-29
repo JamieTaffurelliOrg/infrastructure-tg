@@ -226,6 +226,11 @@ inputs = {
       role_definition_name        = "Network Contributor"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-wus2-001"
     }
+    "conn-dev-hub-tf-reader-conndevsub" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -250,6 +255,11 @@ inputs = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Network Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-conn-prod-netwat-wus2-001"
+    }
+    "conn-prod-hub-tf-reader-conprodsub" = {
+      service_principal_reference = "conn-prod-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4"
     }
   }
   rbac_role_definitions = [
