@@ -59,7 +59,7 @@ inputs = {
   network_watchers = {
     west_us = {
       name     = "nw-conn-dev-netwat-wus2-001"
-      location = "westus"
+      location = "westus2"
     }
   }
   containers = ["conn-dev"]

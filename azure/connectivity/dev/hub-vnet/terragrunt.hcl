@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.11"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.12"
 }
 
 remote_state {
@@ -127,7 +127,11 @@ inputs = {
       prefix_length = 126
     }
   ]
+  network_watcher_name                        = "nw-conn-dev-netwat-wus2-001"
+  network_watcher_resource_group_name         = "rg-conn-dev-netwat-frc1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  storage_account_name                        = "stjtmgmtdevlogwus2001"
+  storage_account_resource_group_name         = "rg-mgmt-dev-log-wus2-001"
   tags                                        = merge(local.tags, { workload-name = "hub" })
 }
