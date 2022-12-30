@@ -181,11 +181,6 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
-    "identity-tf-contributor-aadiam" = {
-      service_principal_reference = "identity-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/providers/Microsoft.aadiam"
-    }
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
