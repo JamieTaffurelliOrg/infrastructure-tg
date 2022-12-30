@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.14"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.15"
 }
 
 include {
@@ -70,6 +70,5 @@ inputs = {
     name                = "log-mgmt-prod-log-wus2-001"
     resource_group_name = "rg-mgmt-prod-log-wus2-001"
   }
-  enable_aad_diagnostics = true
-  tags                   = merge(local.tags, { environment = "prod", stack = "setup" })
+  tags = merge(local.tags, { environment = "prod", stack = "setup" })
 }

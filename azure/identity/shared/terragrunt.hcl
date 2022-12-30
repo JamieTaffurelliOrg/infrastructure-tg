@@ -20,13 +20,24 @@ generate "provider" {
 
   path = "providers.tf"
 
-  if_exists = "overwrite_terragrunt"
+  if_exists = "overwrite"
 
   contents = <<EOF
 provider "azuread" {
 }
 
 provider "azurerm" {
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "logs"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+
   features {
     resource_group {
       prevent_deletion_if_contains_resources = true
