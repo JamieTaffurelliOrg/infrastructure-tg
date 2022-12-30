@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.4"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.5"
 }
 
 include {
@@ -175,6 +175,11 @@ inputs = {
       service_principal_reference = "identity-tf"
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
+    }
+    "identity-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "identity-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
