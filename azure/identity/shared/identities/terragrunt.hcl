@@ -283,4 +283,8 @@ inputs = {
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
   }
+  log_analytics_workspace = {
+    name                = "log-mgmt-prod-log-wus2-001"
+    resource_group_name = "rg-mgmt-prod-log-wus2-001"
+  }
 }
