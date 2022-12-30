@@ -85,6 +85,18 @@ inputs = {
           destination_port_range     = "*"
           source_address_prefix      = "*"
           destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-out-deny-any"
+          description                = "Deny all outbound traffic"
+          priority                   = 4000
+          direction                  = "Outbound"
+          access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
         }
       ]
     }
