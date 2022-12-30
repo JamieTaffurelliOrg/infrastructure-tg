@@ -20,7 +20,7 @@ generate "provider" {
 
   path = "providers.tf"
 
-  if_exists = "overwrite_terragrunt"
+  if_exists = "overwrite"
 
   contents = <<EOF
 provider "azuread" {
