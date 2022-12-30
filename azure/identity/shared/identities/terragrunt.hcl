@@ -139,10 +139,6 @@ inputs = {
       service_principal_reference = "identity-tf"
       template_id                 = "9b895d92-2cd3-44c7-9d02-a6ac2d5ea5c3"
     }
-    "identity-tf-secadmin" = {
-      service_principal_reference = "identity-tf"
-      template_id                 = "194ae4cb-b126-40b2-bd5b-6091b380977d"
-    }
   }
   rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-owner-org" = {
@@ -184,6 +180,11 @@ inputs = {
       service_principal_reference = "identity-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "identity-tf-contributor-aadiam" = {
+      service_principal_reference = "identity-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/providers/Microsoft.aadiam"
     }
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
