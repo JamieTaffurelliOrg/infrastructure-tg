@@ -41,6 +41,14 @@ inputs = {
       display_name = "conn-prod-hub-tf"
       tags         = ["conn-prod-hub-tf"]
     }
+    "conn-dev-prvdns-tf" = {
+      display_name = "conn-dev-prvdns-tf"
+      tags         = ["conn-dev-prvdns-tf"]
+    }
+    "conn-prod-prvdns-tf" = {
+      display_name = "conn-prod-prvdns-tf"
+      tags         = ["conn-prod-prvdns-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -92,6 +100,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.hub-vnet.deploy"
     }
+    "conn-dev-prvdns-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-prvdns-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.private-dns.deploy"
+    }
+    "conn-prod-prvdns-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prvdns-hub-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.private-dns.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -122,12 +144,22 @@ inputs = {
     "conn-dev-hub-tf" = {
       application_id_reference = "conn-dev-hub-tf"
       description              = "Management of dev hub network infrastructure via Terraform"
-      tags                     = ["mgmt-dev-logging-tf"]
+      tags                     = ["conn-dev-hub-tf"]
     }
     "conn-prod-hub-tf" = {
       application_id_reference = "conn-prod-hub-tf"
       description              = "Management of prod hub network infrastructure via Terraform"
       tags                     = ["conn-prod-hub-tf"]
+    }
+    "conn-dev-prvdns-tf" = {
+      application_id_reference = "conn-dev-prvdns-tf"
+      description              = "Management of dev private DNS infrastructure via Terraform"
+      tags                     = ["conn-dev-prvdns-tf"]
+    }
+    "conn-prod-prvdns-tf" = {
+      application_id_reference = "conn-prod-prvdns-tf"
+      description              = "Management of prod private DNS infrastructure via Terraform"
+      tags                     = ["conn-prod-prvdns-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -236,6 +268,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9"
     }
+    "conn-dev-prvdns-tf-contributor-conndevprvdns" = {
+      service_principal_reference = "conn-dev-prvdns-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-prvdns-wus2-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -265,6 +302,11 @@ inputs = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4"
+    }
+    "conn-prod-prvdns-tf-contributor-connprodprvdns" = {
+      service_principal_reference = "conn-prod-prvdns-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-prvdns-wus2-001"
     }
   }
   rbac_role_definitions = [
