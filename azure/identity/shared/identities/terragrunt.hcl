@@ -109,7 +109,7 @@ inputs = {
     }
     "conn-prod-prvdns-tf-deploy" = {
       display_name             = "deploy"
-      application_id_reference = "conn-prvdns-hub-tf"
+      application_id_reference = "conn-prod-prvdns-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.private-dns.deploy"
