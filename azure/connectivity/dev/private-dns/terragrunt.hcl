@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.1"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.3"
 }
 
 include {
