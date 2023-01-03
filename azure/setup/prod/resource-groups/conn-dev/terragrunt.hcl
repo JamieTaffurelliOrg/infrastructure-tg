@@ -47,6 +47,11 @@ inputs = {
       name     = "rg-conn-dev-hub-wus2-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "hub" })
+    },
+    {
+      name     = "rg-conn-dev-prvdns-wus2-001"
+      location = "westus2"
+      tags     = merge(local.tags, { workload-name = "private-dns" })
     }
   ]
 }
