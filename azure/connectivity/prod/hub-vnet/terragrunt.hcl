@@ -111,8 +111,9 @@ inputs = {
       route_table_reference            = "rt-conn-prod-hub-wus2-001"
     }
   ]
-  firewall_subnet_address_prefixes = ["10.0.0.0/24"]
-  bastion_subnet_address_prefixes  = ["10.0.1.0/24"]
+  firewall_subnet_address_prefixes    = ["10.0.0.0/24"]
+  bastion_network_security_group_name = "nsg-conn-prod-hub-wus2-002"
+  bastion_subnet_address_prefixes     = ["10.0.1.0/24"]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-prod-hub-wus2-001"
