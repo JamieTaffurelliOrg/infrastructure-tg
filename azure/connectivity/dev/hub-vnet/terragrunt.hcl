@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.14"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.18"
 }
 
 include {
@@ -61,7 +61,7 @@ inputs = {
       resource_group_name = "rg-conn-dev-hub-wus2-001"
       rules = [
         {
-          name                       = "nsgsr-in-deny-any"
+          name                       = "nsgsr-in-deny-any-any"
           description                = "Deny all inbound traffic"
           priority                   = 4000
           direction                  = "Inbound"
@@ -73,7 +73,7 @@ inputs = {
           destination_address_prefix = "*"
         },
         {
-          name                       = "nsgsr-out-deny-any"
+          name                       = "nsgsr-out-deny-any-any"
           description                = "Deny all outbound traffic"
           priority                   = 4000
           direction                  = "Outbound"
@@ -111,8 +111,9 @@ inputs = {
       route_table_reference            = "rt-conn-dev-hub-wus2-001"
     }
   ]
-  firewall_subnet_address_prefixes = ["10.0.0.0/24"]
-  bastion_subnet_address_prefixes  = ["10.0.1.0/24"]
+  firewall_subnet_address_prefixes    = ["10.0.0.0/24"]
+  bastion_network_security_group_name = "nsg-conn-dev-hub-wus2-002"
+  bastion_subnet_address_prefixes     = ["10.0.1.0/24"]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-dev-hub-wus2-001"
