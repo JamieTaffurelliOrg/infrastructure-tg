@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.12"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.14"
 }
 
 include {
@@ -123,6 +123,44 @@ inputs = {
       name          = "ippre-conn-dev-hub-wus2-002"
       ip_version    = "IPv6"
       prefix_length = 126
+    }
+  ]
+  private_dns_zones = [
+    {
+      name                = "privatelink.azure-automation.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.database.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.blob.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.table.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.queue.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.file.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.web.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.batch.azure.com"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+    },
+    {
+      name                = "privatelink.vaultcore.azure.net"
+      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
     }
   ]
   network_watcher_name                        = "nw-conn-dev-netwat-wus2-001"
