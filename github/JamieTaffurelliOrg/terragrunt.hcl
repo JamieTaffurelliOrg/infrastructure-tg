@@ -102,6 +102,24 @@ inputs = {
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
+    },
+    {
+      name           = "az-bastion-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-firewall-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-frontdoor-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
     }
   ]
 }
