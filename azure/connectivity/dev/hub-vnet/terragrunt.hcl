@@ -61,7 +61,7 @@ inputs = {
       resource_group_name = "rg-conn-dev-hub-wus2-001"
       rules = [
         {
-          name                       = "nsgsr-in-deny-any"
+          name                       = "nsgsr-in-deny-any-any"
           description                = "Deny all inbound traffic"
           priority                   = 4000
           direction                  = "Inbound"
@@ -73,7 +73,7 @@ inputs = {
           destination_address_prefix = "*"
         },
         {
-          name                       = "nsgsr-out-deny-any"
+          name                       = "nsgsr-out-deny-any-any"
           description                = "Deny all outbound traffic"
           priority                   = 4000
           direction                  = "Outbound"
