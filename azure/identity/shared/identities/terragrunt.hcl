@@ -188,7 +188,7 @@ inputs = {
       description              = "Management of dev Bastion infrastructure via Terraform"
       tags                     = ["conn-dev-bas-tf"]
     }
-    "conn-prod-prvdns-tf" = {
+    "conn-prod-bas-tf" = {
       application_id_reference = "conn-prod-bas-tf"
       description              = "Management of prod Bastion infrastructure via Terraform"
       tags                     = ["conn-prod-bas-tf"]
