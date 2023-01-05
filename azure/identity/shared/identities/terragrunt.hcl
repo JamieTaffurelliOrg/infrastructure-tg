@@ -415,6 +415,13 @@ inputs = {
       description       = "Attach public IP addresses to public IP prefixes"
       actions           = ["Microsoft.Network/publicIPPrefixes/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Subnet Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Attach resources to subnets"
+      actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -423,15 +430,25 @@ inputs = {
       custom_role_reference       = "Lock Contributor (Custom)"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
-    "conn-dev-bas-tf-prefixjoin-connprodhubprefix" = {
+    "conn-dev-bas-tf-prefixjoin-conndevhubprefix" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-hub-wus2-001"
+    }
+    "conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-wus2-001/subnets/AzureBastionSubnet"
     }
     "conn-prod-bas-tf-prefixjoin-connprodhubprefix" = {
       service_principal_reference = "conn-prod-bas-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-prod-hub-wus2-001"
+    }
+    "conn-prod-bas-tf-subnetjoin-connprodhubsubnet" = {
+      service_principal_reference = "conn-prod-bas-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-wus2-001/subnets/AzureBastionSubnet"
     }
   }
   log_analytics_workspace = {
