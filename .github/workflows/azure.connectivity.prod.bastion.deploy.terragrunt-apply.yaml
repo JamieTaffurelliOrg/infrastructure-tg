@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'azure/connectivity/prod/bastion**'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'INFO'
+        type: choice
+        options:
+        - INFO
+        - WARNING
+        - DEBUG
+
+concurrency: ci-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  call-workflow-passing-data:
+    uses: ./.github/workflows/azure.terragrunt-apply.yml
+    with:
+      terragrunt-working-dir: './azure/connectivity/prod/bastion'
+      environment: connectivity.prod.bastion.deploy
+      log-level: ${{ inputs.logLevel }}
+    secrets: inherit
