@@ -1,7 +1,7 @@
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - '**'
     paths:
       - 'azure/connectivity/dev/bastion**'
   workflow_dispatch:

@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/connectivity/dev/bastion**'
+      - 'azure/connectivity/prod/bastion**'
   workflow_dispatch:
     inputs:
       logLevel:
