@@ -20,7 +20,7 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   call-workflow-passing-data:
-    uses: ./.github/workflows/azure.terragrunt-plan.yml
+    uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
       terragrunt-working-dir: './azure/connectivity/prod/bastion'
       environment: connectivity.prod.bastion.deploy
