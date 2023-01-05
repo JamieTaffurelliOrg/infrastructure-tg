@@ -29,8 +29,6 @@ on:
       AZURE_SUBSCRIPTION_ID:
         required: true
 
-concurrency: ci-${{ github.workflow }}-${{ github.ref }}
-
 permissions:
   id-token: write
   contents: read
