@@ -19,7 +19,7 @@ on:
 concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  call-workflow-passing-data:
+  call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
       terragrunt-working-dir: './azure/connectivity/dev/bastion'
