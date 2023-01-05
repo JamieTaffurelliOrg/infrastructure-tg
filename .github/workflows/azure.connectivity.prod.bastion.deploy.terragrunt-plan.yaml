@@ -1,9 +1,9 @@
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - '**'
     paths:
-      - 'azure/connectivity/prod/bastion**'
+      - 'azure/connectivity/dev/bastion**'
   workflow_dispatch:
     inputs:
       logLevel:
