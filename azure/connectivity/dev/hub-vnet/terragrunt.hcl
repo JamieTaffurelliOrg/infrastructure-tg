@@ -102,18 +102,18 @@ inputs = {
     }
   ]
   virtual_network_name          = "vnet-conn-dev-hub-wus2-001"
-  virtual_network_address_space = ["10.0.0.0/16"]
+  virtual_network_address_space = ["10.128.0.0/16"]
   subnets = [
     {
       name                             = "snet-githubactions"
-      address_prefixes                 = ["10.0.2.0/24"]
+      address_prefixes                 = ["10.128.2.0/24"]
       network_security_group_reference = "nsg-conn-dev-hub-wus2-001"
       route_table_reference            = "rt-conn-dev-hub-wus2-001"
     }
   ]
-  firewall_subnet_address_prefixes    = ["10.0.0.0/24"]
+  firewall_subnet_address_prefixes    = ["10.128.0.0/24"]
   bastion_network_security_group_name = "nsg-conn-dev-hub-wus2-002"
-  bastion_subnet_address_prefixes     = ["10.0.1.0/24"]
+  bastion_subnet_address_prefixes     = ["10.128.1.0/24"]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-dev-hub-wus2-001"
