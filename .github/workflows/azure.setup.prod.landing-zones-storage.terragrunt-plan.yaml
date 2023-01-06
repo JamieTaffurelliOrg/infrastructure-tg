@@ -20,7 +20,7 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   call-terraform-plan-workflow:
-    uses: ./.github/workflows/azure.terragrunt-plan.yaml
+    uses: ./.github/workflows/azure.terragrunt-run-all-plan.yaml
     with:
       terragrunt-working-dir: './azure/setup/prod/landing-zones-storage'
       environment: azure.setup.prod.landing-zones.deploy
