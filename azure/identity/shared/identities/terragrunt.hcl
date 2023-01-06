@@ -53,17 +53,17 @@ inputs = {
       display_name = "conn-dev-bas-tf"
       tags         = ["conn-dev-bas-tf"]
     }
-    "conn-dev-afwp-tf" = {
-      display_name = "conn-dev-afwp-tf"
-      tags         = ["conn-dev-afwp-tf"]
-    }
     "conn-prod-bas-tf" = {
       display_name = "conn-prod-bas-tf"
       tags         = ["conn-prod-bas-tf"]
     }
+    "conn-dev-afwp-tf" = {
+      display_name = "conn-dev-afwp-tf"
+      tags         = ["conn-dev-afwp-tf"]
+    }
     "conn-prod-afwp-tf" = {
-      display_name = "conn-afwp-bas-tf"
-      tags         = ["conn-afwp-bas-tf"]
+      display_name = "conn-prod-afwp-tf"
+      tags         = ["conn-prod-afwp-tf"]
     }
   }
   application_federated_identity_credentials = {
