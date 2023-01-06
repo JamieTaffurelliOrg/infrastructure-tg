@@ -111,4 +111,4 @@ jobs:
 
     - name: Terragrunt Apply
       run: |
-       terragrunt run-all apply --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }} -auto-approve
+       terragrunt run-all apply --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }} --terragrunt-non-interactive
