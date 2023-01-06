@@ -44,6 +44,7 @@ env:
   ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   ARM_USE_OIDC: true
 
+
 jobs:
   terragrunt-plan:
     environment: ${{ inputs.environment }}
@@ -68,16 +69,16 @@ jobs:
 
     - name: Terragrunt Format
       run: |
-       terragrunt fmt --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+       terragrunt run-all fmt --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
 
     - name: Terragrunt Init
       run: |
-       terragrunt init --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+       terragrunt run-all init --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
 
     - name: Terragrunt Validate
       run: |
-       terragrunt validate --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+       terragrunt run-all validate --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
 
     - name: Terragrunt Plan
       run: |
-       terragrunt plan --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
+       terragrunt run-all plan --terragrunt-working-dir ${{ env.TERRAGRUNT_WORKING_DIR }}
