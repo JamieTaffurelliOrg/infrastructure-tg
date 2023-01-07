@@ -566,6 +566,13 @@ inputs = {
       description       = "Attach resources to subnets"
       actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Firewall Policy Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Attach firewalls to firewall policies"
+      actions           = ["Microsoft.Network/firewallPolicies/join/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -594,6 +601,11 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-wus2-001/subnets/AzureBastionSubnet"
     }
+    "conn-dev-afw-tf-fwpoljoin-conndevfwpol" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      custom_role_reference       = "Firewall Joiner (Custom)"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-wus2-001"
+    }
     "conn-prod-bas-tf-prefixjoin-connprodhubprefix" = {
       service_principal_reference = "conn-prod-bas-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
@@ -613,6 +625,11 @@ inputs = {
       service_principal_reference = "conn-prod-afw-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-wus2-001/subnets/AzureBastionSubnet"
+    }
+    "conn-prod-afw-tf-fwpoljoin-connprodfwpol" = {
+      service_principal_reference = "conn-prod-afw-tf"
+      custom_role_reference       = "Firewall Joiner (Custom)"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-prod-afwp-wus2-001"
     }
   }
   log_analytics_workspace = {
