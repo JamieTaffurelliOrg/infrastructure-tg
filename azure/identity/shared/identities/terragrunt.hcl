@@ -603,7 +603,7 @@ inputs = {
     }
     "conn-dev-afw-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "conn-dev-afw-tf"
-      custom_role_reference       = "Firewall Joiner (Custom)"
+      custom_role_reference       = "Firewall Policy Joiner (Custom)"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-wus2-001"
     }
     "conn-prod-bas-tf-prefixjoin-connprodhubprefix" = {
@@ -628,7 +628,7 @@ inputs = {
     }
     "conn-prod-afw-tf-fwpoljoin-connprodfwpol" = {
       service_principal_reference = "conn-prod-afw-tf"
-      custom_role_reference       = "Firewall Joiner (Custom)"
+      custom_role_reference       = "Firewall Policy Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-prod-afwp-wus2-001"
     }
   }
