@@ -53,7 +53,7 @@ locals {
 
 inputs = {
 
-  resource_group_name                         = "rg-conn-dev-afw-wus2-001"
+  resource_group_name                         = "rg-conn-dev-hub-wus2-001"
   location                                    = "westus2"
   public_ip_name                              = "pip-conn-dev-afw-wus2-001"
   public_ip_prefix_name                       = "ippre-conn-dev-hub-wus2-001"
@@ -63,7 +63,6 @@ inputs = {
   firewall_policy_name                        = "afwp-conn-dev-afwp-wus2-001"
   firewall_policy_resource_group_name         = "rg-conn-dev-afwp-wus2-001"
   virtual_network_name                        = "vnet-conn-dev-hub-wus2-001"
-  virtual_network_resource_group_name         = "rg-conn-dev-hub-wus2-001"
   zone_redundant                              = false
   log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"

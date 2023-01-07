@@ -63,7 +63,6 @@ inputs = {
   firewall_policy_name                        = "afwp-conn-prod-afwp-wus2-001"
   firewall_policy_resource_group_name         = "rg-conn-prod-afwp-wus2-001"
   virtual_network_name                        = "vnet-conn-prod-hub-wus2-001"
-  virtual_network_resource_group_name         = "rg-conn-prod-hub-wus2-001"
   zone_redundant                              = true
   log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
