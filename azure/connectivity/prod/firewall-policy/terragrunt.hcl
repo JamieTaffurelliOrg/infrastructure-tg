@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-firewallmanager-tf///?ref=0.0.4"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-firewallmanager-tf///?ref=0.0.5"
 }
 
 include {
@@ -62,13 +62,14 @@ inputs = {
     }
   ]
   base_policy_name = "afwp-conn-prod-afwp-wus2-001"
+  base_policy_sku  = "Standard"
   base_policy_rule_collection_groups = [
     {
       name     = "afwp-conn-prod-afwp-wus2-001"
       priority = 800
       application_rule_collections = [
         {
-          name        = "base"
+          name        = "base-app"
           priority    = 800
           description = "allow all outbound"
           action      = "Allow"
@@ -111,8 +112,8 @@ inputs = {
       ]
       network_rule_collections = [
         {
-          name     = "base"
-          priority = 800
+          name     = "base-net"
+          priority = 700
           action   = "Allow"
           rules = [
             {
