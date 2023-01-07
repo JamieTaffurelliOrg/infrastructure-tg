@@ -617,7 +617,7 @@ inputs = {
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-wus2-001/subnets/AzureBastionSubnet"
     }
     "conn-prod-afw-tf-prefixjoin-connprodhubprefix" = {
-      service_principal_reference = "conn-prod-bas-tf"
+      service_principal_reference = "conn-prod-afw-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-prod-hub-wus2-001"
     }
