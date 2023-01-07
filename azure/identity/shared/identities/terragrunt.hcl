@@ -429,6 +429,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
+    "conn-dev-afw-tf-reader-conndevhub" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -474,7 +479,7 @@ inputs = {
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
     }
-    "conn-prod-bas-tf-contributor-connprodprvdns" = {
+    "conn-prod-bas-tf-contributor-connprodbas" = {
       service_principal_reference = "conn-prod-bas-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-bas-wus2-001"
@@ -523,6 +528,11 @@ inputs = {
       service_principal_reference = "conn-prod-afw-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "conn-prod-afw-tf-reader-connprodhub" = {
+      service_principal_reference = "conn-prod-afw-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001"
     }
   }
   rbac_role_definitions = [
