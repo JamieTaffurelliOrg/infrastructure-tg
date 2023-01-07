@@ -568,7 +568,7 @@ inputs = {
       name              = "Firewall Contributor (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Create and delete Azure Firewalls"
-      actions           = ["Microsoft.Network/azureFirewalls/*"]
+      actions           = ["Microsoft.Network/azureFirewalls/*", "Microsoft.Network/publicIPAddresses/*"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
