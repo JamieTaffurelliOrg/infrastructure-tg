@@ -65,6 +65,14 @@ inputs = {
       display_name = "conn-prod-afwp-tf"
       tags         = ["conn-prod-afwp-tf"]
     }
+    "conn-dev-afw-tf" = {
+      display_name = "conn-dev-afw-tf"
+      tags         = ["conn-dev-afw-tf"]
+    }
+    "conn-prod-afw-tf" = {
+      display_name = "conn-prod-afw-tf"
+      tags         = ["conn-prod-afw-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -158,6 +166,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.firewall-policy.deploy"
     }
+    "conn-dev-afw-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-afw-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.firewall.deploy"
+    }
+    "conn-prod-afw-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-afw-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.firewall.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -224,6 +246,16 @@ inputs = {
       application_id_reference = "conn-prod-afwp-tf"
       description              = "Management of prod firewall policy infrastructure via Terraform"
       tags                     = ["conn-prod-afwp-tf"]
+    }
+    "conn-dev-afw-tf" = {
+      application_id_reference = "conn-dev-afw-tf"
+      description              = "Management of dev firewall policy infrastructure via Terraform"
+      tags                     = ["conn-dev-afw-tf"]
+    }
+    "conn-prod-afw-tf" = {
+      application_id_reference = "conn-prod-afw-tf"
+      description              = "Management of prod firewall policy infrastructure via Terraform"
+      tags                     = ["conn-prod-afw-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -382,6 +414,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
+    "conn-dev-afw-tf-contributor-conndevafw" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afw-wus2-001"
+    }
+    "conn-dev-afw-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-afw-tf-monconributor-mgmtdevlogs" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -459,6 +506,21 @@ inputs = {
     }
     "conn-prod-afwp-tf-monconributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-afwp-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "conn-prod-afw-tf-contributor-connprodafw" = {
+      service_principal_reference = "conn-prod-afw-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afw-wus2-001"
+    }
+    "conn-prod-afw-tf-blobcontributor-connprodcontainer" = {
+      service_principal_reference = "conn-prod-afw-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+    }
+    "conn-prod-afw-tf-monconributor-mgmtprodlogs" = {
+      service_principal_reference = "conn-prod-afw-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
