@@ -601,7 +601,7 @@ inputs = {
     "conn-dev-afw-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "conn-dev-afw-tf"
       custom_role_reference       = "Firewall Policy Joiner (Custom)"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-hub-wus2-001"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-hub-wus2-001"
     }
     "conn-dev-afw-tf-fwcont-conndevhub" = {
       service_principal_reference = "conn-dev-afw-tf"
