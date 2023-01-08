@@ -53,7 +53,7 @@ locals {
 
 inputs = {
 
-  resource_group_name                         = "rg-conn-prod-afw-wus2-001"
+  resource_group_name                         = "rg-conn-prod-hub-wus2-001"
   location                                    = "westus2"
   public_ip_name                              = "pip-conn-prod-afw-wus2-001"
   public_ip_prefix_name                       = "ippre-conn-prod-hub-wus2-001"
