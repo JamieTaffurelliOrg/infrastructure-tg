@@ -414,11 +414,6 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
-    "conn-dev-afw-tf-contributor-conndevafw" = {
-      service_principal_reference = "conn-dev-afw-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afw-wus2-001"
-    }
     "conn-dev-afw-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-afw-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -519,11 +514,6 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
-    "conn-prod-afw-tf-contributor-connprodafw" = {
-      service_principal_reference = "conn-prod-afw-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afw-wus2-001"
-    }
     "conn-prod-afw-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-afw-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -573,6 +563,13 @@ inputs = {
       description       = "Attach firewalls to firewall policies"
       actions           = ["Microsoft.Network/firewallPolicies/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Firewall Contributor (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Create and delete Azure Firewalls"
+      actions           = ["Microsoft.Network/azureFirewalls/*", "Microsoft.Network/publicIPAddresses/*"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -604,6 +601,11 @@ inputs = {
     "conn-dev-afw-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "conn-dev-afw-tf"
       custom_role_reference       = "Firewall Policy Joiner (Custom)"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-wus2-001"
+    }
+    "conn-dev-afw-tf-fwcont-conndevhub" = {
+      service_principal_reference = "conn-dev-afw-tf"
+      custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-wus2-001"
     }
     "conn-prod-bas-tf-prefixjoin-connprodhubprefix" = {
@@ -630,6 +632,11 @@ inputs = {
       service_principal_reference = "conn-prod-afw-tf"
       custom_role_reference       = "Firewall Policy Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afwp-wus2-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-prod-afwp-wus2-001"
+    }
+    "conn-prod-afw-tf-fwcont-connprodhub" = {
+      service_principal_reference = "conn-prod-afw-tf"
+      custom_role_reference       = "Firewall Contributor (Custom)"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001"
     }
   }
   log_analytics_workspace = {

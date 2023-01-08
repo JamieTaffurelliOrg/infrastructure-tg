@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-firewall-tf///?ref=0.0.2"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-firewall-tf///?ref=0.0.3"
 }
 
 include {
@@ -53,7 +53,7 @@ locals {
 
 inputs = {
 
-  resource_group_name                         = "rg-conn-prod-afw-wus2-001"
+  resource_group_name                         = "rg-conn-prod-hub-wus2-001"
   location                                    = "westus2"
   public_ip_name                              = "pip-conn-prod-afw-wus2-001"
   public_ip_prefix_name                       = "ippre-conn-prod-hub-wus2-001"
@@ -63,7 +63,6 @@ inputs = {
   firewall_policy_name                        = "afwp-conn-prod-afwp-wus2-001"
   firewall_policy_resource_group_name         = "rg-conn-prod-afwp-wus2-001"
   virtual_network_name                        = "vnet-conn-prod-hub-wus2-001"
-  virtual_network_resource_group_name         = "rg-conn-prod-hub-wus2-001"
   zone_redundant                              = true
   log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
