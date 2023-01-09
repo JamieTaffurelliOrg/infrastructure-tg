@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.4"
 }
 
 remote_state {
@@ -117,18 +117,6 @@ inputs = {
     },
     {
       name           = "az-firewallmanager-tf"
-      visibility     = "public"
-      code_owners    = "@JamieTaffurelli"
-      enforce_admins = false
-    },
-    {
-      name           = "az-frontdoor-tf"
-      visibility     = "public"
-      code_owners    = "@JamieTaffurelli"
-      enforce_admins = false
-    },
-    {
-      name           = "az-frontdoorwaf-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
