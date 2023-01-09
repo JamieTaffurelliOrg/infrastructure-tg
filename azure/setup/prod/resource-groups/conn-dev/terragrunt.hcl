@@ -67,6 +67,11 @@ inputs = {
       name     = "rg-conn-dev-fdfp-wus2-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "front-door" })
+    },
+    {
+      name     = "rg-conn-dev-afd-wus2-001"
+      location = "westus2"
+      tags     = merge(local.tags, { workload-name = "front-door" })
     }
   ]
 }
