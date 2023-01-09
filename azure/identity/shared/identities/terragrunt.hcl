@@ -304,17 +304,17 @@ inputs = {
     "conn-dev-fdfp-tf" = {
       application_id_reference = "conn-dev-fdfp-tf"
       description              = "Management of dev front door waf policy infrastructure via Terraform"
-      tags                     = ["conn-dev-afw-tf"]
+      tags                     = ["conn-dev-fdfp-tf"]
     }
     "conn-prod-fdfp-tf" = {
       application_id_reference = "conn-prod-fdfp-tf"
       description              = "Management of prod front door waf policy infrastructure via Terraform"
-      tags                     = ["conn-prod-afw-tf"]
+      tags                     = ["conn-prod-fdfp-tf"]
     }
     "conn-dev-afd-tf" = {
       application_id_reference = "conn-dev-afd-tf"
       description              = "Management of dev front door infrastructure via Terraform"
-      tags                     = ["conn-dev-afw-tf"]
+      tags                     = ["conn-dev-afd-tf"]
     }
     "conn-prod-afd-tf" = {
       application_id_reference = "conn-prod-afd-tf"
