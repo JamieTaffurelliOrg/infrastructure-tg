@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "58b4ad6f-a160-4b9e-841b-e177f66137c9"
+  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
 
   features {
     resource_group {
@@ -25,7 +25,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -46,15 +46,15 @@ locals {
     cost-owner          = "jltaffurelli@outlook.com"
     owner               = "jltaffurelli@outlook.com"
     sla                 = "high"
-    environment         = "dev"
+    environment         = "prod"
     stack               = "connectivity"
   }
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-fdfp-wus2-001"
-  waf_policy_name     = "fdfpconndevfdfpwus2001"
+  resource_group_name = "rg-conn-prod-fdfp-wus2-001"
+  waf_policy_name     = "fdfpconnprodfdfpwus2001"
   mode                = "Detection"
   custom_rules = [
     {
