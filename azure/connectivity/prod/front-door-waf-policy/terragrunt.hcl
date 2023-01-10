@@ -68,6 +68,12 @@ inputs = {
           match_variable = "RemoteAddr"
           operator       = "GeoMatch"
           match_values   = ["BY", "RU"]
+        },
+        {
+          name           = "restricted-countries"
+          match_variable = "SocketAddr"
+          operator       = "GeoMatch"
+          match_values   = ["BY", "RU"]
         }
       ]
     }
