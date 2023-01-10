@@ -58,7 +58,7 @@ inputs = {
   mode                = "Detection"
   custom_rules = [
     {
-      name     = "GeoFiltering"
+      name     = "GeoFilteringRemoteAddress"
       action   = "Block"
       priority = 1
       type     = "MatchRule"
@@ -68,7 +68,15 @@ inputs = {
           match_variable = "RemoteAddr"
           operator       = "GeoMatch"
           match_values   = ["BY", "RU"]
-        },
+        }
+      ]
+    },
+    {
+      name     = "GeoFilteringSocketAddress"
+      action   = "Block"
+      priority = 2
+      type     = "MatchRule"
+      match_conditions = [
         {
           name           = "restricted-countries-socket-address"
           match_variable = "SocketAddr"
