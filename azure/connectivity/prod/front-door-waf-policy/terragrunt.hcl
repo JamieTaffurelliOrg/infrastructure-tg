@@ -60,7 +60,7 @@ inputs = {
     {
       name     = "GeoFilteringRemoteAddress"
       action   = "Block"
-      priority = 1
+      priority = 100
       type     = "MatchRule"
       match_conditions = [
         {
@@ -74,7 +74,7 @@ inputs = {
     {
       name     = "GeoFilteringSocketAddress"
       action   = "Block"
-      priority = 2
+      priority = 200
       type     = "MatchRule"
       match_conditions = [
         {
