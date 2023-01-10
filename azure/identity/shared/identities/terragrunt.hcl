@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.7"
 }
 
 include {
@@ -72,6 +72,22 @@ inputs = {
     "conn-prod-afw-tf" = {
       display_name = "conn-prod-afw-tf"
       tags         = ["conn-prod-afw-tf"]
+    }
+    "conn-dev-fdfp-tf" = {
+      display_name = "conn-dev-fdfp-tf"
+      tags         = ["conn-dev-fdfp-tf"]
+    }
+    "conn-prod-fdfp-tf" = {
+      display_name = "conn-prod-fdfp-tf"
+      tags         = ["conn-prod-fdfp-tf"]
+    }
+    "conn-dev-afd-tf" = {
+      display_name = "conn-dev-afd-tf"
+      tags         = ["conn-dev-afd-tf"]
+    }
+    "conn-prod-afd-tf" = {
+      display_name = "conn-prod-afd-tf"
+      tags         = ["conn-prod-afd-tf"]
     }
   }
   application_federated_identity_credentials = {
@@ -180,6 +196,34 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.firewall.deploy"
     }
+    "conn-dev-fdfp-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-fdfp-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.front-door-waf-policy.deploy"
+    }
+    "conn-prod-fdfp-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-fdfp-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.front-door-waf-policy.deploy"
+    }
+    "conn-dev-afd-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-afd-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.front-door.deploy"
+    }
+    "conn-prod-afd-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-afd-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.front-door.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -256,6 +300,26 @@ inputs = {
       application_id_reference = "conn-prod-afw-tf"
       description              = "Management of prod firewall policy infrastructure via Terraform"
       tags                     = ["conn-prod-afw-tf"]
+    }
+    "conn-dev-fdfp-tf" = {
+      application_id_reference = "conn-dev-fdfp-tf"
+      description              = "Management of dev front door waf policy infrastructure via Terraform"
+      tags                     = ["conn-dev-fdfp-tf"]
+    }
+    "conn-prod-fdfp-tf" = {
+      application_id_reference = "conn-prod-fdfp-tf"
+      description              = "Management of prod front door waf policy infrastructure via Terraform"
+      tags                     = ["conn-prod-fdfp-tf"]
+    }
+    "conn-dev-afd-tf" = {
+      application_id_reference = "conn-dev-afd-tf"
+      description              = "Management of dev front door infrastructure via Terraform"
+      tags                     = ["conn-dev-afd-tf"]
+    }
+    "conn-prod-afd-tf" = {
+      application_id_reference = "conn-prod-afd-tf"
+      description              = "Management of prod front door infrastructure via Terraform"
+      tags                     = ["conn-prod-afd-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -434,6 +498,16 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afwp-wus2-001"
     }
+    "conn-dev-fdfp-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-fdfp-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-fdfp-tf-contributor-conndevafwp" = {
+      service_principal_reference = "conn-dev-fdfp-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-fdfp-wus2-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -533,6 +607,16 @@ inputs = {
       service_principal_reference = "conn-prod-afw-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afwp-wus2-001"
+    }
+    "conn-prod-fdfp-tf-blobcontributor-connprodcontainer" = {
+      service_principal_reference = "conn-prod-fdfp-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+    }
+    "conn-prod-fdfp-tf-contributor-hubrg" = {
+      service_principal_reference = "conn-prod-fdfp-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-fdfp-wus2-001"
     }
   }
   rbac_role_definitions = [
