@@ -64,13 +64,13 @@ inputs = {
       type     = "MatchRule"
       match_conditions = [
         {
-          name           = "restricted-countries"
+          name           = "restricted-countries-remote-address"
           match_variable = "RemoteAddr"
           operator       = "GeoMatch"
           match_values   = ["BY", "RU"]
         },
         {
-          name           = "restricted-countries"
+          name           = "restricted-countries-socket-address"
           match_variable = "SocketAddr"
           operator       = "GeoMatch"
           match_values   = ["BY", "RU"]
