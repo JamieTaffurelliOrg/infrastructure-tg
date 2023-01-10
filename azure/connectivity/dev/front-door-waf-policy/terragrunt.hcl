@@ -54,7 +54,7 @@ locals {
 inputs = {
 
   resource_group_name = "rg-conn-dev-fdfp-wus2-001"
-  waf_policy_name     = "fdfp-conn-dev-fdfp-wus2-001"
+  waf_policy_name     = "fdfpconndevfdfpwus2001"
   mode                = "Detection"
   tags                = merge(local.tags, { workload-name = "front-door" })
 }
