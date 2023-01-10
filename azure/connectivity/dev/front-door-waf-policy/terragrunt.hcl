@@ -58,7 +58,7 @@ inputs = {
   mode                = "Detection"
   custom_rules = [
     {
-      name     = "geo-filtering"
+      name     = "GeoFiltering"
       action   = "Block"
       priority = 1
       type     = "MatchRule"
@@ -74,13 +74,13 @@ inputs = {
   ]
   managed_rules = [
     {
-      name    = "default-rule-set"
+      name    = "MicrosoftDefaultRuleSet"
       type    = "Microsoft_DefaultRuleSet"
       version = "2.1"
       action  = "Block"
     },
     {
-      name    = "bot-manager-rule-set"
+      name    = "MicrosoftBotManagerRuleSet"
       type    = "Microsoft_BotManagerRuleSet"
       version = "1.0"
       action  = "Block"
