@@ -62,7 +62,7 @@ inputs = {
       name = "jamietaffurelli"
     }
   ]
-  custom_domains = [
+  front_door_custom_domains = [
     {
       name      = "jamietaffurelli-blog-cd"
       host_name = "blog.jamietaffurelli.com"
