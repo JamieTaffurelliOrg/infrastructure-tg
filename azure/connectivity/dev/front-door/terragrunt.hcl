@@ -102,5 +102,9 @@ inputs = {
       custom_domain_references = ["jamietaffurelli-blog-cd"]
     }
   ]
+  front_door_security_policy = {
+    name                     = "waf-association"
+    custom_domain_references = ["jamietaffurelli-blog-cd"]
+  }
   tags = merge(local.tags, { workload-name = "front-door" })
 }
