@@ -94,8 +94,8 @@ inputs = {
       tags         = ["app-dev-net-tf"]
     }
     "app-prod-net-tf" = {
-      display_name = "app-dev-prod-tf"
-      tags         = ["app-dev-prod-tf"]
+      display_name = "app-prod-net-tf"
+      tags         = ["app-prod-net-tf"]
     }
   }
   application_federated_identity_credentials = {
@@ -237,14 +237,14 @@ inputs = {
       application_id_reference = "app-dev-net-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.hub-vnet.deploy"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.network.deploy"
     }
     "app-prod-net-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-net-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.front-door.deploy"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.network.deploy"
     }
   }
   service_principals = {
