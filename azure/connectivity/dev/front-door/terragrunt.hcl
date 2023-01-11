@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.10"
 }
 
 include {
@@ -62,7 +62,7 @@ inputs = {
       name = "jamietaffurelli"
     }
   ]
-  custom_domains = [
+  front_door_custom_domains = [
     {
       name      = "jamietaffurelli-blog-cd"
       host_name = "blog.jamietaffurelli.com"
@@ -72,9 +72,6 @@ inputs = {
     {
       name = "blog-og"
       health_probes = {
-        "http" = {
-          protocol = "Http"
-        }
         "https" = {
           protocol = "Https"
         }
@@ -100,11 +97,14 @@ inputs = {
       patterns_to_match        = ["/*"]
       supported_protocols      = ["Http", "Https"]
       custom_domain_references = ["jamietaffurelli-blog-cd"]
+      link_to_default_domain   = true
     }
   ]
   front_door_security_policy = {
     name                     = "waf-association"
     custom_domain_references = ["jamietaffurelli-blog-cd"]
   }
-  tags = merge(local.tags, { workload-name = "front-door" })
+  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  tags                                        = merge(local.tags, { workload-name = "front-door" })
 }
