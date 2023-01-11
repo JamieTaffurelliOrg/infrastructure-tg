@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.6"
 }
 
 include {
@@ -72,9 +72,6 @@ inputs = {
     {
       name = "blog-og"
       health_probes = {
-        "http" = {
-          protocol = "Http"
-        }
         "https" = {
           protocol = "Https"
         }
