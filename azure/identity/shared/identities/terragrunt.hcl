@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.8"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.11"
 }
 
 include {
@@ -508,6 +508,16 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-fdfp-wus2-001"
     }
+    "conn-dev-afd-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-afd-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-afd-tf-contributor-conndevafd" = {
+      service_principal_reference = "conn-dev-afd-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-afd-wus2-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -617,6 +627,16 @@ inputs = {
       service_principal_reference = "conn-prod-fdfp-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-fdfp-wus2-001"
+    }
+    "conn-prod-afd-tf-blobcontributor-connprodcontainer" = {
+      service_principal_reference = "conn-prod-afd-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+    }
+    "conn-prod-afd-tf-contributor-hubrg" = {
+      service_principal_reference = "conn-prod-afd-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-afd-wus2-001"
     }
   }
   rbac_role_definitions = [
