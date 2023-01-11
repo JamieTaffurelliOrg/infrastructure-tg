@@ -106,5 +106,7 @@ inputs = {
     name                     = "waf-association"
     custom_domain_references = ["jamietaffurelli-blog-cd"]
   }
-  tags = merge(local.tags, { workload-name = "front-door" })
+  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  tags                                        = merge(local.tags, { workload-name = "front-door" })
 }
