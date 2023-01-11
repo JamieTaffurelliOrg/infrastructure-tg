@@ -89,6 +89,14 @@ inputs = {
       display_name = "conn-prod-afd-tf"
       tags         = ["conn-prod-afd-tf"]
     }
+    "app-dev-net-tf" = {
+      display_name = "app-dev-net-tf"
+      tags         = ["app-dev-net-tf"]
+    }
+    "app-prod-net-tf" = {
+      display_name = "app-dev-prod-tf"
+      tags         = ["app-dev-prod-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -224,6 +232,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.front-door.deploy"
     }
+    "app-dev-net-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-net-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.hub-vnet.deploy"
+    }
+    "app-prod-net-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-prod-net-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.front-door.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -320,6 +342,16 @@ inputs = {
       application_id_reference = "conn-prod-afd-tf"
       description              = "Management of prod front door infrastructure via Terraform"
       tags                     = ["conn-prod-afd-tf"]
+    }
+    "app-dev-net-tf" = {
+      application_id_reference = "app-dev-net-tf"
+      description              = "Management of dev app network infrastructure via Terraform"
+      tags                     = ["app-dev-net-tf"]
+    }
+    "app-prod-net-tf" = {
+      application_id_reference = "app-prod-net-tf"
+      description              = "Management of prod app network infrastructure via Terraform"
+      tags                     = ["app-prod-net-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -657,6 +689,26 @@ inputs = {
       service_principal_reference = "conn-prod-afd-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-fdfp-wus2-001"
+    }
+    "app-dev-net-tf-contributor-appdevnet" = {
+      service_principal_reference = "app-dev-net-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001"
+    }
+    "app-dev-net-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-net-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+    }
+    "app-prod-net-tf-contributor-appprodnet" = {
+      service_principal_reference = "app-prod-net-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001"
+    }
+    "app-prod-net-tf-blobcontributor-appprodcontainer" = {
+      service_principal_reference = "app-prod-net-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
     }
   }
   rbac_role_definitions = [
