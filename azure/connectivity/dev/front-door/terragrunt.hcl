@@ -97,6 +97,7 @@ inputs = {
       patterns_to_match        = ["/*"]
       supported_protocols      = ["Http", "Https"]
       custom_domain_references = ["jamietaffurelli-blog-cd"]
+      link_to_default_domain   = true
     }
   ]
   front_door_security_policy = {
