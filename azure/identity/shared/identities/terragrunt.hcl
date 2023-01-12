@@ -375,6 +375,16 @@ inputs = {
       description              = "Management of prod app network infrastructure via Terraform"
       tags                     = ["app-prod-net-tf"]
     }
+    "app-dev-lb-tf" = {
+      application_id_reference = "app-dev-lb-tf"
+      description              = "Management of dev app load balancer infrastructure via Terraform"
+      tags                     = ["app-dev-lb-tf"]
+    }
+    "app-prod-lb-tf" = {
+      application_id_reference = "app-prod-lb-tf"
+      description              = "Management of prod app load balancer infrastructure via Terraform"
+      tags                     = ["app-prod-lb-tf"]
+    }
   }
   role_assignments_service_principals = {
     "identity-tf-usradmin" = {
