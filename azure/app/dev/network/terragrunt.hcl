@@ -143,7 +143,7 @@ inputs = {
     {
       name                             = "snet-sql"
       address_prefixes                 = ["10.192.3.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-wus2-001"
+      network_security_group_reference = "nsg-app-dev-net-wus2-002"
       route_table_reference            = "rt-app-dev-net-wus2-001"
     }
   ]
