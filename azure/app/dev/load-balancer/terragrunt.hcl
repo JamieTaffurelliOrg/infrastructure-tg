@@ -90,7 +90,7 @@ inputs = {
       frontend_port                   = 443
       backend_port                    = 443
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
-      backend_address_pool_references = ["web-vm"]
+      backend_address_pool_references = ["web-backend-pool"]
       probe_reference                 = "Https-probe"
     }
   ]
