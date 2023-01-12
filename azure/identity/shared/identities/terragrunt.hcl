@@ -906,11 +906,11 @@ inputs = {
       custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001"
     }
-    /*"app-dev-lb-tf-subnetjoin-appdevnet" = {
-      service_principal_reference = "app-lb-bas-tf"
+    "app-dev-lb-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001"
-    }*/
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001"
+    }
   }
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-wus2-001"
