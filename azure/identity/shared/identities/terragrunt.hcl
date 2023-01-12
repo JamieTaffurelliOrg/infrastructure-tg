@@ -710,6 +710,16 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
+    "app-dev-net-tf-netcontributor-appdevnetwatcher" = {
+      service_principal_reference = "app-dev-hub-tf"
+      role_definition_name        = "Network Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-app-dev-netwat-wus2-001"
+    }
+    "app-dev-net-tf-contributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-net-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogwus2001"
+    }
     "app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -729,6 +739,11 @@ inputs = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "app-prod-net-tf-netcontributor-appprodnetwatcher" = {
+      service_principal_reference = "app-prod-net-tf"
+      role_definition_name        = "Network Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-app-prod-netwat-wus2-001"
     }
   }
   rbac_role_definitions = [
