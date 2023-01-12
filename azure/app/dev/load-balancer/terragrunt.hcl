@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.4"
 }
 
 include {
@@ -91,7 +91,7 @@ inputs = {
       backend_port                    = 443
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
       backend_address_pool_references = ["web-vm"]
-      probe_references                = "Https-probe"
+      probe_reference                 = "Https-probe"
     }
   ]
   tags = merge(local.tags, { workload-name = "network" })
