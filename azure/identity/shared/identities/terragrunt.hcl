@@ -97,6 +97,14 @@ inputs = {
       display_name = "app-prod-net-tf"
       tags         = ["app-prod-net-tf"]
     }
+    "app-dev-lb-tf" = {
+      display_name = "app-dev-lb-tf"
+      tags         = ["app-dev-lb-tf"]
+    }
+    "app-prod-lb-tf" = {
+      display_name = "app-prod-lb-tf"
+      tags         = ["app-prod-lb-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -245,6 +253,20 @@ inputs = {
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.network.deploy"
+    }
+    "app-dev-lb-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-lb-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.load-balancer.deploy"
+    }
+    "app-prod-lb-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-prod-lb-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.load-balancer.deploy"
     }
   }
   service_principals = {
@@ -725,6 +747,16 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogwus2001"
     }
+    "app-dev-lb-tf-contributor-appdevlb" = {
+      service_principal_reference = "app-dev-lb-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-wus2-001"
+    }
+    "app-dev-lb-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-lb-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+    }
     "app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -864,6 +896,11 @@ inputs = {
       custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-wus2-001"
     }
+    /*"app-dev-lb-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-lb-bas-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001"
+    }*/
   }
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-wus2-001"
