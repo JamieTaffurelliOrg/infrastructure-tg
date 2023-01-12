@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.6"
 }
 
 include {
@@ -73,7 +73,7 @@ inputs = {
       name                           = "web-vm"
       backend_address_pool_reference = "web-backend-pool"
       virtual_network_reference      = "vnet-app-dev-net-wus2-001"
-      ip_address                     = "10.192.2.8"
+      private_ip_address             = "10.192.2.8"
     }
   ]
   probes = [
