@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.2"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.3"
 }
 
 include {
@@ -26,6 +26,17 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "logs"
   subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "dns"
+  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
 
   features {
     resource_group {
