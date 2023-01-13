@@ -62,7 +62,7 @@ inputs = {
     {
       name               = "frontend-internal-web-ip"
       subnet_reference   = "snet-web"
-      private_ip_address = "10.64.2.4"
+      private_ip_address = "10.192.2.4"
     }
   ]
   backend_address_pools = [
@@ -73,7 +73,7 @@ inputs = {
       name                           = "web-vm"
       backend_address_pool_reference = "web-backend-pool"
       virtual_network_reference      = "vnet-app-dev-net-wus2-001"
-      private_ip_address             = "10.64.2.8"
+      private_ip_address             = "10.192.2.8"
     }
   ]
   probes = [
