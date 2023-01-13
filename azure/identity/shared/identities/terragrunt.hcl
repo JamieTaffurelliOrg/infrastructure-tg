@@ -802,6 +802,16 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogwus2001"
     }
+    "app-prod-lb-tf-contributor-appprodlb" = {
+      service_principal_reference = "app-prod-lb-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-lb-wus2-001"
+    }
+    "app-prod-lb-tf-blobcontributor-appprodcontainer" = {
+      service_principal_reference = "app-prod-lb-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+    }
   }
   rbac_role_definitions = [
     {
@@ -910,6 +920,11 @@ inputs = {
       service_principal_reference = "app-dev-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001"
+    }
+    "app-prod-lb-tf-subnetjoin-appprodnet" = {
+      service_principal_reference = "app-prod-lb-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001"
     }
   }
   log_analytics_workspace = {
