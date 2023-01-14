@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.11"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.12"
 }
 
 include {
@@ -400,6 +400,11 @@ inputs = {
       application_id_reference = "mgmt-shrd-vmimg-tf"
       description              = "Management of shared image gallery infrastructure via Terraform"
       tags                     = ["mgmt-shrd-vmimg-tf"]
+    }
+  }
+  objects = {
+    "galmgmtshrdvmimgwus2001" = {
+      object_id = "9a518f10-dab1-403e-976d-db58976d3c3e"
     }
   }
   role_assignments_service_principals = {
@@ -884,6 +889,21 @@ inputs = {
       description       = "Create and delete Azure Firewalls"
       actions           = ["Microsoft.Network/azureFirewalls/*", "Microsoft.Network/publicIPAddresses/*", "Microsoft.Insights/diagnosticSettings/*"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name        = "Image Creator (Custom)"
+      scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description = "Create and delete Azure Firewalls"
+      actions = [
+        "Microsoft.Compute/galleries/read",
+        "Microsoft.Compute/galleries/images/read",
+        "Microsoft.Compute/galleries/images/versions/read",
+        "Microsoft.Compute/galleries/images/versions/write",
+        "Microsoft.Compute/images/write",
+        "Microsoft.Compute/images/read",
+        "Microsoft.Compute/images/delete"
+      ]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -961,6 +981,13 @@ inputs = {
       service_principal_reference = "app-prod-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001"
+    }
+  }
+  custom_rbac_role_assignments_service_objects = {
+    "galmgmtshrdvmimgwus2001-imgbuilder" = {
+      object_reference      = "galmgmtshrdvmimgwus2001"
+      custom_role_reference = "Image Creator (Custom)"
+      scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/RG-MGMT-SHRD-VMIMG-WUS2-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgwus2001"
     }
   }
   log_analytics_workspace = {
