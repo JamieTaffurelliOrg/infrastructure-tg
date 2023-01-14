@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.2"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.3"
 }
 
 remote_state {
@@ -58,11 +58,11 @@ inputs = {
 
   resource_group_name       = "rg-mgmt-shrd-vmimg-wus2-001"
   location                  = "westus2"
-  image_gallery_name        = "gal-mgmt-shrd-vmimg-wus2-001"
+  image_gallery_name        = "galmgmtshrdvmimgwus2001"
   image_gallery_description = "Store and share compliant VM images for deployment of VMs"
   images = [
     {
-      names       = "win-2022-server-azure"
+      name        = "win-2022-server-azure"
       os_type     = "Windows"
       description = "Base windows 2022 server"
       publisher   = "MicrosoftWindowsServer"
