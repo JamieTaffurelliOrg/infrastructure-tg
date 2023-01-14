@@ -843,7 +843,7 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001"
     }
-    "mgmt-shrd-vmimg-tf-blobcontributor-appprodcontainer" = {
+    "mgmt-shrd-vmimg-tf-blobcontributor-mgmtshrdcontainer" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdtffrc1001/blobServices/default/containers/mgmt-shrd"
