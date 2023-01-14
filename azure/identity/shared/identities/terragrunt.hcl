@@ -277,7 +277,7 @@ inputs = {
       application_id_reference = "mgmt-shrd-vmimg-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:vm-images.deploy"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:shared.vm-images.deploy"
     }
   }
   service_principals = {
