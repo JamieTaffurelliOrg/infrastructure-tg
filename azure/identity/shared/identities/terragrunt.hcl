@@ -987,7 +987,7 @@ inputs = {
     "galmgmtshrdvmimgwus2001-imgbuilder" = {
       object_reference      = "galmgmtshrdvmimgwus2001"
       custom_role_reference = "Image Creator (Custom)"
-      scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/RG-MGMT-SHRD-VMIMG-WUS2-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgwus2001"
+      scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgwus2001"
     }
   }
   log_analytics_workspace = {
