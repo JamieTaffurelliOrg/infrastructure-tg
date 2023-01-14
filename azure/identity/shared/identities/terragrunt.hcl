@@ -105,6 +105,10 @@ inputs = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
     }
+    "mgmt-shrd-vmimg-tf" = {
+      display_name = "mgmt-shrd-vmimg-tf"
+      tags         = ["mgmt-shrd-vmimg-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -268,6 +272,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.load-balancer.deploy"
     }
+    "mgmt-shrd-vmimg-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "mgmt-shrd-vmimg-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:vm-images.deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -384,6 +395,11 @@ inputs = {
       application_id_reference = "app-prod-lb-tf"
       description              = "Management of prod app load balancer infrastructure via Terraform"
       tags                     = ["app-prod-lb-tf"]
+    }
+    "mgmt-shrd-vmimg-tf" = {
+      application_id_reference = "mgmt-shrd-vmimg-tf"
+      description              = "Management of shared image gallery infrastructure via Terraform"
+      tags                     = ["mgmt-shrd-vmimg-tf"]
     }
   }
   role_assignments_service_principals = {
@@ -821,6 +837,11 @@ inputs = {
       service_principal_reference = "app-prod-lb-tf"
       role_definition_name        = "Private DNS Zone Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-prvdns-wus2-001"
+    }
+    "mgmt-shrd-vmimg-tf-prvdnscontributor-conndevprvdns" = {
+      service_principal_reference = "mgmt-shrd-vmimg-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001"
     }
   }
   rbac_role_definitions = [
