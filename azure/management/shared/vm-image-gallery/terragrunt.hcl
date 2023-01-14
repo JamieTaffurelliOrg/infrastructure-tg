@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.5"
 }
 
 remote_state {
@@ -24,11 +24,22 @@ generate "provider" {
 
   path = "providers.tf"
 
-  if_exists = "overwrite_terragrunt"
+  if_exists = "overwrite"
 
   contents = <<EOF
 provider "azurerm" {
   subscription_id = "a9da0406-a642-49b3-9c2c-c8ed05bb1c85"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "logs"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -70,6 +81,13 @@ inputs = {
       sku         = "2022-datacenter-azure-edition"
     }
   ]
-  storage_account_name = "stjtmgmtprodlogwus2001"
-  tags                 = merge(local.tags, { workload-name = "images" })
+  storage_account_name = "stjtmgmtshrdvmimgwus2001"
+  storage_account_network_rules = {
+    default_action = "Allow"
+  }
+  log_analytics_workspace = {
+    name                = "log-mgmt-prod-log-wus2-001"
+    resource_group_name = "rg-mgmt-prod-log-wus2-001"
+  }
+  tags = merge(local.tags, { workload-name = "images" })
 }
