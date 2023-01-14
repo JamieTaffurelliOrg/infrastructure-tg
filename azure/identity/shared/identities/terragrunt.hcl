@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.12"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.13"
 }
 
 include {
@@ -983,7 +983,7 @@ inputs = {
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001"
     }
   }
-  custom_rbac_role_assignments_service_objects = {
+  custom_rbac_role_assignments_objects = {
     "galmgmtshrdvmimgwus2001-imgbuilder" = {
       object_reference      = "galmgmtshrdvmimgwus2001"
       custom_role_reference = "Image Creator (Custom)"
