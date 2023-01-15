@@ -853,8 +853,8 @@ inputs = {
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdtffrc1001/blobServices/default/containers/mgmt-shrd"
     }
-    "mgmt-shrd-net-tf-moncontributor-mgmtprodlogs" = {
-      service_principal_reference = "mgmt-shrd-net-tf"
+    "mgmt-shrd-vmimg-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
