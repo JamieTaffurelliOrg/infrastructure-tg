@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'azure/management/shared/vm-image-versions/**'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'INFO'
+        type: choice
+        options:
+        - INFO
+        - WARNING
+        - DEBUG
+
+concurrency: ci-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  call-terraform-apply-workflow:
+    uses: ./.github/workflows/azure.terragrunt-apply.yaml
+    with:
+      terragrunt-working-dir: './azure/management/shared/vm-image-versions'
+      environment: management.shared.vm-images.deploy
+      log-level: ${{ inputs.logLevel }}
+    secrets: inherit

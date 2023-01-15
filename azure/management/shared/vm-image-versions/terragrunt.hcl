@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagetemplate-tf///?ref=0.0.3"
 }
 
 include {
@@ -53,27 +53,17 @@ locals {
 
 inputs = {
 
-  resource_group_name       = "rg-mgmt-shrd-vmimg-wus2-001"
-  location                  = "westus2"
-  image_gallery_name        = "galmgmtshrdvmimgwus2001"
-  image_gallery_description = "Store and share compliant VM images for deployment of VMs"
-  images = [
+  resource_group_name         = "rg-mgmt-shrd-vmimg-wus2-001"
+  location                    = "westus2"
+  user_assigned_identity_name = "galmgmtshrdvmimgwus2001"
+  gallery_name                = "galmgmtshrdvmimgwus2001"
+  windows_image_templates = [
     {
-      name        = "win-2022-server-azure"
-      os_type     = "Windows"
-      description = "Base windows 2022 server"
-      publisher   = "MicrosoftWindowsServer"
-      offer       = "WindowsServer"
-      sku         = "2022-datacenter-azure-edition"
+      name                 = "win2022azimg"
+      image_name           = "win-2022-server-azure"
+      artifact_tags        = ["Windows", "2022", "Azure"]
+      hardening_script_url = "https://stjtmgmtshrdvmimgwus2001.blob.core.windows.net/scripts/windows-server-hardening.ps1"
     }
   ]
-  storage_account_name = "stjtmgmtshrdvmimgwus2001"
-  storage_account_network_rules = {
-    default_action = "Allow"
-  }
-  log_analytics_workspace = {
-    name                = "log-mgmt-prod-log-wus2-001"
-    resource_group_name = "rg-mgmt-prod-log-wus2-001"
-  }
   tags = merge(local.tags, { workload-name = "images" })
 }
