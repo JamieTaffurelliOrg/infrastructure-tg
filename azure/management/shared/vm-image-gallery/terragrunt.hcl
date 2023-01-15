@@ -59,12 +59,13 @@ inputs = {
   image_gallery_description = "Store and share compliant VM images for deployment of VMs"
   images = [
     {
-      name        = "win-2022-server-azure"
-      os_type     = "Windows"
-      description = "Base windows 2022 server"
-      publisher   = "MicrosoftWindowsServer"
-      offer       = "WindowsServer"
-      sku         = "2022-datacenter-azure-edition"
+      name               = "win-2022-server-azure"
+      os_type            = "Windows"
+      description        = "Base windows 2022 server"
+      publisher          = "MicrosoftWindowsServer"
+      offer              = "WindowsServer"
+      sku                = "2022-datacenter-azure-edition"
+      hyper_v_generation = "V2"
     }
   ]
   storage_account_name = "stjtmgmtshrdvmimgwus2001"
