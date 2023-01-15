@@ -52,6 +52,21 @@ inputs = {
       name     = "rg-app-dev-lb-wus2-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "network" })
+    },
+    {
+      name     = "rg-app-dev-web-wus2-001"
+      location = "westus2"
+      tags     = merge(local.tags, { workload-name = "web" })
+    },
+    {
+      name     = "rg-app-dev-sql-wus2-001"
+      location = "westus2"
+      tags     = merge(local.tags, { workload-name = "sql" })
+    },
+    {
+      name     = "rg-app-dev-kv-wus2-001"
+      location = "westus2"
+      tags     = merge(local.tags, { workload-name = "secrets" })
     }
   ]
 }
