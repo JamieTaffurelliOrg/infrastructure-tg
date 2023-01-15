@@ -109,6 +109,10 @@ inputs = {
       display_name = "mgmt-shrd-vmimg-tf"
       tags         = ["mgmt-shrd-vmimg-tf"]
     }
+    "vm-scripts" = {
+      display_name = "vm-scripts"
+      tags         = ["vm-scripts"]
+    }
   }
   application_federated_identity_credentials = {
     "setup-landing-zones-tf-deploy" = {
@@ -279,6 +283,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.shared.vm-images.deploy"
     }
+    "vm-scripts" = {
+      display_name             = "deploy"
+      application_id_reference = "vm-scripts"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/vm-config:environment:deploy"
+    }
   }
   service_principals = {
     "setup-landing-zones-tf" = {
@@ -400,6 +411,11 @@ inputs = {
       application_id_reference = "mgmt-shrd-vmimg-tf"
       description              = "Management of shared image gallery infrastructure via Terraform"
       tags                     = ["mgmt-shrd-vmimg-tf"]
+    }
+    "vm-scripts" = {
+      application_id_reference = "vm-scripts"
+      description              = "Deployment of scripts used for VM configuration to storage account"
+      tags                     = ["vm-scripts"]
     }
   }
   objects = {
@@ -857,6 +873,11 @@ inputs = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "vm-scripts-blobcontributor-mgmtshrdscriptscontainer" = {
+      service_principal_reference = "vm-scripts"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgwus2001/blobServices/default/containers/scripts"
     }
   }
   rbac_role_definitions = [
