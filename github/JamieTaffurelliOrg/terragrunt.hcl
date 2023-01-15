@@ -162,6 +162,18 @@ inputs = {
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
+    },
+    {
+      name           = "az-keyvault-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-windowsvm-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
     }
   ]
 }
