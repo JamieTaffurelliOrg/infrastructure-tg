@@ -59,9 +59,13 @@ inputs = {
   gallery_name                = "galmgmtshrdvmimgwus2001"
   windows_image_templates = [
     {
-      name                 = "win2022azimg"
-      image_name           = "win-2022-server-azure"
-      artifact_tags        = ["Windows", "2022", "Azure"]
+      name       = "win2022azimg"
+      image_name = "win-2022-server-azure"
+      artifact_tags = {
+        "os" : "Windows",
+        "version" : "2022",
+        "flavour" : "Azure"
+      }
       hardening_script_url = "https://stjtmgmtshrdvmimgwus2001.blob.core.windows.net/scripts/windows-server-hardening.ps1"
     }
   ]
