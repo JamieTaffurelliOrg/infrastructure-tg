@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/management/shared/vm-image-gallery/**'
+      - 'azure/management/shared/vm-image-versions/**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-plan-workflow:
     uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './azure/management/shared/vm-image-gallery'
+      terragrunt-working-dir: './azure/management/shared/vm-image-versions'
       environment: management.shared.vm-images.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
