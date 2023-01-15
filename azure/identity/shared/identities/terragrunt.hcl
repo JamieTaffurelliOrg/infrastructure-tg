@@ -875,7 +875,7 @@ inputs = {
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
   }
-  rbac_role_assignments_service_principals = {
+  rbac_role_assignments_objects = {
     "galmgmtshrdvmimgwus2001-blobreader-mgmtshrdscriptscontainer" = {
       object_reference     = "vm-scripts"
       role_definition_name = "Storage Blob Data Reader"
