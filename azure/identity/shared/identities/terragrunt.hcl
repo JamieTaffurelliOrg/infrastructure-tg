@@ -874,11 +874,6 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
-    "vm-scripts-blobcontributor-mgmtshrdscriptscontainer" = {
-      service_principal_reference = "vm-scripts"
-      role_definition_name        = "Storage Blob Data Reader"
-      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgwus2001/blobServices/default/containers/scripts"
-    }
   }
   rbac_role_definitions = [
     {
@@ -1014,6 +1009,12 @@ inputs = {
       object_reference      = "galmgmtshrdvmimgwus2001"
       custom_role_reference = "Image Creator (Custom)"
       scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgwus2001"
+    }
+
+    "galmgmtshrdvmimgwus2001-blobreader-mgmtshrdscriptscontainer" = {
+      service_principal_reference = "vm-scripts"
+      role_definition_name        = "Storage Blob Data Reader"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgwus2001/blobServices/default/containers/scripts"
     }
   }
   log_analytics_workspace = {
