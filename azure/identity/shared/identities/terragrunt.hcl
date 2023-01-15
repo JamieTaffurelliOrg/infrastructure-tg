@@ -876,7 +876,7 @@ inputs = {
     }
     "vm-scripts-blobcontributor-mgmtshrdscriptscontainer" = {
       service_principal_reference = "vm-scripts"
-      role_definition_name        = "Storage Blob Data Contributor"
+      role_definition_name        = "Storage Blob Data Reader"
       scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgwus2001/blobServices/default/containers/scripts"
     }
   }
