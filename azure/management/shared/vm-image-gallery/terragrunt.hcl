@@ -2,22 +2,8 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.5"
 }
 
-remote_state {
-
-  backend = "azurerm"
-
-  generate = {
-    path      = "backend.tf"
-    if_exists = "overwrite_terragrunt"
-  }
-
-  config = {
-    resource_group_name  = "rg-mgmt-shrd-tf-frc1-001"
-    storage_account_name = "stjtmgmtshrdtffrc1001"
-    container_name       = "mgmt-shrd"
-    key                  = "${path_relative_to_include()}/terraform.tfstate"
-    use_azuread_auth     = true
-  }
+include {
+  path = find_in_parent_folders()
 }
 
 generate "provider" {
