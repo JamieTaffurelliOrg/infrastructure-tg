@@ -1,6 +1,5 @@
 terraform {
-  //source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagetemplate-tf///?ref=0.0.4"
-  source = "../../../../../az-vmimagetemplate-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagetemplate-tf///?ref=0.0.5"
 }
 
 include {
