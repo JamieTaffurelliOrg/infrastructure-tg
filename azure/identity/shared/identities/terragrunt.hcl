@@ -101,9 +101,25 @@ inputs = {
       display_name = "app-dev-lb-tf"
       tags         = ["app-dev-lb-tf"]
     }
+    "app-dev-web-tf" = {
+      display_name = "app-dev-web-tf"
+      tags         = ["app-dev-web-tf"]
+    }
+    "app-dev-sql-tf" = {
+      display_name = "app-dev-sql-tf"
+      tags         = ["app-dev-sql-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
+    }
+    "app-prod-web-tf" = {
+      display_name = "app-dev-web-tf"
+      tags         = ["app-dev-web-tf"]
+    }
+    "app-prod-sql-tf" = {
+      display_name = "app-prod-sql-tf"
+      tags         = ["app-prod-sql-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       display_name = "mgmt-shrd-vmimg-tf"
@@ -269,12 +285,40 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.load-balancer.deploy"
     }
+    "app-dev-web-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-web-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.web.deploy"
+    }
+    "app-dev-sql-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-sql-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.sql.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.load-balancer.deploy"
+    }
+    "app-prod-web-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-prod-web-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.web.deploy"
+    }
+    "app-prod-sql-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-sql-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql.deploy"
     }
     "mgmt-shrd-vmimg-tf-deploy" = {
       display_name             = "deploy"
@@ -402,10 +446,30 @@ inputs = {
       description              = "Management of dev app load balancer infrastructure via Terraform"
       tags                     = ["app-dev-lb-tf"]
     }
+    "app-dev-web-tf" = {
+      application_id_reference = "app-dev-web-tf"
+      description              = "Management of dev app web server infrastructure via Terraform"
+      tags                     = ["app-dev-web-tf"]
+    }
+    "app-dev-sql-tf" = {
+      application_id_reference = "app-dev-sql-tf"
+      description              = "Management of dev app sql server infrastructure via Terraform"
+      tags                     = ["app-dev-sql-tf"]
+    }
     "app-prod-lb-tf" = {
       application_id_reference = "app-prod-lb-tf"
       description              = "Management of prod app load balancer infrastructure via Terraform"
       tags                     = ["app-prod-lb-tf"]
+    }
+    "app-prod-web-tf" = {
+      application_id_reference = "app-prod-web-tf"
+      description              = "Management of dev app web server infrastructure via Terraform"
+      tags                     = ["app-prod-web-tf"]
+    }
+    "app-prod-sql-tf" = {
+      application_id_reference = "app-prod-sql-tf"
+      description              = "Management of dev app sql server infrastructure via Terraform"
+      tags                     = ["app-prod-sql-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       application_id_reference = "mgmt-shrd-vmimg-tf"
@@ -809,6 +873,36 @@ inputs = {
       role_definition_name        = "Private DNS Zone Contributor"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-prvdns-wus2-001"
     }
+    "app-dev-web-tf-contributor-appdevweb" = {
+      service_principal_reference = "app-dev-web-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-web-wus2-001"
+    }
+    "app-dev-web-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-web-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+    }
+    "app-dev-web-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-web-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
+    }
+    "app-dev-sql-tf-contributor-appdevsql" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-sql-wus2-001"
+    }
+    "app-dev-sql-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+    }
+    "app-dev-sql-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
+    }
     "app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -858,6 +952,36 @@ inputs = {
       service_principal_reference = "app-prod-lb-tf"
       role_definition_name        = "Private DNS Zone Contributor"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-prvdns-wus2-001"
+    }
+    "app-prod-web-tf-contributor-appprodweb" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-web-wus2-001"
+    }
+    "app-prod-web-tf-blobcontributor-appprodcontainer" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+    }
+    "app-prod-web-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "app-prod-sql-tf-contributor-appprodsql" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-sql-wus2-001"
+    }
+    "app-prod-sql-tf-blobcontributor-appprodcontainer" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+    }
+    "app-prod-sql-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }
     "mgmt-shrd-vmimg-tf-contributor-mgmtshrdvmimg" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
@@ -1005,10 +1129,30 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001"
     }
-    "app-prod-lb-tf-subnetjoin-appprodnet" = {
-      service_principal_reference = "app-prod-lb-tf"
+    "app-dev-web-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-web-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001/subnets/snet-web"
+    }
+    "app-dev-sql-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-sql-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-wus2-001/subnets/snet-sql"
+    }
+    "app-prod-sql-tf-subnetjoin-appprodnet" = {
+      service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001"
+    }
+    "app-prod-web-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-prod-web-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001/subnets/snet-web"
+    }
+    "app-prod-sql-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-prod-sql-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-wus2-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-wus2-001/subnets/snet-sql"
     }
   }
   custom_rbac_role_assignments_objects = {
