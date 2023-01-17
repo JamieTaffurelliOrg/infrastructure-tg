@@ -109,6 +109,10 @@ inputs = {
       display_name = "app-dev-sql-tf"
       tags         = ["app-dev-sql-tf"]
     }
+    "app-dev-kv-tf" = {
+      display_name = "app-dev-kv-tf"
+      tags         = ["app-dev-kv-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
@@ -120,6 +124,10 @@ inputs = {
     "app-prod-sql-tf" = {
       display_name = "app-prod-sql-tf"
       tags         = ["app-prod-sql-tf"]
+    }
+    "app-prod-kv-tf" = {
+      display_name = "app-prod-kv-tf"
+      tags         = ["app-prod-kv-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       display_name = "mgmt-shrd-vmimg-tf"
