@@ -330,7 +330,7 @@ inputs = {
     }
     "app-prod-sql-tf-deploy" = {
       display_name             = "deploy"
-      application_id_reference = "app-dev-sql-tf"
+      application_id_reference = "app-prod-sql-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql.deploy"
