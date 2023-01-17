@@ -109,17 +109,25 @@ inputs = {
       display_name = "app-dev-sql-tf"
       tags         = ["app-dev-sql-tf"]
     }
+    "app-dev-kv-tf" = {
+      display_name = "app-dev-kv-tf"
+      tags         = ["app-dev-kv-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
     }
     "app-prod-web-tf" = {
-      display_name = "app-dev-web-tf"
-      tags         = ["app-dev-web-tf"]
+      display_name = "app-prod-web-tf"
+      tags         = ["app-prod-web-tf"]
     }
     "app-prod-sql-tf" = {
       display_name = "app-prod-sql-tf"
       tags         = ["app-prod-sql-tf"]
+    }
+    "app-prod-kv-tf" = {
+      display_name = "app-prod-kv-tf"
+      tags         = ["app-prod-kv-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       display_name = "mgmt-shrd-vmimg-tf"
@@ -299,6 +307,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.sql.deploy"
     }
+    "app-dev-kv-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-kv-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.key-vault.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
@@ -315,10 +330,17 @@ inputs = {
     }
     "app-prod-sql-tf-deploy" = {
       display_name             = "deploy"
-      application_id_reference = "app-dev-sql-tf"
+      application_id_reference = "app-prod-sql-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql.deploy"
+    }
+    "app-prod-kv-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-prod-kv-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.key-vault.deploy"
     }
     "mgmt-shrd-vmimg-tf-deploy" = {
       display_name             = "deploy"
