@@ -33,6 +33,17 @@ provider "azurerm" {
     }
   }
 }
+
+provider "azurerm" {
+  alias = "images"
+  subscription_id = "a9da0406-a642-49b3-9c2c-c8ed05bb1c85"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
 EOF
 
 }
