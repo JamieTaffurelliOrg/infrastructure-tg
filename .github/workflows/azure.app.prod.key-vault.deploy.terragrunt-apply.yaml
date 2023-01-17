@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/app/prod/load-balancer**'
+      - 'azure/app/prod/key-vault**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
-      terragrunt-working-dir: './azure/app/prod/load-balancer'
-      environment: app.prod.load-balancer.deploy
+      terragrunt-working-dir: './azure/app/prod/key-vault'
+      environment: app.prod.key-vault.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
