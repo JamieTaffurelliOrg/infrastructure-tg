@@ -102,7 +102,7 @@ inputs = {
       resource_group_name = "rg-app-dev-net-wus2-001"
       rules = [
         {
-          name                       = "nsgsr-in-deny-any-any"
+          name                       = "nsgsr-in-allow-any-any"
           description                = "Deny all inbound traffic"
           priority                   = 3999
           direction                  = "Inbound"
@@ -126,7 +126,7 @@ inputs = {
           destination_address_prefix = "*"
         },
         {
-          name                       = "nsgsr-out-deny-any-any"
+          name                       = "nsgsr-out-allow-any-any"
           description                = "Deny all outbound traffic"
           priority                   = 3999
           direction                  = "Outbound"
