@@ -118,8 +118,8 @@ inputs = {
       tags         = ["app-prod-lb-tf"]
     }
     "app-prod-web-tf" = {
-      display_name = "app-dev-web-tf"
-      tags         = ["app-dev-web-tf"]
+      display_name = "app-prod-web-tf"
+      tags         = ["app-prod-web-tf"]
     }
     "app-prod-sql-tf" = {
       display_name = "app-prod-sql-tf"
