@@ -1033,7 +1033,7 @@ inputs = {
     "app-prod-kv-tf-contributor-appprodkv" = {
       service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-sql-wus2-001"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-kv-wus2-001"
     }
     "app-prod-kv-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-kv-tf"
