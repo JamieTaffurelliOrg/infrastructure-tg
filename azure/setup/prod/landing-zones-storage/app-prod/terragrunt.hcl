@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.14"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.16"
 }
 
 include {
@@ -65,6 +65,11 @@ inputs = {
   containers = ["app-prod", "app-prod-kv"]
   storage_account_network_rules = {
     default_action = "Allow"
+  }
+  boot_diagnostic_storage_account = {
+    name                = "stjtappproddiagfrc1001"
+    resource_group_name = "rg-app-prod-diag-frc1-001"
+    default_action      = "Allow"
   }
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-wus2-001"
