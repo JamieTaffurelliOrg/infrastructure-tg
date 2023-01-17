@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.4"
 }
 
 include {
@@ -26,6 +26,17 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "logs"
   subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "images"
+  subscription_id = "a9da0406-a642-49b3-9c2c-c8ed05bb1c85"
 
   features {
     resource_group {
