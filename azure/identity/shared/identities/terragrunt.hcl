@@ -109,6 +109,10 @@ inputs = {
       display_name = "app-dev-sql-tf"
       tags         = ["app-dev-sql-tf"]
     }
+    "app-dev-kv-tf" = {
+      display_name = "app-dev-kv-tf"
+      tags         = ["app-dev-kv-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
@@ -120,6 +124,10 @@ inputs = {
     "app-prod-sql-tf" = {
       display_name = "app-prod-sql-tf"
       tags         = ["app-prod-sql-tf"]
+    }
+    "app-prod-kv-tf" = {
+      display_name = "app-prod-kv-tf"
+      tags         = ["app-prod-kv-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       display_name = "mgmt-shrd-vmimg-tf"
@@ -299,6 +307,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.sql.deploy"
     }
+    "app-dev-kv-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-kv-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.key-vault.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
@@ -319,6 +334,13 @@ inputs = {
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql.deploy"
+    }
+    "app-prod-kv-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-prod-kv-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.key-vault.deploy"
     }
     "mgmt-shrd-vmimg-tf-deploy" = {
       display_name             = "deploy"
@@ -436,11 +458,6 @@ inputs = {
       description              = "Management of dev app network infrastructure via Terraform"
       tags                     = ["app-dev-net-tf"]
     }
-    "app-prod-net-tf" = {
-      application_id_reference = "app-prod-net-tf"
-      description              = "Management of prod app network infrastructure via Terraform"
-      tags                     = ["app-prod-net-tf"]
-    }
     "app-dev-lb-tf" = {
       application_id_reference = "app-dev-lb-tf"
       description              = "Management of dev app load balancer infrastructure via Terraform"
@@ -456,6 +473,16 @@ inputs = {
       description              = "Management of dev app sql server infrastructure via Terraform"
       tags                     = ["app-dev-sql-tf"]
     }
+    "app-dev-kv-tf" = {
+      application_id_reference = "app-dev-kv-tf"
+      description              = "Management of dev app key vault infrastructure via Terraform"
+      tags                     = ["app-dev-kv-tf"]
+    }
+    "app-prod-net-tf" = {
+      application_id_reference = "app-prod-net-tf"
+      description              = "Management of prod app network infrastructure via Terraform"
+      tags                     = ["app-prod-net-tf"]
+    }
     "app-prod-lb-tf" = {
       application_id_reference = "app-prod-lb-tf"
       description              = "Management of prod app load balancer infrastructure via Terraform"
@@ -470,6 +497,11 @@ inputs = {
       application_id_reference = "app-prod-sql-tf"
       description              = "Management of dev app sql server infrastructure via Terraform"
       tags                     = ["app-prod-sql-tf"]
+    }
+    "app-prod-kv-tf" = {
+      application_id_reference = "app-prod-kv-tf"
+      description              = "Management of prod app key vault infrastructure via Terraform"
+      tags                     = ["app-prod-kv-tf"]
     }
     "mgmt-shrd-vmimg-tf" = {
       application_id_reference = "mgmt-shrd-vmimg-tf"
@@ -903,6 +935,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
+    "app-dev-kv-tf-contributor-appdevkv" = {
+      service_principal_reference = "app-dev-kv-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-wus2-001"
+    }
+    "app-dev-kv-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-kv-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev-kv"
+    }
+    "app-dev-kv-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-kv-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
+    }
     "app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -980,6 +1027,21 @@ inputs = {
     }
     "app-prod-sql-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
+    }
+    "app-prod-kv-tf-contributor-appprodkv" = {
+      service_principal_reference = "app-prod-kv-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-sql-wus2-001"
+    }
+    "app-prod-kv-tf-blobcontributor-appprodcontainer" = {
+      service_principal_reference = "app-prod-kv-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod-kv"
+    }
+    "app-prod-kv-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-wus2-001"
     }

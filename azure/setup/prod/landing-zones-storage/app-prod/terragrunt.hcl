@@ -62,7 +62,7 @@ inputs = {
       location = "westus2"
     }
   }
-  containers = ["app-prod"]
+  containers = ["app-prod", "app-prod-kv"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
