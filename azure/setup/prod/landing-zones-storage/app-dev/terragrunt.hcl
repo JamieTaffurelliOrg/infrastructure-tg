@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.18"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.19"
 }
 
 include {
@@ -66,11 +66,14 @@ inputs = {
   storage_account_network_rules = {
     default_action = "Allow"
   }
-  boot_diagnostic_storage_account = {
-    name                = "stjtappdevdiagfrc1001"
-    resource_group_name = "rg-app-dev-diag-frc1-001"
-    default_action      = "Allow"
-  }
+  boot_diagnostic_storage_accounts = [
+    {
+      name                = "stjtappdevdiagwus2001"
+      location            = "westus2"
+      resource_group_name = "rg-app-dev-diag-wus2-001"
+      default_action      = "Allow"
+    }
+  ]
   log_analytics_workspace = {
     name                = "log-mgmt-dev-log-wus2-001"
     resource_group_name = "rg-mgmt-dev-log-wus2-001"
