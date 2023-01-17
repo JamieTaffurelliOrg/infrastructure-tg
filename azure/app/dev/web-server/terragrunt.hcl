@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.7"
 }
 
 include {
@@ -96,7 +96,7 @@ inputs = {
   ]
   log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
-  storage_account_name                        = "stjtmgmtdevlogwus2001"
-  storage_account_resource_group_name         = "rg-mgmt-dev-log-wus2-001"
+  storage_account_name                        = "stjtappdevdiagfrc1001"
+  storage_account_resource_group_name         = "rg-app-dev-diag-frc1-001"
   tags                                        = merge(local.tags, { workload-name = "network" })
 }
