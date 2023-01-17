@@ -75,7 +75,7 @@ inputs = {
       admin_username     = "servermonkey"
       zone               = "1"
       image_reference    = "win-2022-server-azure"
-      timezone           = "GMT"
+      timezone           = "GMT Standard Time"
     }
   ]
   subnets = [
