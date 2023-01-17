@@ -920,6 +920,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
     }
+    "app-dev-web-tf-reader-mgmtshrdimg" = {
+      service_principal_reference = "app-dev-web-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-wus2-001"
+    }
     "app-dev-sql-tf-contributor-appdevsql" = {
       service_principal_reference = "app-dev-sql-tf"
       role_definition_name        = "Contributor"
