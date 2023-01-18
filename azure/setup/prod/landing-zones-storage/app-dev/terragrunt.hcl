@@ -57,9 +57,9 @@ inputs = {
   resource_group_name                 = "rg-app-dev-tf-frc1-001"
   network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
   network_watchers = {
-    west_us_2 = {
+    west_europe = {
       name     = "nw-app-dev-netwat-weu1-001"
-      location = "westus2"
+      location = "westeurope"
     }
   }
   containers = ["app-dev", "app-dev-kv"]
@@ -69,7 +69,7 @@ inputs = {
   boot_diagnostic_storage_accounts = [
     {
       name                = "stjtappdevdiagweu1001"
-      location            = "westus2"
+      location            = "westeurope"
       resource_group_name = "rg-app-dev-diag-weu1-001"
       default_action      = "Allow"
     }

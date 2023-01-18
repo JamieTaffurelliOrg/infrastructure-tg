@@ -57,9 +57,9 @@ inputs = {
   resource_group_name                 = "rg-app-shrd-tf-frc1-001"
   network_watcher_resource_group_name = "rg-app-shrd-netwat-frc1-001"
   network_watchers = {
-    west_us_2 = {
+    west_europe = {
       name     = "nw-app-shrd-netwat-weu1-001"
-      location = "westus2"
+      location = "westeurope"
     }
   }
   containers = ["app-shrd"]
