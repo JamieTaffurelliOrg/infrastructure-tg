@@ -58,7 +58,7 @@ inputs = {
   ip_groups = [
     {
       name        = "ipgrp-conn-prod-afwp-weu1-001"
-      cidr_ranges = ["10.0.0.0/16"]
+      cidr_ranges = ["10.0.0.0/9"]
     }
   ]
   base_policy_name = "afwp-conn-prod-afwp-weu1-001"
@@ -117,13 +117,13 @@ inputs = {
           action   = "Allow"
           rules = [
             {
-              name                       = "ntp"
-              description                = "allow ntp"
+              name                       = "all"
+              description                = "allow all"
               action                     = "Allow"
               source_ip_group_references = ["ipgrp-conn-prod-afwp-weu1-001"]
               destination_addresses      = ["*"]
-              protocols                  = ["UDP"]
-              destination_ports          = ["123"]
+              protocols                  = ["*"]
+              destination_ports          = ["*"]
             }
           ]
         }
