@@ -53,19 +53,19 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-conn-prod-afwp-wus2-001"
-  location            = "westus2"
+  resource_group_name = "rg-conn-prod-afwp-weu1-001"
+  location            = "westeurope"
   ip_groups = [
     {
-      name        = "ipgrp-conn-prod-afwp-wus2-001"
+      name        = "ipgrp-conn-prod-afwp-weu1-001"
       cidr_ranges = ["10.0.0.0/16"]
     }
   ]
-  base_policy_name = "afwp-conn-prod-afwp-wus2-001"
+  base_policy_name = "afwp-conn-prod-afwp-weu1-001"
   base_policy_sku  = "Standard"
   base_policy_rule_collection_groups = [
     {
-      name     = "afwp-conn-prod-afwp-wus2-001"
+      name     = "afwp-conn-prod-afwp-weu1-001"
       priority = 800
       application_rule_collections = [
         {
@@ -77,7 +77,7 @@ inputs = {
             {
               name                       = "all"
               description                = "allow all outbound"
-              source_ip_group_references = ["ipgrp-conn-prod-afwp-wus2-001"]
+              source_ip_group_references = ["ipgrp-conn-prod-afwp-weu1-001"]
               destination_fqdns          = ["*.com", "*.net", "*.org"]
               protocols = {
                 "http" = {
@@ -93,7 +93,7 @@ inputs = {
             {
               name                       = "windowsupdate"
               description                = "allow all outbound"
-              source_ip_group_references = ["ipgrp-conn-prod-afwp-wus2-001"]
+              source_ip_group_references = ["ipgrp-conn-prod-afwp-weu1-001"]
               destination_fqdn_tags      = ["WindowsUpdate"]
               protocols = {
                 "http" = {
@@ -120,7 +120,7 @@ inputs = {
               name                       = "ntp"
               description                = "allow ntp"
               action                     = "Allow"
-              source_ip_group_references = ["ipgrp-conn-prod-afwp-wus2-001"]
+              source_ip_group_references = ["ipgrp-conn-prod-afwp-weu1-001"]
               destination_addresses      = ["*"]
               protocols                  = ["UDP"]
               destination_ports          = ["123"]
@@ -130,7 +130,7 @@ inputs = {
       ]
     }
   ]
-  log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "firewall" })
 }

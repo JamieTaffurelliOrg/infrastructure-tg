@@ -64,12 +64,12 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-app-dev-net-wus2-001"
-  location            = "westus2"
+  resource_group_name = "rg-app-dev-net-weu1-001"
+  location            = "westeurope"
   network_security_groups = [
     {
-      name                = "nsg-app-dev-net-wus2-001"
-      resource_group_name = "rg-app-dev-net-wus2-001"
+      name                = "nsg-app-dev-net-weu1-001"
+      resource_group_name = "rg-app-dev-net-weu1-001"
       rules = [
         {
           name                       = "nsgsr-in-deny-any-any"
@@ -98,8 +98,8 @@ inputs = {
       ]
     },
     {
-      name                = "nsg-app-dev-net-wus2-002"
-      resource_group_name = "rg-app-dev-net-wus2-001"
+      name                = "nsg-app-dev-net-weu1-002"
+      resource_group_name = "rg-app-dev-net-weu1-001"
       rules = [
         {
           name                       = "nsgsr-in-allow-any-any"
@@ -154,8 +154,8 @@ inputs = {
   ]
   route_tables = [
     {
-      name                = "rt-app-dev-net-wus2-001"
-      resource_group_name = "rg-app-dev-net-wus2-001"
+      name                = "rt-app-dev-net-weu1-001"
+      resource_group_name = "rg-app-dev-net-weu1-001"
       routes = [
         {
           name                   = "udr-azurefirewall"
@@ -166,65 +166,65 @@ inputs = {
       ]
     }
   ]
-  virtual_network_name          = "vnet-app-dev-net-wus2-001"
+  virtual_network_name          = "vnet-app-dev-net-weu1-001"
   virtual_network_address_space = ["10.192.0.0/16"]
   subnets = [
     {
       name                             = "snet-web"
       address_prefixes                 = ["10.192.2.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-wus2-001"
-      route_table_reference            = "rt-app-dev-net-wus2-001"
+      network_security_group_reference = "nsg-app-dev-net-weu1-001"
+      route_table_reference            = "rt-app-dev-net-weu1-001"
     },
     {
       name                             = "snet-sql"
       address_prefixes                 = ["10.192.3.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-wus2-002"
-      route_table_reference            = "rt-app-dev-net-wus2-001"
+      network_security_group_reference = "nsg-app-dev-net-weu1-002"
+      route_table_reference            = "rt-app-dev-net-weu1-001"
     }
   ]
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.database.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.blob.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.table.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.queue.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.file.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.web.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.batch.azure.com"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.vaultcore.azure.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     }
   ]
-  network_watcher_name                        = "nw-app-dev-netwat-wus2-001"
+  network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-app-dev-netwat-frc1-001"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
-  storage_account_name                        = "stjtmgmtdevlogwus2001"
-  storage_account_resource_group_name         = "rg-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
+  storage_account_name                        = "stjtmgmtdevlogweu1001"
+  storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "network" })
 }

@@ -28,7 +28,7 @@ EOF
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+  resource_group_name = "rg-conn-dev-prvdns-weu1-001"
   private_dns_zones = [
     {
       name = "privatelink.azure-automation.net"

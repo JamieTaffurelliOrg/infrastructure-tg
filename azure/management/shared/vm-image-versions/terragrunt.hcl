@@ -53,10 +53,10 @@ locals {
 
 inputs = {
 
-  resource_group_name         = "rg-mgmt-shrd-vmimg-wus2-001"
-  location                    = "westus2"
-  user_assigned_identity_name = "galmgmtshrdvmimgwus2001"
-  gallery_name                = "galmgmtshrdvmimgwus2001"
+  resource_group_name         = "rg-mgmt-shrd-vmimg-weu1-001"
+  location                    = "westeurope"
+  user_assigned_identity_name = "galmgmtshrdvmimgweu1001"
+  gallery_name                = "galmgmtshrdvmimgweu1001"
   windows_image_templates = [
     {
       name       = "win2022azimg"
@@ -66,7 +66,7 @@ inputs = {
         "version" : "2022",
         "flavour" : "Azure"
       }
-      hardening_script_url = "https://stjtmgmtshrdvmimgwus2001.blob.core.windows.net/scripts/windows-server-hardening.ps1"
+      hardening_script_url = "https://stjtmgmtshrdvmimgweu1001.blob.core.windows.net/scripts/windows-server-hardening.ps1"
     }
   ]
   tags = merge(local.tags, { workload-name = "images" })

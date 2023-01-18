@@ -64,11 +64,11 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-app-dev-web-wus2-001"
-  location            = "westus2"
+  resource_group_name = "rg-app-dev-web-weu1-001"
+  location            = "westeurope"
   windows_virtual_machines = [
     {
-      name               = "vmappdvwebwus21"
+      name               = "vmappdvwebweu11"
       subnet_reference   = "snet-web"
       private_ip_address = "10.192.2.4"
       size               = "Standard_F2s_v2"
@@ -86,22 +86,22 @@ inputs = {
   subnets = [
     {
       name                 = "snet-web"
-      virtual_network_name = "vnet-app-dev-net-wus2-001"
-      resource_group_name  = "rg-app-dev-net-wus2-001"
+      virtual_network_name = "vnet-app-dev-net-weu1-001"
+      resource_group_name  = "rg-app-dev-net-weu1-001"
     }
   ]
-  password_key_vault_name                = "kv-app-dev-kv-wus2-001"
-  password_key_vault_resource_group_name = "rg-app-dev-kv-wus2-001"
+  password_key_vault_name                = "kv-app-dev-kv-weu1-001"
+  password_key_vault_resource_group_name = "rg-app-dev-kv-weu1-001"
   /*shared_images = [
     {
       name                                     = "win-2022-server-azure"
-      shared_image_gallery_name                = "galmgmtshrdvmimgwus2001"
-      shared_image_gallery_resource_group_name = "rg-mgmt-shrd-vmimg-wus2-001"
+      shared_image_gallery_name                = "galmgmtshrdvmimgweu1001"
+      shared_image_gallery_resource_group_name = "rg-mgmt-shrd-vmimg-weu1-001"
     }
   ]*/
-  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
-  storage_account_name                        = "stjtappdevdiagwus2001"
-  storage_account_resource_group_name         = "rg-app-dev-diag-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
+  storage_account_name                        = "stjtappdevdiagweu1001"
+  storage_account_resource_group_name         = "rg-app-dev-diag-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "network" })
 }

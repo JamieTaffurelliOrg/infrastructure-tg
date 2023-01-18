@@ -42,20 +42,20 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-app-dev-lb-wus2-001"
-  location            = "westus2"
-  load_balancer_name  = "lbi-app-dev-lb-wus2-001"
+  resource_group_name = "rg-app-dev-lb-weu1-001"
+  location            = "westeurope"
+  load_balancer_name  = "lbi-app-dev-lb-weu1-001"
   subnets = [
     {
       name                 = "snet-web"
-      virtual_network_name = "vnet-app-dev-net-wus2-001"
-      resource_group_name  = "rg-app-dev-net-wus2-001"
+      virtual_network_name = "vnet-app-dev-net-weu1-001"
+      resource_group_name  = "rg-app-dev-net-weu1-001"
     }
   ]
   virtual_networks = [
     {
-      name                = "vnet-app-dev-net-wus2-001"
-      resource_group_name = "rg-app-dev-net-wus2-001"
+      name                = "vnet-app-dev-net-weu1-001"
+      resource_group_name = "rg-app-dev-net-weu1-001"
     }
   ]
   frontend_ip_configurations = [
@@ -72,7 +72,7 @@ inputs = {
     {
       name                           = "web-vm"
       backend_address_pool_reference = "web-backend-pool"
-      virtual_network_reference      = "vnet-app-dev-net-wus2-001"
+      virtual_network_reference      = "vnet-app-dev-net-weu1-001"
       private_ip_address             = "10.192.2.8"
     }
   ]

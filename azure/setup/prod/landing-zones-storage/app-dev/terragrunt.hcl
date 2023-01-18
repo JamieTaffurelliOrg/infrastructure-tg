@@ -58,7 +58,7 @@ inputs = {
   network_watcher_resource_group_name = "rg-app-dev-netwat-frc1-001"
   network_watchers = {
     west_us_2 = {
-      name     = "nw-app-dev-netwat-wus2-001"
+      name     = "nw-app-dev-netwat-weu1-001"
       location = "westus2"
     }
   }
@@ -68,15 +68,15 @@ inputs = {
   }
   boot_diagnostic_storage_accounts = [
     {
-      name                = "stjtappdevdiagwus2001"
+      name                = "stjtappdevdiagweu1001"
       location            = "westus2"
-      resource_group_name = "rg-app-dev-diag-wus2-001"
+      resource_group_name = "rg-app-dev-diag-weu1-001"
       default_action      = "Allow"
     }
   ]
   log_analytics_workspace = {
-    name                = "log-mgmt-dev-log-wus2-001"
-    resource_group_name = "rg-mgmt-dev-log-wus2-001"
+    name                = "log-mgmt-dev-log-weu1-001"
+    resource_group_name = "rg-mgmt-dev-log-weu1-001"
   }
   tags = merge(local.tags, { environment = "dev", stack = "app" })
 }
