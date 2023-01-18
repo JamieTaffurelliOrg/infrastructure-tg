@@ -923,7 +923,7 @@ inputs = {
     "app-dev-web-tf-contributor-appdevdiag" = {
       service_principal_reference = "app-dev-web-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-diag-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagfrc1001"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-diag-wus2-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagwus2001"
     }
     "app-dev-web-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "app-dev-web-tf"
