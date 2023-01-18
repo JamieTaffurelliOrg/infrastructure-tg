@@ -1133,7 +1133,7 @@ inputs = {
       name              = "Virtual Network Peerer (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Create and delete Azure VNet peerings"
-      actions           = ["Microsoft.Network/virtualNetworks/*/read", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/*"]
+      actions           = ["Microsoft.Network/virtualNetworks/*/read", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/*", "Microsoft.Network/virtualNetworks/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {

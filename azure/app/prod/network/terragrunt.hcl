@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.6"
 }
 
 include {
@@ -191,6 +191,12 @@ inputs = {
       address_prefixes                 = ["10.64.3.0/24"]
       network_security_group_reference = "nsg-app-prod-net-weu1-002"
       route_table_reference            = "rt-app-prod-net-weu1-001"
+    }
+  ]
+  peerings = [
+    {
+      remote_vnet_name                = "vnet-conn-prod-net-weu1-001"
+      remote_vnet_resource_group_name = "rg-conn-prod-net-weu1-001"
     }
   ]
   private_dns_zones = [

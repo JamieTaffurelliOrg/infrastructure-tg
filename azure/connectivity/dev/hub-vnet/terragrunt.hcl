@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.21"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.22"
 }
 
 include {
@@ -125,6 +125,12 @@ inputs = {
   firewall_subnet_address_prefixes    = ["10.128.0.0/24"]
   bastion_network_security_group_name = "nsg-conn-dev-hub-weu1-002"
   bastion_subnet_address_prefixes     = ["10.128.1.0/24"]
+  peerings = [
+    {
+      remote_vnet_name                = "vnet-app-dev-net-weu1-001"
+      remote_vnet_resource_group_name = "rg-app-dev-net-weu1-001"
+    }
+  ]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-dev-hub-weu1-001"
