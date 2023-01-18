@@ -1239,8 +1239,8 @@ inputs = {
       scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
     }
   }
-  /*log_analytics_workspace = {
+  log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
     resource_group_name = "rg-mgmt-prod-log-weu1-001"
-  }*/
+  }
 }
