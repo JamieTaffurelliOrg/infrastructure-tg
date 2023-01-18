@@ -625,6 +625,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9"
     }
+    "conn-dev-hub-tf-reader-appdevsub" = {
+      service_principal_reference = "conn-dev-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2"
+    }
     "conn-dev-hub-tf-prvdnscontributor-conndevprvdns" = {
       service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Private DNS Zone Contributor"
@@ -754,6 +759,11 @@ inputs = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4"
+    }
+    "conn-prod-hub-tf-reader-appprodsub" = {
+      service_principal_reference = "conn-prod-hub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e"
     }
     "conn-prod-hub-tf-prvdnscontributor-conndevprvdns" = {
       service_principal_reference = "conn-prod-hub-tf"
