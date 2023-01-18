@@ -217,12 +217,12 @@ inputs = {
       route_table_reference            = "rt-app-dev-net-weu1-001"
     }
   ]
-  peerings = [
+  /*peerings = [
     {
       remote_vnet_name                = "vnet-conn-dev-hub-weu1-001"
       remote_vnet_resource_group_name = "rg-conn-dev-hub-weu1-001"
     }
-  ]
+  ]*/
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
