@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.7"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.8"
 }
 
 include {
@@ -76,6 +76,11 @@ inputs = {
       zone               = "1"
       image_reference    = "win-2022-server-azure"
       timezone           = "GMT Standard Time"
+      source_image = {
+        publisher = "MicrosoftWindowsServer"
+        offer     = "WindowsServer"
+        sku       = "2022-datacenter-azure-edition"
+      }
     }
   ]
   subnets = [
@@ -87,13 +92,13 @@ inputs = {
   ]
   password_key_vault_name                = "kv-app-dev-kv-wus2-001"
   password_key_vault_resource_group_name = "rg-app-dev-kv-wus2-001"
-  shared_images = [
+  /*shared_images = [
     {
       name                                     = "win-2022-server-azure"
       shared_image_gallery_name                = "galmgmtshrdvmimgwus2001"
       shared_image_gallery_resource_group_name = "rg-mgmt-shrd-vmimg-wus2-001"
     }
-  ]
+  ]*/
   log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
   storage_account_name                        = "stjtappdevdiagwus2001"
