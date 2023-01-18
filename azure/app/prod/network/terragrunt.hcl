@@ -76,7 +76,7 @@ locals {
 inputs = {
 
   resource_group_name = "rg-app-prod-net-weu1-001"
-  location            = "westeuropeope"
+  location            = "westeurope"
   network_security_groups = [
     {
       name                = "nsg-app-prod-net-weu1-001"
