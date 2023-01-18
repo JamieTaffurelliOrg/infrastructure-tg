@@ -67,12 +67,12 @@ locals {
 
 inputs = {
 
-  resource_group_name                         = "rg-app-prod-kv-wus2-001"
-  location                                    = "westus2"
-  key_vault_name                              = "kv-app-prod-net-wus2-001"
+  resource_group_name                         = "rg-app-prod-kv-weu1-001"
+  location                                    = "westeurope"
+  key_vault_name                              = "kv-app-prod-net-weu1-001"
   network_acl_bypass                          = "AzureServices"
   network_acl_default_action                  = "Allow"
-  log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "secrets" })
 }

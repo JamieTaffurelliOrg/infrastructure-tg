@@ -53,12 +53,12 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-hub-wus2-001"
-  location            = "westus2"
+  resource_group_name = "rg-conn-dev-hub-weu1-001"
+  location            = "westeurope"
   network_security_groups = [
     {
-      name                = "nsg-conn-dev-hub-wus2-001"
-      resource_group_name = "rg-conn-dev-hub-wus2-001"
+      name                = "nsg-conn-dev-hub-weu1-001"
+      resource_group_name = "rg-conn-dev-hub-weu1-001"
       rules = [
         {
           name                       = "nsgsr-in-deny-any-any"
@@ -89,8 +89,8 @@ inputs = {
   ]
   route_tables = [
     {
-      name                = "rt-conn-dev-hub-wus2-001"
-      resource_group_name = "rg-conn-dev-hub-wus2-001"
+      name                = "rt-conn-dev-hub-weu1-001"
+      resource_group_name = "rg-conn-dev-hub-weu1-001"
       routes = [
         {
           name                   = "udr-azurefirewall"
@@ -101,27 +101,27 @@ inputs = {
       ]
     }
   ]
-  virtual_network_name          = "vnet-conn-dev-hub-wus2-001"
+  virtual_network_name          = "vnet-conn-dev-hub-weu1-001"
   virtual_network_address_space = ["10.128.0.0/16"]
   subnets = [
     {
       name                             = "snet-githubactions"
       address_prefixes                 = ["10.128.2.0/24"]
-      network_security_group_reference = "nsg-conn-dev-hub-wus2-001"
-      route_table_reference            = "rt-conn-dev-hub-wus2-001"
+      network_security_group_reference = "nsg-conn-dev-hub-weu1-001"
+      route_table_reference            = "rt-conn-dev-hub-weu1-001"
     }
   ]
   firewall_subnet_address_prefixes    = ["10.128.0.0/24"]
-  bastion_network_security_group_name = "nsg-conn-dev-hub-wus2-002"
+  bastion_network_security_group_name = "nsg-conn-dev-hub-weu1-002"
   bastion_subnet_address_prefixes     = ["10.128.1.0/24"]
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-hub-wus2-001"
+      name          = "ippre-conn-dev-hub-weu1-001"
       ip_version    = "IPv4"
       prefix_length = 30
     },
     {
-      name          = "ippre-conn-dev-hub-wus2-002"
+      name          = "ippre-conn-dev-hub-weu1-002"
       ip_version    = "IPv6"
       prefix_length = 126
     }
@@ -129,46 +129,46 @@ inputs = {
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.database.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.blob.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.table.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.queue.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.file.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.web.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.batch.azure.com"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
       name                = "privatelink.vaultcore.azure.net"
-      resource_group_name = "rg-conn-dev-prvdns-wus2-001"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     }
   ]
-  network_watcher_name                        = "nw-conn-dev-netwat-wus2-001"
+  network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-conn-dev-netwat-frc1-001"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
-  storage_account_name                        = "stjtmgmtdevlogwus2001"
-  storage_account_resource_group_name         = "rg-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
+  storage_account_name                        = "stjtmgmtdevlogweu1001"
+  storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "hub" })
 }

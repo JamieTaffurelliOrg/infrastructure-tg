@@ -44,7 +44,7 @@ inputs = {
 
   resource_groups = [
     {
-      name     = "rg-mgmt-shrd-vmimg-wus2-001"
+      name     = "rg-mgmt-shrd-vmimg-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "images" })
     }

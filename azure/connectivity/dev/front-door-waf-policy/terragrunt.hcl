@@ -53,8 +53,8 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-fdfp-wus2-001"
-  waf_policy_name     = "fdfpconndevfdfpwus2001"
+  resource_group_name = "rg-conn-dev-fdfp-weu1-001"
+  waf_policy_name     = "fdfpconndevfdfpweu1001"
   mode                = "Detection"
   custom_rules = [
     {

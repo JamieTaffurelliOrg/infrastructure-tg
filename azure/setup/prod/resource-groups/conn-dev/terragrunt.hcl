@@ -44,32 +44,32 @@ inputs = {
 
   resource_groups = [
     {
-      name     = "rg-conn-dev-hub-wus2-001"
+      name     = "rg-conn-dev-hub-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "hub" })
     },
     {
-      name     = "rg-conn-dev-prvdns-wus2-001"
+      name     = "rg-conn-dev-prvdns-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "private-dns" })
     },
     {
-      name     = "rg-conn-dev-bas-wus2-001"
+      name     = "rg-conn-dev-bas-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "bastion" })
     },
     {
-      name     = "rg-conn-dev-afwp-wus2-001"
+      name     = "rg-conn-dev-afwp-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "firewall" })
     },
     {
-      name     = "rg-conn-dev-fdfp-wus2-001"
+      name     = "rg-conn-dev-fdfp-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "front-door" })
     },
     {
-      name     = "rg-conn-dev-afd-wus2-001"
+      name     = "rg-conn-dev-afd-weu1-001"
       location = "westus2"
       tags     = merge(local.tags, { workload-name = "front-door" })
     }

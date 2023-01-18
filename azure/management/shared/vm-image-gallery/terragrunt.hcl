@@ -53,9 +53,9 @@ locals {
 
 inputs = {
 
-  resource_group_name       = "rg-mgmt-shrd-vmimg-wus2-001"
-  location                  = "westus2"
-  image_gallery_name        = "galmgmtshrdvmimgwus2001"
+  resource_group_name       = "rg-mgmt-shrd-vmimg-weu1-001"
+  location                  = "westeurope"
+  image_gallery_name        = "galmgmtshrdvmimgweu1001"
   image_gallery_description = "Store and share compliant VM images for deployment of VMs"
   images = [
     {
@@ -68,13 +68,13 @@ inputs = {
       hyper_v_generation = "V2"
     }
   ]
-  storage_account_name = "stjtmgmtshrdvmimgwus2001"
+  storage_account_name = "stjtmgmtshrdvmimgweu1001"
   storage_account_network_rules = {
     default_action = "Allow"
   }
   log_analytics_workspace = {
-    name                = "log-mgmt-prod-log-wus2-001"
-    resource_group_name = "rg-mgmt-prod-log-wus2-001"
+    name                = "log-mgmt-prod-log-weu1-001"
+    resource_group_name = "rg-mgmt-prod-log-weu1-001"
   }
   tags = merge(local.tags, { workload-name = "images" })
 }

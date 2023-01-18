@@ -56,10 +56,10 @@ locals {
 
 inputs = {
 
-  resource_group_name          = "rg-mgmt-dev-log-wus2-001"
-  location                     = "westus2"
-  log_analytics_workspace_name = "log-mgmt-dev-log-wus2-001"
-  automation_account_name      = "aa-mgmt-dev-log-wus2-001"
-  storage_account_name         = "stjtmgmtdevlogwus2001"
+  resource_group_name          = "rg-mgmt-dev-log-weu1-001"
+  location                     = "westeurope"
+  log_analytics_workspace_name = "log-mgmt-dev-log-weu1-001"
+  automation_account_name      = "aa-mgmt-dev-log-weu1-001"
+  storage_account_name         = "stjtmgmtdevlogweu1001"
   tags                         = merge(local.tags, { workload-name = "logging" })
 }

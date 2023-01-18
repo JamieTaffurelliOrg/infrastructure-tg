@@ -53,15 +53,15 @@ locals {
 
 inputs = {
 
-  resource_group_name                         = "rg-conn-prod-bas-wus2-001"
-  location                                    = "westus2"
-  public_ip_name                              = "pip-conn-prod-bas-wus2-001"
-  public_ip_prefix_name                       = "ippre-conn-prod-hub-wus2-001"
-  public_ip_prefix_resource_group_name        = "rg-conn-prod-hub-wus2-001"
-  bastion_host_name                           = "bas-conn-prod-bas-wus2-001"
-  virtual_network_name                        = "vnet-conn-prod-hub-wus2-001"
-  virtual_network_resource_group_name         = "rg-conn-prod-hub-wus2-001"
-  log_analytics_workspace_name                = "log-mgmt-prod-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-wus2-001"
+  resource_group_name                         = "rg-conn-prod-bas-weu1-001"
+  location                                    = "westeurope"
+  public_ip_name                              = "pip-conn-prod-bas-weu1-001"
+  public_ip_prefix_name                       = "ippre-conn-prod-hub-weu1-001"
+  public_ip_prefix_resource_group_name        = "rg-conn-prod-hub-weu1-001"
+  bastion_host_name                           = "bas-conn-prod-bas-weu1-001"
+  virtual_network_name                        = "vnet-conn-prod-hub-weu1-001"
+  virtual_network_resource_group_name         = "rg-conn-prod-hub-weu1-001"
+  log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "bastion" })
 }

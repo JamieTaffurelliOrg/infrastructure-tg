@@ -53,10 +53,10 @@ locals {
 
 inputs = {
 
-  resource_group_name            = "rg-conn-dev-afd-wus2-001"
-  front_door_profile_name        = "afdconndevafdwus2001"
-  waf_policy_name                = "fdfpconndevfdfpwus2001"
-  waf_policy_resource_group_name = "rg-conn-dev-fdfp-wus2-001"
+  resource_group_name            = "rg-conn-dev-afd-weu1-001"
+  front_door_profile_name        = "afdconndevafdweu1001"
+  waf_policy_name                = "fdfpconndevfdfpweu1001"
+  waf_policy_resource_group_name = "rg-conn-dev-fdfp-weu1-001"
   front_door_endpoints = [
     {
       name = "jamietaffurelli"
@@ -104,7 +104,7 @@ inputs = {
     name                     = "waf-association"
     custom_domain_references = ["jamietaffurelli-blog-cd"]
   }
-  log_analytics_workspace_name                = "log-mgmt-dev-log-wus2-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-wus2-001"
+  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "front-door" })
 }
