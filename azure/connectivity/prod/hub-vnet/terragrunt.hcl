@@ -125,6 +125,12 @@ inputs = {
   firewall_subnet_address_prefixes    = ["10.0.0.0/24"]
   bastion_network_security_group_name = "nsg-conn-prod-hub-weu1-002"
   bastion_subnet_address_prefixes     = ["10.0.1.0/24"]
+  peerings = [
+    {
+      remote_vnet_name                = "vnet-app-prod-net-weu1-001"
+      remote_vnet_resource_group_name = "rg-app-prod-net-weu1-001"
+    }
+  ]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-prod-hub-weu1-001"
