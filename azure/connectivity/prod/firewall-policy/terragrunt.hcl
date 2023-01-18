@@ -117,12 +117,30 @@ inputs = {
           action   = "Allow"
           rules = [
             {
-              name                       = "all"
+              name                       = "tcp-all"
               description                = "allow all"
               action                     = "Allow"
-              source_ip_group_references = ["ipgrp-conn-prod-afwp-weu1-001"]
+              source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
               destination_addresses      = ["*"]
-              protocols                  = ["*"]
+              protocols                  = ["TCP"]
+              destination_ports          = ["*"]
+            },
+            {
+              name                       = "udp-all"
+              description                = "allow all"
+              action                     = "Allow"
+              source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
+              destination_addresses      = ["*"]
+              protocols                  = ["UDP"]
+              destination_ports          = ["*"]
+            },
+            {
+              name                       = "icmp-all"
+              description                = "allow all"
+              action                     = "Allow"
+              source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
+              destination_addresses      = ["*"]
+              protocols                  = ["ICMP"]
               destination_ports          = ["*"]
             }
           ]
