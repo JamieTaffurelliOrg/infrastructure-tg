@@ -259,6 +259,11 @@ inputs = {
     {
       name                = "privatelink.vaultcore.azure.net"
       resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                 = "internal.jamietaffurelli.com"
+      resource_group_name  = "rg-conn-dev-prvdns-weu1-001"
+      registration_enabled = true
     }
   ]
   network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
