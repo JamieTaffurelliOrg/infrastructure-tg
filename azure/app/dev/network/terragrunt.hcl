@@ -72,11 +72,35 @@ inputs = {
       resource_group_name = "rg-app-dev-net-weu1-001"
       rules = [
         {
+          name                       = "nsgsr-in-allow-any-any"
+          description                = "Deny all inbound traffic"
+          priority                   = 3999
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
           name                       = "nsgsr-in-deny-any-any"
           description                = "Deny all inbound traffic"
           priority                   = 4000
           direction                  = "Inbound"
           access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-out-allow-any-any"
+          description                = "Deny all outbound traffic"
+          priority                   = 3999
+          direction                  = "Outbound"
+          access                     = "Allow"
           protocol                   = "*"
           source_port_range          = "*"
           destination_port_range     = "*"
