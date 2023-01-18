@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.4"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.5"
 }
 
 include {
@@ -44,6 +44,17 @@ provider "azurerm" {
     }
   }
 }
+
+provider "azurerm" {
+  alias = "hub"
+  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
 EOF
 
 }
@@ -65,18 +76,42 @@ locals {
 inputs = {
 
   resource_group_name = "rg-app-prod-net-weu1-001"
-  location            = "westeuropeope"
+  location            = "westeurope"
   network_security_groups = [
     {
       name                = "nsg-app-prod-net-weu1-001"
       resource_group_name = "rg-app-prod-net-weu1-001"
       rules = [
         {
+          name                       = "nsgsr-in-allow-any-any"
+          description                = "Deny all inbound traffic"
+          priority                   = 3999
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
           name                       = "nsgsr-in-deny-any-any"
           description                = "Deny all inbound traffic"
           priority                   = 4000
           direction                  = "Inbound"
           access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-out-allow-any-any"
+          description                = "Deny all outbound traffic"
+          priority                   = 3999
+          direction                  = "Outbound"
+          access                     = "Allow"
           protocol                   = "*"
           source_port_range          = "*"
           destination_port_range     = "*"

@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.19"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.21"
 }
 
 include {
@@ -26,6 +26,17 @@ provider "azurerm" {
 provider "azurerm" {
   alias = "logs"
   subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "spoke"
+  subscription_id = "e1806152-a836-4eed-b591-d76f6267b6d2"
 
   features {
     resource_group {
