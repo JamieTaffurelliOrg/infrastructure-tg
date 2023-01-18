@@ -57,9 +57,9 @@ inputs = {
   resource_group_name                 = "rg-conn-dev-tf-frc1-001"
   network_watcher_resource_group_name = "rg-conn-dev-netwat-frc1-001"
   network_watchers = {
-    west_us_2 = {
+    west_europe = {
       name     = "nw-conn-dev-netwat-weu1-001"
-      location = "westus2"
+      location = "westeurope"
     }
   }
   containers = ["conn-dev"]
