@@ -33,6 +33,17 @@ provider "azurerm" {
     }
   }
 }
+
+provider "azurerm" {
+  alias = "spoke"
+  subscription_id = "018499bc-61fd-4799-8107-d4ff6616527e"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
 EOF
 
 }

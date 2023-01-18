@@ -1238,10 +1238,10 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-sql"
     }
-    "app-prod-net-tf-vnetpeer-appdevnet" = {
+    "app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-prod-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-weu1-001"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-weu1-001"
     }
     "app-prod-lb-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "app-prod-lb-tf"
