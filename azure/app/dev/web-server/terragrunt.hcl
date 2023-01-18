@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.8"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.9"
 }
 
 include {
@@ -77,6 +77,10 @@ inputs = {
       zone                          = "1"
       image_reference               = "win-2022-server-azure"
       timezone                      = "GMT Standard Time"
+      enable_automatic_updates      = true
+      hotpatching_enabled           = true
+      patch_assessment_mode         = "AutomaticByPlatform"
+      patch_mode                    = "AutomaticByPlatform"
       source_image = {
         publisher = "MicrosoftWindowsServer"
         offer     = "WindowsServer"
