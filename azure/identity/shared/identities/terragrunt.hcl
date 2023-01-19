@@ -1185,7 +1185,14 @@ inputs = {
         "Microsoft.Compute/images/delete"
       ]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    }
+    },
+    {
+      name              = "SQL VM Register (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Register the Microsoft.SqlVirtualMachine provider to a subscription"
+      actions           = ["Microsoft.SqlVirtualMachine/register/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
   ]
   custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
@@ -1283,6 +1290,11 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-sql"
     }
+    "app-dev-sql-tf-sqlreg-appdev" = {
+      service_principal_reference = "app-dev-sql-tf"
+      custom_role_reference       = "SQL VM Register (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2"
+    }
     "app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
@@ -1302,6 +1314,11 @@ inputs = {
       service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-sql"
+    }
+    "app-prod-sql-tf-sqlreg-appprod" = {
+      service_principal_reference = "app-prod-sql-tf"
+      custom_role_reference       = "SQL VM Register (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e"
     }
   }
   custom_rbac_role_assignments_objects = {
