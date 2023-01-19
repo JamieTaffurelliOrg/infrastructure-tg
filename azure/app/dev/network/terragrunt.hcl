@@ -196,7 +196,7 @@ inputs = {
           name                   = "udr-azurefirewall"
           address_prefix         = "0.0.0.0/0"
           next_hop_type          = "VirtualAppliance"
-          next_hop_in_ip_address = "1.128.0.4"
+          next_hop_in_ip_address = "10.128.0.4"
         }
       ]
     }
