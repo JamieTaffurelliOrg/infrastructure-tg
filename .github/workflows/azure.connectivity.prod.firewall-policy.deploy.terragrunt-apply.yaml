@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/connectivity/prod/firewall-policy**'
+      - 'azure/connectivity/prod/firewall-policy/**'
   workflow_dispatch:
     inputs:
       logLevel:
