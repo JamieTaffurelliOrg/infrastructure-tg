@@ -1040,6 +1040,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
     }
+    "app-prod-web-tf-contributor-appproddiag" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappproddiagweu1001"
+    }
+    "app-prod-web-tf-reader-mgmtshrdimg" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
+    }
+    "app-prod-web-tf-kvadmin-appprodkv" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Key Vault Administrator"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
+    }
     "app-prod-sql-tf-contributor-appprodsql" = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Contributor"
@@ -1258,12 +1273,12 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001"
     }
-    "app-prod-web-tf-subnetjoin-appdevnet" = {
+    "app-prod-web-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "app-prod-web-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-web"
     }
-    "app-prod-sql-tf-subnetjoin-appdevnet" = {
+    "app-prod-sql-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-sql"
