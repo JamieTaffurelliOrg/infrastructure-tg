@@ -72,8 +72,8 @@ inputs = {
     {
       name = "blog-og"
       health_probes = {
-        "https" = {
-          protocol = "Https"
+        "http" = {
+          protocol = "Http"
         }
       }
     }
@@ -82,7 +82,14 @@ inputs = {
     {
       name                   = "blog-origin"
       origin_group_reference = "blog-og"
-      host_name              = "internal.blog.jamietaffurelli.com"
+      host_name              = "vmappdvwebweu11.weu1.internal.jamietaffurellidev.com"
+      private_link = {
+        "app" = {
+          target_type            = "sites"
+          location               = "westeurope"
+          private_link_target_id = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001"
+        }
+      }
     }
   ]
   front_door_routes = [
@@ -93,9 +100,9 @@ inputs = {
       origin_references = [
         "blog-origin"
       ]
-      forwarding_protocol      = "HttpsOnly"
+      forwarding_protocol      = "HttpOnly"
       patterns_to_match        = ["/*"]
-      supported_protocols      = ["Http", "Https"]
+      supported_protocols      = ["Http"]
       custom_domain_references = ["jamietaffurelli-blog-cd"]
       link_to_default_domain   = true
     }
