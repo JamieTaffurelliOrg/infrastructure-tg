@@ -123,7 +123,7 @@ inputs = {
               source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
               destination_addresses      = ["*"]
               protocols                  = ["TCP"]
-              destination_ports          = ["*"]
+              destination_ports          = ["0-65536"]
             },
             {
               name                       = "udp-all"
@@ -132,7 +132,7 @@ inputs = {
               source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
               destination_addresses      = ["*"]
               protocols                  = ["UDP"]
-              destination_ports          = ["*"]
+              destination_ports          = ["0-65536"]
             }
           ]
         }
