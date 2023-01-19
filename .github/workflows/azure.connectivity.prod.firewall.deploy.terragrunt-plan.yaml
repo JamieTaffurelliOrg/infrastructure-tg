@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/connectivity/prod/firewall**'
+      - 'azure/connectivity/prod/firewall/**'
   workflow_dispatch:
     inputs:
       logLevel:
