@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.11"
 }
 
 include {
@@ -81,6 +81,24 @@ inputs = {
         publisher = "MicrosoftSQLServer"
         offer     = "sql2022-ws2022"
         sku       = "web-gen2"
+      }
+      disks = [
+        {
+          name         = "datadisk-1"
+          disk_size_gb = 127
+          lun          = 2
+        },
+        {
+          name         = "logdisk-1"
+          disk_size_gb = 127
+          lun          = 3
+        }
+      ]
+      sql = {
+        data_file_path = "F:\\data"
+        data_luns      = [2]
+        log_file_path  = "G:\\data"
+        log_luns       = [3]
       }
     }
   ]
