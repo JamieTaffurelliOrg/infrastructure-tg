@@ -910,11 +910,6 @@ inputs = {
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
     }
-    "app-dev-lb-tf-prvdnscontributor-conndevprvdns" = {
-      service_principal_reference = "app-dev-lb-tf"
-      role_definition_name        = "Private DNS Zone Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-prvdns-weu1-001"
-    }
     "app-dev-web-tf-contributor-appdevweb" = {
       service_principal_reference = "app-dev-web-tf"
       role_definition_name        = "Contributor"
@@ -1019,11 +1014,6 @@ inputs = {
       service_principal_reference = "app-prod-lb-tf"
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
-    }
-    "app-prod-lb-tf-prvdnscontributor-conndevprvdns" = {
-      service_principal_reference = "app-prod-lb-tf"
-      role_definition_name        = "Private DNS Zone Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-prvdns-weu1-001"
     }
     "app-prod-web-tf-contributor-appprodweb" = {
       service_principal_reference = "app-prod-web-tf"

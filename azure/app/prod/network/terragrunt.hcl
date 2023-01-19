@@ -238,7 +238,7 @@ inputs = {
     },
     {
       name                 = "weu1.internal.jamietaffurelli.com"
-      resource_group_name  = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name  = "rg-conn-prod-prvdns-weu1-001"
       registration_enabled = true
     }
   ]
