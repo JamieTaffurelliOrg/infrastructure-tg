@@ -193,12 +193,12 @@ inputs = {
       route_table_reference            = "rt-app-prod-net-weu1-001"
     }
   ]
-  peerings = [
+  /*peerings = [
     {
       remote_vnet_name                = "vnet-conn-prod-hub-weu1-001"
       remote_vnet_resource_group_name = "rg-conn-prod-hub-weu1-001"
     }
-  ]
+  ]*/
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
@@ -237,7 +237,7 @@ inputs = {
       resource_group_name = "rg-conn-prod-prvdns-weu1-001"
     },
     {
-      name                 = "internal.jamietaffurelli.com"
+      name                 = "weu1.internal.jamietaffurelli.com"
       resource_group_name  = "rg-conn-dev-prvdns-weu1-001"
       registration_enabled = true
     }
