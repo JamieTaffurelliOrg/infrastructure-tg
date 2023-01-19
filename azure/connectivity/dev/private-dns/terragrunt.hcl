@@ -58,7 +58,7 @@ inputs = {
       name = "privatelink.vaultcore.azure.net"
     },
     {
-      name = "internal.jamietaffurellidev.com"
+      name = "weu1.internal.jamietaffurellidev.com"
     }
   ]
 }
