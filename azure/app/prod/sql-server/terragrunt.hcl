@@ -64,29 +64,29 @@ locals {
 
 inputs = {
 
-  resource_group_name = "rg-app-prod-web-weu1-001"
+  resource_group_name = "rg-app-prod-sql-weu1-001"
   location            = "westeurope"
   windows_virtual_machines = [
     {
-      name                          = "vmappprwebweu11"
-      subnet_reference              = "snet-web"
+      name                          = "vmappprsqlweu11"
+      subnet_reference              = "snet-sql"
       enable_accelerated_networking = false
-      private_ip_address            = "10.64.2.8"
+      private_ip_address            = "10.64.3.8"
       size                          = "Standard_B2ms"
       admin_username                = "servermonkey"
       zone                          = "1"
       image_reference               = "win-2022-server-azure"
       timezone                      = "GMT Standard Time"
       source_image = {
-        publisher = "MicrosoftWindowsServer"
-        offer     = "WindowsServer"
-        sku       = "2022-datacenter-azure-edition"
+        publisher = "MicrosoftSQLServer"
+        offer     = "sql2022-ws2022"
+        sku       = "web-gen2"
       }
     }
   ]
   subnets = [
     {
-      name                 = "snet-web"
+      name                 = "snet-sql"
       virtual_network_name = "vnet-app-prod-net-weu1-001"
       resource_group_name  = "rg-app-prod-net-weu1-001"
     }
@@ -104,5 +104,5 @@ inputs = {
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
   storage_account_name                        = "stjtappproddiagweu1001"
   storage_account_resource_group_name         = "rg-app-prod-diag-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "web" })
+  tags                                        = merge(local.tags, { workload-name = "sql" })
 }

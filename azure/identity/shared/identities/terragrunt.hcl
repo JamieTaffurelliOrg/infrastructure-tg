@@ -955,6 +955,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "app-dev-sql-tf-contributor-appdevdiag" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1001"
+    }
+    "app-dev-sql-tf-reader-mgmtshrdimg" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
+    }
+    "app-dev-sql-tf-kvadmin-appdevkv" = {
+      service_principal_reference = "app-dev-sql-tf"
+      role_definition_name        = "Key Vault Administrator"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
+    }
     "app-dev-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "app-dev-kv-tf"
       role_definition_name        = "Contributor"
@@ -1059,6 +1074,21 @@ inputs = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
+    }
+    "app-prod-sql-tf-contributor-appproddiag" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappproddiagweu1001"
+    }
+    "app-prod-sql-tf-reader-mgmtshrdimg" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
+    }
+    "app-prod-sql-tf-kvadmin-appprodkv" = {
+      service_principal_reference = "app-prod-sql-tf"
+      role_definition_name        = "Key Vault Administrator"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
     }
     "app-prod-kv-tf-contributor-appprodkv" = {
       service_principal_reference = "app-prod-kv-tf"

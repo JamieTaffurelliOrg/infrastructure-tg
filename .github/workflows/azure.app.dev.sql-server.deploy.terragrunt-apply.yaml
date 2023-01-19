@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'azure/app/dev/sql-server**'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'INFO'
+        type: choice
+        options:
+        - INFO
+        - WARNING
+        - DEBUG
+
+concurrency: ci-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  call-terraform-apply-workflow:
+    uses: ./.github/workflows/azure.terragrunt-apply.yaml
+    with:
+      terragrunt-working-dir: './azure/app/dev/sql-server'
+      environment: app.dev.sql-server.deploy
+      log-level: ${{ inputs.logLevel }}
+    secrets: inherit
