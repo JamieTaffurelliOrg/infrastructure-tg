@@ -305,7 +305,7 @@ inputs = {
       application_id_reference = "app-dev-sql-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.sql.deploy"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.sql-server.deploy"
     }
     "app-dev-kv-tf-deploy" = {
       display_name             = "deploy"
@@ -333,7 +333,7 @@ inputs = {
       application_id_reference = "app-prod-sql-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
-      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql.deploy"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.prod.sql-server.deploy"
     }
     "app-prod-kv-tf-deploy" = {
       display_name             = "deploy"
