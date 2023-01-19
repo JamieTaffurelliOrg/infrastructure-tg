@@ -78,10 +78,12 @@ inputs = {
   ]
   probes = [
     {
-      name         = "Https-probe"
-      port         = 443
-      protocol     = "Https"
-      request_path = "/"
+      name                = "Https-probe"
+      port                = 443
+      protocol            = "Https"
+      request_path        = "/"
+      interval_in_seconds = 10
+      number_of_probes    = 1
     }
   ]
   rules = [
