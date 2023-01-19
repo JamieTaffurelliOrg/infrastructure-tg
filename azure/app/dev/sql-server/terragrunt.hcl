@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.10"
 }
 
 include {
@@ -96,9 +96,9 @@ inputs = {
       ]
       sql = {
         data_file_path = "F:\\data"
-        data_lun       = 2
+        data_luns      = [2]
         log_file_path  = "G:\\data"
-        log_lun        = 3
+        log_luns       = [3]
       }
     }
   ]
