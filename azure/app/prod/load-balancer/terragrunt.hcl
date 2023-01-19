@@ -78,9 +78,9 @@ inputs = {
   ]
   probes = [
     {
-      name                = "Https-probe"
-      port                = 443
-      protocol            = "Https"
+      name                = "Http-probe"
+      port                = 80
+      protocol            = "Http"
       request_path        = "/"
       interval_in_seconds = 10
       number_of_probes    = 1
@@ -90,11 +90,11 @@ inputs = {
     {
       name                            = "https-rule"
       protocol                        = "Tcp"
-      frontend_port                   = 443
-      backend_port                    = 443
+      frontend_port                   = 80
+      backend_port                    = 80
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
       backend_address_pool_references = ["web-backend-pool"]
-      probe_reference                 = "Https-probe"
+      probe_reference                 = "Http-probe"
     }
   ]
   tags = merge(local.tags, { workload-name = "network" })
