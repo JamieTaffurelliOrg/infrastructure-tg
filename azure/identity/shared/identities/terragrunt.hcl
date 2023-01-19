@@ -730,6 +730,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-fdfp-weu1-001"
     }
+    "conn-dev-afd-tf-cont-appdevlb" = {
+      service_principal_reference = "conn-dev-afd-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001"
+    }
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
