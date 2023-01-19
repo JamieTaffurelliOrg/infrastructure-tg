@@ -121,7 +121,7 @@ inputs = {
               description                = "allow all"
               action                     = "Allow"
               source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
-              destination_addresses      = ["*"]
+              destination_addresses      = ["0.0.0.0/0"]
               protocols                  = ["TCP"]
               destination_ports          = ["1-65535"]
             },
@@ -130,7 +130,7 @@ inputs = {
               description                = "allow all"
               action                     = "Allow"
               source_ip_group_references = ["ipgrp-conn-dev-afwp-weu1-001"]
-              destination_addresses      = ["*"]
+              destination_addresses      = ["0.0.0.0/0"]
               protocols                  = ["UDP"]
               destination_ports          = ["1-65535"]
             }
