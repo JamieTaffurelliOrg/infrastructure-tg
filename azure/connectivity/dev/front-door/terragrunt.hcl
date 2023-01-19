@@ -84,9 +84,11 @@ inputs = {
       origin_group_reference = "blog-og"
       host_name              = "vmappdvwebweu11.weu1.internal.jamietaffurellidev.com"
       private_link = {
-        target_type            = "sites"
-        location               = "westeurope"
-        private_link_target_id = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001"
+        "app" = {
+          target_type            = "sites"
+          location               = "westeurope"
+          private_link_target_id = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001"
+        }
       }
     }
   ]
