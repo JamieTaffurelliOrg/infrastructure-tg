@@ -1199,6 +1199,13 @@ inputs = {
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
+      name              = "Private Link Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Attach resources to private links"
+      actions           = ["Microsoft.Network/privateLinkServices/read", "Microsoft.Network/privateLinkServices/privateEndpointConnections/read"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
       name        = "Image Creator (Custom)"
       scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description = "Create and delete Azure Firewalls"
@@ -1262,6 +1269,11 @@ inputs = {
       custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-hub-weu1-001"
     }
+    "conn-dev-afd-tf-fwcont-conndevhub" = {
+      service_principal_reference = "conn-dev-afd-tf"
+      custom_role_reference       = "Private Link Joiner (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
+    }
     "conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
@@ -1296,6 +1308,11 @@ inputs = {
       service_principal_reference = "conn-prod-afw-tf"
       custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-weu1-001"
+    }
+    "conn-dev-afd-tf-fwcont-conndevhub" = {
+      service_principal_reference = "conn-dev-afd-tf"
+      custom_role_reference       = "Private Link Joiner (Custom)"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
     }
     "app-dev-net-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "app-dev-net-tf"
