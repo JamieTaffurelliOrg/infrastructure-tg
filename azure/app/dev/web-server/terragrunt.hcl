@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.12"
 }
 
 include {
@@ -68,15 +68,16 @@ inputs = {
   location            = "westeurope"
   windows_virtual_machines = [
     {
-      name                          = "vmappdvwebweu11"
-      subnet_reference              = "snet-web"
-      enable_accelerated_networking = false
-      private_ip_address            = "10.192.2.8"
-      size                          = "Standard_B2ms"
-      admin_username                = "servermonkey"
-      zone                          = "1"
-      image_reference               = "win-2022-server-azure"
-      timezone                      = "GMT Standard Time"
+      name                           = "vmappdvwebweu11"
+      subnet_reference               = "snet-web"
+      enable_accelerated_networking  = false
+      private_ip_address             = "10.192.2.8"
+      backend_address_pool_reference = "web-backend-pool"
+      size                           = "Standard_B2ms"
+      admin_username                 = "servermonkey"
+      zone                           = "1"
+      image_reference                = "win-2022-server-azure"
+      timezone                       = "GMT Standard Time"
       source_image = {
         publisher = "MicrosoftWindowsServer"
         offer     = "WindowsServer"
@@ -89,6 +90,18 @@ inputs = {
       name                 = "snet-web"
       virtual_network_name = "vnet-app-dev-net-weu1-001"
       resource_group_name  = "rg-app-dev-net-weu1-001"
+    }
+  ]
+  load_balancers = [
+    {
+      name                = "lbi-app-dev-lb-weu1-001"
+      resource_group_name = "rg-app-dev-lb-weu1-001"
+    }
+  ]
+  backend_address_pools = [
+    {
+      name                    = "web-backend-pool"
+      load_balancer_reference = "lbi-app-dev-lb-weu1-001"
     }
   ]
   password_key_vault_name                = "kv-app-dev-kv-weu1-001"

@@ -940,6 +940,11 @@ inputs = {
       role_definition_name        = "Key Vault Administrator"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
     }
+    "app-dev-web-tf-reader-appdevlb" = {
+      service_principal_reference = "app-dev-web-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001"
+    }
     "app-dev-sql-tf-contributor-appdevsql" = {
       service_principal_reference = "app-dev-sql-tf"
       role_definition_name        = "Contributor"
@@ -1060,6 +1065,11 @@ inputs = {
       role_definition_name        = "Key Vault Administrator"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
     }
+    "app-prod-web-tf-reader-appdevlb" = {
+      service_principal_reference = "app-prod-web-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-lb-weu1-001"
+    }
     "app-prod-sql-tf-contributor-appprodsql" = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Contributor"
@@ -1169,6 +1179,13 @@ inputs = {
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Create and delete Azure VNet peerings"
       actions           = ["Microsoft.Network/virtualNetworks/*/read", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/*", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/virtualNetworks/peer/*"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Load Balancer Backend Address Pool Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Attach resources to backend address pool of a load balancer"
+      actions           = ["Microsoft.Network/loadBalancers/backendAddressPools/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
@@ -1285,6 +1302,11 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-web"
     }
+    "app-dev-web-tf-lbjoin-appdevlb" = {
+      service_principal_reference = "app-dev-web-tf"
+      custom_role_reference       = "Load Balancer Backend Address Pool Joiner (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001/backendAddressPools/web-backend-pool"
+    }
     "app-dev-sql-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-sql-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
@@ -1309,6 +1331,11 @@ inputs = {
       service_principal_reference = "app-prod-web-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-web"
+    }
+    "app-prod-web-tf-lbjoin-appprodlb" = {
+      service_principal_reference = "app-prod-web-tf"
+      custom_role_reference       = "Load Balancer Backend Address Pool Joiner (Custom)"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-prod-lb-weu1-001/backendAddressPools/web-backend-pool"
     }
     "app-prod-sql-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "app-prod-sql-tf"

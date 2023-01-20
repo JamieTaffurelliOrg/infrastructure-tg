@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.10"
 }
 
 include {
@@ -15,6 +15,17 @@ generate "provider" {
   contents = <<EOF
 provider "azurerm" {
   subscription_id = "018499bc-61fd-4799-8107-d4ff6616527e"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "logs"
+  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
 
   features {
     resource_group {
@@ -67,14 +78,6 @@ inputs = {
   ]
   backend_address_pools = [
     "web-backend-pool"
-  ]
-  backend_address_pool_addresses = [
-    {
-      name                           = "web-vm"
-      backend_address_pool_reference = "web-backend-pool"
-      virtual_network_reference      = "vnet-app-prod-net-weu1-001"
-      private_ip_address             = "10.64.2.8"
-    }
   ]
   probes = [
     {
