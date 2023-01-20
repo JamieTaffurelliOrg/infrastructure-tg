@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.8"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.9"
 }
 
 include {
@@ -95,6 +95,21 @@ inputs = {
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
       backend_address_pool_references = ["web-backend-pool"]
       probe_reference                 = "Http-probe"
+    }
+  ]
+  private_link_services = [
+    {
+      name                                 = "web"
+      auto_approval_subscription_ids       = ["58b4ad6f-a160-4b9e-841b-e177f66137c9", "e1806152-a836-4eed-b591-d76f6267b6d2"]
+      frontend_ip_configuration_references = ["frontend-internal-web-ip"]
+      nat_ip_configurations = [
+        {
+          name               = "nat1"
+          private_ip_address = "10.192.2.5"
+          subnet_reference   = "snet-web"
+          primary            = true
+        }
+      ]
     }
   ]
   tags = merge(local.tags, { workload-name = "network" })
