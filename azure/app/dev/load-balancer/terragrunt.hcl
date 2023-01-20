@@ -101,6 +101,7 @@ inputs = {
     {
       name                                 = "web"
       auto_approval_subscription_ids       = ["58b4ad6f-a160-4b9e-841b-e177f66137c9", "e1806152-a836-4eed-b591-d76f6267b6d2"]
+      visibility_subscription_ids          = ["58b4ad6f-a160-4b9e-841b-e177f66137c9", "e1806152-a836-4eed-b591-d76f6267b6d2"]
       frontend_ip_configuration_references = ["frontend-internal-web-ip"]
       nat_ip_configurations = [
         {
