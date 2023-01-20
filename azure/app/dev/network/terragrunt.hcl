@@ -205,10 +205,11 @@ inputs = {
   virtual_network_address_space = ["10.192.0.0/16"]
   subnets = [
     {
-      name                             = "snet-web"
-      address_prefixes                 = ["10.192.2.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-weu1-001"
-      route_table_reference            = "rt-app-dev-net-weu1-001"
+      name                                      = "snet-web"
+      private_endpoint_network_policies_enabled = false
+      address_prefixes                          = ["10.192.2.0/24"]
+      network_security_group_reference          = "nsg-app-dev-net-weu1-001"
+      route_table_reference                     = "rt-app-dev-net-weu1-001"
     },
     {
       name                             = "snet-sql"
