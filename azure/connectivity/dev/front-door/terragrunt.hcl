@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.10"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-frontdoor-tf///?ref=0.0.11"
 }
 
 include {
@@ -85,7 +85,6 @@ inputs = {
       host_name              = "vmappdvwebweu11.weu1.internal.jamietaffurellidev.com"
       private_link = {
         "app" = {
-          target_type            = "sites"
           location               = "westeurope"
           private_link_target_id = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
         }
