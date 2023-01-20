@@ -96,6 +96,7 @@ inputs = {
       name                   = "default"
       endpoint_reference     = "jamietaffurelli"
       origin_group_reference = "blog-og"
+      https_redirect_enabled = false
       origin_references = [
         "blog-origin"
       ]
