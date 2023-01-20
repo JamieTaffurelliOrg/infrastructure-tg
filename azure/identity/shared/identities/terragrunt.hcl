@@ -1309,8 +1309,8 @@ inputs = {
       custom_role_reference       = "Firewall Contributor (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-hub-weu1-001"
     }
-    "conn-dev-afd-tf-fwcont-conndevhub" = {
-      service_principal_reference = "conn-dev-afd-tf"
+    "conn-prod-afd-tf-fwcont-conndevhub" = {
+      service_principal_reference = "conn-prod-afd-tf"
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
     }
