@@ -84,6 +84,7 @@ inputs = {
       name                = "http-probe"
       port                = 80
       protocol            = "Http"
+      request_path        = "/"
       interval_in_seconds = 10
       number_of_probes    = 1
     }
