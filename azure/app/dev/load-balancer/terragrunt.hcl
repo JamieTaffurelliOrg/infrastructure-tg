@@ -81,9 +81,9 @@ inputs = {
   ]
   probes = [
     {
-      name                = "Http-probe"
+      name                = "Tcp-probe"
       port                = 80
-      protocol            = "Http"
+      protocol            = "Tcp"
       request_path        = "/"
       interval_in_seconds = 10
       number_of_probes    = 1
@@ -91,16 +91,16 @@ inputs = {
   ]
   rules = [
     {
-      name                            = "https-rule"
+      name                            = "Tcp-rule"
       protocol                        = "Tcp"
       frontend_port                   = 80
       backend_port                    = 80
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
       backend_address_pool_references = ["web-backend-pool"]
-      probe_reference                 = "Http-probe"
+      probe_reference                 = "Tcp-probe"
     }
   ]
-  private_link_services = [
+  /*private_link_services = [
     {
       name                                 = "web"
       auto_approval_subscription_ids       = ["58b4ad6f-a160-4b9e-841b-e177f66137c9", "e1806152-a836-4eed-b591-d76f6267b6d2"]
@@ -115,7 +115,7 @@ inputs = {
         }
       ]
     }
-  ]
+  ]*/
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "network" })
