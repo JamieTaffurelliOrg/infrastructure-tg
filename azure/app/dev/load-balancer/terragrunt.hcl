@@ -84,7 +84,6 @@ inputs = {
       name                = "Tcp-probe"
       port                = 80
       protocol            = "Tcp"
-      request_path        = "/"
       interval_in_seconds = 10
       number_of_probes    = 1
     }
