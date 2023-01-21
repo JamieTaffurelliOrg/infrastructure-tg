@@ -81,22 +81,22 @@ inputs = {
   ]
   probes = [
     {
-      name                = "Tcp-probe"
+      name                = "http-probe"
       port                = 80
-      protocol            = "Tcp"
+      protocol            = "Http"
       interval_in_seconds = 10
       number_of_probes    = 1
     }
   ]
   rules = [
     {
-      name                            = "Tcp-rule"
+      name                            = "http-rule"
       protocol                        = "Tcp"
       frontend_port                   = 80
       backend_port                    = 80
       frontend_ip_configuration_name  = "frontend-internal-web-ip"
       backend_address_pool_references = ["web-backend-pool"]
-      probe_reference                 = "Tcp-probe"
+      probe_reference                 = "http-probe"
     }
   ]
   /*private_link_services = [
