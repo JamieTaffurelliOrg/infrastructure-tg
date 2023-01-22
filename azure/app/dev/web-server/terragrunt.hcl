@@ -63,7 +63,6 @@ locals {
 }
 
 inputs = {
-
   resource_group_name = "rg-app-dev-web-weu1-001"
   location            = "westeurope"
   windows_virtual_machines = [
