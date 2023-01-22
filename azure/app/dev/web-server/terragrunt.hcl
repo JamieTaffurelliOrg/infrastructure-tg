@@ -83,6 +83,22 @@ inputs = {
         offer     = "WindowsServer"
         sku       = "2022-datacenter-azure-edition"
       }
+    },
+    {
+      name                          = "vmappdvwebweu12"
+      subnet_reference              = "snet-web"
+      enable_accelerated_networking = false
+      private_ip_address            = "10.192.2.10"
+      size                          = "Standard_B2ms"
+      admin_username                = "servermonkey"
+      zone                          = "2"
+      image_reference               = "win-2022-server-azure"
+      timezone                      = "GMT Standard Time"
+      source_image = {
+        publisher = "MicrosoftWindowsServer"
+        offer     = "WindowsServer"
+        sku       = "2022-datacenter-azure-edition"
+      }
     }
   ]
   subnets = [
