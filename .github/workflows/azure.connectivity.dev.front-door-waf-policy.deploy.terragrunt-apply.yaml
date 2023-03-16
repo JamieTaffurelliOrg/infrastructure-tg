@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/connectivity/dev/front-door-waf-policy**'
+      - 'azure/connectivity/dev/westeurope/multitenant/front-door-waf-policy**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/front-door-waf-policy'
+      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/front-door-waf-policy'
       environment: connectivity.dev.front-door-waf-policy.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

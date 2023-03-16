@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/app/prod/sql-server**'
+      - 'azure/app/prod/westeurope/multitenant/sql-server**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
-      terragrunt-working-dir: './azure/app/prod/sql-server'
+      terragrunt-working-dir: './azure/app/prod/westeurope/multitenant/sql-server'
       environment: app.prod.sql-server.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

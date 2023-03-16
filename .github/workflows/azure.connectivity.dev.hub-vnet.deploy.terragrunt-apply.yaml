@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/connectivity/dev/hub-vnet**'
+      - 'azure/connectivity/dev/westeurope/multitenant/hub-vnet**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/hub-vnet'
+      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/hub-vnet'
       environment: connectivity.dev.hub-vnet.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

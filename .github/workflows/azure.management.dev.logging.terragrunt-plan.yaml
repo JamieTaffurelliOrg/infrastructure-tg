@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/management/dev/logging/**'
+      - 'azure/management/dev/westeurope/multitenant/logging/**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-plan-workflow:
     uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './azure/management/dev/logging'
+      terragrunt-working-dir: './azure/management/dev/westeurope/multitenant/logging'
       environment: management.dev.logging.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

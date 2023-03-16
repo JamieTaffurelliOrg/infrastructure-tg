@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/connectivity/prod/private-dns**'
+      - 'azure/connectivity/prod/westeurope/multitenant/private-dns**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-plan-workflow:
     uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/prod/private-dns'
+      terragrunt-working-dir: './azure/connectivity/prod/westeurope/multitenant/private-dns'
       environment: connectivity.prod.private-dns.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
