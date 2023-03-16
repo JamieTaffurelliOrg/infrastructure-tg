@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'azure/connectivity/dev/firewall/**'
+      - 'azure/connectivity/dev/westeurope/multitenant/firewall/**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-plan-workflow:
     uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/firewall'
+      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/firewall'
       environment: connectivity.dev.firewall.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

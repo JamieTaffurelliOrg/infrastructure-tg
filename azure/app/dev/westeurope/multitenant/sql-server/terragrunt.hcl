@@ -6,6 +6,20 @@ include {
   path = find_in_parent_folders()
 }
 
+locals {
+  tags = {
+    data-classification = "confidential"
+    criticality         = "mission-critical"
+    ops-commitment      = "workload-operations"
+    ops-team            = "sre"
+    cost-owner          = "jltaffurelli@outlook.com"
+    owner               = "jltaffurelli@outlook.com"
+    sla                 = "high"
+    environment         = "dev"
+    stack               = "app"
+  }
+}
+
 generate "provider" {
 
   path = "providers.tf"
@@ -46,20 +60,6 @@ provider "azurerm" {
 }
 EOF
 
-}
-
-locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
 }
 
 inputs = {

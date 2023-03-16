@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/connectivity/dev/bastion**'
+      - 'azure/connectivity/dev/westeurope/multitenant/bastion**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-apply-workflow:
     uses: ./.github/workflows/azure.terragrunt-apply.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/bastion'
+      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/bastion'
       environment: connectivity.dev.bastion.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
