@@ -34,6 +34,9 @@ inputs = {
       name = "privatelink.azure-automation.net"
     },
     {
+      name = "privatelink.redis.cache.windows.net"
+    },
+    {
       name = "privatelink.database.windows.net"
     },
     {

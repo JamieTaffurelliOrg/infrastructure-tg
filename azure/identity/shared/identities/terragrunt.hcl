@@ -113,6 +113,10 @@ inputs = {
       display_name = "app-dev-kv-tf"
       tags         = ["app-dev-kv-tf"]
     }
+    "app-dev-redis-tf" = {
+      display_name = "app-dev-redis-tf"
+      tags         = ["app-dev-redis-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
@@ -314,6 +318,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.key-vault.deploy"
     }
+    "app-dev-redis-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-redis-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.redis.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
@@ -477,6 +488,11 @@ inputs = {
       application_id_reference = "app-dev-kv-tf"
       description              = "Management of dev app key vault infrastructure via Terraform"
       tags                     = ["app-dev-kv-tf"]
+    }
+    "app-dev-redis-tf" = {
+      application_id_reference = "app-dev-redis-tf"
+      description              = "Management of dev app redis infrastructure via Terraform"
+      tags                     = ["app-dev-redis-tf"]
     }
     "app-prod-net-tf" = {
       application_id_reference = "app-prod-net-tf"
@@ -994,6 +1010,26 @@ inputs = {
       service_principal_reference = "app-dev-kv-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
+    "app-dev-redis-tf-contributor-appdevredis" = {
+      service_principal_reference = "app-dev-redis-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-redis-weu1-001"
+    }
+    "app-dev-redis-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-redis-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+    }
+    "app-dev-redis-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-redis-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
+    "app-dev-redis-tf-prvdnscontributor-conndevprvdns" = {
+      service_principal_reference = "app-dev-redis-tf"
+      role_definition_name        = "Private DNS Zone Contributor"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-prvdns-weu1-001"
     }
     "app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"

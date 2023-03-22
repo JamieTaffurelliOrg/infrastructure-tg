@@ -217,6 +217,12 @@ inputs = {
       address_prefixes                 = ["10.192.3.0/24"]
       network_security_group_reference = "nsg-app-dev-net-weu1-002"
       route_table_reference            = "rt-app-dev-net-weu1-001"
+    },
+    {
+      name                             = "snet-redis"
+      address_prefixes                 = ["10.192.4.0/24"]
+      network_security_group_reference = "nsg-app-dev-net-weu1-002"
+      route_table_reference            = "rt-app-dev-net-weu1-001"
     }
   ]
   /*peerings = [
@@ -228,6 +234,10 @@ inputs = {
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.redis.cache.windows.net"
       resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     },
     {
