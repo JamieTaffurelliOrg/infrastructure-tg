@@ -1,6 +1,5 @@
 terraform {
-  //source = "git::https://github.com/JamieTaffurelliOrg/az-redis-tf///?ref=0.0.1"
-  source = "../../../../../../../az-redis-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-redis-tf///?ref=0.0.2"
 }
 
 include {
