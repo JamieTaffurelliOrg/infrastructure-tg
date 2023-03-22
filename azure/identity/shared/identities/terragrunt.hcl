@@ -1380,6 +1380,11 @@ inputs = {
       custom_role_reference       = "SQL VM Register (Custom)"
       scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2"
     }
+    "app-dev-redis-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-redis-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-redis"
+    }
     "app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
