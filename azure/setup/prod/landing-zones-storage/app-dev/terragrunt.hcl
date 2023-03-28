@@ -74,7 +74,7 @@ inputs = {
       default_action      = "Allow"
     }
   ]
-  registered_providers = ["Microsoft.Compute/EncryptionAtHost"]
+  registered_providers = ["Microsoft.Compute"]
   log_analytics_workspace = {
     name                = "log-mgmt-dev-log-weu1-001"
     resource_group_name = "rg-mgmt-dev-log-weu1-001"
