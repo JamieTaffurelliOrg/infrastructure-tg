@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.25"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.27"
 }
 
 include {
@@ -74,6 +74,7 @@ inputs = {
       default_action      = "Allow"
     }
   ]
+  registered_providers = ["Microsoft.Compute"]
   log_analytics_workspace = {
     name                = "log-mgmt-dev-log-weu1-001"
     resource_group_name = "rg-mgmt-dev-log-weu1-001"
