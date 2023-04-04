@@ -2,7 +2,7 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.6"
 }
 
-remote_state {
+/*remote_state {
 
   backend = "azurerm"
 
@@ -12,13 +12,13 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-tfext-prod-tf-frc1-001"
-    storage_account_name = "stjttfextpprodtffrc1001"
+    resource_group_name  = "rg-tfext-prod-tf-weu1-001"
+    storage_account_name = "stjttfextpprodtfweu1001"
     container_name       = "github"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
-}
+}*/
 
 generate "provider" {
 
@@ -177,6 +177,12 @@ inputs = {
     },
     {
       name           = "az-redis-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-acr-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
