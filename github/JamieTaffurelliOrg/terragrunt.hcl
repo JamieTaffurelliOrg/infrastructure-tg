@@ -2,7 +2,7 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.6"
 }
 
-/*remote_state {
+remote_state {
 
   backend = "azurerm"
 
@@ -18,7 +18,7 @@ terraform {
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
-}*/
+}
 
 generate "provider" {
 
