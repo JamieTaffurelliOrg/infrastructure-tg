@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.7"
 }
 
 remote_state {
@@ -48,6 +48,30 @@ inputs = {
     },
     {
       name           = "vm-config"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-aft-customizations-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-aft-requests-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-aft-globalcustomizations-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-aft-provisioning-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
@@ -183,6 +207,18 @@ inputs = {
     },
     {
       name           = "az-acr-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-aci-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-ipam-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
