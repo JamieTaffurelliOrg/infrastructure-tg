@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.14"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.15"
 }
 
 include {
@@ -13,6 +13,10 @@ locals {
 inputs = {
 
   applications = {
+    "aws-sso" = {
+      display_name = "AWS Single Sign-On"
+      tags         = ["landing-zone-setup", "WindowsAzureActiveDirectoryIntegratedApp"]
+    }
     "setup-landing-zones-tf" = {
       display_name = "setup-landing-zones-tf"
       tags         = ["landing-zone-setup"]
@@ -559,12 +563,12 @@ inputs = {
     "setup-landing-zones-tf-blobcontributor-setupprod" = {
       service_principal_reference = "setup-landing-zones-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/105036b2-81a9-4d2d-955b-74e9aead3b29/resourceGroups/rg-stp-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtstpprodtffrc1001/blobServices/default/containers/setup-prod"
+      scope                       = "/subscriptions/625faac3-7208-4816-8899-7e546d0e830b/resourceGroups/rg-stp-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtstpprodtfweu1001/blobServices/default/containers/setup-prod"
     }
     "github-tf-blobcontributor-githubcontainer" = {
       service_principal_reference = "github-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/09c57f23-65cf-4594-8285-dc99ec8a627e/resourceGroups/rg-tfext-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjttfextpprodtffrc1001/blobServices/default/containers/github"
+      scope                       = "/subscriptions/cac174dc-d598-40ea-857d-8cb88c823031/resourceGroups/rg-tfext-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjttfextpprodtfweu1001/blobServices/default/containers/github"
     }
     "identity-tf-uaa-org" = {
       service_principal_reference = "identity-tf"
@@ -579,7 +583,7 @@ inputs = {
     "identity-tf-blobcontributor-idenshrdcontainer" = {
       service_principal_reference = "identity-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/dad37d44-b43c-4baf-8681-77016fb30901/resourceGroups/rg-iden-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtffrc1001/blobServices/default/containers/iden-shrd"
+      scope                       = "/subscriptions/97f65cdf-6be6-4e62-b0d2-a4b985a8f047/resourceGroups/rg-iden-shrd-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtidenshrdtfweu1001/blobServices/default/containers/iden-shrd"
     }
     "identity-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "identity-tf"
@@ -589,7 +593,7 @@ inputs = {
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevtffrc1001/blobServices/default/containers/mgmt-dev"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevtfweu1001/blobServices/default/containers/mgmt-dev"
     }
     "mgmt-dev-logging-tf-contributor-loggingrg" = {
       service_principal_reference = "mgmt-dev-logging-tf"
@@ -599,7 +603,7 @@ inputs = {
     "mgmt-prod-logging-tf-blobcontributor-mgmtprodcontainer" = {
       service_principal_reference = "mgmt-prod-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodtffrc1001/blobServices/default/containers/mgmt-prod"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodtfweu1001/blobServices/default/containers/mgmt-prod"
     }
     "mgmt-prod-logging-tf-contributor-loggingrg" = {
       service_principal_reference = "mgmt-prod-logging-tf"
@@ -609,7 +613,7 @@ inputs = {
     "conn-dev-hub-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-hub-tf-contributor-hubrg" = {
       service_principal_reference = "conn-dev-hub-tf"
@@ -634,7 +638,7 @@ inputs = {
     "conn-dev-hub-tf-netcontributor-conndevnetwatcher" = {
       service_principal_reference = "conn-dev-hub-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-weu1-001"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-weu1-001"
     }
     "conn-dev-hub-tf-reader-conndevsub" = {
       service_principal_reference = "conn-dev-hub-tf"
@@ -659,7 +663,7 @@ inputs = {
     "conn-dev-prvdns-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-prvdns-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-bas-tf-contributor-conndevbas" = {
       service_principal_reference = "conn-dev-bas-tf"
@@ -669,7 +673,7 @@ inputs = {
     "conn-dev-bas-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-bas-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-bas-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "conn-dev-bas-tf"
@@ -689,7 +693,7 @@ inputs = {
     "conn-dev-afwp-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-afwp-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-afwp-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "conn-dev-afwp-tf"
@@ -699,7 +703,7 @@ inputs = {
     "conn-dev-afw-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-afw-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-afw-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "conn-dev-afw-tf"
@@ -719,7 +723,7 @@ inputs = {
     "conn-dev-fdfp-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-fdfp-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-fdfp-tf-contributor-conndevafwp" = {
       service_principal_reference = "conn-dev-fdfp-tf"
@@ -729,7 +733,7 @@ inputs = {
     "conn-dev-afd-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-afd-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtffrc1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/58b4ad6f-a160-4b9e-841b-e177f66137c9/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "conn-dev-afd-tf-contributor-conndevafd" = {
       service_principal_reference = "conn-dev-afd-tf"
@@ -749,7 +753,7 @@ inputs = {
     "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-hub-tf-contributor-hubrg" = {
       service_principal_reference = "conn-prod-hub-tf"
@@ -769,7 +773,7 @@ inputs = {
     "conn-prod-hub-tf-netcontributor-connprodnetwatcher" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-conn-prod-netwat-weu1-001"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-conn-prod-netwat-weu1-001"
     }
     "conn-prod-hub-tf-reader-conprodsub" = {
       service_principal_reference = "conn-prod-hub-tf"
@@ -794,7 +798,7 @@ inputs = {
     "conn-prod-prvdns-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-prvdns-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-bas-tf-contributor-connprodbas" = {
       service_principal_reference = "conn-prod-bas-tf"
@@ -804,7 +808,7 @@ inputs = {
     "conn-prod-bas-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-bas-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-bas-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-bas-tf"
@@ -824,7 +828,7 @@ inputs = {
     "conn-prod-afwp-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-afwp-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-afwp-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-afwp-tf"
@@ -834,7 +838,7 @@ inputs = {
     "conn-prod-afw-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-afw-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-afw-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "conn-prod-afw-tf"
@@ -854,7 +858,7 @@ inputs = {
     "conn-prod-fdfp-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-fdfp-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-fdfp-tf-contributor-hubrg" = {
       service_principal_reference = "conn-prod-fdfp-tf"
@@ -864,7 +868,7 @@ inputs = {
     "conn-prod-afd-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-afd-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtffrc1001/blobServices/default/containers/conn-prod"
+      scope                       = "/subscriptions/9689d784-a98b-49f0-8601-43a18ce83ab4/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
     }
     "conn-prod-afd-tf-contributor-connprodafd" = {
       service_principal_reference = "conn-prod-afd-tf"
@@ -889,7 +893,7 @@ inputs = {
     "app-dev-net-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-net-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
     }
     "app-dev-net-tf-prvdnscontributor-conndevprvdns" = {
       service_principal_reference = "app-dev-net-tf"
@@ -904,7 +908,7 @@ inputs = {
     "app-dev-net-tf-netcontributor-appdevnetwatcher" = {
       service_principal_reference = "app-dev-net-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-app-dev-netwat-weu1-001"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-app-dev-netwat-weu1-001"
     }
     "app-dev-net-tf-reader-appdevsub" = {
       service_principal_reference = "app-dev-net-tf"
@@ -924,7 +928,7 @@ inputs = {
     "app-dev-lb-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-lb-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
     }
     "app-dev-lb-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "app-dev-lb-tf"
@@ -939,7 +943,7 @@ inputs = {
     "app-dev-web-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-web-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
     }
     "app-dev-web-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "app-dev-web-tf"
@@ -974,7 +978,7 @@ inputs = {
     "app-dev-sql-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-sql-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
     }
     "app-dev-sql-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "app-dev-sql-tf"
@@ -1004,7 +1008,7 @@ inputs = {
     "app-dev-kv-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-kv-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev-kv"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev-kv"
     }
     "app-dev-kv-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "app-dev-kv-tf"
@@ -1019,7 +1023,7 @@ inputs = {
     "app-dev-redis-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "app-dev-redis-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
     }
     "app-dev-redis-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "app-dev-redis-tf"
@@ -1039,7 +1043,7 @@ inputs = {
     "app-prod-net-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtfweu1001/blobServices/default/containers/app-prod"
     }
     "app-prod-net-tf-prvdnscontributor-conndevprvdns" = {
       service_principal_reference = "app-prod-net-tf"
@@ -1054,7 +1058,7 @@ inputs = {
     "app-prod-net-tf-netcontributor-appprodnetwatcher" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Network Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-netwat-frc1-001/providers/Microsoft.Network/networkWatchers/nw-app-prod-netwat-weu1-001"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-app-prod-netwat-weu1-001"
     }
     "app-prod-net-tf-reader-appprodsub" = {
       service_principal_reference = "app-prod-net-tf"
@@ -1074,7 +1078,7 @@ inputs = {
     "app-prod-lb-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-lb-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtfweu1001/blobServices/default/containers/app-prod"
     }
     "app-prod-lb-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "app-prod-lb-tf"
@@ -1089,7 +1093,7 @@ inputs = {
     "app-prod-web-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-web-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtfweu1001/blobServices/default/containers/app-prod"
     }
     "app-prod-web-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "app-prod-web-tf"
@@ -1124,7 +1128,7 @@ inputs = {
     "app-prod-sql-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtfweu1001/blobServices/default/containers/app-prod"
     }
     "app-prod-sql-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "app-prod-sql-tf"
@@ -1154,7 +1158,7 @@ inputs = {
     "app-prod-kv-tf-blobcontributor-appprodcontainer" = {
       service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtffrc1001/blobServices/default/containers/app-prod-kv"
+      scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e/resourceGroups/rg-app-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappprodtfweu1001/blobServices/default/containers/app-prod-kv"
     }
     "app-prod-kv-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "app-prod-kv-tf"
@@ -1169,7 +1173,7 @@ inputs = {
     "mgmt-shrd-vmimg-tf-blobcontributor-mgmtshrdcontainer" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdtffrc1001/blobServices/default/containers/mgmt-shrd"
+      scope                       = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdtfweu1001/blobServices/default/containers/mgmt-shrd"
     }
     "mgmt-shrd-vmimg-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
