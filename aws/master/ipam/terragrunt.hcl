@@ -27,14 +27,8 @@ generate "provider" {
   if_exists = "overwrite"
 
   contents = <<EOF
-provider "azurerm" {
-  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
-
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = true
-    }
-  }
+provider "aws" {
+  region = "us-east-1"
 }
 EOF
 
