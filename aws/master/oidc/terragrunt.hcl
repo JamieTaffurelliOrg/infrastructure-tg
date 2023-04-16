@@ -68,12 +68,34 @@ inputs = {
         }
       }
     }
+    "infrastructure-tg-aws-master-ipam-env" = {
+      conditions = {
+        "infrastructure-tg-aws-master-ipam-env" = {
+          test     = "StringEquals"
+          values   = ["repo:JamieTaffurelliOrg/infrastructure-tg:environment:aws.master.ipam.deploy"]
+          variable = "token.actions.githubusercontent.com:sub"
+        }
+        "sts-aws" = {
+          test     = "StringEquals"
+          values   = ["sts.amazonaws.com"]
+          variable = "token.actions.githubusercontent.com:aud"
+        }
+      }
+    }
   }
   roles = [
     {
       name                      = "master-admin"
       description               = "master-admin"
       policy_document_reference = "infrastructure-tg-aws-master-oidc-env"
+      path                      = "/"
+      permissions_boundary      = ""
+      policy_arns               = ["arn:aws:iam::aws:policy/AdministratorAccess"]
+    },
+    {
+      name                      = "master-admin-ipam"
+      description               = "master-admin-ipam"
+      policy_document_reference = "infrastructure-tg-aws-master-ipam-env"
       path                      = "/"
       permissions_boundary      = ""
       policy_arns               = ["arn:aws:iam::aws:policy/AdministratorAccess"]
