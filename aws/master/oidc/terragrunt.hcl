@@ -17,8 +17,7 @@ remote_state {
 }
 
 terraform {
-  //source = "git::https://github.com/JamieTaffurelliOrg/aws-oidc-tf///?ref=0.0.4"
-  source = "../../../../aws-oidc-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/aws-oidc-tf///?ref=0.0.5"
 }
 
 generate "provider" {
