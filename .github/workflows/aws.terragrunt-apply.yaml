@@ -62,7 +62,7 @@ jobs:
     - name: Log in to AWS using OIDC
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/${{ env.ROLE_NAME }}
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.ROLE_NAME }}
         role-session-name: ${{ env.AWS_SESSION_NAME }}
         aws-region: ${{ env.AWS_REGION }}
 
