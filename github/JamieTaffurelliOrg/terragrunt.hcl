@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.7"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.8"
 }
 
 remote_state {
@@ -219,6 +219,12 @@ inputs = {
     },
     {
       name           = "aws-ipam-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "aws-oidc-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
