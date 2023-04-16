@@ -54,11 +54,11 @@ inputs = {
   oidc_client_ids   = ["https://github.com/JamieTaffurelliOrg", "sts.amazonaws.com"]
   thumbprint_urls   = ["https://token.actions.githubusercontent.com/.well-known/openid-configuration"]
   policy_documents = {
-    "infrastructure-tg-aws-master-ipam-env" = {
+    "infrastructure-tg-aws-master-oidc-env" = {
       conditions = {
-        "infrastructure-tg-aws-master-ipam-env" = {
+        "infrastructure-tg-aws-master-oidc-env" = {
           test     = "StringEquals"
-          values   = ["repo:JamieTaffurelliOrg/infrastructure-tg:environment:aws.master.ipam.deploy"]
+          values   = ["repo:JamieTaffurelliOrg/infrastructure-tg:environment:aws.master.oidc.deploy"]
           variable = "token.actions.githubusercontent.com:sub"
         }
         "sts-aws" = {
@@ -73,7 +73,7 @@ inputs = {
     {
       name                      = "master-admin"
       description               = "master-admin"
-      policy_document_reference = "infrastructure-tg-aws-master-ipam-env"
+      policy_document_reference = "infrastructure-tg-aws-master-oidc-env"
       path                      = "/"
       permissions_boundary      = ""
       policy_arns               = ["arn:aws:iam::aws:policy/AdministratorAccess"]
