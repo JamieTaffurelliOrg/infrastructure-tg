@@ -17,7 +17,7 @@ remote_state {
 }
 
 terraform {
-  source = "git::https://github.com/aws-ia/terraform-aws-ipam///?ref=1.2.1"
+  source = "git::https://github.com/aws-ia/terraform-aws-ipam///?ref=v1.2.1"
 }
 
 generate "provider" {
