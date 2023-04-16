@@ -3,7 +3,7 @@ on:
     branches:
       - '**'
     paths:
-      - 'aws/master/oidc**'
+      - 'aws/master/ipam**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -22,7 +22,7 @@ jobs:
   call-terraform-plan-workflow:
     uses: ./.github/workflows/aws.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './aws/master/oidc'
-      environment: aws.master.oidc.deploy
+      terragrunt-working-dir: './aws/master/ipam'
+      environment: aws.master.ipam.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
