@@ -17,7 +17,7 @@ remote_state {
 }
 
 terraform {
-  source = "git::https://github.com/aws-ia/terraform-aws-ipam///?ref=1.2.1"
+  source = "git::https://github.com/aws-ia/terraform-aws-ipam///?ref=v1.2.1"
 }
 
 generate "provider" {
@@ -27,14 +27,8 @@ generate "provider" {
   if_exists = "overwrite"
 
   contents = <<EOF
-provider "azurerm" {
-  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
-
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = true
-    }
-  }
+provider "aws" {
+  region = "us-east-1"
 }
 EOF
 
@@ -70,7 +64,6 @@ inputs = {
           name                     = "eu-west-1"
           locale                   = "eu-west-1"
           cidr                     = ["192.168.0.0/19"]
-          ram_share_principals     = ""
           allocation_resource_tags = merge(local.tags, { workload-name = "ipam" })
         }
       }
