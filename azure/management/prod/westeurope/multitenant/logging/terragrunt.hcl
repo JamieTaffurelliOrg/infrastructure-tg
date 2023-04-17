@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.7"
 }
 
 remote_state {
@@ -12,8 +12,8 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-mgmt-prod-tf-frc1-001"
-    storage_account_name = "stjtmgmtprodtffrc1001"
+    resource_group_name  = "rg-mgmt-prod-tf-weu1-001"
+    storage_account_name = "stjtmgmtprodtfweu1001"
     container_name       = "mgmt-prod"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
@@ -28,7 +28,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+  subscription_id = "354a71d2-11ed-4c91-abb2-a08a2b4abe69"
 
   features {
     resource_group {
@@ -60,6 +60,6 @@ inputs = {
   location                     = "westeurope"
   log_analytics_workspace_name = "log-mgmt-prod-log-weu1-001"
   automation_account_name      = "aa-mgmt-prod-log-weu1-001"
-  storage_account_name         = "stjtmgmtprodlogweu1001"
+  storage_account_name         = "stjtmgmtprodlogweu1002"
   tags                         = merge(local.tags, { workload-name = "logging" })
 }

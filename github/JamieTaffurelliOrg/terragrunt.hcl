@@ -12,8 +12,8 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-tfext-prod-tf-frc1-001"
-    storage_account_name = "stjttfextpprodtffrc1001"
+    resource_group_name  = "rg-tfext-prod-tf-weu1-001"
+    storage_account_name = "stjttfextpprodtfweu1001"
     container_name       = "github"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true

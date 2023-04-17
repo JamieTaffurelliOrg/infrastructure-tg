@@ -36,7 +36,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+  subscription_id = "354a71d2-11ed-4c91-abb2-a08a2b4abe69"
 
   features {
     resource_group {

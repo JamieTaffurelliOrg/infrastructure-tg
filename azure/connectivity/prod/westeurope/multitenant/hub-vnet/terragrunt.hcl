@@ -25,7 +25,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+  subscription_id = "354a71d2-11ed-4c91-abb2-a08a2b4abe69"
 
   features {
     resource_group {
@@ -187,10 +187,10 @@ inputs = {
     }
   ]
   network_watcher_name                        = "nw-conn-prod-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-conn-prod-netwat-frc1-001"
+  network_watcher_resource_group_name         = "rg-conn-prod-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
-  storage_account_name                        = "stjtmgmtprodlogweu1001"
+  storage_account_name                        = "stjtmgmtprodlogweu1002"
   storage_account_resource_group_name         = "rg-mgmt-prod-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "hub" })
 }

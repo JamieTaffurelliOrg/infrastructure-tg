@@ -125,12 +125,12 @@ inputs = {
   firewall_subnet_address_prefixes    = ["10.128.0.0/24"]
   bastion_network_security_group_name = "nsg-conn-dev-hub-weu1-002"
   bastion_subnet_address_prefixes     = ["10.128.1.0/24"]
-  /*peerings = [
+  peerings = [
     {
       remote_vnet_name                = "vnet-app-dev-net-weu1-001"
       remote_vnet_resource_group_name = "rg-app-dev-net-weu1-001"
     }
-  ]*/
+  ]
   public_ip_prefixes = [
     {
       name          = "ippre-conn-dev-hub-weu1-001"
@@ -187,7 +187,7 @@ inputs = {
     }
   ]
   network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-conn-dev-netwat-frc1-001"
+  network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   storage_account_name                        = "stjtmgmtdevlogweu1001"

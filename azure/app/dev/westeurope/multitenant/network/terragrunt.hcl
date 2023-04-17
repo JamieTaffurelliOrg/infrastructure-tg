@@ -225,12 +225,12 @@ inputs = {
       route_table_reference            = "rt-app-dev-net-weu1-001"
     }
   ]
-  /*peerings = [
+  peerings = [
     {
       remote_vnet_name                = "vnet-conn-dev-hub-weu1-001"
       remote_vnet_resource_group_name = "rg-conn-dev-hub-weu1-001"
     }
-  ]*/
+  ]
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
@@ -279,7 +279,7 @@ inputs = {
     }
   ]
   network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-app-dev-netwat-frc1-001"
+  network_watcher_resource_group_name         = "rg-app-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   storage_account_name                        = "stjtmgmtdevlogweu1001"
