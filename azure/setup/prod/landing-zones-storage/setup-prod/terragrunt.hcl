@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.27"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.28"
 }
 
 include {
@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "105036b2-81a9-4d2d-955b-74e9aead3b29"
+  subscription_id = "625faac3-7208-4816-8899-7e546d0e830b"
 
   features {
     resource_group {
@@ -25,7 +25,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "510b35a4-6985-403e-939b-305da79e99bc"
+  subscription_id = "354a71d2-11ed-4c91-abb2-a08a2b4abe69"
 
   features {
     resource_group {
@@ -52,10 +52,10 @@ locals {
 
 inputs = {
 
-  storage_account_name                = "stjtstpprodtffrc1001"
-  location                            = "francecentral"
-  resource_group_name                 = "rg-stp-prod-tf-frc1-001"
-  network_watcher_resource_group_name = "rg-stp-prod-netwat-frc1-001"
+  storage_account_name                = "stjtstpprodtfweu1001"
+  location                            = "westeurope"
+  resource_group_name                 = "rg-stp-prod-tf-weu1-001"
+  network_watcher_resource_group_name = "rg-stp-prod-netwat-weu1-001"
   network_watchers = {
     west_europe = {
       name     = "nw-stp-prod-netwat-weu1-001"

@@ -15,7 +15,7 @@ inputs = {
   applications = {
     "aws-sso" = {
       display_name = "AWS Single Sign-On"
-      tags         = ["landing-zone-setup", "WindowsAzureActiveDirectoryIntegratedApp"]
+      tags         = ["AWS", "SSO", "WindowsAzureActiveDirectoryIntegratedApp", "WindowsAzureActiveDirectoryCustomSingleSignOnApplication"]
     }
     "setup-landing-zones-tf" = {
       display_name = "setup-landing-zones-tf"
@@ -373,6 +373,11 @@ inputs = {
     }
   }
   service_principals = {
+    "aws-sso" = {
+      application_id_reference = "aws-sso"
+      description              = "AWS Single Sign-On"
+      tags                     = ["AWS", "SSO", "WindowsAzureActiveDirectoryIntegratedApp", "WindowsAzureActiveDirectoryCustomSingleSignOnApplication"]
+    }
     "setup-landing-zones-tf" = {
       application_id_reference = "setup-landing-zones-tf"
       description              = "landing zone setup with Terraform"
@@ -550,7 +555,7 @@ inputs = {
     }
   }
   rbac_role_assignments_service_principals = {
-    "setup-landing-zones-tf-owner-org" = {
+    /*"setup-landing-zones-tf-owner-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       role_definition_name        = "Owner"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -768,7 +773,7 @@ inputs = {
     "conn-prod-hub-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1001"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1002"
     }
     "conn-prod-hub-tf-netcontributor-connprodnetwatcher" = {
       service_principal_reference = "conn-prod-hub-tf"
@@ -1068,7 +1073,7 @@ inputs = {
     "app-prod-net-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1001"
+      scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1002"
     }
     "app-prod-lb-tf-contributor-appprodlb" = {
       service_principal_reference = "app-prod-lb-tf"
@@ -1179,17 +1184,17 @@ inputs = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/510b35a4-6985-403e-939b-305da79e99bc/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
-    }
+    }*/
   }
   rbac_role_assignments_objects = {
-    "galmgmtshrdvmimgweu1001-blobreader-mgmtshrdscriptscontainer" = {
+    /*"galmgmtshrdvmimgweu1001-blobreader-mgmtshrdscriptscontainer" = {
       object_reference     = "galmgmtshrdvmimgweu1001"
       role_definition_name = "Storage Blob Data Reader"
       scope                = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgweu1001/blobServices/default/containers/scripts"
-    }
+    }*/
   }
   rbac_role_definitions = [
-    {
+    /*{
       name              = "Lock Contributor (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Create, edit or delete resource locks"
@@ -1207,8 +1212,8 @@ inputs = {
       name              = "Subnet Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Attach resources to subnets"
-      actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action", "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/*/read"]
-      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    */                                                                                                                                                                                                     #  actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action", "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/*/read"]
+    /*  assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
       name              = "Firewall Policy Joiner (Custom)"
@@ -1228,8 +1233,8 @@ inputs = {
       name              = "Virtual Network Peerer (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Create and delete Azure VNet peerings"
-      actions           = ["Microsoft.Network/virtualNetworks/*/read", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/*", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/virtualNetworks/peer/*"]
-      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    */ #  actions           = ["Microsoft.Network/virtualNetworks/*/read", "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/*", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/virtualNetworks/peer/*"]
+    /*  assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
       name              = "Load Balancer Backend Address Pool Joiner (Custom)"
@@ -1266,10 +1271,10 @@ inputs = {
       description       = "Register the Microsoft.SqlVirtualMachine provider to a subscription"
       actions           = ["Microsoft.SqlVirtualMachine/register/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    },
+    }*/
   ]
   custom_rbac_role_assignments_service_principals = {
-    "setup-landing-zones-tf-lockcont-org" = {
+    /*"setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       custom_role_reference       = "Lock Contributor (Custom)"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1418,14 +1423,14 @@ inputs = {
       service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "SQL VM Register (Custom)"
       scope                       = "/subscriptions/018499bc-61fd-4799-8107-d4ff6616527e"
-    }
+    }*/
   }
   custom_rbac_role_assignments_objects = {
-    "galmgmtshrdvmimgweu1001-imgbuilder" = {
+    /*"galmgmtshrdvmimgweu1001-imgbuilder" = {
       object_reference      = "galmgmtshrdvmimgweu1001"
       custom_role_reference = "Image Creator (Custom)"
       scope                 = "/subscriptions/a9da0406-a642-49b3-9c2c-c8ed05bb1c85/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
-    }
+    }*/
   }
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"

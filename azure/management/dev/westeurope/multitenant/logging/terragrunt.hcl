@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.7"
 }
 
 remote_state {
@@ -12,8 +12,8 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-mgmt-dev-tf-frc1-001"
-    storage_account_name = "stjtmgmtdevtffrc1001"
+    resource_group_name  = "rg-mgmt-dev-tf-weu1-001"
+    storage_account_name = "stjtmgmtdevtfweu1001"
     container_name       = "mgmt-dev"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
