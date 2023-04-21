@@ -1211,7 +1211,8 @@ inputs = {
     {
       name              = "Subnet Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
-      description       = "Attach resources to subnets" #  actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action", "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/*/read"]
+      description       = "Attach resources to subnets"
+      actions           = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action", "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action", "Microsoft.Network/virtualNetworks/*/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
