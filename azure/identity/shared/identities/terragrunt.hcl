@@ -1273,7 +1273,7 @@ inputs = {
     }
   ]
   custom_rbac_role_assignments_service_principals = {
-    "setup-landing-zones-tf-lockcont-org" = {
+    /*"setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
       custom_role_reference       = "Lock Contributor (Custom)"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1422,7 +1422,7 @@ inputs = {
       service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "SQL VM Register (Custom)"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813"
-    }
+    }*/
   }
   custom_rbac_role_assignments_objects = {
     "galmgmtshrdvmimgweu1001-imgbuilder" = {
