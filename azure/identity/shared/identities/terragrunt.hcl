@@ -958,7 +958,7 @@ inputs = {
     "app-dev-web-tf-contributor-appdevdiag" = {
       service_principal_reference = "app-dev-web-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1001"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1002"
     }
     "app-dev-web-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "app-dev-web-tf"
@@ -993,7 +993,7 @@ inputs = {
     "app-dev-sql-tf-contributor-appdevdiag" = {
       service_principal_reference = "app-dev-sql-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1001"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1002"
     }
     "app-dev-sql-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "app-dev-sql-tf"
