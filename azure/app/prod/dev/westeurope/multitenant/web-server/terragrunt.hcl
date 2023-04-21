@@ -104,7 +104,7 @@ inputs = {
       load_balancer_reference = "lbi-app-prod-lb-weu1-001"
     }
   ]
-  password_key_vault_name                = "kv-app-prod-kv-weu1-001"
+  password_key_vault_name                = "kv-app-prod-kv-weu1-002"
   password_key_vault_resource_group_name = "rg-app-prod-kv-weu1-001"
   /*shared_images = [
     {
