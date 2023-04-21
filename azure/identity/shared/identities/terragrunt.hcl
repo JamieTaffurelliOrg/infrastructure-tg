@@ -1187,11 +1187,11 @@ inputs = {
     }
   }
   rbac_role_assignments_objects = {
-    "galmgmtshrdvmimgweu1001-blobreader-mgmtshrdscriptscontainer" = {
+    /*"galmgmtshrdvmimgweu1001-blobreader-mgmtshrdscriptscontainer" = {
       object_reference     = "galmgmtshrdvmimgweu1001"
       role_definition_name = "Storage Blob Data Reader"
       scope                = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdvmimgweu1001/blobServices/default/containers/scripts"
-    }
+    }*/
   }
   rbac_role_definitions = [
     {
