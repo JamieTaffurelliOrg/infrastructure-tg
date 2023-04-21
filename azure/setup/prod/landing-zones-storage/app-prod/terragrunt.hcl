@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-vmimagegallery-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.28"
 }
 
 include {
@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "3bdf403f-77ac-4879-8fba-fa41c2cc94ee"
+  subscription_id = "f4722c2d-47d5-4513-a562-80465e3ee813"
 
   features {
     resource_group {
@@ -39,6 +39,7 @@ EOF
 
 locals {
   tags = {
+    workload-name       = "tfstate"
     data-classification = "confidential"
     criticality         = "mission-critical"
     ops-commitment      = "workload-operations"
@@ -46,35 +47,36 @@ locals {
     cost-owner          = "jltaffurelli@outlook.com"
     owner               = "jltaffurelli@outlook.com"
     sla                 = "high"
-    environment         = "shared"
-    stack               = "management"
   }
 }
 
 inputs = {
 
-  resource_group_name       = "rg-mgmt-shrd-vmimg-weu1-001"
-  location                  = "westeurope"
-  image_gallery_name        = "galmgmtshrdvmimgweu1001"
-  image_gallery_description = "Store and share compliant VM images for deployment of VMs"
-  images = [
-    {
-      name               = "win-2022-server-azure"
-      os_type            = "Windows"
-      description        = "Base windows 2022 server"
-      publisher          = "MicrosoftWindowsServer"
-      offer              = "WindowsServer"
-      sku                = "2022-datacenter-azure-edition"
-      hyper_v_generation = "V2"
+  storage_account_name                = "stjtappprodtfweu1001"
+  location                            = "westeurope"
+  resource_group_name                 = "rg-app-prod-tf-weu1-001"
+  network_watcher_resource_group_name = "rg-app-prod-netwat-weu1-001"
+  network_watchers = {
+    west_europe = {
+      name     = "nw-app-prod-netwat-weu1-001"
+      location = "westeurope"
     }
-  ]
-  storage_account_name = "stjtmgmtshrdvmimgweu1001"
+  }
+  containers = ["app-prod", "app-prod-kv"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
+  boot_diagnostic_storage_accounts = [
+    {
+      name                = "stjtappproddiagweu1002"
+      location            = "westeurope"
+      resource_group_name = "rg-app-prod-diag-weu1-001"
+      default_action      = "Allow"
+    }
+  ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
     resource_group_name = "rg-mgmt-prod-log-weu1-001"
   }
-  tags = merge(local.tags, { workload-name = "images" })
+  tags = merge(local.tags, { environment = "prod", stack = "app" })
 }

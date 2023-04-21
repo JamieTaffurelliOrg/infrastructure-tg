@@ -28,7 +28,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+  subscription_id = "9661faf5-39f5-400b-931a-342f9240c71b"
 
   features {
     resource_group {
@@ -60,6 +60,6 @@ inputs = {
   location                     = "westeurope"
   log_analytics_workspace_name = "log-mgmt-dev-log-weu1-001"
   automation_account_name      = "aa-mgmt-dev-log-weu1-001"
-  storage_account_name         = "stjtmgmtdevlogweu1001"
+  storage_account_name         = "stjtmgmtdevlogweu1002"
   tags                         = merge(local.tags, { workload-name = "logging" })
 }

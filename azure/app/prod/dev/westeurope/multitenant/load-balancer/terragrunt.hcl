@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "018499bc-61fd-4799-8107-d4ff6616527e"
+  subscription_id = "f4722c2d-47d5-4513-a562-80465e3ee813"
 
   features {
     resource_group {
@@ -103,7 +103,7 @@ inputs = {
   private_link_services = [
     {
       name                                 = "web"
-      auto_approval_subscription_ids       = ["9689d784-a98b-49f0-8601-43a18ce83ab4", "018499bc-61fd-4799-8107-d4ff6616527e"]
+      auto_approval_subscription_ids       = ["5091f2ec-a527-4b51-8e63-9f5de65e3a66", "f4722c2d-47d5-4513-a562-80465e3ee813"]
       frontend_ip_configuration_references = ["frontend-internal-web-ip"]
       nat_ip_configurations = [
         {

@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "018499bc-61fd-4799-8107-d4ff6616527e"
+  subscription_id = "f4722c2d-47d5-4513-a562-80465e3ee813"
 
   features {
     resource_group {
@@ -36,7 +36,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "images"
-  subscription_id = "a9da0406-a642-49b3-9c2c-c8ed05bb1c85"
+  subscription_id = "3bdf403f-77ac-4879-8fba-fa41c2cc94ee"
 
   features {
     resource_group {
@@ -120,7 +120,7 @@ inputs = {
   ]*/
   log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
-  storage_account_name                        = "stjtappproddiagweu1001"
+  storage_account_name                        = "stjtappproddiagweu1002"
   storage_account_resource_group_name         = "rg-app-prod-diag-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "sql" })
 }

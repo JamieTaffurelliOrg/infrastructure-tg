@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "a9da0406-a642-49b3-9c2c-c8ed05bb1c85"
+  subscription_id = "3bdf403f-77ac-4879-8fba-fa41c2cc94ee"
 
   features {
     resource_group {
