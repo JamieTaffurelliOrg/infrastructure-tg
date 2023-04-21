@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-keyvault-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-keyvault-tf///?ref=0.0.4"
 }
 
 remote_state {
