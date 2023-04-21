@@ -1115,11 +1115,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
     }
-    "app-prod-web-tf-kvadmin-appprodkv" = {
+    /*"app-prod-web-tf-kvadmin-appprodkv" = {
       service_principal_reference = "app-prod-web-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-002"
-    }
+      scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
+    }*/
     "app-prod-web-tf-reader-appdevlb" = {
       service_principal_reference = "app-prod-web-tf"
       role_definition_name        = "Reader"
@@ -1150,11 +1150,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
     }
-    "app-prod-sql-tf-kvadmin-appprodkv" = {
+    /*"app-prod-sql-tf-kvadmin-appprodkv" = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-002"
-    }
+      scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
+    }*/
     "app-prod-kv-tf-contributor-appprodkv" = {
       service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Contributor"
