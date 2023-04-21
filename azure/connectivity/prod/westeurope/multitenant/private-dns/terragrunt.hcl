@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.4"
 }
 
 include {
@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "9689d784-a98b-49f0-8601-43a18ce83ab4"
+  subscription_id = "5091f2ec-a527-4b51-8e63-9f5de65e3a66"
 
   features {
     resource_group {

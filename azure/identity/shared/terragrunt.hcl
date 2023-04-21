@@ -27,6 +27,8 @@ provider "azuread" {
 }
 
 provider "azurerm" {
+  subscription_id = "97f65cdf-6be6-4e62-b0d2-a4b985a8f047"
+
   features {
     resource_group {
       prevent_deletion_if_contains_resources = true

@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.23"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-hubvirtualnetwork-tf///?ref=0.0.24"
 }
 
 include {
@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "58b4ad6f-a160-4b9e-841b-e177f66137c9"
+  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
   features {
     resource_group {
@@ -25,7 +25,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "4593b317-03e9-4533-9f41-e0d4b6da338c"
+  subscription_id = "9661faf5-39f5-400b-931a-342f9240c71b"
 
   features {
     resource_group {
@@ -36,7 +36,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "spoke"
-  subscription_id = "e1806152-a836-4eed-b591-d76f6267b6d2"
+  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
 
   features {
     resource_group {
@@ -190,7 +190,7 @@ inputs = {
   network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  storage_account_name                        = "stjtmgmtdevlogweu1001"
+  storage_account_name                        = "stjtmgmtdevlogweu1002"
   storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload-name = "hub" })
 }
