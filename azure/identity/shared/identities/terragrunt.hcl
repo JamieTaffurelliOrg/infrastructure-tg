@@ -968,7 +968,7 @@ inputs = {
     "app-dev-web-tf-kvadmin-appdevkv" = {
       service_principal_reference = "app-dev-web-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-002"
     }
     "app-dev-web-tf-reader-appdevlb" = {
       service_principal_reference = "app-dev-web-tf"
@@ -1003,7 +1003,7 @@ inputs = {
     "app-dev-sql-tf-kvadmin-appdevkv" = {
       service_principal_reference = "app-dev-sql-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-002"
     }
     "app-dev-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "app-dev-kv-tf"

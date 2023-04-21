@@ -109,7 +109,7 @@ inputs = {
       resource_group_name  = "rg-app-dev-net-weu1-001"
     }
   ]
-  password_key_vault_name                = "kv-app-dev-kv-weu1-001"
+  password_key_vault_name                = "kv-app-dev-kv-weu1-002"
   password_key_vault_resource_group_name = "rg-app-dev-kv-weu1-001"
   /*shared_images = [
     {

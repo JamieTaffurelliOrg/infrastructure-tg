@@ -69,7 +69,7 @@ inputs = {
 
   resource_group_name                         = "rg-app-dev-kv-weu1-001"
   location                                    = "westeurope"
-  key_vault_name                              = "kv-app-dev-kv-weu1-001"
+  key_vault_name                              = "kv-app-dev-kv-weu1-002"
   network_acl_bypass                          = "AzureServices"
   network_acl_default_action                  = "Allow"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
