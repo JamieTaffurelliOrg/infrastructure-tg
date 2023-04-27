@@ -547,7 +547,7 @@ inputs = {
   }
   objects = {
     "galmgmtshrdvmimgweu1001" = {
-      object_id = "e908d88a-f0c7-4719-8978-b8626e88c7f4"
+      object_id = "150a426e-0f57-46d9-8376-b4cb7f33a70c"
     }
   }
   role_assignments_service_principals = {
