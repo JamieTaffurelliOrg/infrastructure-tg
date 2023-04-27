@@ -135,7 +135,7 @@ inputs = {
     {
       name          = "ippre-conn-dev-hub-weu1-001"
       ip_version    = "IPv4"
-      prefix_length = 30
+      prefix_length = 31
     },
     {
       name          = "ippre-conn-dev-hub-weu1-002"

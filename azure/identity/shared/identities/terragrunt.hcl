@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.15"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.16"
 }
 
 include {
@@ -12,6 +12,12 @@ locals {
 
 inputs = {
 
+  groups = {
+    "jamietaffurelli-admins-pim" = {
+      display_name = "jamietaffurelli-owners-pim"
+      description  = "Azure AD Global Admin and Management Group Owner"
+    }
+  }
   applications = {
     "aws-sso" = {
       display_name = "AWS Single Sign-On"
