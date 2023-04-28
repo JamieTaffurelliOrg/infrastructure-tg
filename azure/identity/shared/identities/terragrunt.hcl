@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.16"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.17"
 }
 
 include {
@@ -547,7 +547,7 @@ inputs = {
   }
   objects = {
     "galmgmtshrdvmimgweu1001" = {
-      object_id = "e908d88a-f0c7-4719-8978-b8626e88c7f4"
+      object_id = "150a426e-0f57-46d9-8376-b4cb7f33a70c"
     }
   }
   role_assignments_service_principals = {
@@ -761,7 +761,7 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-fdfp-weu1-001"
     }
-    "conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
+    /*"conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-conn-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconnprodtfweu1001/blobServices/default/containers/conn-prod"
@@ -895,7 +895,7 @@ inputs = {
       service_principal_reference = "conn-prod-afd-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-conn-prod-fdfp-weu1-001"
-    }
+    }*/
     "app-dev-net-tf-contributor-appdevnet" = {
       service_principal_reference = "app-dev-net-tf"
       role_definition_name        = "Contributor"
