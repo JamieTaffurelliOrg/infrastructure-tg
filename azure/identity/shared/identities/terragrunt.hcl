@@ -559,6 +559,10 @@ inputs = {
       service_principal_reference = "identity-tf"
       template_id                 = "9b895d92-2cd3-44c7-9d02-a6ac2d5ea5c3"
     }
+    "identity-tf-groupadmin" = {
+      service_principal_reference = "identity-tf"
+      template_id                 = "fdd7a751-b60b-444a-984c-02652fe8fa1c"
+    }
   }
   rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-owner-org" = {
@@ -1364,12 +1368,12 @@ inputs = {
       service_principal_reference = "conn-prod-afd-tf"
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
-    }*/
+    }
     "app-dev-net-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "app-dev-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001"
-    }
+    }*/
     "app-dev-lb-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
@@ -1380,11 +1384,11 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-web"
     }
-    "app-dev-web-tf-lbjoin-appdevlb" = {
+    /*"app-dev-web-tf-lbjoin-appdevlb" = {
       service_principal_reference = "app-dev-web-tf"
       custom_role_reference       = "Load Balancer Backend Address Pool Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-dev-lb-weu1-001/backendAddressPools/web-backend-pool"
-    }
+    }*/
     "app-dev-sql-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-sql-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
