@@ -1046,7 +1046,7 @@ inputs = {
       role_definition_name        = "Private DNS Zone Contributor"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-prvdns-weu1-001"
     }
-    "app-prod-net-tf-contributor-appprodnet" = {
+    /*"app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-net-weu1-001"
@@ -1121,11 +1121,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
     }
-    /*"app-prod-web-tf-kvadmin-appprodkv" = {
+    "app-prod-web-tf-kvadmin-appprodkv" = {
       service_principal_reference = "app-prod-web-tf"
       role_definition_name        = "Key Vault Administrator"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
-    }*/
+    }
     "app-prod-web-tf-reader-appdevlb" = {
       service_principal_reference = "app-prod-web-tf"
       role_definition_name        = "Reader"
@@ -1156,11 +1156,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001"
     }
-    /*"app-prod-sql-tf-kvadmin-appprodkv" = {
+    "app-prod-sql-tf-kvadmin-appprodkv" = {
       service_principal_reference = "app-prod-sql-tf"
       role_definition_name        = "Key Vault Administrator"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-prod-kv-weu1-001"
-    }*/
+    }
     "app-prod-kv-tf-contributor-appprodkv" = {
       service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Contributor"
@@ -1175,7 +1175,7 @@ inputs = {
       service_principal_reference = "app-prod-kv-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/354a71d2-11ed-4c91-abb2-a08a2b4abe69/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
-    }
+    }*/
     "mgmt-shrd-vmimg-tf-contributor-mgmtshrdvmimg" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
       role_definition_name        = "Contributor"
@@ -1285,7 +1285,7 @@ inputs = {
       custom_role_reference       = "Lock Contributor (Custom)"
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
-    "conn-dev-hub-tf-vnetpeer-appdevnet" = {
+    /*"conn-dev-hub-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "conn-dev-hub-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001"
@@ -1324,8 +1324,8 @@ inputs = {
       service_principal_reference = "conn-dev-afd-tf"
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
-    }
-    "conn-prod-hub-tf-vnetpeer-appprodnet" = {
+    }*/
+    /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001"
@@ -1364,7 +1364,7 @@ inputs = {
       service_principal_reference = "conn-prod-afd-tf"
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
-    }
+    }*/
     "app-dev-net-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "app-dev-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
@@ -1400,7 +1400,7 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-redis"
     }
-    "app-prod-net-tf-vnetpeer-appprodnet" = {
+    /*"app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-conn-prod-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-weu1-001"
@@ -1429,7 +1429,7 @@ inputs = {
       service_principal_reference = "app-prod-sql-tf"
       custom_role_reference       = "SQL VM Register (Custom)"
       scope                       = "/subscriptions/f4722c2d-47d5-4513-a562-80465e3ee813"
-    }
+    }*/
   }
   custom_rbac_role_assignments_objects = {
     "galmgmtshrdvmimgweu1001-imgbuilder" = {
