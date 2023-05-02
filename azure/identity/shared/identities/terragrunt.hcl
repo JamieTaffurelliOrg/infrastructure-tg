@@ -594,6 +594,10 @@ inputs = {
       service_principal_reference = "identity-tf"
       template_id                 = "fdd7a751-b60b-444a-984c-02652fe8fa1c"
     }
+    "identity-tf-globaladmin" = {
+      service_principal_reference = "identity-tf"
+      template_id                 = "62e90394-69f5-4237-9190-012177145e10"
+    }
   }
   rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-owner-org" = {
