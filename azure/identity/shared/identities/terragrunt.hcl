@@ -38,20 +38,8 @@ inputs = {
           resource_app_id = "00000003-0000-0000-c000-000000000000"
           resource_accesses = [
             {
-              id   = "d01b97e9-cbc0-49fe-810a-750afd5527a3"
-              type = "Scope"
-            },
-            {
-              id   = "204e0828-b5ca-4ad8-b9f3-f32a958e7cc4"
-              type = "Scope"
-            },
-            {
-              id   = "4e46008b-f24c-477d-8fff-7bb4ec7aafe0"
-              type = "Scope"
-            },
-            {
-              id   = "bdfbf15f-ee85-4955-8675-146e8e5296b5"
-              type = "Scope"
+              id   = "19dbc75e-c2e2-444c-a770-ec69d8559fc7"
+              type = "Role"
             }
           ]
         }
@@ -573,7 +561,7 @@ inputs = {
       object_id = "150a426e-0f57-46d9-8376-b4cb7f33a70c"
     }
   }
-  /*role_assignments_service_principals = {
+  role_assignments_service_principals = {
     "identity-tf-usradmin" = {
       service_principal_reference = "identity-tf"
       template_id                 = "fe930be7-5e62-47db-91af-98c3a49a38b1"
@@ -586,7 +574,7 @@ inputs = {
       service_principal_reference = "identity-tf"
       template_id                 = "fdd7a751-b60b-444a-984c-02652fe8fa1c"
     }
-  }*/
+  }
   rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-owner-org" = {
       service_principal_reference = "setup-landing-zones-tf"
