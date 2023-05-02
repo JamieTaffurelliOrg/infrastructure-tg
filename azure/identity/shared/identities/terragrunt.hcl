@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.18"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.20"
 }
 
 include {
@@ -16,6 +16,16 @@ inputs = {
     "jamietaffurelli-admins-pim" = {
       display_name = "jamietaffurelli-owners-pim"
       description  = "Azure AD Global Admin and Management Group Owner"
+    }
+  }
+  users = {
+    "break-glass-1" = {
+      user_principal_name = "alphabravo@jamietaffurelli.com"
+      display_name        = "Alpha Bravo"
+    }
+    "break-glass-2" = {
+      user_principal_name = "charliedelta@jamietaffurelli.com"
+      display_name        = "Charlie Delta"
     }
   }
   applications = {
