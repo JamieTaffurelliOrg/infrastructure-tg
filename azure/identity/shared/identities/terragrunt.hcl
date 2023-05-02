@@ -18,6 +18,16 @@ inputs = {
       description  = "Azure AD Global Admin and Management Group Owner"
     }
   }
+  users = {
+    "break-glass-1" = {
+      user_principal_name = "alphabravo@jamietaffurelli.com"
+      display_name        = "Alpha Bravo"
+    }
+    "break-glass-2" = {
+      user_principal_name = "charliedelta@jamietaffurelli.com"
+      display_name        = "Charlie Delta"
+    }
+  }
   applications = {
     "aws-sso" = {
       display_name = "AWS Single Sign-On"
