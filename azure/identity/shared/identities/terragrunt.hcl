@@ -1379,12 +1379,12 @@ inputs = {
       service_principal_reference = "conn-prod-afd-tf"
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/5091f2ec-a527-4b51-8e63-9f5de65e3a66/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
-    }
+    }*/
     "app-dev-net-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "app-dev-net-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001"
-    }*/
+    }
     "app-dev-lb-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
