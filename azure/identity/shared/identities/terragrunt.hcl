@@ -12,12 +12,12 @@ locals {
 
 inputs = {
 
-  /*groups = {
+  groups = {
     "jamietaffurelli-admins-pim" = {
       display_name = "jamietaffurelli-owners-pim"
       description  = "Azure AD Global Admin and Management Group Owner"
     }
-  }*/
+  }
   applications = {
     "aws-sso" = {
       display_name = "AWS Single Sign-On"
