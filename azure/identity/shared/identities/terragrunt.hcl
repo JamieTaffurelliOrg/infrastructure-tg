@@ -571,6 +571,16 @@ inputs = {
       object_id = "150a426e-0f57-46d9-8376-b4cb7f33a70c"
     }
   }
+  role_assignments_users = {
+    "break-glass-1-global-admin" = {
+      user_reference = "break-glass-1"
+      template_id    = "62e90394-69f5-4237-9190-012177145e10"
+    }
+    "break-glass-2-global-admin" = {
+      user_reference = "break-glass-2"
+      template_id    = "62e90394-69f5-4237-9190-012177145e10"
+    }
+  }
   role_assignments_service_principals = {
     "identity-tf-usradmin" = {
       service_principal_reference = "identity-tf"
