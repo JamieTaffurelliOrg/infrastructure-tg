@@ -11,13 +11,6 @@ locals {
 }
 
 inputs = {
-
-  groups = {
-    "jamietaffurelli-admins-pim" = {
-      display_name = "jamietaffurelli-owners-pim"
-      description  = "Azure AD Global Admin and Management Group Owner"
-    }
-  }
   users = {
     "break-glass-1" = {
       user_principal_name = "alphabravo@jamietaffurelli.com"
@@ -569,6 +562,29 @@ inputs = {
   objects = {
     "galmgmtshrdvmimgweu1001" = {
       object_id = "150a426e-0f57-46d9-8376-b4cb7f33a70c"
+    }
+    "jamie-taffurelli-o365admin" = {
+      object_id = "ba9d03b6-d18a-45cd-9095-d1aa741c2030"
+    }
+  }
+  groups = {
+    "jt-owners-pim" = {
+      display_name = "jt-owners-pim"
+      description  = "Azure AD Management Group Owners (PIM assignable)"
+    }
+    "jt-globaladmins-pim" = {
+      display_name = "jt-globaladmins-pim"
+      description  = "Azure AD Global Admins (PIM assignable)"
+    }
+  }
+  group_memberships_objects = {
+    "jamie-taffurelli-o365admin-jt-owners-pim" = {
+      group_reference  = "jt-owners-pim"
+      member_reference = "jamie-taffurelli-o365admin"
+    }
+    "jamie-taffurelli-o365admin-jt-globaladmins-pim" = {
+      group_reference  = "jt-globaladmins-pim"
+      member_reference = "jamie-taffurelli-o365admin"
     }
   }
   role_assignments_users = {
