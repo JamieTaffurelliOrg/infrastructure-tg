@@ -1,6 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.20"
-  //source = "../../../../../az-identity-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.21"
 }
 
 include {
@@ -12,6 +11,7 @@ locals {
 }
 
 inputs = {
+  arm_deploy_resource_group_name = "rg-iden-shrd-arm-weu1-001"
   users = {
     "break-glass-1" = {
       user_principal_name = "alphabravo@jamietaffurelli.com"
@@ -1499,6 +1499,14 @@ inputs = {
       scope                 = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
     }
   }
+  pim_assignments_groups = [
+    {
+      scope              = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      justification      = "Org Management Group Owner access"
+      group_reference    = "jt-owners-pim"
+      role_definition_id = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+    }
+  ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
     resource_group_name = "rg-mgmt-prod-log-weu1-001"
