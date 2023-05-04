@@ -657,6 +657,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/354a71d2-11ed-4c91-abb2-a08a2b4abe69/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
     }
+    "identity-tf-contributor-arm" = {
+      service_principal_reference = "identity-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/97f65cdf-6be6-4e62-b0d2-a4b985a8f047/resourceGroups/rg-iden-shrd-arm-weu1-001"
+    }
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
