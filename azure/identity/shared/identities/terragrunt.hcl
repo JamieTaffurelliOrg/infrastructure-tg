@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.22"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.23"
 }
 
 include {
