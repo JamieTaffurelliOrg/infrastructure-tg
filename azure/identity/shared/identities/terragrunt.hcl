@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.23"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.24"
 }
 
 include {
@@ -11,7 +11,6 @@ locals {
 }
 
 inputs = {
-  arm_deploy_resource_group_name = "rg-iden-shrd-arm-weu1-001"
   users = {
     "break-glass-1" = {
       user_principal_name = "alphabravo@jamietaffurelli.com"
