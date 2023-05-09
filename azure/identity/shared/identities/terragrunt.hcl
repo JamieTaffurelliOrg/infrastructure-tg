@@ -661,6 +661,11 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/97f65cdf-6be6-4e62-b0d2-a4b985a8f047/resourceGroups/rg-iden-shrd-arm-weu1-001"
     }
+    "identity-tf-tagcontributor-jtmg" = {
+      service_principal_reference = "identity-tf"
+      role_definition_name        = "Tag Contributor"
+      scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+    }
     "mgmt-dev-logging-tf-blobcontributor-mgmtdevcontainer" = {
       service_principal_reference = "mgmt-dev-logging-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -1499,13 +1504,13 @@ inputs = {
     }
   }
   pim_assignments_groups = [
-    {
+    /*{
       scope              = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification      = "Org Management Group Owner access"
       group_reference    = "jt-owners-pim"
       role_definition_id = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
       request_type       = "AdminUpdate"
-    }
+    }*/
   ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
