@@ -1504,13 +1504,13 @@ inputs = {
     }
   }
   pim_assignments_groups = [
-    /*{
+    {
       scope              = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification      = "Org Management Group Owner access"
       group_reference    = "jt-owners-pim"
       role_definition_id = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
       request_type       = "AdminUpdate"
-    }*/
+    }
   ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
