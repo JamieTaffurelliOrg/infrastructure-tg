@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.24"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.25"
 }
 
 include {
@@ -1503,7 +1503,8 @@ inputs = {
       scope              = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification      = "Org Management Group Owner access"
       group_reference    = "jt-owners-pim"
-      role_definition_id = "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+      role_definition_id = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+      request_type       = "AdminUpdate"
     }
   ]
   log_analytics_workspace = {
