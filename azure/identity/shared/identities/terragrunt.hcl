@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.26"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.27"
 }
 
 include {
@@ -1562,7 +1562,7 @@ inputs = {
       group_reference     = "jt-contributors-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
       request_type        = "AdminUpdate"
-      deploy              = true
+      deploy              = false
     },
     {
       management_group_id = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1572,7 +1572,7 @@ inputs = {
       group_reference     = "jt-useraccessadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"
       request_type        = "AdminUpdate"
-      deploy              = true
+      deploy              = false
     },
     {
       management_group_id = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1582,7 +1582,7 @@ inputs = {
       group_reference     = "jt-storageblobdatacontributors-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
       request_type        = "AdminUpdate"
-      deploy              = true
+      deploy              = false
     },
     {
       management_group_id = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1592,7 +1592,7 @@ inputs = {
       group_reference     = "jt-keyvaultadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483"
       request_type        = "AdminUpdate"
-      deploy              = true
+      deploy              = false
     },
     {
       management_group_id = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
@@ -1602,7 +1602,49 @@ inputs = {
       group_reference     = "jt-vmloginadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/1c0163c0-47e6-4577-8991-ea5c82e286e4"
       request_type        = "AdminUpdate"
-      deploy              = true
+      deploy              = false
+    }
+  ]
+  named_locations = [
+    {
+      name = "trusted-ips"
+      ip_locations = {
+        "trusted-ips" = {
+          ip_ranges = ["0.0.0.0/0"]
+          trusted   = false
+        }
+      }
+    },
+    {
+      name = "trusted-locations"
+      country_locations = {
+        "trusted-locations" = {
+          countries_and_regions                 = ["GB"]
+          include_unknown_countries_and_regions = true
+        }
+      }
+    }
+  ]
+  conditional_access_policies = [
+    {
+      name                = "mfa-all"
+      sign_in_risk_levels = ["none"]
+      applications = {
+        included_applications = ["All"]
+      }
+      locations = {
+        included_location_ids = ["AllTrusted"]
+      }
+      platforms = {
+        included_platforms = ["all"]
+      }
+      users = {
+        included_user_ids = ["All"]
+      }
+      grant_controls = {
+        operator          = "AND"
+        built_in_controls = ["mfa", "domainJoinedDevice"]
+      }
     }
   ]
   log_analytics_workspace = {
