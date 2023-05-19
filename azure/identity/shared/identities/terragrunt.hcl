@@ -1606,12 +1606,12 @@ inputs = {
     }
   ]
   named_locations = [
-    /*{
+    {
       name = "trusted-ips"
       ip_locations = {
         "trusted-ips" = {
           ip_ranges = ["0.0.0.0/0"]
-          trusted = false
+          trusted   = false
         }
       }
     },
@@ -1619,15 +1619,15 @@ inputs = {
       name = "trusted-locations"
       country_locations = {
         "trusted-locations" = {
-          countries_and_regions = ["GB"]
+          countries_and_regions                 = ["GB"]
           include_unknown_countries_and_regions = true
         }
       }
-    }*/
+    }
   ]
   conditional_access_policies = [
-    /*{
-      name = "mfa-all"
+    {
+      name                = "mfa-all"
       sign_in_risk_levels = ["none"]
       applications = {
         included_applications = ["All"]
@@ -1642,10 +1642,10 @@ inputs = {
         included_user_ids = ["All"]
       }
       grant_controls = {
-        operator = "AND"
+        operator          = "AND"
         built_in_controls = ["mfa", "domainJoinedDevice"]
       }
-    }*/
+    }
   ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-weu1-001"
