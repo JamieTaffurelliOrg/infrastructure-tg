@@ -1633,7 +1633,7 @@ inputs = {
         included_applications = ["All"]
       }
       locations = {
-        included_location_ids = ["AllTrusted"]
+        included_location_ids = ["All"]
       }
       platforms = {
         included_platforms = ["all"]
