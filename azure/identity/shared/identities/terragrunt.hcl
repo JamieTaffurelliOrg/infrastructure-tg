@@ -1644,7 +1644,7 @@ inputs = {
       }
       grant_controls = {
         operator          = "AND"
-        built_in_controls = ["mfa" /*, "domainJoinedDevice"*/]
+        built_in_controls = ["mfa", "domainJoinedDevice"]
       }
     }
   ]
