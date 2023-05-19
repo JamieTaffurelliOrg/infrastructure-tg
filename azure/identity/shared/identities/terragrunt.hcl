@@ -1639,7 +1639,8 @@ inputs = {
         included_platforms = ["all"]
       }
       users = {
-        included_user_ids = ["All"]
+        included_user_ids        = ["All"]
+        excluded_user_references = ["break-glass-1", "break-glass-2"]
       }
       grant_controls = {
         operator          = "AND"
