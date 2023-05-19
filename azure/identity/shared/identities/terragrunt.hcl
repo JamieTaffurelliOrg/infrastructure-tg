@@ -1611,7 +1611,7 @@ inputs = {
       ip_locations = {
         "trusted-ips" = {
           ip_ranges = ["0.0.0.0/0"]
-          trusted   = false
+          trusted   = true
         }
       }
     },
