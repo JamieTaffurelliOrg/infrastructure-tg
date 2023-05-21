@@ -46,7 +46,12 @@ inputs = {
     {
       name     = "rg-mgmt-shrd-vmimg-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "images" })
+      tags     = merge(local.tags, { workload-name = "vm-images" })
+    },
+    {
+      name     = "rg-mgmt-shrd-acr-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload-name = "container-images" })
     }
   ]
 }
