@@ -76,5 +76,5 @@ inputs = {
     name                = "log-mgmt-prod-log-weu1-001"
     resource_group_name = "rg-mgmt-prod-log-weu1-001"
   }
-  tags = merge(local.tags, { workload-name = "images" })
+  tags = merge(local.tags, { workload-name = "vm-images" })
 }
