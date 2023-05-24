@@ -161,6 +161,10 @@ inputs = {
       display_name = "mgmt-shrd-vmimg-tf"
       tags         = ["mgmt-shrd-vmimg-tf"]
     }
+    "mgmt-shrd-acr-tf" = {
+      display_name = "mgmt-shrd-acr-tf"
+      tags         = ["mgmt-shrd-acr-tf"]
+    }
     "vm-scripts" = {
       display_name = "vm-scripts"
       tags         = ["vm-scripts"]
@@ -383,6 +387,13 @@ inputs = {
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.shared.vm-images.deploy"
+    }
+    "mgmt-shrd-acr-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "mgmt-shrd-acr-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:management.shared.acr.deploy"
     }
     "vm-scripts" = {
       display_name             = "deploy"
@@ -1293,6 +1304,21 @@ inputs = {
     }
     "mgmt-shrd-vmimg-tf-moncontributor-mgmtprodlogs" = {
       service_principal_reference = "mgmt-shrd-vmimg-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/354a71d2-11ed-4c91-abb2-a08a2b4abe69/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
+    }
+    "mgmt-shrd-acr-tf-contributor-mgmtshrdacr" = {
+      service_principal_reference = "mgmt-shrd-acr-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-acr-weu1-001"
+    }
+    "mgmt-shrd-acr-tf-blobcontributor-mgmtshrdcontainer" = {
+      service_principal_reference = "mgmt-shrd-acr-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/3bdf403f-77ac-4879-8fba-fa41c2cc94ee/resourceGroups/rg-mgmt-shrd-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtshrdtfweu1001/blobServices/default/containers/mgmt-shrd"
+    }
+    "mgmt-shrd-acr-tf-moncontributor-mgmtprodlogs" = {
+      service_principal_reference = "mgmt-shrd-acr-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/354a71d2-11ed-4c91-abb2-a08a2b4abe69/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
     }
