@@ -564,6 +564,11 @@ inputs = {
       description              = "Management of shared image gallery infrastructure via Terraform"
       tags                     = ["mgmt-shrd-vmimg-tf"]
     }
+    "mgmt-shrd-acr-tf" = {
+      application_id_reference = "mgmt-shrd-acr-tf"
+      description              = "Management of container registry infrastructure via Terraform"
+      tags                     = ["mgmt-shrd-acr-tf"]
+    }
     "vm-scripts" = {
       application_id_reference = "vm-scripts"
       description              = "Deployment of scripts used for VM configuration to storage account"
