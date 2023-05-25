@@ -60,7 +60,7 @@ inputs = {
   ip_address_type      = "Private"
   containers = [
     {
-      name   = "hw"
+      name   = "test"
       image  = "mcr.microsoft.com/windows/nanoserver:ltsc2022"
       cpu    = "0.5"
       memory = "1.5"

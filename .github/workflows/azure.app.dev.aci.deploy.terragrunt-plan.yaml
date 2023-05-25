@@ -1,0 +1,28 @@
+on:
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'azure/app/dev/westeurope/multitenant/container-instance**'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'INFO'
+        type: choice
+        options:
+        - INFO
+        - WARNING
+        - DEBUG
+
+concurrency: ci-${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  call-terraform-plan-workflow:
+    uses: ./.github/workflows/azure.terragrunt-plan.yaml
+    with:
+      terragrunt-working-dir: './azure/app/dev/westeurope/multitenant/container-instance'
+      environment: app.dev.aci.deploy
+      log-level: ${{ inputs.logLevel }}
+    secrets: inherit
