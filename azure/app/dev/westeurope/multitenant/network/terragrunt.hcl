@@ -235,6 +235,13 @@ inputs = {
       network_security_group_reference = "nsg-app-dev-net-weu1-002"
       route_table_reference            = "rt-app-dev-net-weu1-001"
       delegation                       = "Microsoft.ContainerInstance/containerGroups"
+    },
+    {
+      name                             = "snet-ase"
+      address_prefixes                 = ["10.192.7.0/24"]
+      network_security_group_reference = "nsg-app-dev-net-weu1-002"
+      route_table_reference            = "rt-app-dev-net-weu1-001"
+      delegation                       = "Microsoft.Web/hostingEnvironments"
     }
   ]
   peerings = [
