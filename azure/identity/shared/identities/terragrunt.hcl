@@ -411,11 +411,6 @@ inputs = {
     }
   }
   service_principals = {
-    "aws-sso" = {
-      application_id_reference = "aws-sso"
-      description              = "AWS Single Sign-On"
-      tags                     = ["AWS", "SSO", "WindowsAzureActiveDirectoryIntegratedApp", "WindowsAzureActiveDirectoryCustomSingleSignOnApplication"]
-    }
     "setup-landing-zones-tf" = {
       application_id_reference = "setup-landing-zones-tf"
       description              = "landing zone setup with Terraform"
