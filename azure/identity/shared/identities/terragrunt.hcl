@@ -22,10 +22,6 @@ inputs = {
     }
   }
   applications = {
-    "aws-sso" = {
-      display_name = "AWS Single Sign-On"
-      tags         = ["AWS", "SSO", "WindowsAzureActiveDirectoryIntegratedApp", "WindowsAzureActiveDirectoryCustomSingleSignOnApplication"]
-    }
     "setup-landing-zones-tf" = {
       display_name = "setup-landing-zones-tf"
       tags         = ["landing-zone-setup"]
