@@ -628,6 +628,10 @@ inputs = {
       display_name = "jt-vmloginadmins-pim"
       description  = "Azure AD Management Group VM Adminstrator Logins (PIM assignable)"
     }
+    "jt-awsorgadmins-pim" = {
+      display_name = "jt-awsorgadmins-pim"
+      description  = "AWS Org Admins (PIM)"
+    }
   }
   group_memberships_objects = {
     "jamie-taffurelli-o365admin-jt-owners-pim" = {
