@@ -78,7 +78,7 @@ inputs = {
       enforce_admins = false
     },
     {
-      name           = "devops-blog.jamietaffurelli"
+      name           = "devops-blog"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
