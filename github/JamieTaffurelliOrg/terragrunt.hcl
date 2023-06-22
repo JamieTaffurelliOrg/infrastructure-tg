@@ -29,8 +29,7 @@ generate "provider" {
   contents = <<EOF
 provider "github" {
     owner = "JamieTaffurelliOrg"
-    write_delay_ms = 2800
-    read_delay_ms = 2800
+    read_delay_ms = 1000
 }
 EOF
 
