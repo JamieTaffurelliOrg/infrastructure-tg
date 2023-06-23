@@ -29,8 +29,7 @@ generate "provider" {
   contents = <<EOF
 provider "github" {
     owner = "JamieTaffurelliOrg"
-    write_delay_ms = 2800
-    read_delay_ms = 2800
+    read_delay_ms = 1000
 }
 EOF
 
@@ -74,6 +73,12 @@ inputs = {
     },
     {
       name           = "aws-aft-provisioning-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "devops-blog"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
@@ -239,6 +244,12 @@ inputs = {
     },
     {
       name           = "az-virtualhub-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-staticwebapp-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
