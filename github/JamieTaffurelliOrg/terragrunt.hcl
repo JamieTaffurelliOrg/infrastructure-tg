@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.11"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.12"
 }
 
 remote_state {
@@ -256,6 +256,12 @@ inputs = {
     },
     {
       name           = "az-containerapp-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-virtualwan-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
