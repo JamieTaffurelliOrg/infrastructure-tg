@@ -8,7 +8,7 @@ remote_state {
   }
 
   config = {
-    bucket         = "s3-jt-prod-tf-weu1-001"
+    bucket         = "s3-mgmt-prod-tf-weu1-001"
     key            = "${path_relative_to_include()}/terraform.tfstate"
     region         = "eu-west-1"
     dynamodb_table = "AFT-Management-setup-terraform-lock"
