@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-resourcegroup-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-resourcegroup-tf///?ref=0.0.6"
 }
 
 include {
@@ -72,6 +72,11 @@ inputs = {
       name     = "rg-conn-dev-afd-weu1-001"
       location = "westeurope"
       tags     = merge(local.tags, { workload-name = "front-door" })
-    }
+    },
+    {
+      name     = "rg-conn-dev-vwan-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload-name = "hub" })
+    },
   ]
 }
