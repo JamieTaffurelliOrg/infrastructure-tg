@@ -72,6 +72,11 @@ inputs = {
       name     = "rg-conn-dev-afd-weu1-001"
       location = "westeurope"
       tags     = merge(local.tags, { workload-name = "front-door" })
-    }
+    },
+    {
+      name     = "rg-conn-dev-vwan-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload-name = "hub" })
+    },
   ]
 }
