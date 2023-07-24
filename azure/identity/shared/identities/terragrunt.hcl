@@ -117,6 +117,14 @@ inputs = {
       display_name = "conn-prod-vwan-tf"
       tags         = ["conn-prod-vwan-tf"]
     }
+    "conn-dev-vhub-tf" = {
+      display_name = "conn-dev-vhub-tf"
+      tags         = ["conn-dev-vhub-tf"]
+    }
+    "conn-prod-vhub-tf" = {
+      display_name = "conn-prod-vhub-tf"
+      tags         = ["conn-prod-vhub-tf"]
+    }
     "app-dev-net-tf" = {
       display_name = "app-dev-net-tf"
       tags         = ["app-dev-net-tf"]
@@ -325,6 +333,20 @@ inputs = {
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.virtual-wan.deploy"
+    }
+    "conn-dev-vhub-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-vhub-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.virtual-hub.deploy"
+    }
+    "conn-prod-vhub-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-vhub-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.virtual-hub.deploy"
     }
     "app-dev-net-tf-deploy" = {
       display_name             = "deploy"
@@ -536,7 +558,17 @@ inputs = {
     "conn-prod-vwan-tf" = {
       application_id_reference = "conn-prod-vwan-tf"
       description              = "Management of prod virtual wan infrastructure via Terraform"
-      tags                     = ["conn-prod-afd-tf"]
+      tags                     = ["conn-prod-vwan-tf"]
+    }
+    "conn-dev-vhub-tf" = {
+      application_id_reference = "conn-dev-vhub-tf"
+      description              = "Management of dev virtual hub infrastructure via Terraform"
+      tags                     = ["conn-dev-vhub-tf"]
+    }
+    "conn-prod-vhub-tf" = {
+      application_id_reference = "conn-prod-vhub-tf"
+      description              = "Management of prod virtual hub infrastructure via Terraform"
+      tags                     = ["conn-prod-vhub-tf"]
     }
     "app-dev-net-tf" = {
       application_id_reference = "app-dev-net-tf"
@@ -934,6 +966,21 @@ inputs = {
       service_principal_reference = "conn-dev-vwan-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vwan-weu1-001"
+    }
+    "conn-dev-vhub-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-vhub-tf-contributor-vhubrg" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
+    }
+    "conn-dev-vhub-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
     /*"conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
