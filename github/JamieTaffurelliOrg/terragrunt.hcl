@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.14"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.15"
 }
 
 remote_state {
@@ -29,7 +29,7 @@ generate "provider" {
   contents = <<EOF
 provider "github" {
     owner = "JamieTaffurelliOrg"
-    read_delay_ms = 1000
+    read_delay_ms = 250
 }
 EOF
 
@@ -274,6 +274,12 @@ inputs = {
     },
     {
       name           = "az-containerappenv-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-dnsresolver-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
