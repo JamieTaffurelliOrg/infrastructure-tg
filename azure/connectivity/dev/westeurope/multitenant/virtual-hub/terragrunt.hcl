@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.7"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.8"
 }
 
 include {
@@ -57,7 +57,7 @@ inputs = {
   location                        = "westeurope"
   virtual_wan_name                = "vwan-conn-dev-vwan-weu1-001"
   virtual_wan_resource_group_name = "rg-conn-dev-vwan-weu1-001"
-  address_prefix                  = ["10.128.0.0/23"]
+  address_prefix                  = "10.128.0.0/23"
   firewall = {
     name                       = "afw-conn-dev-vhub-weu1-001"
     policy_name                = "afwp-conn-dev-afwp-weu1-001"
