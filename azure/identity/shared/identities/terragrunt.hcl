@@ -1601,7 +1601,7 @@ inputs = {
     "conn-dev-vhub-tf-vwanjoin-conndevvwan" = {
       service_principal_reference = "conn-dev-vhub-tf"
       custom_role_reference       = "Virtual WAN Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vwan-weu1-001/providers/Microsoft.Network/vitrualWans/vwan-conn-dev-vwan-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vwan-weu1-001/providers/Microsoft.Network/virtualWans/vwan-conn-dev-vwan-weu1-001"
     }
     /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
