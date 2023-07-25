@@ -1538,6 +1538,13 @@ inputs = {
       description       = "Register the Microsoft.SqlVirtualMachine provider to a subscription"
       actions           = ["Microsoft.SqlVirtualMachine/register/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Virtual WAN Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Join a virtual hub to a virtual WAN"
+      actions           = ["Microsoft.Network/virtualWans/join/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -1590,6 +1597,11 @@ inputs = {
       service_principal_reference = "conn-dev-vhub-tf"
       custom_role_reference       = "Firewall Policy Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-afwp-weu1-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-weu1-001"
+    }
+    "conn-dev-vhub-tf-vwanjoin-conndevvwan" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      custom_role_reference       = "Virtual WAN Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vwan-weu1-001/providers/Microsoft.Network/vitrualWans/vwan-conn-dev-vwan-weu1-001"
     }
     /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
