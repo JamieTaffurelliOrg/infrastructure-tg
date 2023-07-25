@@ -982,6 +982,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "conn-dev-vhub-tf-moncontributor-vhubrg" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
+    }
     /*"conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
       role_definition_name        = "Storage Blob Data Contributor"
@@ -1576,6 +1581,11 @@ inputs = {
       custom_role_reference       = "Private Link Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
     }*/
+    "conn-dev-vhub-tf-fwpoljoin-conndevfwpol" = {
+      service_principal_reference = "conn-dev-vhub-tf"
+      custom_role_reference       = "Firewall Policy Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-afwp-weu1-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-weu1-001"
+    }
     /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
