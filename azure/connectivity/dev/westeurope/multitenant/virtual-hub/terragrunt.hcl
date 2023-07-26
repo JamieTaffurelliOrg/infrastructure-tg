@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.10"
 }
 
 include {
@@ -60,7 +60,7 @@ inputs = {
   address_prefix                  = "10.128.0.0/23"
   firewall = {
     name                       = "afw-conn-dev-vhub-weu1-001"
-    policy_name                = "afwp-conn-dev-afwp-weu1-001"
+    policy_name                = "afwp-conn-dev-afwp-weu1-002"
     policy_resource_group_name = "rg-conn-dev-afwp-weu1-001"
     zone_redundant             = false
     public_ip_count            = 1

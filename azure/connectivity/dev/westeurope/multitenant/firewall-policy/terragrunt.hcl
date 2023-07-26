@@ -142,6 +142,9 @@ inputs = {
   child_policies = [
     {
       name = "afwp-conn-dev-afwp-weu1-002"
+      dns = {
+        dns_proxy_enabled = true
+      }
     }
   ]
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
