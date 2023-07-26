@@ -83,5 +83,10 @@ inputs = {
       location = "westeurope"
       tags     = merge(local.tags, { workload-name = "hub" })
     },
+    {
+      name     = "rg-conn-dev-dnspr-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload-name = "private-dns" })
+    },
   ]
 }

@@ -1596,7 +1596,7 @@ inputs = {
     "conn-dev-vhub-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "conn-dev-vhub-tf"
       custom_role_reference       = "Firewall Policy Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-afwp-weu1-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-afwp-weu1-001"
     }
     "conn-dev-vhub-tf-vwanjoin-conndevvwan" = {
       service_principal_reference = "conn-dev-vhub-tf"
