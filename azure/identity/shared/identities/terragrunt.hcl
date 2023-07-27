@@ -282,7 +282,7 @@ inputs = {
     }
     "conn-dev-pip-tf-deploy" = {
       display_name             = "deploy"
-      application_id_reference = "conn-dev-bas-tf"
+      application_id_reference = "conn-dev-pip-tf"
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.public-ip.deploy"
@@ -1644,14 +1644,14 @@ inputs = {
       description       = "Join a virtual hub to a virtual WAN"
       actions           = ["Microsoft.Network/virtualWans/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    },
+    } /*,
     {
       name              = "Virtual Hub Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Join a virtual hub to a virtual WAN"
       actions           = ["Microsoft.Network/virtualHubs/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    }
+    }*/
   ]
   custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
@@ -1669,11 +1669,11 @@ inputs = {
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
     }
-    "conn-dev-bas-tf-vhubjoin-conndevvhub" = {
+    /*"conn-dev-bas-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Virtual Hub Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
-    }
+    }*/
     /*"conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
