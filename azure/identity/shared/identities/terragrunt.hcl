@@ -887,10 +887,15 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
-    "conn-dev-bas-tf-reader-conndevhub" = {
+    "conn-dev-bas-tf-reader-conndevvhub" = {
       service_principal_reference = "conn-dev-bas-tf"
       role_definition_name        = "Reader"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
+    }
+    "conn-dev-bas-tf-netcontributor-conndevnetwatcher" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      role_definition_name        = "Network Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-weu1-001"
     }
     "conn-dev-afwp-tf-contributor-conndevafwp" = {
       service_principal_reference = "conn-dev-afwp-tf"
@@ -991,6 +996,31 @@ inputs = {
       service_principal_reference = "conn-dev-vhub-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-afwp-weu1-001"
+    }
+    "conn-dev-dnspr-tf-contributor-conndevdnspr" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-dnspr-weu1-001"
+    }
+    "conn-dev-dnspr-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-dnspr-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
+    "conn-dev-dnspr-tf-reader-conndevvhub" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
+    }
+    "conn-dev-dnspr-tf-netcontributor-conndevnetwatcher" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Network Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-weu1-001"
     }
     /*"conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
