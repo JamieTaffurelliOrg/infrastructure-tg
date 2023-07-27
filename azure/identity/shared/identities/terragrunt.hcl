@@ -1086,6 +1086,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "conn-dev-dnspr-tf-contributor-mgmtdevlogstorage" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogweu1002"
+    }
     "conn-dev-dnspr-tf-reader-conndevvhub" = {
       service_principal_reference = "conn-dev-dnspr-tf"
       role_definition_name        = "Reader"
