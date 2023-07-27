@@ -6,6 +6,20 @@ include {
   path = find_in_parent_folders()
 }
 
+locals {
+  tags = {
+    data-classification = "confidential"
+    criticality         = "mission-critical"
+    ops-commitment      = "workload-operations"
+    ops-team            = "sre"
+    cost-owner          = "jltaffurelli@outlook.com"
+    owner               = "jltaffurelli@outlook.com"
+    sla                 = "high"
+    environment         = "dev"
+    stack               = "connectivity"
+  }
+}
+
 generate "provider" {
 
   path = "providers.tf"
@@ -64,4 +78,5 @@ inputs = {
       name = "weu1.internal.jamietaffurellidev.com"
     }
   ]
+  tags = merge(local.tags, { workload-name = "firewall" })
 }
