@@ -13,7 +13,7 @@ dependency "network" {
     virtual_network_id = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue"
     subnets = {
       "snet-dnspr-001" = {
-        id = "tempid"
+        id = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
       }
     }
   }
