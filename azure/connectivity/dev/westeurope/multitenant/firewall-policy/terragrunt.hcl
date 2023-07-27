@@ -144,7 +144,7 @@ inputs = {
       name = "afwp-conn-dev-afwp-weu1-002"
       dns = {
         proxy_enabled = true
-        dns_servers   = ["10.128.2.5"]
+        dns_servers   = ["10.128.3.4"]
       }
     }
   ]
