@@ -72,8 +72,8 @@ inputs = {
   virtual_network_id  = dependency.network.outputs.virtual_network_id
   inbound_endpoints = [
     {
-      inbound_endpoint_name = "in-001"
-      subnet_id             = dependency.network.outputs.subnets["snet-dnspr-001"].id
+      name      = "in-001"
+      subnet_id = dependency.network.outputs.subnets["snet-dnspr-001"].id
     }
   ]
   tags = merge(local.tags, { workload = "private-dns" })
