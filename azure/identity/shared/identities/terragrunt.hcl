@@ -134,8 +134,8 @@ inputs = {
       tags         = ["conn-prod-dnspr-tf"]
     }
     "conn-dev-pip-tf" = {
-      display_name = "conn-dev-dnspr-tf"
-      tags         = ["conn-dev-dnspr-tf"]
+      display_name = "conn-dev-pip-tf"
+      tags         = ["conn-dev-pip-tf"]
     }
     "conn-prod-pip-tf" = {
       display_name = "conn-prod-pip-tf"
