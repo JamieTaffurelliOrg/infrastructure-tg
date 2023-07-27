@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.16"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.20"
 }
 
 include {
@@ -36,6 +36,17 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "ddos"
+  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "dns"
   subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
   features {
@@ -217,8 +228,9 @@ inputs = {
     }
   ]
   hub_connection = {
-    name                = "vhub-conn-dev-vhub-weu1-001"
-    resource_group_name = "rg-conn-dev-vhub-weu1-001"
+    name                      = "vhub-conn-dev-vhub-weu1-001"
+    resource_group_name       = "rg-conn-dev-vhub-weu1-001"
+    internet_security_enabled = false
   }
   network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
