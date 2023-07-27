@@ -971,6 +971,11 @@ inputs = {
       role_definition_name        = "Network Contributor"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-netwat-weu1-001/providers/Microsoft.Network/networkWatchers/nw-conn-dev-netwat-weu1-001"
     }
+    "conn-dev-bas-tf-reader-conndevsub" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+    }
     "conn-dev-afwp-tf-contributor-conndevafwp" = {
       service_principal_reference = "conn-dev-afwp-tf"
       role_definition_name        = "Contributor"
@@ -1105,6 +1110,11 @@ inputs = {
       service_principal_reference = "conn-dev-dnspr-tf"
       role_definition_name        = "Private DNS Zone Contributor"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-prvdns-weu1-001"
+    }
+    "conn-dev-dnspr-tf-reader-conndevsub" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
     }
     "conn-dev-pip-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "conn-dev-pip-tf"
