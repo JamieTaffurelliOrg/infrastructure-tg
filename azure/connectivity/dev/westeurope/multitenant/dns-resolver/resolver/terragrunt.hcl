@@ -73,7 +73,7 @@ inputs = {
   inbound_endpoints = [
     {
       name      = "in-001"
-      subnet_id = dependency.network.outputs.subnets["snet-dnspr-001"].id
+      subnet_id = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
     }
   ]
   tags = merge(local.tags, { workload = "private-dns" })

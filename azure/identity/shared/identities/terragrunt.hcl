@@ -1596,7 +1596,7 @@ inputs = {
       name              = "Public IP Prefix Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Attach public IP addresses to public IP prefixes"
-      actions           = ["Microsoft.Network/publicIPPrefixes/join/action"]
+      actions           = ["Microsoft.Network/publicIPPrefixes/join/action", "Microsoft.Network/publicIPPrefixes/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
@@ -1610,7 +1610,7 @@ inputs = {
       name              = "Firewall Policy Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Attach firewalls to firewall policies"
-      actions           = ["Microsoft.Network/firewallPolicies/join/action"]
+      actions           = ["Microsoft.Network/firewallPolicies/join/action", "Microsoft.Network/firewallPolicies/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
@@ -1631,7 +1631,7 @@ inputs = {
       name              = "Load Balancer Backend Address Pool Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Attach resources to backend address pool of a load balancer"
-      actions           = ["Microsoft.Network/loadBalancers/backendAddressPools/join/action"]
+      actions           = ["Microsoft.Network/loadBalancers/backendAddressPools/join/action", "Microsoft.Network/loadBalancers/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
@@ -1667,7 +1667,7 @@ inputs = {
       name              = "Virtual WAN Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Join a virtual hub to a virtual WAN"
-      actions           = ["Microsoft.Network/virtualWans/join/action"]
+      actions           = ["Microsoft.Network/virtualWans/join/action", "Microsoft.Network/virtualWans/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     } /*,
     {

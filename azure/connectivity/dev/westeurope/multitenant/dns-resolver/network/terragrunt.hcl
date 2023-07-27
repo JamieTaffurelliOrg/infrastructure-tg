@@ -140,7 +140,7 @@ inputs = {
       name                                          = "snet-dnspr-001"
       private_endpoint_network_policies_enabled     = false
       private_link_service_network_policies_enabled = false
-      address_prefixes                              = ["10.128.2.0/26"]
+      address_prefixes                              = ["10.128.3.0/26"]
       network_security_group_reference              = "nsg-conn-dev-dnspr-weu1-001"
     }
   ]
@@ -186,8 +186,8 @@ inputs = {
       resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     }
   ]
-  network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-app-dev-netwat-weu1-001"
+  network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
+  network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   storage_account_name                        = "stjtmgmtdevlogweu1002"
