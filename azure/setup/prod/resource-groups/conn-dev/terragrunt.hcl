@@ -88,5 +88,10 @@ inputs = {
       location = "westeurope"
       tags     = merge(local.tags, { workload = "private-dns" })
     },
+    {
+      name     = "rg-conn-dev-pip-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload = "hub" })
+    },
   ]
 }

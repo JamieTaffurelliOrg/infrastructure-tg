@@ -133,6 +133,14 @@ inputs = {
       display_name = "conn-prod-dnspr-tf"
       tags         = ["conn-prod-dnspr-tf"]
     }
+    "conn-dev-pip-tf" = {
+      display_name = "conn-dev-dnspr-tf"
+      tags         = ["conn-dev-dnspr-tf"]
+    }
+    "conn-prod-pip-tf" = {
+      display_name = "conn-prod-pip-tf"
+      tags         = ["conn-prod-pip-tf"]
+    }
     "app-dev-net-tf" = {
       display_name = "app-dev-net-tf"
       tags         = ["app-dev-net-tf"]
@@ -271,6 +279,20 @@ inputs = {
       description              = "Authentication for GitHub Actions deployment"
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.bastion.deploy"
+    }
+    "conn-dev-pip-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-bas-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.public-ip.deploy"
+    }
+    "conn-prod-pip-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-pip-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.public-ip.deploy"
     }
     "conn-dev-afwp-tf-deploy" = {
       display_name             = "deploy"
@@ -602,6 +624,16 @@ inputs = {
       description              = "Management of prod dns resolver infrastructure via Terraform"
       tags                     = ["conn-prod-dnspr-tf"]
     }
+    "conn-dev-pip-tf" = {
+      application_id_reference = "conn-dev-pip-tf"
+      description              = "Management of dev public ip infrastructure via Terraform"
+      tags                     = ["conn-dev-pip-tf"]
+    }
+    "conn-prod-pip-tf" = {
+      application_id_reference = "conn-prod-pip-tf"
+      description              = "Management of prod public ip infrastructure via Terraform"
+      tags                     = ["conn-prod-pip-tf"]
+    }
     "app-dev-net-tf" = {
       application_id_reference = "app-dev-net-tf"
       description              = "Management of dev app network infrastructure via Terraform"
@@ -923,6 +955,11 @@ inputs = {
       service_principal_reference = "conn-dev-bas-tf"
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
+    }
+    "conn-dev-bas-tf-contributor-mgmtdevlogstorage" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogweu1002"
     }
     "conn-dev-bas-tf-netcontributor-conndevnetwatcher" = {
       service_principal_reference = "conn-dev-bas-tf"
@@ -1607,6 +1644,13 @@ inputs = {
       description       = "Join a virtual hub to a virtual WAN"
       actions           = ["Microsoft.Network/virtualWans/join/action"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name              = "Virtual Hub Joiner (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Join a virtual hub to a virtual WAN"
+      actions           = ["Microsoft.Network/virtualHubs/join/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     }
   ]
   custom_rbac_role_assignments_service_principals = {
@@ -1619,13 +1663,18 @@ inputs = {
       service_principal_reference = "conn-dev-hub-tf"
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001"
-    }
+    }*/
     "conn-dev-bas-tf-prefixjoin-conndevhubprefix" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-hub-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
     }
-    "conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
+    "conn-dev-bas-tf-vhubjoin-conndevvhub" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      custom_role_reference       = "Virtual Hub Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
+    }
+    /*"conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001/subnets/AzureBastionSubnet"
