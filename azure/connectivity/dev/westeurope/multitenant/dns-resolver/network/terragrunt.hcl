@@ -199,6 +199,10 @@ inputs = {
       resource_group_name = "rg-conn-dev-prvdns-weu1-001"
     }
   ]
+  hub_connection = {
+    name                = "vhub-conn-dev-vhub-weu1-001"
+    resource_group_name = "rg-conn-dev-vhub-weu1-001"
+  }
   network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
