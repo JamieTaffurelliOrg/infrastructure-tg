@@ -6,6 +6,10 @@ include {
   path = find_in_parent_folders()
 }
 
+dependencies {
+  paths = ["../network"]
+}
+
 generate "provider" {
 
   path = "providers.tf"

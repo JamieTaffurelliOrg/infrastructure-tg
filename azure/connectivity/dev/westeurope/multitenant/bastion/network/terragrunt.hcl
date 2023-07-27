@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.15"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.16"
 }
 
 include {
@@ -92,7 +92,6 @@ inputs = {
           source_port_range          = "*"
           destination_port_range     = "443"
           source_address_prefix      = "*"
-          source_address_prefixes    = "*"
           destination_address_prefix = "*"
         },
         {
