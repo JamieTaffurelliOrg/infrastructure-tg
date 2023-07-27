@@ -46,6 +46,17 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
+  alias = "dns"
+  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
   alias = "hub"
   subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
