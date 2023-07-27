@@ -138,10 +138,12 @@ inputs = {
   subnets = [
     {
       name                                          = "snet-dnspr-001"
-      private_endpoint_network_policies_enabled     = false
+      private_endpoint_network_policies_enabled     = true
       private_link_service_network_policies_enabled = false
       address_prefixes                              = ["10.128.3.0/26"]
       network_security_group_reference              = "nsg-conn-dev-dnspr-weu1-001"
+      delegation                                    = "Microsoft.Network/dnsResolvers"
+      delegation_actions                            = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
   ]
   private_dns_zones = [
