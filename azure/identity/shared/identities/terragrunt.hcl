@@ -956,6 +956,11 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001"
     }
+    "conn-dev-bas-tf-reader-conndevpip" = {
+      service_principal_reference = "conn-dev-bas-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001"
+    }
     "conn-dev-bas-tf-contributor-mgmtdevlogstorage" = {
       service_principal_reference = "conn-dev-bas-tf"
       role_definition_name        = "Contributor"
