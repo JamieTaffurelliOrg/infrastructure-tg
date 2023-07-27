@@ -67,5 +67,5 @@ inputs = {
   virtual_network_resource_group_name         = "rg-conn-dev-hub-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "bastion" })
+  tags                                        = merge(local.tags, { workload = "bastion" })
 }

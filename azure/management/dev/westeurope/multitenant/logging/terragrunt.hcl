@@ -61,5 +61,5 @@ inputs = {
   log_analytics_workspace_name = "log-mgmt-dev-log-weu1-001"
   automation_account_name      = "aa-mgmt-dev-log-weu1-001"
   storage_account_name         = "stjtmgmtdevlogweu1002"
-  tags                         = merge(local.tags, { workload-name = "logging" })
+  tags                         = merge(local.tags, { workload = "logging" })
 }

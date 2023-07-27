@@ -100,5 +100,5 @@ inputs = {
       action  = "Block"
     }
   ]
-  tags = merge(local.tags, { workload-name = "front-door" })
+  tags = merge(local.tags, { workload = "front-door" })
 }

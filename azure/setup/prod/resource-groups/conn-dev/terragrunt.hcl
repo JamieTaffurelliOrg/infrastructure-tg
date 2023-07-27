@@ -46,47 +46,47 @@ inputs = {
     {
       name     = "rg-conn-dev-hub-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "hub" })
+      tags     = merge(local.tags, { workload = "hub" })
     },
     {
       name     = "rg-conn-dev-prvdns-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "private-dns" })
+      tags     = merge(local.tags, { workload = "private-dns" })
     },
     {
       name     = "rg-conn-dev-bas-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "bastion" })
+      tags     = merge(local.tags, { workload = "bastion" })
     },
     {
       name     = "rg-conn-dev-afwp-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "firewall" })
+      tags     = merge(local.tags, { workload = "firewall" })
     },
     {
       name     = "rg-conn-dev-fdfp-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "front-door" })
+      tags     = merge(local.tags, { workload = "front-door" })
     },
     {
       name     = "rg-conn-dev-afd-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "front-door" })
+      tags     = merge(local.tags, { workload = "front-door" })
     },
     {
       name     = "rg-conn-dev-vwan-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "hub" })
+      tags     = merge(local.tags, { workload = "hub" })
     },
     {
       name     = "rg-conn-dev-vhub-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "hub" })
+      tags     = merge(local.tags, { workload = "hub" })
     },
     {
       name     = "rg-conn-dev-dnspr-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "private-dns" })
+      tags     = merge(local.tags, { workload = "private-dns" })
     },
   ]
 }

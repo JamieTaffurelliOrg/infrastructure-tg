@@ -81,5 +81,5 @@ inputs = {
   subnet_resource_group_name                  = "rg-app-dev-net-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "web" })
+  tags                                        = merge(local.tags, { workload = "web" })
 }

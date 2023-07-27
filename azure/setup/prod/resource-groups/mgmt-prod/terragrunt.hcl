@@ -46,7 +46,7 @@ inputs = {
     {
       name     = "rg-mgmt-prod-log-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "logging" })
+      tags     = merge(local.tags, { workload = "logging" })
     }
   ]
 }

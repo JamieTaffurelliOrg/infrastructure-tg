@@ -39,7 +39,7 @@ EOF
 
 locals {
   tags = {
-    workload-name       = "tfstate"
+    workload            = "tfstate"
     data-classification = "confidential"
     criticality         = "mission-critical"
     ops-commitment      = "workload-operations"

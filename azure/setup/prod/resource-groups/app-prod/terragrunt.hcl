@@ -46,27 +46,27 @@ inputs = {
     {
       name     = "rg-app-prod-net-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "network" })
+      tags     = merge(local.tags, { workload = "network" })
     },
     {
       name     = "rg-app-prod-lb-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "network" })
+      tags     = merge(local.tags, { workload = "network" })
     },
     {
       name     = "rg-app-prod-web-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "web" })
+      tags     = merge(local.tags, { workload = "web" })
     },
     {
       name     = "rg-app-prod-sql-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "sql" })
+      tags     = merge(local.tags, { workload = "sql" })
     },
     {
       name     = "rg-app-prod-kv-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "secrets" })
+      tags     = merge(local.tags, { workload = "secrets" })
     }
   ]
 }

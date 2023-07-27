@@ -66,5 +66,5 @@ inputs = {
   zone_redundant                              = true
   log_analytics_workspace_name                = "log-mgmt-prod-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-prod-log-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "firewall" })
+  tags                                        = merge(local.tags, { workload = "firewall" })
 }

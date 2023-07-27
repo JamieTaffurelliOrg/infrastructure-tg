@@ -61,5 +61,5 @@ inputs = {
     subnet_name                              = "snet-dnspr-001"
     inbound_endpoint_name                    = "in-001"
   }
-  tags = merge(local.tags, { workload-name = "private-dns" })
+  tags = merge(local.tags, { workload = "private-dns" })
 }

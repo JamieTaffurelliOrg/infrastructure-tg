@@ -46,7 +46,7 @@ inputs = {
     {
       name     = "rg-iden-shrd-arm-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "arm" })
+      tags     = merge(local.tags, { workload = "arm" })
     }
   ]
 }

@@ -122,5 +122,5 @@ inputs = {
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   storage_account_name                        = "stjtappdevdiagweu1002"
   storage_account_resource_group_name         = "rg-app-dev-diag-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "sql" })
+  tags                                        = merge(local.tags, { workload = "sql" })
 }
