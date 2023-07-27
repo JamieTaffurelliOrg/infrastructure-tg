@@ -46,32 +46,32 @@ inputs = {
     {
       name     = "rg-conn-prod-hub-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "hub" })
+      tags     = merge(local.tags, { workload = "hub" })
     },
     {
       name     = "rg-conn-prod-prvdns-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "private-dns" })
+      tags     = merge(local.tags, { workload = "private-dns" })
     },
     {
       name     = "rg-conn-prod-bas-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "bastion" })
+      tags     = merge(local.tags, { workload = "bastion" })
     },
     {
       name     = "rg-conn-prod-afwp-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "firewall" })
+      tags     = merge(local.tags, { workload = "firewall" })
     },
     {
       name     = "rg-conn-prod-fdfp-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "front-door" })
+      tags     = merge(local.tags, { workload = "front-door" })
     },
     {
       name     = "rg-conn-prod-afd-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "front-door" })
+      tags     = merge(local.tags, { workload = "front-door" })
     }
   ]
 }

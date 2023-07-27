@@ -46,42 +46,42 @@ inputs = {
     {
       name     = "rg-app-dev-net-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "network" })
+      tags     = merge(local.tags, { workload = "network" })
     },
     {
       name     = "rg-app-dev-lb-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "network" })
+      tags     = merge(local.tags, { workload = "network" })
     },
     {
       name     = "rg-app-dev-web-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "web" })
+      tags     = merge(local.tags, { workload = "web" })
     },
     {
       name     = "rg-app-dev-sql-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "sql" })
+      tags     = merge(local.tags, { workload = "sql" })
     },
     {
       name     = "rg-app-dev-kv-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "secrets" })
+      tags     = merge(local.tags, { workload = "secrets" })
     },
     {
       name     = "rg-app-dev-redis-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "redis" })
+      tags     = merge(local.tags, { workload = "redis" })
     },
     {
       name     = "rg-app-dev-aci-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "containers" })
+      tags     = merge(local.tags, { workload = "containers" })
     },
     {
       name     = "rg-app-dev-ase-weu1-001"
       location = "westeurope"
-      tags     = merge(local.tags, { workload-name = "app-service" })
+      tags     = merge(local.tags, { workload = "app-service" })
     }
   ]
 }

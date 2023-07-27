@@ -144,11 +144,53 @@ inputs = {
       network_security_group_reference              = "nsg-conn-dev-dnspr-weu1-001"
     }
   ]
+  private_dns_zones = [
+    {
+      name                = "privatelink.azure-automation.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.redis.cache.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.database.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.blob.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.table.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.queue.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.file.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.web.core.windows.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.batch.azure.com"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    },
+    {
+      name                = "privatelink.vaultcore.azure.net"
+      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+    }
+  ]
   network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-app-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   storage_account_name                        = "stjtmgmtdevlogweu1002"
   storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload-name = "private-dns" })
+  tags                                        = merge(local.tags, { workload = "private-dns" })
 }

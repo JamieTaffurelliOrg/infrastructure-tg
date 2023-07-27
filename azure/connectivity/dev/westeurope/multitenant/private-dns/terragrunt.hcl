@@ -78,5 +78,5 @@ inputs = {
       name = "weu1.internal.jamietaffurellidev.com"
     }
   ]
-  tags = merge(local.tags, { workload-name = "private-dns" })
+  tags = merge(local.tags, { workload = "private-dns" })
 }

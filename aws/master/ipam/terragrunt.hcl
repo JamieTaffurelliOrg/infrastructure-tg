@@ -64,7 +64,7 @@ inputs = {
           name                     = "eu-west-1"
           locale                   = "eu-west-1"
           cidr                     = ["192.168.0.0/19"]
-          allocation_resource_tags = merge(local.tags, { workload-name = "ipam" })
+          allocation_resource_tags = merge(local.tags, { workload = "ipam" })
         }
       }
     }

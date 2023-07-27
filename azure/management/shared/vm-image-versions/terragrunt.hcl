@@ -69,5 +69,5 @@ inputs = {
       hardening_script_url = "https://stjtmgmtshrdvmimgweu1001.blob.core.windows.net/scripts/windows-server-hardening.ps1"
     }
   ]
-  tags = merge(local.tags, { workload-name = "vm-images" })
+  tags = merge(local.tags, { workload = "vm-images" })
 }

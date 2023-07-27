@@ -56,5 +56,5 @@ inputs = {
   resource_group_name = "rg-conn-dev-vwan-weu1-001"
   location            = "westeurope"
 
-  tags = merge(local.tags, { workload-name = "hub" })
+  tags = merge(local.tags, { workload = "hub" })
 }
