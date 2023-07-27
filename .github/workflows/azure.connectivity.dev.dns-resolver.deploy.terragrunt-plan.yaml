@@ -1,9 +1,9 @@
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - '**'
     paths:
-      - 'azure/connectivity/dev/westeurope/multitenant/dns-resolver**'
+      - 'azure/connectivity/dev/westeurope/multitenant/bastion**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -19,10 +19,10 @@ on:
 concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  call-terraform-apply-workflow:
-    uses: ./.github/workflows/azure.terragrunt-run-all-apply.yaml
+  call-terraform-plan-workflow:
+    uses: ./.github/workflows/azure.terragrunt-plan.yaml
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/dns-resolver'
-      environment: connectivity.dev.dns-resolver.deploy
+      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/bastion'
+      environment: connectivity.dev.bastion.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
