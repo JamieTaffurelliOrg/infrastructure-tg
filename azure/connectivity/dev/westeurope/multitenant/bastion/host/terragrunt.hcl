@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-bastion-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-bastion-tf///?ref=0.0.8"
 }
 
 include {
@@ -10,9 +10,11 @@ dependency "network" {
   config_path = "../network"
 
   mock_outputs = {
-    subnet_name                = "tempsub"
-    subnet_resource_group_name = "tempsubrg"
-    virtual_network_name       = "tempvnet"
+    subnets = {
+      "AzureBastionSubnet" = {
+        id = "tempid"
+      }
+    }
   }
 }
 
@@ -73,8 +75,7 @@ inputs = {
   copy_paste_enabled                          = true
   file_copy_enabled                           = true
   tunneling_enabled                           = true
-  virtual_network_name                        = dependency.network.outputs.virtual_network_name
-  virtual_network_name_resource_group_name    = dependency.network.outputs.subnet_resource_group_name
+  subnet_id                                   = dependency.network.outputs.subnets["AzureBastionSubnet"].id
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload = "bastion" })
