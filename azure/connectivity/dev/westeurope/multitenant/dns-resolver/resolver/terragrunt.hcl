@@ -6,8 +6,14 @@ include {
   path = find_in_parent_folders()
 }
 
-dependencies {
-  paths = ["../network"]
+dependency "network" {
+  config_path = "../network"
+
+  mock_outputs = {
+    subnet_name                = "tempsub"
+    subnet_resource_group_name = "tempsubrg"
+    virtual_network_name       = "tempvnet"
+  }
 }
 
 generate "provider" {
@@ -60,9 +66,9 @@ inputs = {
   resource_group_name = "rg-conn-dev-dnspr-weu1-001"
   dns_resolver = {
     name                                     = "dnspr-conn-dev-dnspr-weu1-001"
-    virtual_network_name                     = "vnet-conn-dev-dnspr-weu1-001"
-    virtual_network_name_resource_group_name = "rg-conn-dev-dnspr-weu1-001"
-    subnet_name                              = "snet-dnspr-001"
+    virtual_network_name                     = dependency.network.outputs.virtual_network_name
+    virtual_network_name_resource_group_name = dependency.network.outputs.subnet_resource_group_name
+    subnet_name                              = dependency.network.outputs.subnet_name
     inbound_endpoint_name                    = "in-001"
   }
   tags = merge(local.tags, { workload = "private-dns" })
