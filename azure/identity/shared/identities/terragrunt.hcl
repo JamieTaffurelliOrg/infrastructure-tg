@@ -1679,14 +1679,14 @@ inputs = {
       description       = "Join a virtual hub to a virtual WAN"
       actions           = ["Microsoft.Network/virtualWans/join/action", "Microsoft.Network/virtualWans/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    } /*,
+    },
     {
       name              = "Virtual Hub Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Join a virtual hub to a virtual WAN"
-      actions           = ["Microsoft.Network/virtualHubs/join/action"]
+      actions           = ["Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/*", "Microsoft.Network/virtualHubs/read"]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
-    }*/
+    }
   ]
   custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
@@ -1704,11 +1704,11 @@ inputs = {
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
     }
-    /*"conn-dev-bas-tf-vhubjoin-conndevvhub" = {
+    "conn-dev-bas-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Virtual Hub Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
-    }*/
+    }
     /*"conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
@@ -1748,6 +1748,11 @@ inputs = {
       service_principal_reference = "conn-dev-vhub-tf"
       custom_role_reference       = "Virtual WAN Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vwan-weu1-001/providers/Microsoft.Network/virtualWans/vwan-conn-dev-vwan-weu1-001"
+    }
+    "conn-dev-dnspr-tf-vhubjoin-conndevvhub" = {
+      service_principal_reference = "conn-dev-dnspr-tf"
+      custom_role_reference       = "Virtual Hub Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
     }
     /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
