@@ -45,7 +45,7 @@ inputs = {
   location            = "westeurope"
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-hub-weu1-001"
+      name          = "ippre-conn-dev-pip-weu1-001"
       prefix_length = 31
     }
   ]
