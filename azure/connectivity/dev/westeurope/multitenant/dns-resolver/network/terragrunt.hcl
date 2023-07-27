@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.16"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.19"
 }
 
 include {
@@ -36,6 +36,17 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "ddos"
+  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+  }
+}
+
+provider "azurerm" {
+  alias = "dns"
   subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
   features {
@@ -138,10 +149,12 @@ inputs = {
   subnets = [
     {
       name                                          = "snet-dnspr-001"
-      private_endpoint_network_policies_enabled     = false
+      private_endpoint_network_policies_enabled     = true
       private_link_service_network_policies_enabled = false
       address_prefixes                              = ["10.128.3.0/26"]
       network_security_group_reference              = "nsg-conn-dev-dnspr-weu1-001"
+      delegation                                    = "Microsoft.Network/dnsResolvers"
+      delegation_actions                            = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
   ]
   private_dns_zones = [
