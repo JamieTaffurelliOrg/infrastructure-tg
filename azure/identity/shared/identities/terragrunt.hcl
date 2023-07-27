@@ -125,6 +125,14 @@ inputs = {
       display_name = "conn-prod-vhub-tf"
       tags         = ["conn-prod-vhub-tf"]
     }
+    "conn-dev-dnspr-tf" = {
+      display_name = "conn-dev-dnspr-tf"
+      tags         = ["conn-dev-dnspr-tf"]
+    }
+    "conn-prod-dnspr-tf" = {
+      display_name = "conn-prod-dnspr-tf"
+      tags         = ["conn-prod-dnspr-tf"]
+    }
     "app-dev-net-tf" = {
       display_name = "app-dev-net-tf"
       tags         = ["app-dev-net-tf"]
@@ -348,6 +356,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.virtual-hub.deploy"
     }
+    "conn-dev-dnspr-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-dnspr-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.dns-resolver.deploy"
+    }
+    "conn-prod-dnspr-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-dnspr-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.dns-resolver.deploy"
+    }
     "app-dev-net-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-dev-net-tf"
@@ -569,6 +591,16 @@ inputs = {
       application_id_reference = "conn-prod-vhub-tf"
       description              = "Management of prod virtual hub infrastructure via Terraform"
       tags                     = ["conn-prod-vhub-tf"]
+    }
+    "conn-dev-dnspr-tf" = {
+      application_id_reference = "conn-dev-dnspr-tf"
+      description              = "Management of dev dns resolver infrastructure via Terraform"
+      tags                     = ["conn-dev-dnspr-tf"]
+    }
+    "conn-prod-dnspr-tf" = {
+      application_id_reference = "conn-prod-dnspr-tf"
+      description              = "Management of prod dns resolver infrastructure via Terraform"
+      tags                     = ["conn-prod-dnspr-tf"]
     }
     "app-dev-net-tf" = {
       application_id_reference = "app-dev-net-tf"

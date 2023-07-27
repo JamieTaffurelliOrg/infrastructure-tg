@@ -1,9 +1,23 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.4"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-privatedns-tf///?ref=0.0.10"
 }
 
 include {
   path = find_in_parent_folders()
+}
+
+locals {
+  tags = {
+    data-classification = "confidential"
+    criticality         = "mission-critical"
+    ops-commitment      = "workload-operations"
+    ops-team            = "sre"
+    cost-owner          = "jltaffurelli@outlook.com"
+    owner               = "jltaffurelli@outlook.com"
+    sla                 = "high"
+    environment         = "dev"
+    stack               = "connectivity"
+  }
 }
 
 generate "provider" {
@@ -64,4 +78,5 @@ inputs = {
       name = "weu1.internal.jamietaffurellidev.com"
     }
   ]
+  tags = merge(local.tags, { workload-name = "private-dns" })
 }

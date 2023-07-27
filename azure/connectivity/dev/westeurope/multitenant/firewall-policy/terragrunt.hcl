@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-firewallmanager-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-firewallmanager-tf///?ref=0.0.12"
 }
 
 include {
@@ -143,8 +143,8 @@ inputs = {
     {
       name = "afwp-conn-dev-afwp-weu1-002"
       dns = {
-        dns_proxy_enabled = true
-        dns_servers       = ["10.128.2.5"]
+        proxy_enabled = true
+        dns_servers   = ["10.128.2.5"]
       }
     }
   ]
