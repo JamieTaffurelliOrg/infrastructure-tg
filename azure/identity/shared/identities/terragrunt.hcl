@@ -1707,7 +1707,7 @@ inputs = {
     "conn-dev-bas-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "conn-dev-bas-tf"
       custom_role_reference       = "Virtual Hub Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-dev-vhub-weu1-001"
     }
     /*"conn-dev-bas-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "conn-dev-bas-tf"
@@ -1752,7 +1752,7 @@ inputs = {
     "conn-dev-dnspr-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "conn-dev-dnspr-tf"
       custom_role_reference       = "Virtual Hub Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vwan-conn-dev-vhub-weu1-001"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-dev-vhub-weu1-001"
     }
     /*"conn-prod-hub-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "conn-prod-hub-tf"
