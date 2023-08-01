@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf///?ref=0.0.9"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.20"
 }
 
 include {
@@ -35,7 +35,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias = "dns"
+  alias = "ddos"
   subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
   features {
@@ -46,7 +46,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias = "hub"
+  alias = "dns"
   subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
 
   features {
@@ -187,116 +187,26 @@ inputs = {
       ]
     }
   ]
-  route_tables = [
-    {
-      name                = "rt-app-dev-net-weu1-001"
-      resource_group_name = "rg-app-dev-net-weu1-001"
-      routes = [
-        {
-          name                   = "udr-azurefirewall"
-          address_prefix         = "0.0.0.0/0"
-          next_hop_type          = "VirtualAppliance"
-          next_hop_in_ip_address = "10.128.0.4"
-        }
-      ]
-    }
-  ]
   virtual_network_name          = "vnet-app-dev-net-weu1-001"
   virtual_network_address_space = ["10.192.0.0/16"]
   subnets = [
     {
-      name                                          = "snet-web"
-      private_endpoint_network_policies_enabled     = false
-      private_link_service_network_policies_enabled = false
-      address_prefixes                              = ["10.192.2.0/24"]
-      network_security_group_reference              = "nsg-app-dev-net-weu1-001"
-      route_table_reference                         = "rt-app-dev-net-weu1-001"
-    },
-    {
-      name                             = "snet-sql"
-      address_prefixes                 = ["10.192.3.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-weu1-002"
-      route_table_reference            = "rt-app-dev-net-weu1-001"
-    },
-    {
-      name                             = "snet-redis"
-      address_prefixes                 = ["10.192.4.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-weu1-002"
-      route_table_reference            = "rt-app-dev-net-weu1-001"
-    },
-    {
       name                             = "snet-appgw"
-      address_prefixes                 = ["10.192.5.0/24"]
+      address_prefixes                 = ["10.192.0.0/24"]
       network_security_group_reference = "nsg-app-dev-net-weu1-002"
     },
     {
-      name                             = "snet-aci"
-      address_prefixes                 = ["10.192.6.0/24"]
+      name                             = "snet-privateendpoint"
+      address_prefixes                 = ["10.192.1.0/24"]
       network_security_group_reference = "nsg-app-dev-net-weu1-002"
-      route_table_reference            = "rt-app-dev-net-weu1-001"
-      delegation                       = "Microsoft.ContainerInstance/containerGroups"
     },
-    {
-      name                             = "snet-ase"
-      address_prefixes                 = ["10.192.7.0/24"]
-      network_security_group_reference = "nsg-app-dev-net-weu1-002"
-      route_table_reference            = "rt-app-dev-net-weu1-001"
-      delegation                       = "Microsoft.Web/hostingEnvironments"
-    }
   ]
-  peerings = [
-    {
-      remote_vnet_name                = "vnet-conn-dev-hub-weu1-001"
-      remote_vnet_resource_group_name = "rg-conn-dev-hub-weu1-001"
-    }
-  ]
-  private_dns_zones = [
-    {
-      name                = "privatelink.azure-automation.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.redis.cache.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.database.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.blob.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.table.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.queue.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.file.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.web.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.batch.azure.com"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                = "privatelink.vaultcore.azure.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
-    },
-    {
-      name                 = "weu1.internal.jamietaffurellidev.com"
-      resource_group_name  = "rg-conn-dev-prvdns-weu1-001"
-      registration_enabled = true
-    }
-  ]
+  /*hub_connection = {
+    name                      = "vhub-conn-dev-vhub-weu1-001"
+    resource_group_name       = "rg-conn-dev-vhub-weu1-001"
+    internet_security_enabled = true
+  }*/
+
   network_watcher_name                        = "nw-app-dev-netwat-weu1-001"
   network_watcher_resource_group_name         = "rg-app-dev-netwat-weu1-001"
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
