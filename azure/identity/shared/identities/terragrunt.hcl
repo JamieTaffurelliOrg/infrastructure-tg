@@ -177,6 +177,10 @@ inputs = {
       display_name = "app-dev-agw-tf"
       tags         = ["app-dev-agw-tf"]
     }
+    "app-dev-cae-tf" = {
+      display_name = "app-dev-cae-tf"
+      tags         = ["app-dev-cae-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
@@ -459,6 +463,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.app-gateway.deploy"
     }
+    "app-dev-cae-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-cae-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.container-app-environment.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
@@ -684,6 +695,11 @@ inputs = {
       application_id_reference = "app-dev-agw-tf"
       description              = "Management of dev app gateway infrastructure via Terraform"
       tags                     = ["app-dev-agw-tf"]
+    }
+    "app-dev-cae-tf" = {
+      application_id_reference = "app-dev-cae-tf"
+      description              = "Management of dev app container app environment infrastructure via Terraform"
+      tags                     = ["app-dev-cae-tf"]
     }
     "app-prod-net-tf" = {
       application_id_reference = "app-prod-net-tf"
@@ -1457,6 +1473,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "app-dev-cae-tf-contributor-appdevcae" = {
+      service_principal_reference = "app-dev-cae-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-cae-weu1-001"
+    }
+    "app-dev-cae-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-cae-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
+    }
+    "app-dev-cae-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-cae-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
     /*"app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -1879,6 +1910,11 @@ inputs = {
       service_principal_reference = "app-dev-agw-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
+    }
+    "app-dev-cae-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-cae-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-cae"
     }
     /*"app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
