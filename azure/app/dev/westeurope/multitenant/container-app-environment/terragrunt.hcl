@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-containerappenv-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-containerappenv-tf///?ref=0.0.6"
 }
 
 include {
@@ -21,6 +21,10 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = true
     }
   }
+}
+
+provider "azapi" {
+  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
 }
 
 provider "azurerm" {
@@ -60,6 +64,9 @@ inputs = {
   subnet_name                                 = "snet-cae"
   virtual_network_name                        = "vnet-app-dev-net-weu1-001"
   subnet_resource_group_name                  = "rg-app-dev-net-weu1-001"
+  infrastructure_resource_group               = "cae-app-dev-cae-weu1-001-managed"
+  maximum_count                               = 1
+  minimum_count                               = 1
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload = "container-app" })
