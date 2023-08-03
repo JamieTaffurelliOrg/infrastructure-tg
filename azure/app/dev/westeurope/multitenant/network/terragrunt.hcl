@@ -196,6 +196,60 @@ inputs = {
           destination_address_prefix = "*"
         }
       ]
+    },
+    {
+      name                = "nsg-app-dev-net-weu1-003"
+      resource_group_name = "rg-app-dev-net-weu1-001"
+      rules = [
+        {
+          name                       = "nsgsr-in-allow-any-any"
+          description                = "Deny all inbound traffic"
+          priority                   = 3999
+          direction                  = "Inbound"
+          access                     = "Allow"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-in-deny-any-any"
+          description                = "Deny all inbound traffic"
+          priority                   = 4000
+          direction                  = "Inbound"
+          access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-out-allow-any-any"
+          description                = "Deny all outbound traffic"
+          priority                   = 3999
+          direction                  = "Outbound"
+          access                     = "Allow"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        },
+        {
+          name                       = "nsgsr-out-deny-any-any"
+          description                = "Deny all outbound traffic"
+          priority                   = 4000
+          direction                  = "Outbound"
+          access                     = "Deny"
+          protocol                   = "*"
+          source_port_range          = "*"
+          destination_port_range     = "*"
+          source_address_prefix      = "*"
+          destination_address_prefix = "*"
+        }
+      ]
     }
   ]
   virtual_network_name          = "vnet-app-dev-net-weu1-001"
@@ -210,6 +264,11 @@ inputs = {
       name                             = "snet-privateendpoint"
       address_prefixes                 = ["10.192.1.0/24"]
       network_security_group_reference = "nsg-app-dev-net-weu1-002"
+    },
+    {
+      name                             = "snet-cae"
+      address_prefixes                 = ["10.192.2.0/24"]
+      network_security_group_reference = "nsg-app-dev-net-weu1-003"
     },
   ]
   /*hub_connection = {
