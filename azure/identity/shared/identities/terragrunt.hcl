@@ -173,6 +173,10 @@ inputs = {
       display_name = "app-dev-aci-tf"
       tags         = ["app-dev-aci-tf"]
     }
+    "app-dev-agw-tf" = {
+      display_name = "app-dev-agw-tf"
+      tags         = ["app-dev-agw-tf"]
+    }
     "app-dev-cae-tf" = {
       display_name = "app-dev-cae-tf"
       tags         = ["app-dev-cae-tf"]
@@ -693,9 +697,9 @@ inputs = {
       tags                     = ["app-dev-agw-tf"]
     }
     "app-dev-cae-tf" = {
-      application_id_reference = "app-dev-caE-tf"
+      application_id_reference = "app-dev-cae-tf"
       description              = "Management of dev app container app environment infrastructure via Terraform"
-      tags                     = ["app-dev-aci-tf"]
+      tags                     = ["app-dev-cae-tf"]
     }
     "app-prod-net-tf" = {
       application_id_reference = "app-prod-net-tf"
