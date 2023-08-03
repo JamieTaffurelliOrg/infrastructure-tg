@@ -82,6 +82,11 @@ inputs = {
       name     = "rg-app-dev-ase-weu1-001"
       location = "westeurope"
       tags     = merge(local.tags, { workload = "app-service" })
+    },
+    {
+      name     = "rg-app-dev-agw-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload = "app-gateway" })
     }
   ]
 }

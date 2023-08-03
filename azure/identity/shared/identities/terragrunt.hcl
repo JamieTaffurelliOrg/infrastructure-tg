@@ -173,6 +173,10 @@ inputs = {
       display_name = "app-dev-aci-tf"
       tags         = ["app-dev-aci-tf"]
     }
+    "app-dev-agw-tf" = {
+      display_name = "app-dev-agw-tf"
+      tags         = ["app-dev-agw-tf"]
+    }
     "app-prod-lb-tf" = {
       display_name = "app-prod-lb-tf"
       tags         = ["app-prod-lb-tf"]
@@ -448,6 +452,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.aci.deploy"
     }
+    "app-dev-agw-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "app-dev-agw-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.app-gateway.deploy"
+    }
     "app-prod-lb-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-prod-lb-tf"
@@ -668,6 +679,11 @@ inputs = {
       application_id_reference = "app-dev-aci-tf"
       description              = "Management of dev app container instance infrastructure via Terraform"
       tags                     = ["app-dev-aci-tf"]
+    }
+    "app-dev-agw-tf" = {
+      application_id_reference = "app-dev-agw-tf"
+      description              = "Management of dev app gateway infrastructure via Terraform"
+      tags                     = ["app-dev-agw-tf"]
     }
     "app-prod-net-tf" = {
       application_id_reference = "app-prod-net-tf"
@@ -1426,6 +1442,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "app-dev-agw-tf-contributor-appdevagw" = {
+      service_principal_reference = "app-dev-agw-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-agw-weu1-001"
+    }
+    "app-dev-agw-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "app-dev-agw-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev"
+    }
+    "app-dev-agw-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "app-dev-agw-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
     /*"app-prod-net-tf-contributor-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
       role_definition_name        = "Contributor"
@@ -1799,6 +1830,11 @@ inputs = {
       custom_role_reference       = "Virtual Network Peerer (Custom)"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001"
     }
+    "app-dev-net-tf-vhubjoin-conndevvhub" = {
+      service_principal_reference = "app-dev-net-tf"
+      custom_role_reference       = "Virtual Hub Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-dev-vhub-weu1-001"
+    }
     "app-dev-lb-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-lb-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
@@ -1833,6 +1869,16 @@ inputs = {
       service_principal_reference = "app-dev-aci-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-aci"
+    }
+    "app-dev-agw-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "app-dev-agw-tf"
+      custom_role_reference       = "Subnet Joiner (Custom)"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-agw"
+    }
+    "app-dev-agw-tf-prefixjoin-conndevhubprefix" = {
+      service_principal_reference = "app-dev-agw-tf"
+      custom_role_reference       = "Public IP Prefix Joiner (Custom)"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
     }
     /*"app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
