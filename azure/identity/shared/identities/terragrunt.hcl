@@ -1736,6 +1736,13 @@ inputs = {
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
     {
+      name              = "App Register (Custom)"
+      scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description       = "Register the Microsoft.App provider to a subscription"
+      actions           = ["Microsoft.App/register/action"]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
       name              = "Virtual WAN Joiner (Custom)"
       scope             = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       description       = "Join a virtual hub to a virtual WAN"
@@ -1915,6 +1922,11 @@ inputs = {
       service_principal_reference = "app-dev-cae-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-cae"
+    }
+    "app-dev-cae-tf-appreg-appdev" = {
+      service_principal_reference = "app-dev-cae-tf"
+      custom_role_reference       = "App Register (Custom)"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241"
     }
     /*"app-prod-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "app-prod-net-tf"
