@@ -269,8 +269,6 @@ inputs = {
       name                             = "snet-cae"
       address_prefixes                 = ["10.192.2.0/23"]
       network_security_group_reference = "nsg-app-dev-net-weu1-003"
-      delegation                       = "Microsoft.App/environments"
-      delegation_actions               = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     },
   ]
   /*hub_connection = {
