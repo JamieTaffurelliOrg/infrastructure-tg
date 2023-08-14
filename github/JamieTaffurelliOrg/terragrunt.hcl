@@ -303,12 +303,6 @@ inputs = {
       enforce_admins = false
     },
     {
-      name           = "az-appinsights-tf"
-      visibility     = "public"
-      code_owners    = "@JamieTaffurelli"
-      enforce_admins = false
-    },
-    {
       name           = "aws-ipam-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
