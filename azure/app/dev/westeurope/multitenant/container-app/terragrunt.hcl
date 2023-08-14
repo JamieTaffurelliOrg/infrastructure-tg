@@ -55,20 +55,19 @@ inputs = {
       name = "ca-app-dev-ca-weu1-001"
       ingress = {
         allow_insecure_connections = true
-        exposed_port               = 80
         target_port                = 80
       }
       containers = [
         {
           name   = "test"
           image  = "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest"
-          cpu    = "0.5"
-          memory = "250Mb"
+          cpu    = 0.25
+          memory = "0.5Gi"
         }
       ]
       scale = {
         max_replicas = 1
-        min_replicas = 0
+        min_replicas = 1
       }
     }
   ]
