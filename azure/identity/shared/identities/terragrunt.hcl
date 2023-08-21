@@ -141,6 +141,14 @@ inputs = {
       display_name = "conn-prod-pip-tf"
       tags         = ["conn-prod-pip-tf"]
     }
+    "conn-dev-waf-tf" = {
+      display_name = "conn-dev-waf-tf"
+      tags         = ["conn-dev-waf-tf"]
+    }
+    "conn-prod-waf-tf" = {
+      display_name = "conn-prod-waf-tf"
+      tags         = ["conn-prod-waf-tf"]
+    }
     "app-dev-net-tf" = {
       display_name = "app-dev-net-tf"
       tags         = ["app-dev-net-tf"]
@@ -400,6 +408,20 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.dns-resolver.deploy"
     }
+    "conn-dev-waf-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-dev-waf-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.dev.waf.deploy"
+    }
+    "conn-prod-waf-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "conn-prod-waf-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:connectivity.prod.waf.deploy"
+    }
     "app-dev-net-tf-deploy" = {
       display_name             = "deploy"
       application_id_reference = "app-dev-net-tf"
@@ -655,6 +677,16 @@ inputs = {
       application_id_reference = "conn-prod-pip-tf"
       description              = "Management of prod public ip infrastructure via Terraform"
       tags                     = ["conn-prod-pip-tf"]
+    }
+    "conn-dev-waf-tf" = {
+      application_id_reference = "conn-dev-waf-tf"
+      description              = "Management of dev App Gateway WAF via Terraform"
+      tags                     = ["conn-dev-waf-tf"]
+    }
+    "conn-prod-waf-tf" = {
+      application_id_reference = "conn-prod-waf-tf"
+      description              = "Management of prod App Gateway WAF via Terraform"
+      tags                     = ["conn-prod-waf-tf"]
     }
     "app-dev-net-tf" = {
       application_id_reference = "app-dev-net-tf"
@@ -1157,6 +1189,16 @@ inputs = {
       service_principal_reference = "conn-dev-pip-tf"
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001"
+    }
+    "conn-dev-waf-tf-blobcontributor-conndevcontainer" = {
+      service_principal_reference = "conn-dev-waf-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
+    }
+    "conn-dev-waf-tf-contributor-conndevwaf" = {
+      service_principal_reference = "conn-dev-waf-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-waf-weu1-001"
     }
     /*"conn-prod-hub-tf-blobcontributor-connprodcontainer" = {
       service_principal_reference = "conn-prod-hub-tf"
