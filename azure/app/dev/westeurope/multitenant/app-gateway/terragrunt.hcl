@@ -78,6 +78,7 @@ inputs = {
   zones                                = null
   firewall_policy_id                   = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-waf-weu1-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wafappdevwafweu1001"
   sku_capacity                         = 1
+  fips_enabled                         = false
   subnets = [
     {
       name                 = "snet-appgw"
