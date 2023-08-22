@@ -103,5 +103,10 @@ inputs = {
       location = "westeurope"
       tags     = merge(local.tags, { workload = "network" })
     },
+    {
+      name     = "rg-app-dev-waf-weu1-001"
+      location = "westeurope"
+      tags     = merge(local.tags, { workload = "app-gateway" })
+    }
   ]
 }
