@@ -1973,7 +1973,7 @@ inputs = {
     "app-dev-agw-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-agw-tf"
       custom_role_reference       = "Subnet Joiner (Custom)"
-      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-agw"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-appgw"
     }
     "app-dev-agw-tf-prefixjoin-appdevpipprefix" = {
       service_principal_reference = "app-dev-agw-tf"
