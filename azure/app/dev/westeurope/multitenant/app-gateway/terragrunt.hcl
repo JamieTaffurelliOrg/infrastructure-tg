@@ -118,6 +118,7 @@ inputs = {
       name       = "backendsetting-01"
       probe_name = "probe-01"
       port       = 80
+      protocol   = "Http"
     }
   ]
   http_listeners = [
