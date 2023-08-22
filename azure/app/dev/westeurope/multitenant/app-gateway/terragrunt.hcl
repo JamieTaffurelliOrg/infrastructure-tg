@@ -127,6 +127,7 @@ inputs = {
       frontend_ip_configuration_name = "frontendip-01"
       frontend_port_name             = "frontendport-80"
       host_names                     = ["test.com"]
+      protocol                       = "Http"
     }
   ]
   request_routing_rules = [
@@ -140,7 +141,8 @@ inputs = {
   ]
   probes = [
     {
-      name = "probe-01"
+      name     = "probe-01"
+      protocol = "Http"
     }
   ]
   /*ssl_certificates = [
