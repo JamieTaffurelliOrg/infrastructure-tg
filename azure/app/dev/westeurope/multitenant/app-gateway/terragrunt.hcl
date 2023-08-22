@@ -147,12 +147,7 @@ inputs = {
       key_vault_secret_id = string
     }
   ]*/
-  autoscale_configuration = [
-    {
-      min_capacity               = 0
-      response_buffering_enabled = 1
-    }
-  ]
+  autoscale_configuration                     = null
   log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
   tags                                        = merge(local.tags, { workload = "app-gateway" })
