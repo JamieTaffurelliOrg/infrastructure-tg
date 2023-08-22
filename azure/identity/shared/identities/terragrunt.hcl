@@ -1370,6 +1370,11 @@ inputs = {
       role_definition_name        = "Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogweu1002"
     }
+    "app-dev-net-tf-contributor-appdevpip" = {
+      service_principal_reference = "app-dev-net-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-pip-weu1-001"
+    }
     "app-dev-lb-tf-contributor-appdevlb" = {
       service_principal_reference = "app-dev-lb-tf"
       role_definition_name        = "Contributor"
@@ -1525,10 +1530,10 @@ inputs = {
       role_definition_name        = "Reader"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001"
     }
-    "app-dev-agw-tf-reader-conndevpip" = {
+    "app-dev-agw-tf-reader-appdevpip" = {
       service_principal_reference = "app-dev-agw-tf"
       role_definition_name        = "Reader"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001"
+      scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-app-dev-pip-weu1-001"
     }
     "app-dev-cae-tf-contributor-appdevcae" = {
       service_principal_reference = "app-dev-cae-tf"
@@ -1970,10 +1975,10 @@ inputs = {
       custom_role_reference       = "Subnet Joiner (Custom)"
       scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-agw"
     }
-    "app-dev-agw-tf-prefixjoin-conndevhubprefix" = {
+    "app-dev-agw-tf-prefixjoin-appdevpipprefix" = {
       service_principal_reference = "app-dev-agw-tf"
       custom_role_reference       = "Public IP Prefix Joiner (Custom)"
-      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
+      scope                       = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-app-dev-pip-weu1-001"
     }
     "app-dev-cae-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "app-dev-cae-tf"
