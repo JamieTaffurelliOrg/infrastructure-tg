@@ -1515,6 +1515,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/9661faf5-39f5-400b-931a-342f9240c71b/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "app-dev-agw-tf-reader-conndevwaf" = {
+      service_principal_reference = "app-dev-agw-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-waf-weu1-001"
+    }
     "app-dev-cae-tf-contributor-appdevcae" = {
       service_principal_reference = "app-dev-cae-tf"
       role_definition_name        = "Contributor"
