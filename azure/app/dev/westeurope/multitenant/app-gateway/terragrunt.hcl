@@ -143,6 +143,7 @@ inputs = {
     {
       name     = "probe-01"
       protocol = "Http"
+      port     = 80
     }
   ]
   /*ssl_certificates = [
