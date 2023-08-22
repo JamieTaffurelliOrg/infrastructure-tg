@@ -14,7 +14,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
 
   features {
     resource_group {
@@ -36,14 +36,14 @@ locals {
     owner               = "jltaffurelli@outlook.com"
     sla                 = "high"
     environment         = "dev"
-    stack               = "connectivity"
+    stack               = "app"
   }
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-waf-weu1-001"
-  waf_policy_name     = "wafconndevwafweu1001"
+  resource_group_name = "rg-app-dev-waf-weu1-001"
+  waf_policy_name     = "wafappdevwafweu1001"
   location            = "westeurope"
   mode                = "Detection"
   managed_rules = {
