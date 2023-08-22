@@ -100,11 +100,8 @@ inputs = {
   ]
   frontend_ip_configurations = [
     {
-      name                          = "frontendip-01"
-      public_ip_address_reference   = "pip-app-dev-apgw-weu1-001"
-      subnet_reference              = "snet-appgw"
-      private_ip_address            = "10.192.0.254"
-      private_ip_address_allocation = "Static"
+      name                        = "frontendip-01"
+      public_ip_address_reference = "pip-app-dev-apgw-weu1-001"
     }
   ]
   backend_address_pools = [
