@@ -124,7 +124,7 @@ inputs = {
       name                           = "httplistener-01"
       frontend_ip_configuration_name = "frontendip-01"
       frontend_port_name             = "frontendport-80"
-      host_names                     = "test.com"
+      host_names                     = ["test.com"]
     }
   ]
   request_routing_rules = [
