@@ -5,6 +5,7 @@ code-coverage.xml
 **/*.tfplan
 **/*.tfplan.*
 **/*.terraform*
+!.terraform.lock.hcl
 crash.log
 *.tfvars
 override.tf
