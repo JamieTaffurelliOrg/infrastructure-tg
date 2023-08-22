@@ -49,7 +49,7 @@ inputs = {
   managed_rules = {
     managed_rule_sets = [
       {
-        name    = "bot-ruleset"
+        name    = "owasp-ruleset"
         type    = "OWASP"
         version = "3.2"
       }

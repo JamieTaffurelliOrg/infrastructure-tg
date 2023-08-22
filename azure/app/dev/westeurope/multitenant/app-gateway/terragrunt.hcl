@@ -64,6 +64,8 @@ locals {
 
 inputs = {
 
+  resource_group_name = "rg-app-dev-agw-weu1-001"
+  location            = "westeurope"
   public_ip_addresses = [
     {
       name              = "pip-app-dev-apgw-weu1-001"
@@ -74,7 +76,7 @@ inputs = {
   public_ip_prefix_resource_group_name = "rg-conn-dev-pip-weu1-001"
   app_gateway_name                     = "agw-app-dev-agw-weu1-001"
   zones                                = null
-  firewall_policy_id                   = "test"
+  firewall_policy_id                   = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-waf-weu1-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wafconndevwafweu1001"
   sku_capacity                         = 1
   subnets = [
     {
