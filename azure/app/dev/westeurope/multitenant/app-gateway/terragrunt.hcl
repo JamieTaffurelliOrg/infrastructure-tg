@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-appgw-tf///?ref=0.0.4"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-appgw-tf///?ref=0.0.5"
 }
 
 include {
@@ -124,7 +124,7 @@ inputs = {
       name                           = "httplistener-01"
       frontend_ip_configuration_name = "frontendip-01"
       frontend_port_name             = "frontendport-80"
-      host_names                     = "test.com"
+      host_names                     = ["test.com"]
     }
   ]
   request_routing_rules = [
