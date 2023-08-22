@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-appgw-tf///?ref=0.0.6"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-appgw-tf///?ref=0.0.7"
 }
 
 include {
@@ -100,7 +100,7 @@ inputs = {
   frontend_ip_configurations = [
     {
       name                          = "frontendip-01"
-      public_ip_address_reference   = "pip-app-dev-apgw-weu1-001"
+      public_ip_reference           = "pip-app-dev-apgw-weu1-001"
       subnet_reference              = "snet-appgw"
       private_ip_address            = "10.192.0.254"
       private_ip_address_allocation = "Static"
