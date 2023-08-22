@@ -36,7 +36,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "public_ip_prefix"
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
 
   features {
     resource_group {
@@ -72,8 +72,8 @@ inputs = {
       domain_name_label = "pip-app-dev-agw-weu1-001"
     }
   ]
-  public_ip_prefix_name                = "ippre-conn-dev-pip-weu1-001"
-  public_ip_prefix_resource_group_name = "rg-conn-dev-pip-weu1-001"
+  public_ip_prefix_name                = "ippre-app-dev-pip-weu1-001"
+  public_ip_prefix_resource_group_name = "rg-app-dev-pip-weu1-001"
   app_gateway_name                     = "agw-app-dev-agw-weu1-001"
   zones                                = null
   firewall_policy_id                   = "/subscriptions/3d6c3571-dbcd-47fa-a4f1-f2993adb6c90/resourceGroups/rg-conn-dev-waf-weu1-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wafconndevwafweu1001"
