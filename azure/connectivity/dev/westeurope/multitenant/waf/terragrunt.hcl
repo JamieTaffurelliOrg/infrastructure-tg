@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-waf-tf///?ref=0.0.3"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-waf-tf///?ref=0.0.4"
 }
 
 include {
@@ -46,5 +46,14 @@ inputs = {
   waf_policy_name     = "wafconndevwafweu1001"
   location            = "westeurope"
   mode                = "Detection"
-  tags                = merge(local.tags, { workload = "waf" })
+  managed_rules = {
+    managed_rule_sets = [
+      {
+        name    = "bot-ruleset"
+        type    = "Microsoft_BotManagerRuleSet"
+        version = "1.0"
+      }
+    ]
+  }
+  tags = merge(local.tags, { workload = "waf" })
 }
