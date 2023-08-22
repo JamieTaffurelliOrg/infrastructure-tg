@@ -50,8 +50,8 @@ inputs = {
     managed_rule_sets = [
       {
         name    = "bot-ruleset"
-        type    = "Microsoft_BotManagerRuleSet"
-        version = "1.0"
+        type    = "OWASP"
+        version = "3.2"
       }
     ]
   }
