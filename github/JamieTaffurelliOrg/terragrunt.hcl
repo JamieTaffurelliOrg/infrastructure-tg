@@ -82,6 +82,12 @@ inputs = {
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
+    },
+    {
+      name           = "templates"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
     }
   ]
 
