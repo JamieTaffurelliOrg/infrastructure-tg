@@ -20,7 +20,7 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   call-terraform-plan-workflow:
-    uses: ./.github/workflows/aws.terragrunt-plan.yaml
+    uses: JamieTaffurelliOrg/github-actions-templates/blob/main/actions/aws-terragrunt-plan.yaml@main
     with:
       terragrunt-working-dir: './aws/master/ipam'
       environment: aws.master.ipam.deploy
