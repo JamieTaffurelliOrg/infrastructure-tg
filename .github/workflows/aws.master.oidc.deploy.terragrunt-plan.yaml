@@ -20,7 +20,7 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   call-terraform-plan-workflow:
-    uses: ./.github/workflows/aws.terragrunt-plan.yaml
+    uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/aws-terragrunt-plan-template.yaml@main
     with:
       terragrunt-working-dir: './aws/master/oidc'
       environment: aws.master.oidc.deploy

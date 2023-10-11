@@ -20,7 +20,7 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   call-terraform-plan-workflow:
-    uses: ./.github/workflows/azure.terragrunt-plan.yaml
+    uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-plan-template.yaml@main
     with:
       terragrunt-working-dir: './azure/app/dev/westeurope/multitenant/waf'
       environment: app.dev.waf.deploy
