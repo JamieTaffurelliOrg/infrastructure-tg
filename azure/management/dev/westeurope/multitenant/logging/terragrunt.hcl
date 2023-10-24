@@ -2,22 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-logging-tf///?ref=0.0.13"
 }
 
-remote_state {
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
 
-  backend = "azurerm"
+include "management" {
+  path = find_in_parent_folders("management.hcl")
+}
 
-  generate = {
-    path      = "backend.tf"
-    if_exists = "overwrite_terragrunt"
-  }
+include "dev" {
+  path = find_in_parent_folders("dev.hcl")
+}
 
-  config = {
-    resource_group_name  = "rg-mgmt-dev-tf-weu1-001"
-    storage_account_name = "stjtmgmtdevtfweu1001"
-    container_name       = "mgmt-dev"
-    key                  = "${path_relative_to_include()}/terraform.tfstate"
-    use_azuread_auth     = true
-  }
+include "westeurope" {
+  path = find_in_parent_folders("westeurope.hcl")
+}
+
+include "multitenant" {
+  path = find_in_parent_folders("multitenant.hcl")
 }
 
 generate "provider" {

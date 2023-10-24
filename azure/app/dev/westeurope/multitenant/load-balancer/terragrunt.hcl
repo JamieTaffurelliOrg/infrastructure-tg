@@ -2,8 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-loadbalancer-tf///?ref=0.0.11"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "app" {
+  path = find_in_parent_folders("app.hcl")
+}
+
+include "dev" {
+  path = find_in_parent_folders("dev.hcl")
+}
+
+include "westeurope" {
+  path = find_in_parent_folders("westeurope.hcl")
+}
+
+include "multitenant" {
+  path = find_in_parent_folders("multitenant.hcl")
 }
 
 generate "provider" {

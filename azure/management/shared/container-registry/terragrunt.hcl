@@ -2,8 +2,16 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-acr-tf///?ref=0.0.7"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "management" {
+  path = find_in_parent_folders("management.hcl")
+}
+
+include "shared" {
+  path = find_in_parent_folders("shared.hcl")
 }
 
 generate "provider" {

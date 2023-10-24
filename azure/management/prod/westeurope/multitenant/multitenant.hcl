@@ -8,9 +8,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-mgmt-shrd-tf-weu1-001"
-    storage_account_name = "stjtmgmtshrdtfweu1001"
-    container_name       = "mgmt-shrd"
+    resource_group_name  = "rg-mgmt-prod-tf-weu1-001"
+    storage_account_name = "stjtmgmtprodtfweu1001"
+    container_name       = "mgmt-prod"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }

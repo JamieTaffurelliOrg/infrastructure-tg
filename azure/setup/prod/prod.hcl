@@ -1,3 +1,7 @@
+locals {
+  environment = "prod"
+}
+
 remote_state {
 
   backend = "azurerm"

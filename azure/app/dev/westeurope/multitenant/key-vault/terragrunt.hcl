@@ -2,6 +2,26 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-keyvault-tf///?ref=0.0.4"
 }
 
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "app" {
+  path = find_in_parent_folders("app.hcl")
+}
+
+include "dev" {
+  path = find_in_parent_folders("dev.hcl")
+}
+
+include "westeurope" {
+  path = find_in_parent_folders("westeurope.hcl")
+}
+
+include "multitenant" {
+  path = find_in_parent_folders("multitenant.hcl")
+}
+
 remote_state {
 
   backend = "azurerm"

@@ -1,3 +1,7 @@
+locals {
+  environment = "shrd"
+}
+
 remote_state {
 
   backend = "azurerm"

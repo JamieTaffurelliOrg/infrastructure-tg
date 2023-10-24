@@ -2,8 +2,16 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-resourcegroup-tf///?ref=0.0.6"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "setup" {
+  path = find_in_parent_folders("setup.hcl")
+}
+
+include "prod" {
+  path = find_in_parent_folders("prod.hcl")
 }
 
 generate "provider" {

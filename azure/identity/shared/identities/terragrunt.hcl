@@ -2,8 +2,16 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.28"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "identity" {
+  path = find_in_parent_folders("identity.hcl")
+}
+
+include "shared" {
+  path = find_in_parent_folders("shared.hcl")
 }
 
 locals {
