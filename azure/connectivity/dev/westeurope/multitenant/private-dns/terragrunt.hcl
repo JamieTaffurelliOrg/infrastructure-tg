@@ -6,20 +6,20 @@ include "azure" {
   path = find_in_parent_folders("azure.hcl")
 }
 
-include "connectivity" {
-  path = find_in_parent_folders("connectivity.hcl")
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
 }
 
-include "dev" {
-  path = find_in_parent_folders("dev.hcl")
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
 }
 
 include "westeurope" {
-  path = find_in_parent_folders("westeurope.hcl")
+  path = find_in_parent_folders("region.hcl")
 }
 
-include "multitenant" {
-  path = find_in_parent_folders("multitenant.hcl")
+include "tenant" {
+  path = find_in_parent_folders("tenant.hcl")
 }
 
 locals {

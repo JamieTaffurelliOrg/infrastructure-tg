@@ -6,8 +6,8 @@ include "azure" {
   path = find_in_parent_folders("azure.hcl")
 }
 
-include "management" {
-  path = find_in_parent_folders("management.hcl")
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
 }
 
 include "shared" {

@@ -6,12 +6,12 @@ include "azure" {
   path = find_in_parent_folders("azure.hcl")
 }
 
-include "setup" {
-  path = find_in_parent_folders("setup.hcl")
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
 }
 
-include "prod" {
-  path = find_in_parent_folders("prod.hcl")
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
 }
 
 generate "provider" {
