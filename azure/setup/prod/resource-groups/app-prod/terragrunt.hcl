@@ -22,7 +22,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "f4722c2d-47d5-4513-a562-80465e3ee813"
+  subscription_id = ${include.azure.locals.app_prod_subscription_id}
 
   features {
     resource_group {

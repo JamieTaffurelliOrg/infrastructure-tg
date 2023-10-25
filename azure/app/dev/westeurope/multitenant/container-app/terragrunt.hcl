@@ -30,7 +30,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
+  subscription_id = ${include.azure.locals.app_dev_subscription_id}
 
   features {
     resource_group {
@@ -40,7 +40,7 @@ provider "azurerm" {
 }
 
 provider "azapi" {
-  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
+  subscription_id = ${include.azure.locals.app_dev_subscription_id}
 }
 EOF
 
