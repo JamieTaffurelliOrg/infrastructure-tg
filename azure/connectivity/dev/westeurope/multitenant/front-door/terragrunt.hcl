@@ -102,7 +102,7 @@ inputs = {
       private_link = {
         "app" = {
           location               = "westeurope"
-          private_link_target_id = "/subscriptions/5284e392-c44d-444a-bf2e-07452a860241/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
+          private_link_target_id = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
         }
       }
     }

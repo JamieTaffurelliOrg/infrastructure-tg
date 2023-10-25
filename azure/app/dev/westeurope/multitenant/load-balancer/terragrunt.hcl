@@ -118,8 +118,8 @@ inputs = {
   private_link_services = [
     {
       name                                 = "web"
-      auto_approval_subscription_ids       = ["3d6c3571-dbcd-47fa-a4f1-f2993adb6c90", "5284e392-c44d-444a-bf2e-07452a860241"]
-      visibility_subscription_ids          = ["3d6c3571-dbcd-47fa-a4f1-f2993adb6c90", "5284e392-c44d-444a-bf2e-07452a860241"]
+      auto_approval_subscription_ids       = [include.azure.locals.conn_dev_subscription_id, include.azure.locals.app_dev_subscription_id]
+      visibility_subscription_ids          = [include.azure.locals.conn_dev_subscription_id, include.azure.locals.app_dev_subscription_id]
       frontend_ip_configuration_references = ["frontend-internal-web-ip"]
       nat_ip_configurations = [
         {
