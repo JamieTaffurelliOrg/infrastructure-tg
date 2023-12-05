@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -43,25 +43,20 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "prod"
-    stack               = "management"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "logs" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name          = "rg-mgmt-prod-log-weu1-001"
-  location                     = "westeurope"
-  log_analytics_workspace_name = "log-mgmt-prod-log-weu1-001"
-  automation_account_name      = "aa-mgmt-prod-log-weu1-001"
-  storage_account_name         = "stjtmgmtprodlogweu1002"
-  tags                         = merge(local.tags, { workload = "logging" })
+  resource_group_name          = "rg-${local.lz_environment_hyphen}-log-${local.location_short}-001"
+  location                     = local.location
+  log_analytics_workspace_name = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  automation_account_name      = "aa-${local.lz_environment_hyphen}-log-${local.location_short}-001"
+  storage_account_name         = "st${local.org_prefix}${local.lz_environment_concat}log${local.location_short}002"
+  tags                         = local.tags
 }

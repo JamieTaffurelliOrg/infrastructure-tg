@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -32,9 +32,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-app-dev-tf-weu1-001"
-    storage_account_name = "stjtappdevtfweu1001"
-    container_name       = "app-dev-kv"
+    resource_group_name  = "rg-${local.lz_environment_hyphen}-tf-${local.location_short}-001"
+    storage_account_name = "st${local.org_prefix}${local.lz_environment_concat}tf${local.location_short}001"
+    container_name       = "${local.lz_environment_hyphen}-kv"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
@@ -72,27 +72,22 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "secrets" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name                         = "rg-app-dev-kv-weu1-001"
-  location                                    = "westeurope"
-  key_vault_name                              = "kv-app-dev-kv-weu1-002"
+  resource_group_name                         = "rg-${local.lz_environment_hyphen}-kv-${local.location_short}-001"
+  location                                    = local.location
+  key_vault_name                              = "kv-${local.lz_environment_hyphen}-kv-${local.location_short}-002"
   network_acl_bypass                          = "AzureServices"
   network_acl_default_action                  = "Allow"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "secrets" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

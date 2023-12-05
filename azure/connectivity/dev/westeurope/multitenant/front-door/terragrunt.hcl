@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -54,25 +54,20 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "front-door" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name            = "rg-conn-dev-afd-weu1-001"
-  front_door_profile_name        = "afdconndevafdweu1001"
-  waf_policy_name                = "fdfpconndevfdfpweu1001"
-  waf_policy_resource_group_name = "rg-conn-dev-fdfp-weu1-001"
+  resource_group_name            = "rg-${local.lz_environment_hyphen}-afd-${local.location_short}-001"
+  front_door_profile_name        = "afd${local.lz_environment_concat}afd${local.location_short}001"
+  waf_policy_name                = "fdfp${local.lz_environment_concat}fdfp${local.location_short}001"
+  waf_policy_resource_group_name = "rg-${local.lz_environment_hyphen}-fdfp-${local.location_short}-001"
   front_door_endpoints = [
     {
       name = "jamietaffurelli"
@@ -98,11 +93,11 @@ inputs = {
     {
       name                   = "blog-origin"
       origin_group_reference = "blog-og"
-      host_name              = "vmappdvwebweu11.weu1.internal.jamietaffurellidev.com"
+      host_name              = "vmappdvweb${local.location_short}1.${local.location_short}.internal.jamietaffurellidev.com"
       private_link = {
         "app" = {
-          location               = "westeurope"
-          private_link_target_id = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
+          location               = local.location
+          private_link_target_id = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-lb-${local.location_short}-001/providers/Microsoft.Network/privateLinkServices/web"
         }
       }
     }
@@ -127,7 +122,7 @@ inputs = {
     name                     = "waf-association"
     custom_domain_references = ["jamietaffurelli-blog-cd"]
   }
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "front-door" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

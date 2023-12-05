@@ -14,26 +14,12 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
 include "tenant" {
   path = find_in_parent_folders("tenant.hcl")
-}
-
-locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
 }
 
 generate "provider" {
@@ -78,11 +64,20 @@ EOF
 
 }
 
+locals {
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "redis" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
+}
+
 inputs = {
 
-  resource_group_name = "rg-app-dev-redis-weu1-001"
-  location            = "westeurope"
-  redis_cache_name    = "redis-app-dev-redis-weu1-001"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-redis-${local.location_short}-001"
+  location            = local.location
+  redis_cache_name    = "redis-${local.lz_environment_hyphen}-redis-${local.location_short}-001"
   capacity            = 0
   family              = "C"
   sku_name            = "Basic"
@@ -96,15 +91,15 @@ inputs = {
     }
   ]
   subnet_name                = "snet-redis"
-  virtual_network_name       = "vnet-app-dev-net-weu1-001"
-  subnet_resource_group_name = "rg-app-dev-net-weu1-001"
+  virtual_network_name       = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+  subnet_resource_group_name = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
   private_dns_zones = [
     {
       name                = "privatelink.redis.cache.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-conn-dev-prvdns-${local.location_short}-001"
     }
   ]
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "redis" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -67,24 +67,19 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "private-dns" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-dnspr-weu1-001"
-  location            = "westeurope"
-  dns_resolver_name   = "dnspr-conn-dev-dnspr-weu1-001"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
+  location            = local.location
+  dns_resolver_name   = "dnspr-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
   virtual_network_id  = dependency.network.outputs.virtual_network_id
   inbound_endpoints = [
     {
@@ -92,5 +87,5 @@ inputs = {
       subnet_id = dependency.network.outputs.subnets["snet-dnspr-001"].id
     }
   ]
-  tags = merge(local.tags, { workload = "private-dns" })
+  tags = local.tags
 }

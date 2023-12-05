@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -54,35 +54,30 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "network" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name = "rg-app-dev-lb-weu1-001"
-  location            = "westeurope"
-  load_balancer_name  = "lbi-app-dev-lb-weu1-001"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-lb-${local.location_short}-001"
+  location            = local.location
+  load_balancer_name  = "lbi-${local.lz_environment_hyphen}-lb-${local.location_short}-001"
   subnets = [
     {
       name                 = "snet-web"
-      virtual_network_name = "vnet-app-dev-net-weu1-001"
-      resource_group_name  = "rg-app-dev-net-weu1-001"
+      virtual_network_name = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+      resource_group_name  = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     }
   ]
   virtual_networks = [
     {
-      name                = "vnet-app-dev-net-weu1-001"
-      resource_group_name = "rg-app-dev-net-weu1-001"
+      name                = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     }
   ]
   frontend_ip_configurations = [
@@ -131,7 +126,7 @@ inputs = {
       ]
     }
   ]
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "network" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

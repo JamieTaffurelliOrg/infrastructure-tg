@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -54,24 +54,19 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "web" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  container_group_name = "ci-app-dev-aci-weu1-001"
-  resource_group_name  = "rg-app-dev-aci-weu1-001"
-  location             = "westeurope"
+  container_group_name = "ci-${local.lz_environment_hyphen}-aci-${local.location_short}-001"
+  resource_group_name  = "rg-${local.lz_environment_hyphen}-aci-${local.location_short}-001"
+  location             = local.location
   os_type              = "Windows"
   ip_address_type      = "Private"
   containers = [
@@ -93,9 +88,9 @@ inputs = {
     }
   ]
   subnet_name                                 = "snet-aci"
-  virtual_network_name                        = "vnet-app-dev-net-weu1-001"
-  subnet_resource_group_name                  = "rg-app-dev-net-weu1-001"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "web" })
+  virtual_network_name                        = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+  subnet_resource_group_name                  = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -54,35 +54,30 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "hub" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
-  virtual_hub_name                = "vhub-conn-dev-vhub-weu1-001"
-  resource_group_name             = "rg-conn-dev-vhub-weu1-001"
-  location                        = "westeurope"
-  virtual_wan_name                = "vwan-conn-dev-vwan-weu1-001"
-  virtual_wan_resource_group_name = "rg-conn-dev-vwan-weu1-001"
+  virtual_hub_name                = "vhub-${local.lz_environment_hyphen}-vhub-${local.location_short}-001"
+  resource_group_name             = "rg-${local.lz_environment_hyphen}-vhub-${local.location_short}-001"
+  location                        = local.location
+  virtual_wan_name                = "vwan-${local.lz_environment_hyphen}-vwan-${local.location_short}-001"
+  virtual_wan_resource_group_name = "rg-${local.lz_environment_hyphen}-vwan-${local.location_short}-001"
   address_prefix                  = "10.128.0.0/23"
   firewall = {
-    name                       = "afw-conn-dev-vhub-weu1-001"
-    policy_name                = "afwp-conn-dev-afwp-weu1-002"
-    policy_resource_group_name = "rg-conn-dev-afwp-weu1-001"
+    name                       = "afw-${local.lz_environment_hyphen}-vhub-${local.location_short}-001"
+    policy_name                = "afwp-${local.lz_environment_hyphen}-afwp-${local.location_short}-002"
+    policy_resource_group_name = "rg-${local.lz_environment_hyphen}-afwp-${local.location_short}-001"
     zone_redundant             = false
     public_ip_count            = 1
   }
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
 
-  tags = merge(local.tags, { workload = "hub" })
+  tags = local.tags
 }

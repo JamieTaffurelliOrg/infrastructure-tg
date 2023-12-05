@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -65,27 +65,22 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "hub" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-hub-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
+  location            = local.location
   network_security_groups = [
     {
-      name                = "nsg-conn-dev-hub-weu1-001"
-      resource_group_name = "rg-conn-dev-hub-weu1-001"
+      name                = "nsg-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
       rules = [
         {
           name                       = "nsgsr-in-deny-any-any"
@@ -116,8 +111,8 @@ inputs = {
   ]
   route_tables = [
     {
-      name                = "rt-conn-dev-hub-weu1-001"
-      resource_group_name = "rg-conn-dev-hub-weu1-001"
+      name                = "rt-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
       routes = [
         {
           name                   = "udr-azurefirewall"
@@ -128,33 +123,33 @@ inputs = {
       ]
     }
   ]
-  virtual_network_name          = "vnet-conn-dev-hub-weu1-001"
+  virtual_network_name          = "vnet-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
   virtual_network_address_space = ["10.128.0.0/16"]
   subnets = [
     {
       name                             = "snet-githubactions"
       address_prefixes                 = ["10.128.2.0/24"]
-      network_security_group_reference = "nsg-conn-dev-hub-weu1-001"
-      route_table_reference            = "rt-conn-dev-hub-weu1-001"
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
+      route_table_reference            = "rt-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
     }
   ]
   firewall_subnet_address_prefixes    = ["10.128.0.0/24"]
-  bastion_network_security_group_name = "nsg-conn-dev-hub-weu1-002"
+  bastion_network_security_group_name = "nsg-${local.lz_environment_hyphen}-hub-${local.location_short}-002"
   bastion_subnet_address_prefixes     = ["10.128.1.0/24"]
   peerings = [
     {
-      remote_vnet_name                = "vnet-app-dev-net-weu1-001"
-      remote_vnet_resource_group_name = "rg-app-dev-net-weu1-001"
+      remote_vnet_name                = "vnet-app-dev-net-${local.location_short}-001"
+      remote_vnet_resource_group_name = "rg-app-dev-net-${local.location_short}-001"
     }
   ]
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-hub-weu1-001"
+      name          = "ippre-${local.lz_environment_hyphen}-hub-${local.location_short}-001"
       ip_version    = "IPv4"
       prefix_length = 31
     },
     {
-      name          = "ippre-conn-dev-hub-weu1-002"
+      name          = "ippre-${local.lz_environment_hyphen}-hub-${local.location_short}-002"
       ip_version    = "IPv6"
       prefix_length = 126
     }
@@ -162,51 +157,51 @@ inputs = {
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.database.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.blob.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.table.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.queue.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.file.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.web.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.batch.azure.com"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.vaultcore.azure.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
-      name                 = "weu1.internal.jamietaffurellidev.com"
-      resource_group_name  = "rg-conn-dev-prvdns-weu1-001"
+      name                 = "${local.location_short}.internal.jamietaffurellidev.com"
+      resource_group_name  = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
       registration_enabled = true
     }
   ]
-  network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  storage_account_name                        = "stjtmgmtdevlogweu1002"
-  storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "hub" })
+  network_watcher_name                        = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+  network_watcher_resource_group_name         = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.environment_name}log${local.location_short}002"
+  storage_account_resource_group_name         = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

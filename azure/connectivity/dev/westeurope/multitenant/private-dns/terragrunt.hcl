@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -23,17 +23,12 @@ include "tenant" {
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "private-dns" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 generate "provider" {
@@ -58,7 +53,7 @@ EOF
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
   private_dns_zones = [
     {
       name = "privatelink.azure-automation.net"
@@ -91,8 +86,8 @@ inputs = {
       name = "privatelink.vaultcore.azure.net"
     },
     {
-      name = "weu1.internal.jamietaffurellidev.com"
+      name = "${local.location_short}.internal.jamietaffurellidev.com"
     }
   ]
-  tags = merge(local.tags, { workload = "private-dns" })
+  tags = local.tags
 }

@@ -1,4 +1,5 @@
 locals {
+  org_prefix                 = "jt"
   app_dev_subscription_id    = "5284e392-c44d-444a-bf2e-07452a860241"
   app_prod_subscription_id   = "f4722c2d-47d5-4513-a562-80465e3ee813"
   app_shrd_subscription_id   = "2fab7d68-45cf-4cea-b2d6-7cf5136a80a8"
@@ -11,4 +12,13 @@ locals {
   mgmt_shrd_subscription_id  = "3bdf403f-77ac-4879-8fba-fa41c2cc94ee"
   setup_prod_subscription_id = "625faac3-7208-4816-8899-7e546d0e830b"
   tf_ext_subscription_id     = "cac174dc-d598-40ea-857d-8cb88c823031"
+  default_tags = {
+    data-classification = "confidential"
+    criticality         = "mission-critical"
+    ops-commitment      = "workload-operations"
+    ops-team            = "sre"
+    cost-owner          = "jltaffurelli@outlook.com"
+    owner               = "jltaffurelli@outlook.com"
+    sla                 = "high"
+  }
 }

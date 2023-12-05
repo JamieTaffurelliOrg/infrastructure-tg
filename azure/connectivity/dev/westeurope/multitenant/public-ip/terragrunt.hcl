@@ -14,7 +14,7 @@ include "environment" {
   path = find_in_parent_folders("environment.hcl")
 }
 
-include "westeurope" {
+include "region" {
   path = find_in_parent_folders("region.hcl")
 }
 
@@ -43,28 +43,23 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "hub" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
-  resource_group_name = "rg-conn-dev-pip-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
+  location            = local.location
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-pip-weu1-001"
+      name          = "ippre-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
       prefix_length = 31
     }
   ]
 
-  tags = merge(local.tags, { workload = "hub" })
+  tags = local.tags
 }

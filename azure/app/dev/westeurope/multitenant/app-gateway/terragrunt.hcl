@@ -65,41 +65,36 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "app-gateway" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name = "rg-app-dev-agw-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-agw-${local.location_short}-001"
+  location            = local.location
   public_ip_addresses = [
     {
-      name              = "pip-app-dev-apgw-weu1-001"
-      domain_name_label = "pip-app-dev-agw-weu1-001"
+      name              = "pip-${local.lz_environment_hyphen}-apgw-${local.location_short}-001"
+      domain_name_label = "pip-${local.lz_environment_hyphen}-agw-${local.location_short}-001"
     }
   ]
-  public_ip_prefix_name                = "ippre-app-dev-pip-weu1-001"
-  public_ip_prefix_resource_group_name = "rg-app-dev-pip-weu1-001"
-  app_gateway_name                     = "agw-app-dev-agw-weu1-001"
+  public_ip_prefix_name                = "ippre-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
+  public_ip_prefix_resource_group_name = "rg-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
+  app_gateway_name                     = "agw-${local.lz_environment_hyphen}-agw-${local.location_short}-001"
   zones                                = null
-  firewall_policy_id                   = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-waf-weu1-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wafappdevwafweu1001"
+  firewall_policy_id                   = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-${local.lz_environment_hyphen}-waf-${local.location_short}-001/providers/Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/waf${local.lz_environment_concat}waf${local.location_short}001"
   sku_capacity                         = 1
   fips_enabled                         = false
   subnets = [
     {
       name                 = "snet-appgw"
-      virtual_network_name = "vnet-app-dev-net-weu1-001"
-      resource_group_name  = "rg-app-dev-net-weu1-001"
+      virtual_network_name = "vnet-${local.lz_environment_hyphen}net-${local.location_short}-001"
+      resource_group_name  = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     }
   ]
   gateway_ip_configurations = [
@@ -117,7 +112,7 @@ inputs = {
   frontend_ip_configurations = [
     {
       name                        = "frontendip-01"
-      public_ip_address_reference = "pip-app-dev-apgw-weu1-001"
+      public_ip_address_reference = "pip-${local.lz_environment_hyphen}-apgw-${local.location_short}-001"
     }
   ]
   backend_address_pools = [
@@ -166,7 +161,7 @@ inputs = {
     }
   ]*/
   autoscale_configuration                     = null
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "app-gateway" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }
