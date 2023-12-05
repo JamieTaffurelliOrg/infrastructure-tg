@@ -57,7 +57,7 @@ EOF
 }
 
 locals {
-
+  org_prefix = include.azure.locals.org_prefix
 }
 
 inputs = {
@@ -77,66 +77,66 @@ inputs = {
     }
   }
   groups = {
-    "jt-owners-pim" = {
-      display_name = "jt-owners-pim"
+    "${local.org_prefix}-owners-pim" = {
+      display_name = "${local.org_prefix}-owners-pim"
       description  = "Azure AD Management Group Owners (PIM assignable)"
     }
-    "jt-globaladmins-pim" = {
-      display_name = "jt-globaladmins-pim"
+    "${local.org_prefix}-globaladmins-pim" = {
+      display_name = "${local.org_prefix}-globaladmins-pim"
       description  = "Azure AD Global Admins (PIM assignable)"
     }
-    "jt-contributors-pim" = {
-      display_name = "jt-contributors-pim"
+    "${local.org_prefix}-contributors-pim" = {
+      display_name = "${local.org_prefix}-contributors-pim"
       description  = "Azure AD Management Group Contributors (PIM assignable)"
     }
-    "jt-useraccessadmins-pim" = {
-      display_name = "jt-useraccessadmins-pim"
+    "${local.org_prefix}-useraccessadmins-pim" = {
+      display_name = "${local.org_prefix}-useraccessadmins-pim"
       description  = "Azure AD Management Group User Access Adminstrators (PIM assignable)"
     }
-    "jt-storageblobdatacontributors-pim" = {
-      display_name = "jt-storageblobdatacontributors-pim"
+    "${local.org_prefix}-storageblobdatacontributors-pim" = {
+      display_name = "${local.org_prefix}-storageblobdatacontributors-pim"
       description  = "Azure AD Management Group Storage Blob Data Contributors (PIM assignable)"
     }
-    "jt-keyvaultadmins-pim" = {
-      display_name = "jt-keyvaultadmin-pim"
+    "${local.org_prefix}-keyvaultadmins-pim" = {
+      display_name = "${local.org_prefix}-keyvaultadmin-pim"
       description  = "Azure AD Management Group Key Vault Adminstrators (PIM assignable)"
     }
-    "jt-vmloginadmins-pim" = {
-      display_name = "jt-vmloginadmins-pim"
+    "${local.org_prefix}-vmloginadmins-pim" = {
+      display_name = "${local.org_prefix}-vmloginadmins-pim"
       description  = "Azure AD Management Group VM Adminstrator Logins (PIM assignable)"
     }
-    "jt-awsorgadmins-pim" = {
-      display_name = "jt-awsorgadmins-pim"
+    "${local.org_prefix}-awsorgadmins-pim" = {
+      display_name = "${local.org_prefix}-awsorgadmins-pim"
       description  = "AWS Org Admins (PIM)"
     }
   }
   group_memberships_objects = {
-    "jamie-taffurelli-o365admin-jt-owners-pim" = {
-      group_reference  = "jt-owners-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-owners-pim" = {
+      group_reference  = "${local.org_prefix}-owners-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-globaladmins-pim" = {
-      group_reference  = "jt-globaladmins-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-globaladmins-pim" = {
+      group_reference  = "${local.org_prefix}-globaladmins-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-contributors-pim" = {
-      group_reference  = "jt-contributors-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-contributors-pim" = {
+      group_reference  = "${local.org_prefix}-contributors-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-useraccessadmins-pim" = {
-      group_reference  = "jt-useraccessadmins-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-useraccessadmins-pim" = {
+      group_reference  = "${local.org_prefix}-useraccessadmins-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-storageblobdatacontributors-pim" = {
-      group_reference  = "jt-storageblobdatacontributors-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-storageblobdatacontributors-pim" = {
+      group_reference  = "${local.org_prefix}-storageblobdatacontributors-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-keyvaultadmins-pim" = {
-      group_reference  = "jt-keyvaultadmins-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-keyvaultadmins-pim" = {
+      group_reference  = "${local.org_prefix}-keyvaultadmins-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
-    "jamie-taffurelli-o365admin-jt-vmloginadmins-pim" = {
-      group_reference  = "jt-vmloginadmins-pim"
+    "jamie-taffurelli-o365admin-${local.org_prefix}-vmloginadmins-pim" = {
+      group_reference  = "${local.org_prefix}-vmloginadmins-pim"
       member_reference = "jamie-taffurelli-o365admin"
     }
   }
@@ -257,7 +257,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-owners-pim"
+      group_reference     = "${local.org_prefix}-owners-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
       request_type        = "AdminUpdate"
       deploy              = false
@@ -267,7 +267,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-contributors-pim"
+      group_reference     = "${local.org_prefix}-contributors-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
       request_type        = "AdminUpdate"
       deploy              = false
@@ -277,7 +277,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-useraccessadmins-pim"
+      group_reference     = "${local.org_prefix}-useraccessadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"
       request_type        = "AdminUpdate"
       deploy              = false
@@ -287,7 +287,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-storageblobdatacontributors-pim"
+      group_reference     = "${local.org_prefix}-storageblobdatacontributors-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe"
       request_type        = "AdminUpdate"
       deploy              = false
@@ -297,7 +297,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-keyvaultadmins-pim"
+      group_reference     = "${local.org_prefix}-keyvaultadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/00482a5a-887f-4fb3-b363-3b7fe8e74483"
       request_type        = "AdminUpdate"
       deploy              = false
@@ -307,7 +307,7 @@ inputs = {
       location            = local.location
       scope               = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
       justification       = "Org Management Group Owner access"
-      group_reference     = "jt-vmloginadmins-pim"
+      group_reference     = "${local.org_prefix}-vmloginadmins-pim"
       role_definition_id  = "managementGroups/jamietaffurelli/providers/Microsoft.Authorization/roleDefinitions/1c0163c0-47e6-4577-8991-ea5c82e286e4"
       request_type        = "AdminUpdate"
       deploy              = false
