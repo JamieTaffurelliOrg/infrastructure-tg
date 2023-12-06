@@ -1,4 +1,4 @@
-locals = {
+locals {
   azure        = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   landing_zone = read_terragrunt_config(find_in_parent_folders("landing_zone.hcl"))
   environment  = read_terragrunt_config(find_in_parent_folders("environment.hcl"))
@@ -15,9 +15,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-${local.landing_zone.landing_zone_name}-${local.environment.environment_name}-tf-${local.landing_zone.landing_zone_name}-${local.region.region_short}-001"
-    storage_account_name = "st${local.azure.org_prefix}${local.landing_zone.landing_zone_name}${local.environment.environment_name}tf${local.region.region_short}001"
-    container_name       = "${local.landing_zone.landing_zone_name}-${local.environment.environment_name}"
+    resource_group_name  = "rg-${local.landing_zone.locals.landing_zone_name}-${local.environment.locals.environment_name}-tf-${local.landing_zone.locals.landing_zone_name}-${local.region.locals.region_short}-001"
+    storage_account_name = "st${local.azure.locals.org_prefix}${local.landing_zone.locals.landing_zone_name}${local.environment.locals.environment_name}tf${local.region.locals.region_short}001"
+    container_name       = "${local.landing_zone.locals.landing_zone_name}-${local.environment.locals.environment_name}"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }

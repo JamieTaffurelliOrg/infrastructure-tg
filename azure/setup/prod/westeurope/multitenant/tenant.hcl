@@ -1,4 +1,4 @@
-locals = {
+local {
   azure        = read_terragrunt_config(find_in_parent_folders("azure.hcl"))
   landing_zone = read_terragrunt_config(find_in_parent_folders("landing_zone.hcl"))
   environment  = read_terragrunt_config(find_in_parent_folders("environment.hcl"))
