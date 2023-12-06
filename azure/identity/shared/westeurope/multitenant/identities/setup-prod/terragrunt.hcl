@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.31"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.32"
 }
 
 include "azure" {
@@ -112,7 +112,7 @@ inputs = {
   custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
-      custom_role_reference       = "Lock Contributor (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Lock Contributor (Custom)"].id
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
   }

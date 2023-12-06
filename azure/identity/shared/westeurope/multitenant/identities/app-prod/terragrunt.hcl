@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.31"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.32"
 }
 
 include "azure" {
@@ -481,67 +481,67 @@ inputs = {
   custom_rbac_role_assignments_service_principals = {
     "${local.lz_environment_hyphen}-net-tf-vnetpeer-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-net-tf"
-      custom_role_reference       = "Virtual Network Peerer (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Network Peerer (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.conn_prod_subscription_id}/resourceGroups/rg-conn-prod-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-prod-hub-weu1-001"
     }
     "${local.lz_environment_hyphen}-net-tf-vhubjoin-connprodvhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-net-tf"
-      custom_role_reference       = "Virtual Hub Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Hub Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.conn_prod_subscription_id}/resourceGroups/rg-conn-prod-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-prod-vhub-weu1-001"
     }
     "${local.lz_environment_hyphen}-lb-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-lb-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001"
     }
     "${local.lz_environment_hyphen}-web-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-web"
     }
     /*"${local.lz_environment_hyphen}-web-tf-lbjoin-appprodlb" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
-      custom_role_reference       = "Load Balancer Backend Address Pool Joiner (Custom)"
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Load Balancer Backend Address Pool Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-lb-weu1-001/providers/Microsoft.Network/loadBalancers/lbi-app-prod-lb-weu1-001/backendAddressPools/web-backend-pool"
     }*/
     "${local.lz_environment_hyphen}-sql-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-sql"
     }
     "${local.lz_environment_hyphen}-sql-tf-sqlreg-appprod" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
-      custom_role_reference       = "SQL VM Register (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["SQL VM Register (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}"
     }
     "${local.lz_environment_hyphen}-redis-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-redis-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-redis"
     }
     "${local.lz_environment_hyphen}-aci-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-aci-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-aci"
     }
     "${local.lz_environment_hyphen}-agw-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-agw-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-appgw"
     }
     "${local.lz_environment_hyphen}-agw-tf-prefixjoin-appprodpipprefix" = {
       service_principal_reference = "${local.lz_environment_hyphen}-agw-tf"
-      custom_role_reference       = "Public IP Prefix Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Public IP Prefix Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-app-prod-pip-weu1-001"
     }
     "${local.lz_environment_hyphen}-cae-tf-subnetjoin-appprodnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-cae-tf"
-      custom_role_reference       = "Subnet Joiner (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-prod-net-weu1-001/subnets/snet-cae"
     }
     "${local.lz_environment_hyphen}-cae-tf-appreg-appprod" = {
       service_principal_reference = "${local.lz_environment_hyphen}-cae-tf"
-      custom_role_reference       = "App Register (Custom)"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["App Register (Custom)"].id
       scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}"
     }
   }

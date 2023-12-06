@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.31"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.32"
 }
 
 include "azure" {
@@ -170,9 +170,9 @@ inputs = {
   }
   custom_rbac_role_assignments_objects = {
     "galmgmtshrdvmimgweu1001-imgbuilder" = {
-      object_reference      = "galmgmtshrdvmimgweu1001"
-      custom_role_reference = "Image Creator (Custom)"
-      scope                 = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
+      object_reference = "galmgmtshrdvmimgweu1001"
+      custom_role_id   = dependency.parent.outputs.rbac_role_definitions["Image Creator (Custom)"].id
+      scope            = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
     }
   }
 }
