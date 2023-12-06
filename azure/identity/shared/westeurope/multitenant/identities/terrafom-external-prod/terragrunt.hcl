@@ -1,25 +1,30 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.30"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.31"
 }
 
 include "azure" {
-  path = find_in_parent_folders("azure.hcl")
+  path   = find_in_parent_folders("azure.hcl")
+  expose = true
 }
 
 include "landing_zone" {
-  path = find_in_parent_folders("landing_zone.hcl")
+  path   = find_in_parent_folders("landing_zone.hcl")
+  expose = true
 }
 
 include "environment" {
-  path = find_in_parent_folders("environment.hcl")
+  path   = find_in_parent_folders("environment.hcl")
+  expose = true
 }
 
 include "region" {
-  path = find_in_parent_folders("region.hcl")
+  path   = find_in_parent_folders("region.hcl")
+  expose = true
 }
 
 include "tenant" {
-  path = find_in_parent_folders("tenant.hcl")
+  path   = find_in_parent_folders("tenant.hcl")
+  expose = true
 }
 
 generate "provider" {
@@ -33,7 +38,7 @@ provider "azuread" {
 }
 
 provider "azurerm" {
-  subscription_id = ${include.azure.locals.iden_shrd_subscription_id}
+  subscription_id = "${include.azure.locals.iden_shrd_subscription_id}"
 
   features {
     resource_group {
@@ -44,7 +49,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  ${include.azure.locals.mgmt_prod_subscription_id}
+  subscription_id = "${include.azure.locals.mgmt_prod_subscription_id}"
 
   features {
     resource_group {
