@@ -57,7 +57,7 @@ EOF
 }
 
 locals {
-  org_prefix = include.azure.locals.org_prefix
+  org_prefix = include.azure.local.org_prefix
 }
 
 inputs = {
