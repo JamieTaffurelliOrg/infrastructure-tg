@@ -2,7 +2,6 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.30"
 }
 
-
 include "azure" {
   path = find_in_parent_folders("azure.hcl")
 }
