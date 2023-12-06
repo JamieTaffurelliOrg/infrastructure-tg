@@ -2,22 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-windowsvm-tf///?ref=0.0.18"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
 }
 
-locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
+}
+
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
+}
+
+include "region" {
+  path = find_in_parent_folders("region.hcl")
+}
+
+include "tenant" {
+  path = find_in_parent_folders("tenant.hcl")
 }
 
 generate "provider" {
@@ -28,7 +30,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
+  subscription_id = ${include.azure.locals.app_dev_subscription_id}
 
   features {
     resource_group {
@@ -39,7 +41,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "9661faf5-39f5-400b-931a-342f9240c71b"
+  subscription_id = ${include.azure.locals.mgmt_dev_subscription_id}
 
   features {
     resource_group {
@@ -50,7 +52,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "images"
-  subscription_id = "3bdf403f-77ac-4879-8fba-fa41c2cc94ee"
+  ${include.azure.locals.mgmt_shrd_subscription_id}
 
   features {
     resource_group {
@@ -62,13 +64,22 @@ EOF
 
 }
 
+locals {
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "sql" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
+}
+
 inputs = {
 
-  resource_group_name = "rg-app-dev-sql-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-sql-${local.location_short}-001"
+  location            = local.location
   windows_virtual_machines = [
     {
-      name                          = "vmappdvsqlweu11"
+      name                          = "vmappdvsql${local.location_short}1"
       subnet_reference              = "snet-sql"
       enable_accelerated_networking = false
       private_ip_address            = "10.192.3.8"
@@ -105,22 +116,22 @@ inputs = {
   subnets = [
     {
       name                 = "snet-sql"
-      virtual_network_name = "vnet-app-dev-net-weu1-001"
-      resource_group_name  = "rg-app-dev-net-weu1-001"
+      virtual_network_name = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+      resource_group_name  = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     }
   ]
-  password_key_vault_name                = "kv-app-dev-kv-weu1-002"
-  password_key_vault_resource_group_name = "rg-app-dev-kv-weu1-001"
+  password_key_vault_name                = "kv-${local.lz_environment_hyphen}-kv-${local.location_short}-002"
+  password_key_vault_resource_group_name = "rg-${local.lz_environment_hyphen}-kv-${local.location_short}-001"
   /*shared_images = [
     {
       name                                     = "win-2022-server-azure"
-      shared_image_gallery_name                = "galmgmtshrdvmimgweu1001"
-      shared_image_gallery_resource_group_name = "rg-mgmt-shrd-vmimg-weu1-001"
+      shared_image_gallery_name                = "galmgmtshrdvmimg${local.location_short}001"
+      shared_image_gallery_resource_group_name = "rg-mgmt-shrd-vmimg-${local.location_short}-001"
     }
   ]*/
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  storage_account_name                        = "stjtappdevdiagweu1002"
-  storage_account_resource_group_name         = "rg-app-dev-diag-weu1-001"
-  tags                                        = merge(local.tags, { workload = "sql" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  storage_account_name                        = "st${local.org_prefix}${local.lz_environment_concat}diag${local.location_short}002"
+  storage_account_resource_group_name         = "rg-${local.lz_environment_hyphen}-diag-${local.location_short}-001"
+  tags                                        = local.tags
 }

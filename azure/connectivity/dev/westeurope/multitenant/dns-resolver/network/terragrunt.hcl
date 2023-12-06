@@ -2,8 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-spokevirtualnetwork-tf//spoke-vnet-vhub///?ref=0.0.20"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
+}
+
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
+}
+
+include "region" {
+  path = find_in_parent_folders("region.hcl")
+}
+
+include "tenant" {
+  path = find_in_parent_folders("tenant.hcl")
 }
 
 generate "provider" {
@@ -14,7 +30,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = ${include.azure.locals.conn_dev_subscription_id}
 
   features {
     resource_group {
@@ -25,7 +41,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "9661faf5-39f5-400b-931a-342f9240c71b"
+  subscription_id = ${include.azure.locals.mgmt_dev_subscription_id}
 
   features {
     resource_group {
@@ -36,7 +52,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "ddos"
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = ${include.azure.locals.conn_dev_subscription_id}
 
   features {
     resource_group {
@@ -47,7 +63,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "dns"
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = ${include.azure.locals.conn_dev_subscription_id}
 
   features {
     resource_group {
@@ -58,7 +74,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "hub"
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = ${include.azure.locals.conn_dev_subscription_id}
 
   features {
     resource_group {
@@ -71,27 +87,22 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "private-dns" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  resource_group_name = "rg-conn-dev-dnspr-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
+  location            = local.location
   network_security_groups = [
     {
-      name                = "nsg-conn-dev-dnspr-weu1-001"
-      resource_group_name = "rg-conn-dev-dnspr-weu1-001"
+      name                = "nsg-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
       rules = [
         {
           name                       = "nsgsr-in-allow-VirtualNetwork-53"
@@ -144,7 +155,7 @@ inputs = {
       ]
     }
   ]
-  virtual_network_name          = "vnet-conn-dev-dnspr-weu1-001"
+  virtual_network_name          = "vnet-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
   virtual_network_address_space = ["10.128.3.0/24"]
   subnets = [
     {
@@ -152,7 +163,7 @@ inputs = {
       private_endpoint_network_policies_enabled     = true
       private_link_service_network_policies_enabled = false
       address_prefixes                              = ["10.128.3.0/26"]
-      network_security_group_reference              = "nsg-conn-dev-dnspr-weu1-001"
+      network_security_group_reference              = "nsg-${local.lz_environment_hyphen}-dnspr-${local.location_short}-001"
       delegation                                    = "Microsoft.Network/dnsResolvers"
       delegation_actions                            = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
     }
@@ -160,55 +171,55 @@ inputs = {
   private_dns_zones = [
     {
       name                = "privatelink.azure-automation.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.redis.cache.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.database.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.blob.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.table.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.queue.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.file.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.web.core.windows.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.batch.azure.com"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     },
     {
       name                = "privatelink.vaultcore.azure.net"
-      resource_group_name = "rg-conn-dev-prvdns-weu1-001"
+      resource_group_name = "rg-${local.lz_environment_hyphen}-prvdns-${local.location_short}-001"
     }
   ]
   hub_connection = {
-    name                      = "vhub-conn-dev-vhub-weu1-001"
-    resource_group_name       = "rg-conn-dev-vhub-weu1-001"
+    name                      = "vhub-${local.lz_environment_hyphen}-vhub-${local.location_short}-001"
+    resource_group_name       = "rg-${local.lz_environment_hyphen}-vhub-${local.location_short}-001"
     internet_security_enabled = false
   }
-  network_watcher_name                        = "nw-conn-dev-netwat-weu1-001"
-  network_watcher_resource_group_name         = "rg-conn-dev-netwat-weu1-001"
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  storage_account_name                        = "stjtmgmtdevlogweu1002"
-  storage_account_resource_group_name         = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "private-dns" })
+  network_watcher_name                        = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+  network_watcher_resource_group_name         = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.environment_name}log${local.location_short}002"
+  storage_account_resource_group_name         = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }

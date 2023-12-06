@@ -2,8 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-publicip-tf///?ref=0.0.2"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
+}
+
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
+}
+
+include "region" {
+  path = find_in_parent_folders("region.hcl")
+}
+
+include "tenant" {
+  path = find_in_parent_folders("tenant.hcl")
 }
 
 generate "provider" {
@@ -14,7 +30,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "3d6c3571-dbcd-47fa-a4f1-f2993adb6c90"
+  subscription_id = ${include.azure.locals.conn_dev_subscription_id}
 
   features {
     resource_group {
@@ -27,28 +43,23 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "connectivity"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "hub" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
-  resource_group_name = "rg-conn-dev-pip-weu1-001"
-  location            = "westeurope"
+  resource_group_name = "rg-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
+  location            = local.location
   public_ip_prefixes = [
     {
-      name          = "ippre-conn-dev-pip-weu1-001"
+      name          = "ippre-${local.lz_environment_hyphen}-pip-${local.location_short}-001"
       prefix_length = 31
     }
   ]
 
-  tags = merge(local.tags, { workload = "hub" })
+  tags = local.tags
 }

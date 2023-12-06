@@ -2,8 +2,24 @@ terraform {
   source = "git::https://github.com/JamieTaffurelliOrg/az-linuxwebapp-tf///?ref=0.0.2"
 }
 
-include {
-  path = find_in_parent_folders()
+include "azure" {
+  path = find_in_parent_folders("azure.hcl")
+}
+
+include "landing_zone" {
+  path = find_in_parent_folders("landing_zone.hcl")
+}
+
+include "environment" {
+  path = find_in_parent_folders("environment.hcl")
+}
+
+include "region" {
+  path = find_in_parent_folders("region.hcl")
+}
+
+include "tenant" {
+  path = find_in_parent_folders("tenant.hcl")
 }
 
 generate "provider" {
@@ -14,7 +30,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "5284e392-c44d-444a-bf2e-07452a860241"
+  subscription_id = ${include.azure.locals.app_dev_subscription_id}
 
   features {
     resource_group {
@@ -25,7 +41,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "9661faf5-39f5-400b-931a-342f9240c71b"
+  subscription_id = ${include.azure.locals.mgmt_dev_subscription_id}
 
   features {
     resource_group {
@@ -38,25 +54,20 @@ EOF
 }
 
 locals {
-  tags = {
-    data-classification = "confidential"
-    criticality         = "mission-critical"
-    ops-commitment      = "workload-operations"
-    ops-team            = "sre"
-    cost-owner          = "jltaffurelli@outlook.com"
-    owner               = "jltaffurelli@outlook.com"
-    sla                 = "high"
-    environment         = "dev"
-    stack               = "app"
-  }
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "web" })
+  org_prefix            = include.azure.locals.org_prefix
+  lz_environment_hyphen = "${include.landing_zone.landing_zone_name}-${include.environment.environment_name}"
+  lz_environment_concat = "${include.landing_zone.landing_zone_name}${include.environment.environment_name}"
+  location_short        = include.region.region_short
+  location              = include.region.region_full
 }
 
 inputs = {
 
-  web_app_name                     = "app-app-dev-web-weu1-001"
-  resource_group_name              = "rg-app-dev-web-weu1-001"
-  service_plan_name                = "asp-app-dev-ase-weu1-001"
-  service_plan_resource_group_name = "rg-app-dev-ase-weu1-001"
+  web_app_name                     = "app-${local.lz_environment_hyphen}-web-${local.location_short}-001"
+  resource_group_name              = "rg-${local.lz_environment_hyphen}-web-${local.location_short}-001"
+  service_plan_name                = "asp-${local.lz_environment_hyphen}-ase-${local.location_short}-001"
+  service_plan_resource_group_name = "rg-${local.lz_environment_hyphen}-ase-${local.location_short}-001"
   auto_heal_enabled                = false
   health_check_path                = null
   auto_heal_setting = {
@@ -86,7 +97,7 @@ inputs = {
   application_stack = {
     dotnet_version = "7.0"
   }
-  log_analytics_workspace_name                = "log-mgmt-dev-log-weu1-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-dev-log-weu1-001"
-  tags                                        = merge(local.tags, { workload = "web" })
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }
