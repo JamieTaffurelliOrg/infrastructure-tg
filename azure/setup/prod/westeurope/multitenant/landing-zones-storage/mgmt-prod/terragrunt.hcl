@@ -62,7 +62,7 @@ locals {
   tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { environment = "prod", stack = "management" })
   org_prefix            = include.azure.locals.org_prefix
   lz_environment_hyphen = "mgmt-prod"
-  lz_environment_concat = "mgmprod"
+  lz_environment_concat = "mgmtprod"
   location_short        = include.region.locals.region_short
   location              = include.region.locals.region_full
 }
