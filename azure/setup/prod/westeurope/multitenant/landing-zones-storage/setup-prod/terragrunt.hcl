@@ -74,9 +74,11 @@ inputs = {
   resource_group_name  = "rg-${local.lz_environment_hyphen}-tf-${local.location_short}-001"
   network_watchers = {
     resource_group_name = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
-    west_europe = {
-      name     = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
-      location = local.location
+    network_watchers = {
+      west_europe = {
+        name     = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+        location = local.location
+      }
     }
     tags = merge(local.tags, { workload = "logs" })
   }
