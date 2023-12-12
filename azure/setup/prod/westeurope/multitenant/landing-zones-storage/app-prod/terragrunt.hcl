@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.32"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.33"
 }
 
 include "azure" {
@@ -59,7 +59,7 @@ EOF
 }
 
 locals {
-  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { workload = "logs", environment = "prod", stack = "app" })
+  tags                  = merge(include.azure.locals.default_tags, include.landing_zone.locals.default_tags, include.environment.locals.default_tags, { environment = "prod", stack = "app" })
   org_prefix            = include.azure.locals.org_prefix
   lz_environment_hyphen = "app-prod"
   lz_environment_concat = "appprod"
@@ -69,32 +69,27 @@ locals {
 
 inputs = {
 
-  storage_account_name                = "st${local.org_prefix}${local.lz_environment_concat}tf${local.location_short}001"
-  location                            = local.location
-  resource_group_name                 = "rg-${local.lz_environment_hyphen}-tf-${local.location_short}-001"
-  network_watcher_resource_group_name = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+  storage_account_name = "st${local.org_prefix}${local.lz_environment_concat}tf${local.location_short}001"
+  location             = local.location
+  resource_group_name  = "rg-${local.lz_environment_hyphen}-tf-${local.location_short}-001"
   network_watchers = {
-    west_europe = {
-      name     = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
-      location = local.location
+    resource_group_name = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+    network_watchers = {
+      west_europe = {
+        name     = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
+        location = local.location
+      }
     }
+    tags = merge(local.tags, { workload = "logs" })
   }
   containers = ["${local.lz_environment_hyphen}", "${local.lz_environment_hyphen}-kv"]
   storage_account_network_rules = {
     default_action = "Allow"
   }
-  boot_diagnostic_storage_accounts = [
-    {
-      name                = "st${local.org_prefix}${local.lz_environment_concat}diag${local.location_short}002"
-      location            = local.location
-      resource_group_name = "rg-${local.lz_environment_hyphen}-diag-${local.location_short}-001"
-      default_action      = "Allow"
-    }
-  ]
   log_analytics_workspace = {
     name                = "log-mgmt-prod-log-${local.location_short}-001"
     resource_group_name = "rg-mgmt-prod-log-${local.location_short}-001"
   }
 
-  tags = local.tags
+  tags = merge(local.tags, { workload = "tfstate" })
 }
