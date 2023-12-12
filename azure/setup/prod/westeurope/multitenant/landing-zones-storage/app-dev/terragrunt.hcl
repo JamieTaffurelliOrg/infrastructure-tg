@@ -35,7 +35,8 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
-  subscription_id = "${include.azure.locals.app_dev_subscription_id}"
+  storage_use_azuread = true
+  subscription_id     = "${include.azure.locals.app_dev_subscription_id}"
 
   features {
     resource_group {
@@ -46,7 +47,8 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
-  subscription_id = "${include.azure.locals.mgmt_dev_subscription_id}"
+  storage_use_azuread = true
+  subscription_id     = "${include.azure.locals.mgmt_dev_subscription_id}"
 
   features {
     resource_group {
