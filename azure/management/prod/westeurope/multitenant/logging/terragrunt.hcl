@@ -63,5 +63,9 @@ inputs = {
   log_analytics_workspace_name = "log-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   automation_account_name      = "aa-${local.lz_environment_hyphen}-log-${local.location_short}-001"
   storage_account_name         = "st${local.org_prefix}${local.lz_environment_concat}log${local.location_short}002"
-  tags                         = local.tags
+  app_insights = {
+    name = "appi-${local.lz_environment_hyphen}-log-${local.location_short}-001"
+  }
+
+  tags = local.tags
 }
