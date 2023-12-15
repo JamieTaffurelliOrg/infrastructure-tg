@@ -35,6 +35,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
+  storage_use_azuread = true
   subscription_id = "${include.azure.locals.mgmt_prod_subscription_id}"
 
   features {
