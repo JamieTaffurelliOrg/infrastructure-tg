@@ -366,7 +366,7 @@ inputs = {
     "${local.lz_environment_hyphen}-afw-tf-blobcontributor-conndevcontainer" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}cription_id}/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
+      scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtconndevtfweu1001/blobServices/default/containers/conn-dev"
     }
     "${local.lz_environment_hyphen}-afw-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
@@ -431,7 +431,7 @@ inputs = {
     "${local.lz_environment_hyphen}-vhub-tf-contributor-vhubrg" = {
       service_principal_reference = "${local.lz_environment_hyphen}-vhub-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}cription_id}/resourceGroups/rg-conn-dev-vhub-weu1-001"
+      scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-vhub-weu1-001"
     }
     "${local.lz_environment_hyphen}-vhub-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-vhub-tf"
