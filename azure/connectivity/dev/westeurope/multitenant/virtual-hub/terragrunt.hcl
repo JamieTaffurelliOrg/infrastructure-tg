@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.10"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-virtualhub-tf///?ref=0.0.13"
 }
 
 include "azure" {
