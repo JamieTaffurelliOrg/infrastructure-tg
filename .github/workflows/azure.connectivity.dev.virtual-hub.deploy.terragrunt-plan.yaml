@@ -25,7 +25,7 @@ jobs:
         matrix:
           region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/virtual-hub'
+      terragrunt-working-dir: './azure/connectivity/dev/${{ matrix.region }}/multitenant/virtual-hub'
       environment: connectivity.dev.virtual-hub.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
