@@ -112,7 +112,7 @@ inputs = {
   custom_rbac_role_assignments_service_principals = {
     "setup-landing-zones-tf-lockcont-org" = {
       service_principal_reference = "setup-landing-zones-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Lock Contributor (Custom)"].id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Lock Contributor (Custom)"].role_definition_id
       scope                       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
     }
   }
