@@ -280,7 +280,7 @@ inputs = {
     "${local.lz_environment_hyphen}-net-tf-contributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-net-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtdevlogweu1001"
     }
     "${local.lz_environment_hyphen}-net-tf-contributor-appdevpip" = {
       service_principal_reference = "${local.lz_environment_hyphen}-net-tf"
@@ -320,7 +320,7 @@ inputs = {
     "${local.lz_environment_hyphen}-web-tf-contributor-appdevdiag" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1001"
     }
     "${local.lz_environment_hyphen}-web-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
@@ -330,7 +330,7 @@ inputs = {
     "${local.lz_environment_hyphen}-web-tf-kvadmin-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-002"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
     }
     "${local.lz_environment_hyphen}-web-tf-reader-appdevlb" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
@@ -355,7 +355,7 @@ inputs = {
     "${local.lz_environment_hyphen}-sql-tf-contributor-appdevdiag" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevdiagweu1001"
     }
     "${local.lz_environment_hyphen}-sql-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
@@ -365,7 +365,7 @@ inputs = {
     "${local.lz_environment_hyphen}-sql-tf-kvadmin-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
       role_definition_name        = "Key Vault Administrator"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-002"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001/providers/Microsoft.KeyVault/vaults/kv-app-dev-kv-weu1-001"
     }
     "${local.lz_environment_hyphen}-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"

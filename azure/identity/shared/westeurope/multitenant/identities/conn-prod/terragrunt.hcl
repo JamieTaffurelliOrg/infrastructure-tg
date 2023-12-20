@@ -276,7 +276,7 @@ inputs = {
     "${local.lz_environment_hyphen}-hub-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "${local.lz_environment_hyphen}-hub-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1001"
     }
     "${local.lz_environment_hyphen}-hub-tf-netcontributor-connprodnetwatcher" = {
       service_principal_reference = "${local.lz_environment_hyphen}-hub-tf"
@@ -336,7 +336,7 @@ inputs = {
     "${local.lz_environment_hyphen}-bas-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "${local.lz_environment_hyphen}-bas-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1001"
     }
     "${local.lz_environment_hyphen}-bas-tf-netcontributor-connprodnetwatcher" = {
       service_principal_reference = "${local.lz_environment_hyphen}-bas-tf"
@@ -466,7 +466,7 @@ inputs = {
     "${local.lz_environment_hyphen}-dnspr-tf-contributor-mgmtprodlogstorage" = {
       service_principal_reference = "${local.lz_environment_hyphen}-dnspr-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1002"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtmgmtprodlogweu1001"
     }
     "${local.lz_environment_hyphen}-dnspr-tf-reader-connprodvhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-dnspr-tf"
