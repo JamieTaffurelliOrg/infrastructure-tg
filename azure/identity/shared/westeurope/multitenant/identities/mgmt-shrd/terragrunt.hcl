@@ -171,7 +171,7 @@ inputs = {
   custom_rbac_role_assignments_objects = {
     "galmgmtshrdvmimgweu1001-imgbuilder" = {
       object_reference = "galmgmtshrdvmimgweu1001"
-      custom_role_id   = dependency.parent.outputs.rbac_role_definitions["Image Creator (Custom)"].role_definition_id
+      custom_role_id   = dependency.parent.outputs.rbac_role_definitions["Image Creator (Custom)"].role_definition_resource_id
       scope            = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}/resourceGroups/rg-mgmt-shrd-vmimg-weu1-001/providers/Microsoft.Compute/galleries/galmgmtshrdvmimgweu1001"
     }
   }
