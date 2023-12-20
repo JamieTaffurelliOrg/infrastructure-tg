@@ -502,62 +502,62 @@ inputs = {
   custom_rbac_role_assignments_service_principals = {
     /*"${local.lz_environment_hyphen}-hub-tf-vnetpeer-appdevnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-hub-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Virtual Network Peerer (Custom)"].id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Virtual Network Peerer (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001"
     }*/
     "${local.lz_environment_hyphen}-bas-tf-prefixjoin-conndevhubprefix" = {
       service_principal_reference = "${local.lz_environment_hyphen}-bas-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Public IP Prefix Joiner (Custom)"].role_definition_id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Public IP Prefix Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-pip-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-pip-weu1-001"
     }
     "${local.lz_environment_hyphen}-bas-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-bas-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Hub Joiner (Custom)"].role_definition_id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Hub Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-dev-vhub-weu1-001"
     }
     /*"${local.lz_environment_hyphen}-bas-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-bas-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001/subnets/AzureBastionSubnet"
     }
     "${local.lz_environment_hyphen}-afw-tf-prefixjoin-conndevhubprefix" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Public IP Prefix Joiner (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Public IP Prefix Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/publicIPPrefixes/ippre-conn-dev-hub-weu1-001"
     }
     "${local.lz_environment_hyphen}-afw-tf-subnetjoin-conndevhubsubnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-hub-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-dev-hub-weu1-001/subnets/AzureFirewallSubnet"
     }
     "${local.lz_environment_hyphen}-afw-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Firewall Policy Joiner (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Firewall Policy Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-afwp-weu1-001/providers/Microsoft.Network/firewallPolicies/afwp-conn-dev-afwp-weu1-001"
     }
     "${local.lz_environment_hyphen}-afw-tf-fwcont-conndevhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afw-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Firewall Contributor (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Firewall Contributor (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-hub-weu1-001"
     }
     "${local.lz_environment_hyphen}-afd-tf-fwcont-conndevhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-afd-tf"
-      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Private Link Joiner (Custom)"].role_definition_id
+      custom_role_id       = dependency.parent.outputs.rbac_role_definitions["Private Link Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-lb-weu1-001/providers/Microsoft.Network/privateLinkServices/web"
     }*/
     "${local.lz_environment_hyphen}-vhub-tf-fwpoljoin-conndevfwpol" = {
       service_principal_reference = "${local.lz_environment_hyphen}-vhub-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Firewall Policy Joiner (Custom)"].role_definition_id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Firewall Policy Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-afwp-weu1-001"
     }
     "${local.lz_environment_hyphen}-vhub-tf-vwanjoin-conndevvwan" = {
       service_principal_reference = "${local.lz_environment_hyphen}-vhub-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual WAN Joiner (Custom)"].role_definition_id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual WAN Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-vwan-weu1-001/providers/Microsoft.Network/virtualWans/vwan-conn-dev-vwan-weu1-001"
     }
     "${local.lz_environment_hyphen}-dnspr-tf-vhubjoin-conndevvhub" = {
       service_principal_reference = "${local.lz_environment_hyphen}-dnspr-tf"
-      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Hub Joiner (Custom)"].role_definition_id
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Virtual Hub Joiner (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.conn_dev_subscription_id}/resourceGroups/rg-conn-dev-vhub-weu1-001/providers/Microsoft.Network/virtualHubs/vhub-conn-dev-vhub-weu1-001"
     }
   }
