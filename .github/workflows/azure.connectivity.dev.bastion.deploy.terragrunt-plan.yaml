@@ -21,8 +21,11 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-terraform-plan-workflow:
     uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-run-all-plan-template.yaml@main
+    strategy:
+        matrix:
+          region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/bastion'
+      terragrunt-working-dir: './azure/connectivity/dev/${{ matrix.region }}/multitenant/bastion'
       environment: connectivity.dev.bastion.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

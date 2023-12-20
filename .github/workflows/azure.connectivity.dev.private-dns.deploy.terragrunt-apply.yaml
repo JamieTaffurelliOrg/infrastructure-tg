@@ -21,8 +21,11 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-terraform-apply-workflow:
     uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-apply-template.yaml@main
+    strategy:
+        matrix:
+          region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/private-dns'
+      terragrunt-working-dir: './azure/connectivity/dev/${{ matrix.region }}/multitenant/private-dns'
       environment: connectivity.dev.private-dns.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

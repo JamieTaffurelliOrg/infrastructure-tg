@@ -21,8 +21,11 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-terraform-plan-workflow:
     uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-plan-template.yaml@main
+    strategy:
+        matrix:
+          region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/identity/shared/westeurope/multitenant/identities/mgmt-dev'
+      terragrunt-working-dir: './azure/identity/shared/${{ matrix.region }}/multitenant/identities/mgmt-dev'
       environment: identity.shared.identities.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

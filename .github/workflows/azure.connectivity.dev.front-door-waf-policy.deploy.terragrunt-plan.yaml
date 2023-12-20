@@ -21,8 +21,11 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-terraform-plan-workflow:
     uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-plan-template.yaml@main
+    strategy:
+        matrix:
+          region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/connectivity/dev/westeurope/multitenant/front-door-waf-policy'
+      terragrunt-working-dir: './azure/connectivity/dev/${{ matrix.region }}/multitenant/front-door-waf-policy'
       environment: connectivity.dev.front-door-waf-policy.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

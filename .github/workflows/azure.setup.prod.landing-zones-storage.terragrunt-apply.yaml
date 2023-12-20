@@ -21,8 +21,11 @@ concurrency: ci-${{ github.workflow }}-${{ github.ref }}
 jobs:
   call-terraform-apply-workflow:
     uses: JamieTaffurelliOrg/github-actions-templates/.github/workflows/azure-terragrunt-run-all-apply-template.yaml@main
+    strategy:
+        matrix:
+          region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/setup/prod/westeurope/multitenant/landing-zones-storage'
+      terragrunt-working-dir: './azure/setup/prod/${{ matrix.region }}/multitenant/landing-zones-storage'
       environment: azure.setup.prod.landing-zones.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit
