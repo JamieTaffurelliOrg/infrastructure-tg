@@ -317,11 +317,6 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
     }
-    "${local.lz_environment_hyphen}-web-tf-contributor-appproddiag" = {
-      service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappproddiagweu1001"
-    }
     "${local.lz_environment_hyphen}-web-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "${local.lz_environment_hyphen}-web-tf"
       role_definition_name        = "Reader"
@@ -351,11 +346,6 @@ inputs = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_prod_subscription_id}/resourceGroups/rg-mgmt-prod-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-prod-log-weu1-001"
-    }
-    "${local.lz_environment_hyphen}-sql-tf-contributor-appproddiag" = {
-      service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
-      role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_prod_subscription_id}/resourceGroups/rg-app-prod-diag-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappproddiagweu1001"
     }
     "${local.lz_environment_hyphen}-sql-tf-reader-mgmtshrdimg" = {
       service_principal_reference = "${local.lz_environment_hyphen}-sql-tf"
