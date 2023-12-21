@@ -111,7 +111,7 @@ inputs = {
       admin_consents = [
         {
           app_role_id            = "01c0a623-fc9b-48e9-b794-0756f8e8f067"
-          resource_object_id     = "00000003-0000-0000-c000-000000000000"
+          resource_object_id     = "38f372fd-2dbe-465e-9bba-1bcf1039b50d"
           service_principal_name = "${local.lz_environment_hyphen}-tf"
         }
       ]
