@@ -42,6 +42,7 @@ provider "azuread" {
 }
 
 provider "azurerm" {
+  storage_use_azuread = true
   subscription_id = "${include.azure.locals.iden_shrd_subscription_id}"
 
   features {
@@ -53,6 +54,7 @@ provider "azurerm" {
 
 provider "azurerm" {
   alias = "logs"
+  storage_use_azuread = true
   subscription_id = "${include.azure.locals.mgmt_prod_subscription_id}"
 
   features {
