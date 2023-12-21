@@ -177,7 +177,7 @@ inputs = {
   }
   custom_rbac_role_service_principals = {
     "${local.lz_environment_hyphen}-vmimg-tf-svcfabmshreg-mgmtshrdsub" = {
-      object_reference = "galmgmtshrdvmimgweu1001"
+      object_reference = "${local.lz_environment_hyphen}-vmimg-tf"
       custom_role_id   = dependency.parent.outputs.rbac_role_definitions["Service Fabric Mesh Register (Custom)"].role_definition_resource_id
       scope            = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}"
     }
