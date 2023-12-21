@@ -110,7 +110,7 @@ inputs = {
       description              = "Management of Azure AD identities via Terraform"
       admin_consents = [
         {
-          app_role_id            = "01c0a623-fc9b-48e9-b794-0756f8e8f067"
+          app_role_id            = "246dd0d5-5bd0-4def-940b-0421030a5b68"
           resource_object_id     = "38f372fd-2dbe-465e-9bba-1bcf1039b50d"
           service_principal_name = "${local.lz_environment_hyphen}-tf"
         }
