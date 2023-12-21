@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.32"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-identity-tf///?ref=0.1.33"
 }
 
 include "azure" {
@@ -108,7 +108,14 @@ inputs = {
     "${local.lz_environment_hyphen}-tf" = {
       application_id_reference = "${local.lz_environment_hyphen}-tf"
       description              = "Management of Azure AD identities via Terraform"
-      tags                     = ["${local.lz_environment_hyphen}-tf"]
+      admin_consents = [
+        {
+          app_role_id            = "01c0a623-fc9b-48e9-b794-0756f8e8f067"
+          resource_object_id     = "00000003-0000-0000-c000-000000000000"
+          service_principal_name = "${local.lz_environment_hyphen}-tf"
+        }
+      ]
+      tags = ["${local.lz_environment_hyphen}-tf"]
     }
   }
   role_assignments_service_principals = {
