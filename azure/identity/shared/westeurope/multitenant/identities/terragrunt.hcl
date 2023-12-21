@@ -232,7 +232,7 @@ inputs = {
     {
       name        = "Service Fabric Mesh Register (Custom)"
       scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
-      description = "Create and delete Azure Compute Gallery images"
+      description = "Register the Microsoft.ServiceFabricMesh provider to a subscription"
       actions = [
         "Microsoft.ServiceFabricMesh/register/action"
       ]
