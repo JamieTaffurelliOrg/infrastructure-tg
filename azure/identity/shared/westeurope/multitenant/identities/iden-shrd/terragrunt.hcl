@@ -80,6 +80,14 @@ inputs = {
             {
               id   = "19dbc75e-c2e2-444c-a770-ec69d8559fc7"
               type = "Role"
+            },
+            {
+              id   = "01c0a623-fc9b-48e9-b794-0756f8e8f067"
+              type = "Role"
+            },
+            {
+              id   = "246dd0d5-5bd0-4def-940b-0421030a5b68"
+              type = "Role"
             }
           ]
         }
