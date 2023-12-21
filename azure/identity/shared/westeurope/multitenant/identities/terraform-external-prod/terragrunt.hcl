@@ -92,7 +92,7 @@ inputs = {
     "github-tf-blobcontributor-githubcontainer" = {
       service_principal_reference = "github-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.tf_ext_subscription_id}/resourceGroups/rg-tfext-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjttfextpprodtfweu1001/blobServices/default/containers/github"
+      scope                       = "/subscriptions/${include.azure.locals.tf_ext_subscription_id}/resourceGroups/rg-tfext-prod-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjttfextprodtfweu1001/blobServices/default/containers/github"
     }
   }
 }

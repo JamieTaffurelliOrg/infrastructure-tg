@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/management/shared/vm-image-gallery/**'
+      - 'azure/management/shared/westeurope/multitenant/vm-image-gallery/**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -25,7 +25,7 @@ jobs:
         matrix:
           region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/management/shared/vm-image-gallery'
+      terragrunt-working-dir: './azure/management/shared/${{ matrix.region }}/multitenant/vm-image-gallery'
       environment: management.shared.vm-images.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

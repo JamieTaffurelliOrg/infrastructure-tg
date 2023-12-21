@@ -3,7 +3,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure/management/shared/container-registry/**'
+      - 'azure/management/shared/westeurope/multitenant/container-registry/**'
   workflow_dispatch:
     inputs:
       logLevel:
@@ -25,7 +25,7 @@ jobs:
         matrix:
           region: [westeurope]
     with:
-      terragrunt-working-dir: './azure/management/shared/container-registry'
+      terragrunt-working-dir: './azure/management/shared/${{ matrix.region }}/multitenant/container-registry'
       environment: management.shared.acr.deploy
       log-level: ${{ inputs.logLevel }}
     secrets: inherit

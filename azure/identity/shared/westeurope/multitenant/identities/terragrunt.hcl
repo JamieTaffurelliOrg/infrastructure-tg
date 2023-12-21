@@ -217,7 +217,7 @@ inputs = {
     {
       name        = "Image Creator (Custom)"
       scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
-      description = "Create and delete Azure Firewalls"
+      description = "Create and delete Azure Compute Gallery images"
       actions = [
         "Microsoft.Compute/galleries/read",
         "Microsoft.Compute/galleries/images/read",
@@ -226,6 +226,15 @@ inputs = {
         "Microsoft.Compute/images/write",
         "Microsoft.Compute/images/read",
         "Microsoft.Compute/images/delete"
+      ]
+      assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
+    },
+    {
+      name        = "Service Fabric Mesh Register (Custom)"
+      scope       = "/providers/Microsoft.Management/managementGroups/jamietaffurelli"
+      description = "Register the Microsoft.ServiceFabricMesh provider to a subscription"
+      actions = [
+        "Microsoft.ServiceFabricMesh/register/action"
       ]
       assignable_scopes = ["/providers/Microsoft.Management/managementGroups/jamietaffurelli"]
     },
