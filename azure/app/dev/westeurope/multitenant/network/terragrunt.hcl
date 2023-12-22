@@ -160,7 +160,7 @@ inputs = {
       ]
     },
     {
-      name                = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
+      name                = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-002"
       resource_group_name = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
       rules = [
         {
