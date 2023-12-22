@@ -455,7 +455,7 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-weu1-001"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001"
     }
     "${local.lz_environment_hyphen}-kv-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
