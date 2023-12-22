@@ -507,7 +507,7 @@ inputs = {
     "${local.lz_environment_hyphen}-redis-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-redis-tf"
       custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_resource_id
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-redis"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-privateendpoint"
     }
     "${local.lz_environment_hyphen}-aci-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-aci-tf"
