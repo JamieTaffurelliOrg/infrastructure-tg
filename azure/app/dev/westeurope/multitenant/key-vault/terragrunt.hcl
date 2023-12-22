@@ -37,9 +37,9 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-${local.lz_environment_hyphen}-tf-${local.location_short}-001"
-    storage_account_name = "st${local.org_prefix}${local.lz_environment_concat}tf${local.location_short}001"
-    container_name       = "${local.lz_environment_hyphen}-kv"
+    resource_group_name  = "rg-${local.landing_zone.locals.landing_zone_name}-${local.environment.locals.environment_name}-tf-${local.landing_zone.locals.landing_zone_name}-${local.region.locals.region_short}-001"
+    storage_account_name = "st${local.azure.locals.org_prefix}${local.landing_zone.locals.landing_zone_name}${local.environment.locals.environment_name}tf${local.region.locals.region_short}001"
+    container_name       = "${local.landing_zone.locals.landing_zone_name}-${local.environment.locals.environment_name}-kv"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
   }
