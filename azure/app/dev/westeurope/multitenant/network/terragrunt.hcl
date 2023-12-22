@@ -160,7 +160,7 @@ inputs = {
       ]
     },
     {
-      name                = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-002"
+      name                = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
       resource_group_name = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
       rules = [
         {
@@ -274,12 +274,12 @@ inputs = {
     {
       name                             = "snet-appgw"
       address_prefixes                 = ["10.192.0.0/24"]
-      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-002"
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     },
     {
       name                             = "snet-privateendpoint"
       address_prefixes                 = ["10.192.1.0/24"]
-      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-002"
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
     },
     {
       name                             = "snet-cae"
@@ -297,7 +297,7 @@ inputs = {
   network_watcher_resource_group_name         = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
   log_analytics_workspace_name                = "log-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
-  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.locals.environment_name}log${local.location_short}002"
+  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.locals.environment_name}log${local.location_short}001"
   storage_account_resource_group_name         = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   tags                                        = local.tags
 }
