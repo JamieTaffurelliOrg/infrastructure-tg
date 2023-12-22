@@ -460,7 +460,7 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev-kv"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev-kv"
     }
     "${local.lz_environment_hyphen}-kv-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
