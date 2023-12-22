@@ -470,7 +470,7 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Monitoring Contributor"
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
   }
   custom_rbac_role_assignments_service_principals = {
