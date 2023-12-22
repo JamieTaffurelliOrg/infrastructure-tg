@@ -288,16 +288,16 @@ inputs = {
     },
   ]
   /*hub_connection = {
-    name                      = "vhub-conn-${include.environment.environment_name}-vhub-${local.location_short}-001"
-    resource_group_name       = "rg-conn-${include.environment.environment_name}-vhub-${local.location_short}-001"
+    name                      = "vhub-conn-${include.environment.locals.environment_name}-vhub-${local.location_short}-001"
+    resource_group_name       = "rg-conn-${include.environment.locals.environment_name}-vhub-${local.location_short}-001"
     internet_security_enabled = true
   }*/
 
   network_watcher_name                        = "nw-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
   network_watcher_resource_group_name         = "rg-${local.lz_environment_hyphen}-netwat-${local.location_short}-001"
-  log_analytics_workspace_name                = "log-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
-  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
-  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.environment_name}log${local.location_short}002"
-  storage_account_resource_group_name         = "rg-mgmt-${include.environment.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
+  storage_account_name                        = "st${local.org_prefix}mgmt${include.environment.locals.environment_name}log${local.location_short}002"
+  storage_account_resource_group_name         = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   tags                                        = local.tags
 }
