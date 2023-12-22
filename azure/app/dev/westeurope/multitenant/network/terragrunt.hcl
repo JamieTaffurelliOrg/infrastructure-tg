@@ -274,7 +274,7 @@ inputs = {
     {
       name                             = "snet-appgw"
       address_prefixes                 = ["10.192.0.0/24"]
-      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-00"
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-002"
     },
     {
       name                             = "snet-privateendpoint"
