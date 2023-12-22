@@ -95,7 +95,7 @@ inputs = {
       end_ip   = "255.255.255.255"
     }
   ]
-  subnet_name                = "snet-redis"
+  subnet_name                = "snet-privateendpoint"
   virtual_network_name       = "vnet-${local.lz_environment_hyphen}-net-${local.location_short}-001"
   subnet_resource_group_name = "rg-${local.lz_environment_hyphen}-net-${local.location_short}-001"
   private_dns_zones = [
