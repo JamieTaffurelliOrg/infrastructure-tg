@@ -372,6 +372,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "${local.lz_environment_hyphen}-kv-tf-reader-mgmtdevsub" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}"
+    }
     "${local.lz_environment_hyphen}-redis-tf-contributor-appdevredis" = {
       service_principal_reference = "${local.lz_environment_hyphen}-redis-tf"
       role_definition_name        = "Contributor"
@@ -532,6 +537,11 @@ inputs = {
     "${local.lz_environment_hyphen}-cae-tf-appreg-appdev" = {
       service_principal_reference = "${local.lz_environment_hyphen}-cae-tf"
       custom_role_id              = dependency.parent.outputs.rbac_role_definitions["App Register (Custom)"].role_definition_resource_id
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}"
+    }
+    "${local.lz_environment_hyphen}-kv-tf-svcfabmshreg-appdevsub" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Service Fabric Mesh Register (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}"
     }
   }
