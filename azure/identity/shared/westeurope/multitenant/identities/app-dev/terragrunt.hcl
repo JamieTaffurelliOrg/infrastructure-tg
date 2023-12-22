@@ -372,6 +372,11 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "${local.lz_environment_hyphen}-kv-tf-reader-mgmtdevsub" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+      role_definition_name        = "Reader"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}"
+    }
     "${local.lz_environment_hyphen}-redis-tf-contributor-appdevredis" = {
       service_principal_reference = "${local.lz_environment_hyphen}-redis-tf"
       role_definition_name        = "Contributor"
@@ -455,17 +460,17 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-weu1-001"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-kv-weu1-001"
     }
     "${local.lz_environment_hyphen}-kv-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Storage Blob Data Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-tf-frc1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtffrc1001/blobServices/default/containers/app-dev-kv"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev-kv"
     }
     "${local.lz_environment_hyphen}-kv-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Monitoring Contributor"
-      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_shrd_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
   }
   custom_rbac_role_assignments_service_principals = {
@@ -507,7 +512,7 @@ inputs = {
     "${local.lz_environment_hyphen}-redis-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-redis-tf"
       custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_resource_id
-      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-redis"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-privateendpoint"
     }
     "${local.lz_environment_hyphen}-aci-tf-subnetjoin-appdevnet" = {
       service_principal_reference = "${local.lz_environment_hyphen}-aci-tf"
@@ -532,6 +537,11 @@ inputs = {
     "${local.lz_environment_hyphen}-cae-tf-appreg-appdev" = {
       service_principal_reference = "${local.lz_environment_hyphen}-cae-tf"
       custom_role_id              = dependency.parent.outputs.rbac_role_definitions["App Register (Custom)"].role_definition_resource_id
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}"
+    }
+    "${local.lz_environment_hyphen}-kv-tf-svcfabmshreg-appdevsub" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Service Fabric Mesh Register (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}"
     }
   }
