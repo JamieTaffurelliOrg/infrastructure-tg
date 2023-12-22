@@ -455,7 +455,7 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-contributor-appdevkv" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Contributor"
-      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-wus2-001"
+      scope                       = "/subscriptions/e1806152-a836-4eed-b591-d76f6267b6d2/resourceGroups/rg-app-dev-kv-weu1-001"
     }
     "${local.lz_environment_hyphen}-kv-tf-blobcontributor-appdevcontainer" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
@@ -465,7 +465,7 @@ inputs = {
     "${local.lz_environment_hyphen}-kv-tf-moncontributor-mgmtdevlogs" = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       role_definition_name        = "Monitoring Contributor"
-      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-wus2-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-wus2-001"
+      scope                       = "/subscriptions/4593b317-03e9-4533-9f41-e0d4b6da338c/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
   }
   custom_rbac_role_assignments_service_principals = {
