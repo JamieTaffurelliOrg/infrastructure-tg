@@ -296,6 +296,11 @@ inputs = {
       address_prefixes                 = ["10.192.4.0/23"]
       network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-003"
     },
+    {
+      name                             = "snet-aci"
+      address_prefixes                 = ["10.192.5.0/23"]
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-003"
+    },
   ]
   /*hub_connection = {
     name                      = "vhub-conn-${include.environment.locals.environment_name}-vhub-${local.location_short}-001"
