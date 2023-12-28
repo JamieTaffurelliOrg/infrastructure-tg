@@ -286,6 +286,16 @@ inputs = {
       address_prefixes                 = ["10.192.2.0/23"]
       network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-003"
     },
+    {
+      name                             = "snet-web"
+      address_prefixes                 = ["10.192.3.0/23"]
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-003"
+    },
+    {
+      name                             = "snet-sql"
+      address_prefixes                 = ["10.192.4.0/23"]
+      network_security_group_reference = "nsg-${local.lz_environment_hyphen}-net-${local.location_short}-003"
+    },
   ]
   /*hub_connection = {
     name                      = "vhub-conn-${include.environment.locals.environment_name}-vhub-${local.location_short}-001"
