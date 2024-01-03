@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-tf///?ref=0.1.7"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-tf///?ref=0.1.8"
 }
 
 include "azure" {
