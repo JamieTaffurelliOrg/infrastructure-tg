@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.37"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-landingzone-storage-tf///?ref=0.0.38"
 }
 
 include "azure" {
@@ -92,6 +92,7 @@ inputs = {
     name                = "log-mgmt-prod-log-${local.location_short}-001"
     resource_group_name = "rg-mgmt-prod-log-${local.location_short}-001"
   }
+  cost_email_addresses = ["jamietaffurelli@jamietaffurelli.onmicrosoft.com"]
 
   tags = merge(local.tags, { workload = "tfstate" })
 }
