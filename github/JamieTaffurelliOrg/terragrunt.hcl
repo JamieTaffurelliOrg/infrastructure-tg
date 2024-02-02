@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.15"
+  source = "git::https://github.com/JamieTaffurelliOrg/github-tf///?ref=0.1.18"
 }
 
 remote_state {
@@ -12,8 +12,8 @@ remote_state {
   }
 
   config = {
-    resource_group_name  = "rg-${local.lz_environment_hypen}-tf-${local.location_short}-001"
-    storage_account_name = "stjt${local.lz_environment_concat}tf${local.location_short}001"
+    resource_group_name  = "rg-tfext-prod-tf-weu1-001"
+    storage_account_name = "stjttfextprodtfweu1001"
     container_name       = "github"
     key                  = "${path_relative_to_include()}/terraform.tfstate"
     use_azuread_auth     = true
@@ -316,6 +316,12 @@ inputs = {
     },
     {
       name           = "az-waf-tf"
+      visibility     = "public"
+      code_owners    = "@JamieTaffurelli"
+      enforce_admins = false
+    },
+    {
+      name           = "az-cosmosdb-tf"
       visibility     = "public"
       code_owners    = "@JamieTaffurelli"
       enforce_admins = false
