@@ -1,5 +1,5 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-cosmosdb-tf///?ref=0.0.5"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-storageaccount-tf///?ref=0.0.4"
 }
 
 include "azure" {
@@ -35,6 +35,7 @@ generate "provider" {
 
   contents = <<EOF
 provider "azurerm" {
+  storage_use_azuread = true
   subscription_id = "${include.azure.locals.app_dev_subscription_id}"
 
   features {
@@ -80,35 +81,33 @@ locals {
 
 inputs = {
 
-  cosmosdb_account_name                 = "cosmos-${local.lz_environment_hyphen}-cosmos-${local.location_short}-001"
-  resource_group_name                   = "rg-${local.lz_environment_hyphen}-cosmos-${local.location_short}-001"
-  location                              = local.location
-  analytical_storage_enabled            = true
-  multiple_write_locations_enabled      = false
-  access_key_metadata_writes_enabled    = false
-  network_acl_bypass_for_azure_services = false
-  local_authentication_disabled         = true
-  capabilities                          = ["EnableServerless"]
-  total_throughput_limit                = 4000
-  consistency_policy = {
-    consistency_policy = "Session"
+  storage_account_name                   = "st${local.org_prefix}${local.lz_environment_concat}app${local.location_short}001"
+  resource_group_name                    = "rg-${local.lz_environment_hyphen}-storage-${local.location_short}-001"
+  location                               = local.location
+  shared_access_key_enabled              = false
+  account_replication_type               = "LRS"
+  public_network_access_enabled          = true
+  versioning_enabled                     = true
+  change_feed_enabled                    = true
+  change_feed_retention_in_days          = 30
+  last_access_time_enabled               = true
+  delete_retention_policy_days           = 30
+  container_delete_retention_policy_days = 30
+  containers                             = ["test"]
+  storage_account_network_rules = {
+    default_action = "Allow"
   }
-  geo_locations = [
+
+  /*private_endpoints = [
     {
-      location          = local.location
-      failover_priority = 0
-      zone_redundant    = false
+      name                            = "st${local.org_prefix}${local.lz_environment_concat}app${local.location_short}001-pe01"
+      location                        = local.location
+      subnet_id                       = string
+      subresource_names               = list(string)
+      private_service_connection_name = string
+      private_dns_zone_ids            = list(string)
     }
-  ]
-  backup = {
-    type = "Continuous"
-    tier = "Continuous7Days"
-  }
-  sql_databases = [
-    {
-      name = "testdb"
-    }
-  ]
+  ]*/
   log_analytics_workspace_name                = "log-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
   tags                                        = local.tags
