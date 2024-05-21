@@ -111,6 +111,10 @@ inputs = {
       display_name = "${local.lz_environment_hyphen}-cae-tf"
       tags         = ["${local.lz_environment_hyphen}-cae-tf"]
     }
+    "${local.lz_environment_hyphen}-cosmos-tf" = {
+      display_name = "${local.lz_environment_hyphen}-cosmos-tf"
+      tags         = ["${local.lz_environment_hyphen}-cosmos-tf"]
+    }
   }
   application_federated_identity_credentials = {
     "${local.lz_environment_hyphen}-waf-tf-deploy" = {
@@ -183,6 +187,13 @@ inputs = {
       issuer                   = "https://token.actions.githubusercontent.com"
       subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.container-app-environment.deploy"
     }
+    "${local.lz_environment_hyphen}-cosmos-tf-deploy" = {
+      display_name             = "deploy"
+      application_id_reference = "${local.lz_environment_hyphen}-cosmos-tf"
+      description              = "Authentication for GitHub Actions deployment"
+      issuer                   = "https://token.actions.githubusercontent.com"
+      subject                  = "repo:JamieTaffurelliOrg/infrastructure-tg:environment:app.dev.cosmosdb.deploy"
+    }
   }
   service_principals = {
     "${local.lz_environment_hyphen}-waf-tf" = {
@@ -234,6 +245,11 @@ inputs = {
       application_id_reference = "${local.lz_environment_hyphen}-cae-tf"
       description              = "Management of dev app container app environment infrastructure via Terraform"
       tags                     = ["${local.lz_environment_hyphen}-cae-tf"]
+    }
+    "${local.lz_environment_hyphen}-cosmos-tf" = {
+      application_id_reference = "${local.lz_environment_hyphen}-cosmos-tf"
+      description              = "Management of dev app cosmosdb infrastructure via Terraform"
+      tags                     = ["${local.lz_environment_hyphen}-cosmos-tf"]
     }
   }
   rbac_role_assignments_service_principals = {
@@ -472,6 +488,21 @@ inputs = {
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
+    "${local.lz_environment_hyphen}-cosmos-tf-contributor-appdevcosmos" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-cosmos-tf"
+      role_definition_name        = "Contributor"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-cosmos-weu1-001"
+    }
+    "${local.lz_environment_hyphen}-cosmos-tf-blobcontributor-appdevcontainer" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-cosmos-tf"
+      role_definition_name        = "Storage Blob Data Contributor"
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev-kv"
+    }
+    "${local.lz_environment_hyphen}-cosmos-tf-moncontributor-mgmtdevcosmos" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+      role_definition_name        = "Monitoring Contributor"
+      scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
+    }
   }
   custom_rbac_role_assignments_service_principals = {
     "${local.lz_environment_hyphen}-net-tf-vnetpeer-appdevnet" = {
@@ -543,6 +574,11 @@ inputs = {
       service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
       custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Service Fabric Mesh Register (Custom)"].role_definition_resource_id
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}"
+    }
+    "${local.lz_environment_hyphen}-cosmos-tf-subnetjoin-appdevnet" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-cosmos-tf"
+      custom_role_id              = dependency.parent.outputs.rbac_role_definitions["Subnet Joiner (Custom)"].role_definition_resource_id
+      scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-net-weu1-001/providers/Microsoft.Network/virtualNetworks/vnet-app-dev-net-weu1-001/subnets/snet-privateendpoint"
     }
   }
 }
