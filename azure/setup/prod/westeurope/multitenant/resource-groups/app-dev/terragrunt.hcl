@@ -123,6 +123,11 @@ inputs = {
       name     = "rg-${local.lz_environment_hyphen}-waf-${local.location_short}-001"
       location = local.location
       tags     = merge(local.tags, { workload = "app-gateway" })
+    },
+    {
+      name     = "rg-${local.lz_environment_hyphen}-cosmos-${local.location_short}-001"
+      location = local.location
+      tags     = merge(local.tags, { workload = "app-gateway" })
     }
   ]
 }
