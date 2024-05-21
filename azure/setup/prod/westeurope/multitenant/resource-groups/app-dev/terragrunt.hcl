@@ -127,7 +127,17 @@ inputs = {
     {
       name     = "rg-${local.lz_environment_hyphen}-cosmos-${local.location_short}-001"
       location = local.location
-      tags     = merge(local.tags, { workload = "app-gateway" })
+      tags     = merge(local.tags, { workload = "cosmosdb" })
+    },
+    {
+      name     = "rg-${local.lz_environment_hyphen}-storage-${local.location_short}-001"
+      location = local.location
+      tags     = merge(local.tags, { workload = "storage" })
+    },
+    {
+      name     = "rg-${local.lz_environment_hyphen}-sbus-${local.location_short}-001"
+      location = local.location
+      tags     = merge(local.tags, { workload = "servicebus" })
     }
   ]
 }
