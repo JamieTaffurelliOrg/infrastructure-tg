@@ -1,5 +1,6 @@
 terraform {
-  source = "git::https://github.com/JamieTaffurelliOrg/az-cosmosdb-tf///?ref=0.0.3"
+  #source = "git::https://github.com/JamieTaffurelliOrg/az-cosmosdb-tf///?ref=0.0.5"
+  source = "../../../../../../../az-cosmosdb-tf"
 }
 
 include "azure" {
@@ -73,24 +74,32 @@ inputs = {
   resource_group_name                   = "rg-${local.lz_environment_hyphen}-cosmos-${local.location_short}-001"
   location                              = local.location
   analytical_storage_enabled            = true
+  multiple_write_locations_enabled      = false
   access_key_metadata_writes_enabled    = false
   network_acl_bypass_for_azure_services = false
   local_authentication_disabled         = true
   capabilities                          = ["EnableServerless"]
   total_throughput_limit                = 4000
-  backup = {
-    type               = "Continuous"
-    tier               = "Continuous7Days"
-    storage_redundancy = "Local"
+  consistency_policy = {
+    consistency_policy = "Session"
   }
-  zone_redundant = false
+  geo_locations = [
+    {
+      location          = local.location
+      failover_priority = 0
+      zone_redundant    = false
+    }
+  ]
+  backup = {
+    type = "Continuous"
+    tier = "Continuous7Days"
+  }
   sql_databases = [
     {
       name = "testdb"
-      autoscale_settings = {
-        max_throughput = 1000
-      }
     }
   ]
-  tags = local.tags
+  log_analytics_workspace_name                = "log-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
+  log_analytics_workspace_resource_group_name = "rg-mgmt-${include.environment.locals.environment_name}-log-${local.location_short}-001"
+  tags                                        = local.tags
 }
