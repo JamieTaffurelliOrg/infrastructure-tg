@@ -498,8 +498,8 @@ inputs = {
       role_definition_name        = "Storage Blob Data Contributor"
       scope                       = "/subscriptions/${include.azure.locals.app_dev_subscription_id}/resourceGroups/rg-app-dev-tf-weu1-001/providers/Microsoft.Storage/storageAccounts/stjtappdevtfweu1001/blobServices/default/containers/app-dev-kv"
     }
-    "${local.lz_environment_hyphen}-cosmos-tf-moncontributor-mgmtdevcosmos" = {
-      service_principal_reference = "${local.lz_environment_hyphen}-kv-tf"
+    "${local.lz_environment_hyphen}-cosmos-tf-moncontributor-mgmtdevlogs" = {
+      service_principal_reference = "${local.lz_environment_hyphen}-cosmos-tf"
       role_definition_name        = "Monitoring Contributor"
       scope                       = "/subscriptions/${include.azure.locals.mgmt_dev_subscription_id}/resourceGroups/rg-mgmt-dev-log-weu1-001/providers/Microsoft.OperationalInsights/workspaces/log-mgmt-dev-log-weu1-001"
     }
