@@ -1,6 +1,5 @@
 terraform {
-  #source = "git::https://github.com/JamieTaffurelliOrg/az-servicebus-tf///?ref=0.0.6"
-  source = "../../../../../../../az-servicebus-tf"
+  source = "git::https://github.com/JamieTaffurelliOrg/az-servicebus-tf///?ref=0.0.6"
 }
 
 include "azure" {
